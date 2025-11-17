@@ -1,0 +1,1669 @@
+[
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "age",
+          "sex",
+          "current_smoker",
+          "heart_rate",
+          "blood_pressure",
+          "cigs_per_day",
+          "chol"
+        ],
+        "description": "This dataset is a filtered subset of a Hypertension Risk dataset (originally by Md Raihan Kahn), refocused on smoking-related health patterns. It highlights differences between smokers and non-smokers, with surprising findings about age groups among the heaviest smokers. It includes demographic, lifestyle, and health indicators relevant to cardiovascular risk.",
+        "goal": "Enable exploration of health impacts of smoking vs. non-smoking, analyze smoking patterns by age and sex, and study cardiovascular health markers (cholesterol, blood pressure, heart rate) in relation to smoking behavior.",
+        "indices": [],
+        "sample_data": [
+          {
+            "age": 54,
+            "sex": "male",
+            "current_smoker": "yes",
+            "heart_rate": 95,
+            "blood_pressure": "110/72",
+            "cigs_per_day": null,
+            "chol": 219
+          },
+          {
+            "age": 45,
+            "sex": "male",
+            "current_smoker": "yes",
+            "heart_rate": 64,
+            "blood_pressure": "121/72",
+            "cigs_per_day": null,
+            "chol": 248
+          },
+          {
+            "age": 58,
+            "sex": "male",
+            "current_smoker": "yes",
+            "heart_rate": 81,
+            "blood_pressure": "127.5/76",
+            "cigs_per_day": null,
+            "chol": 235
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "sex",
+          "current_smoker",
+          "blood_pressure"
+        ],
+        "numerical_columns": [
+          "age",
+          "heart_rate",
+          "cigs_per_day",
+          "chol"
+        ],
+        "date_columns": [],
+        "unique_columns": [],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0fae28260073475c10d8c",
+        "createdAt": "2025-10-04T10:45:54.479Z",
+        "updatedAt": "2025-10-04T10:45:54.479Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+        {
+          "plot_type": "histogram",
+          "title": "Age Distribution by Smoking Status",
+          "description": "Histogram of participant ages, split by current smoker status to compare age profiles.",
+          "x": "age",
+          "y": "count",
+          "group_by": "current_smoker",
+          "why": "Reveals whether smokers cluster in specific age ranges versus non-smokers."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Smoking Prevalence by Sex",
+          "description": "Counts or proportions of current smokers vs non-smokers within each sex.",
+          "x": "sex",
+          "y": "count",
+          "group_by": "current_smoker",
+          "why": "Highlights sex differences in smoking rates."
+        },
+        {
+          "plot_type": "box plot, violin plot",
+          "title": "Cholesterol Levels by Smoking Status and Sex",
+          "description": "Distribution of cholesterol (mg/dL) across smoker vs non-smoker groups, split by sex.",
+          "x": "current_smoker",
+          "y": "chol",
+          "group_by": "sex",
+          "why": "Assesses how smoking relates to cholesterol with sex-specific patterns."
+        },
+        {
+          "plot_type": "box plot, violin plot",
+          "title": "Resting Heart Rate by Smoking Status",
+          "description": "Distribution of resting heart rate among smokers and non-smokers.",
+          "x": "current_smoker",
+          "y": "heart_rate",
+          "why": "Evaluates whether smoking is associated with elevated resting heart rate."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Age vs Cholesterol Colored by Smoking Status",
+          "description": "Scatter of age against cholesterol, colored by current smoker status.",
+          "x": "age",
+          "y": "chol",
+          "group_by": "current_smoker",
+          "why": "Separates age-related cholesterol trends by smoker status."
+        },
+        {
+          "plot_type": "histogram",
+          "title": "Distribution of Cigarettes per Day (Current Smokers)",
+          "description": "Histogram of cigarettes per day for current smokers (exclude nulls), optionally split by sex.",
+          "x": "cigs_per_day",
+          "y": "count",
+          "group_by": "sex",
+          "why": "Characterizes smoking intensity and differences by sex among smokers."
+        },
+        {
+          "plot_type": "bubble chart",
+          "title": "Age vs Cigarettes per Day with Cholesterol as Bubble Size",
+          "description": "For current smokers, plots age against cigarettes per day; bubble size indicates cholesterol.",
+          "x": "age",
+          "y": "cigs_per_day",
+          "z": "chol",
+          "group_by": "sex",
+          "why": "Links smoking intensity and cholesterol across ages, with sex differences."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Correlation Heatmap of Numeric Health Metrics",
+          "description": "Pairwise correlations among age, heart rate, cigarettes per day, and cholesterol.",
+          "x": [
+            "age",
+            "heart_rate",
+            "cigs_per_day",
+            "chol"
+          ],
+          "y": [
+            "age",
+            "heart_rate",
+            "cigs_per_day",
+            "chol"
+          ],
+          "why": "Quantifies linear relationships to guide deeper analysis of risk markers."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Most Frequent Blood Pressure Readings by Smoking Status",
+          "description": "Counts of the most common blood_pressure readings within smokers vs non-smokers (treat readings as categories; consider showing top N to avoid clutter).",
+          "x": "blood_pressure",
+          "y": "count",
+          "group_by": "current_smoker",
+          "why": "Provides a coarse view of blood pressure patterns despite BP being stored as text."
+        },
+        {
+          "plot_type": "line chart",
+          "title": "Mean Cholesterol by Age (Binned) and Smoking Status",
+          "description": "Average cholesterol computed within age bins, with separate lines for smokers and non-smokers.",
+          "x": "age",
+          "y": "chol",
+          "group_by": "current_smoker",
+          "why": "Shows how cholesterol changes with age and whether patterns differ by smoking status."
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "player_id",
+          "player_url",
+          "short_name",
+          "long_name",
+          "age",
+          "dob",
+          "height_cm",
+          "weight_kg",
+          "nationality",
+          "club_name",
+          "league_name",
+          "overall",
+          "potential",
+          "value_eur",
+          "wage_eur",
+          "preferred_foot",
+          "international_reputation",
+          "weak_foot",
+          "skill_moves",
+          "attacking_crossing",
+          "attacking_finishing",
+          "defending_marking",
+          "goalkeeping_diving",
+          "goalkeeping_handling",
+          "goalkeeping_speed",
+          "goalkeeping_reflexes",
+          "pace",
+          "shooting",
+          "passing",
+          "dribbling",
+          "defending",
+          "physic"
+        ],
+        "description": "This dataset contains detailed player information from EA Sports FC 26, scraped from sofifa.com. It includes personal info (dob, height, weight, nationality), player ratings (overall, potential, skill attributes), financials (value, wage), and contextual details (club, league, national team). Intended for research and educational purposes.",
+        "goal": "Support football analytics research, player scouting simulations, performance prediction models, sports data visualization, and educational exercises in data science.",
+        "indices": [
+          "player_id"
+        ],
+        "sample_data": [
+          {
+            "player_id": 270717,
+            "short_name": "L. Messi",
+            "long_name": "Lionel Messi",
+            "age": 38,
+            "dob": "1987-06-24",
+            "overall": 87,
+            "potential": 87,
+            "club_name": "Inter Miami",
+            "league_name": "Major League Soccer"
+          },
+          {
+            "player_id": 20801,
+            "short_name": "C. Ronaldo",
+            "long_name": "Cristiano Ronaldo",
+            "age": 40,
+            "dob": "1985-02-05",
+            "overall": 83,
+            "potential": 83,
+            "club_name": "Al Nassr",
+            "league_name": "Saudi Pro League"
+          },
+          {
+            "player_id": 231747,
+            "short_name": "K. De Bruyne",
+            "long_name": "Kevin De Bruyne",
+            "age": 34,
+            "dob": "1991-06-28",
+            "overall": 90,
+            "potential": 90,
+            "club_name": "Manchester City",
+            "league_name": "Premier League"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "nationality_name",
+          "club_name",
+          "league_name",
+          "preferred_foot"
+        ],
+        "numerical_columns": [
+          "age",
+          "height_cm",
+          "weight_kg",
+          "overall",
+          "potential",
+          "value_eur",
+          "wage_eur",
+          "international_reputation",
+          "weak_foot",
+          "skill_moves",
+          "attacking_crossing",
+          "attacking_finishing",
+          "defending_marking",
+          "goalkeeping_diving",
+          "goalkeeping_handling",
+          "goalkeeping_speed",
+          "goalkeeping_reflexes",
+          "pace",
+          "shooting",
+          "passing",
+          "dribbling",
+          "defending",
+          "physic"
+        ],
+        "date_columns": [
+          "dob"
+        ],
+        "unique_columns": [
+          "player_id"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0f8afbeefb13f88bde3d9",
+        "createdAt": "2025-10-04T10:36:31.707Z",
+        "updatedAt": "2025-10-04T10:36:31.707Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+        {
+          "plot_type": "histogram",
+          "title": "Overall Rating Distribution of Players",
+          "description": "Shows the distribution of player ages across the dataset to understand experience mix.",
+          "x": "overall",
+          "y": "count",
+          "why": "Overall rating structure informs scouting pipelines and career stage analysis."
+        },
+        {
+          "plot_type": "box plot",
+          "title": "Overall Rating by League",
+          "description": "Compares the distribution of overall ratings across leagues (median, spread, outliers).",
+          "x": "league_name",
+          "y": "overall",
+          "why": "Highlights league strength and variability for benchmarking and transfer targeting."
+        },
+        {
+          "plot_type": "scatter plot, bubble chart",
+          "title": "Age vs Overall (Bubble size = Potential)",
+          "description": "Plots player age against overall rating; bubble size encodes potential and color groups by preferred foot.",
+          "x": "age",
+          "y": "overall",
+          "z": "potential",
+          "group_by": "preferred_foot",
+          "why": "Useful for identifying undervalued older/younger players and growth ceilings."
+        },
+        {
+          "plot_type": "bubble chart, scatter plot",
+          "title": "Market Value vs Overall (Bubble size = Wage)",
+          "description": "Shows how market value relates to overall rating; bubble size reflects wage and colors denote leagues.",
+          "x": "overall",
+          "y": "value_eur",
+          "z": "wage_eur",
+          "group_by": "league_name",
+          "why": "Supports valuation benchmarking and wage-value efficiency scouting by league."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Correlation Heatmap of Player Attributes",
+          "description": "Correlation matrix across all numerical attributes to reveal relationships and redundancy.",
+          "x": [
+            "age",
+            "height_cm",
+            "weight_kg",
+            "overall",
+            "potential",
+            "value_eur",
+            "wage_eur",
+            "international_reputation",
+            "weak_foot",
+            "skill_moves",
+            "attacking_crossing",
+            "attacking_finishing",
+            "defending_marking",
+            "goalkeeping_diving",
+            "goalkeeping_handling",
+            "goalkeeping_speed",
+            "goalkeeping_reflexes",
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "y": [
+            "age",
+            "height_cm",
+            "weight_kg",
+            "overall",
+            "potential",
+            "value_eur",
+            "wage_eur",
+            "international_reputation",
+            "weak_foot",
+            "skill_moves",
+            "attacking_crossing",
+            "attacking_finishing",
+            "defending_marking",
+            "goalkeeping_diving",
+            "goalkeeping_handling",
+            "goalkeeping_speed",
+            "goalkeeping_reflexes",
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "why": "Guides feature selection for predictive models and reveals linked skills (e.g., pace-dribbling)."
+        },
+        {
+          "plot_type": "violin plot, box plot",
+          "title": "Wage Distribution by League",
+          "description": "Visualizes the distribution and spread of wages per league, including tails and multi-modality.",
+          "x": "league_name",
+          "y": "wage_eur",
+          "why": "Shows compensation structure differences that impact transfer targets and budget planning."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Top Clubs by Average Potential",
+          "description": "Ranks clubs by mean potential (aggregate: mean), optionally filtered to clubs with sufficient sample size.",
+          "x": "club_name",
+          "y": "potential",
+          "why": "Identifies academies/teams with strong growth prospects for scouting partnerships."
+        },
+        {
+          "plot_type": "radar chart",
+          "title": "Player Attribute Profiles (Pace/Shoot/Pass/Dribble/Defend/Physic)",
+          "description": "Compares multi-attribute skill profiles across selected players.",
+          "x": [
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "y": [
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "group_by": "short_name",
+          "why": "Ideal for scouting reports and stylistic comparisons between players."
+        },
+        {
+          "plot_type": "scatter plot, bubble chart",
+          "title": "Dribbling vs Passing by Preferred Foot (Size = Skill Moves)",
+          "description": "Maps technical ability by plotting dribbling against passing; bubble size encodes skill moves and color by preferred foot.",
+          "x": "dribbling",
+          "y": "passing",
+          "z": "skill_moves",
+          "group_by": "preferred_foot",
+          "why": "Highlights creative profiles and two-footedness tendencies for role fit."
+        },
+        {
+          "plot_type": "box plot, violin plot",
+          "title": "Weak Foot Rating by Preferred Foot",
+          "description": "Compares distributions of weak-foot ratings across left- and right-footed players.",
+          "x": "preferred_foot",
+          "y": "weak_foot",
+          "why": "Assesses ambidexterity differences relevant to tactical flexibility."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Average Wage by International Reputation",
+          "description": "Shows mean wage for each international reputation level (aggregate: mean).",
+          "x": "international_reputation",
+          "y": "wage_eur",
+          "why": "Quantifies market premium associated with global reputation."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Overall vs Potential",
+          "description": "Plots overall against potential to identify underdeveloped talents (gap to potential).",
+          "x": "overall",
+          "y": "potential",
+          "group_by": "league_name",
+          "why": "Useful for talent ID and forecasting development trajectories by league context."
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "player_id",
+          "player_url",
+          "short_name",
+          "long_name",
+          "age",
+          "dob",
+          "height_cm",
+          "weight_kg",
+          "nationality",
+          "club_name",
+          "league_name",
+          "overall",
+          "potential",
+          "value_eur",
+          "wage_eur",
+          "preferred_foot",
+          "international_reputation",
+          "weak_foot",
+          "skill_moves",
+          "attacking_crossing",
+          "attacking_finishing",
+          "defending_marking",
+          "goalkeeping_diving",
+          "goalkeeping_handling",
+          "goalkeeping_speed",
+          "goalkeeping_reflexes",
+          "pace",
+          "shooting",
+          "passing",
+          "dribbling",
+          "defending",
+          "physic"
+        ],
+        "description": "This dataset contains detailed player information from EA Sports FC 26, scraped from sofifa.com. It includes personal info (dob, height, weight, nationality), player ratings (overall, potential, skill attributes), financials (value, wage), and contextual details (club, league, national team). Intended for research and educational purposes.",
+        "goal": "Support football analytics research, player scouting simulations, performance prediction models, sports data visualization, and educational exercises in data science.",
+        "indices": [
+          "player_id"
+        ],
+        "sample_data": [
+          {
+            "player_id": 270717,
+            "short_name": "L. Messi",
+            "long_name": "Lionel Messi",
+            "age": 38,
+            "dob": "1987-06-24",
+            "overall": 87,
+            "potential": 87,
+            "club_name": "Inter Miami",
+            "league_name": "Major League Soccer"
+          },
+          {
+            "player_id": 20801,
+            "short_name": "C. Ronaldo",
+            "long_name": "Cristiano Ronaldo",
+            "age": 40,
+            "dob": "1985-02-05",
+            "overall": 83,
+            "potential": 83,
+            "club_name": "Al Nassr",
+            "league_name": "Saudi Pro League"
+          },
+          {
+            "player_id": 231747,
+            "short_name": "K. De Bruyne",
+            "long_name": "Kevin De Bruyne",
+            "age": 34,
+            "dob": "1991-06-28",
+            "overall": 90,
+            "potential": 90,
+            "club_name": "Manchester City",
+            "league_name": "Premier League"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "short_name",
+          "long_name",
+          "nationality",
+          "club_name",
+          "league_name",
+          "preferred_foot"
+        ],
+        "numerical_columns": [
+          "age",
+          "height_cm",
+          "weight_kg",
+          "overall",
+          "potential",
+          "value_eur",
+          "wage_eur",
+          "international_reputation",
+          "weak_foot",
+          "skill_moves",
+          "attacking_crossing",
+          "attacking_finishing",
+          "defending_marking",
+          "goalkeeping_diving",
+          "goalkeeping_handling",
+          "goalkeeping_speed",
+          "goalkeeping_reflexes",
+          "pace",
+          "shooting",
+          "passing",
+          "dribbling",
+          "defending",
+          "physic"
+        ],
+        "date_columns": [
+          "dob"
+        ],
+        "unique_columns": [
+          "player_id"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0f8afbeefb13f88bde3d9",
+        "createdAt": "2025-10-04T10:36:31.707Z",
+        "updatedAt": "2025-10-04T10:36:31.707Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+        {
+          "plot_type": "histogram",
+          "title": "Age Distribution of Players",
+          "description": "Shows the distribution of player ages across the dataset to understand experience mix.",
+          "x": "age",
+          "y": "count",
+          "why": "Age structure informs scouting pipelines and career stage analysis."
+        },
+        {
+          "plot_type": "box plot",
+          "title": "Overall Rating by League",
+          "description": "Compares the distribution of overall ratings across leagues (median, spread, outliers).",
+          "x": "league_name",
+          "y": "overall",
+          "why": "Highlights league strength and variability for benchmarking and transfer targeting."
+        },
+        {
+          "plot_type": "scatter plot, bubble chart",
+          "title": "Age vs Overall (Bubble size = Potential)",
+          "description": "Plots player age against overall rating; bubble size encodes potential and color groups by preferred foot.",
+          "x": "age",
+          "y": "overall",
+          "z": "potential",
+          "group_by": "preferred_foot",
+          "why": "Useful for identifying undervalued older/younger players and growth ceilings."
+        },
+        {
+          "plot_type": "bubble chart, scatter plot",
+          "title": "Market Value vs Overall (Bubble size = Wage)",
+          "description": "Shows how market value relates to overall rating; bubble size reflects wage and colors denote leagues.",
+          "x": "overall",
+          "y": "value_eur",
+          "z": "wage_eur",
+          "group_by": "league_name",
+          "why": "Supports valuation benchmarking and wage-value efficiency scouting by league."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Correlation Heatmap of Player Attributes",
+          "description": "Correlation matrix across all numerical attributes to reveal relationships and redundancy.",
+          "x": [
+            "age",
+            "height_cm",
+            "weight_kg",
+            "overall",
+            "potential",
+            "value_eur",
+            "wage_eur",
+            "international_reputation",
+            "weak_foot",
+            "skill_moves",
+            "attacking_crossing",
+            "attacking_finishing",
+            "defending_marking",
+            "goalkeeping_diving",
+            "goalkeeping_handling",
+            "goalkeeping_speed",
+            "goalkeeping_reflexes",
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "y": [
+            "age",
+            "height_cm",
+            "weight_kg",
+            "overall",
+            "potential",
+            "value_eur",
+            "wage_eur",
+            "international_reputation",
+            "weak_foot",
+            "skill_moves",
+            "attacking_crossing",
+            "attacking_finishing",
+            "defending_marking",
+            "goalkeeping_diving",
+            "goalkeeping_handling",
+            "goalkeeping_speed",
+            "goalkeeping_reflexes",
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "why": "Guides feature selection for predictive models and reveals linked skills (e.g., pace-dribbling)."
+        },
+        {
+          "plot_type": "matrix heatmap",
+          "title": "Correlation Heatmap of Player Attributes",
+          "description": "Correlation matrix across all numerical attributes to reveal relationships and redundancy.",
+          "x": "short_name",
+          "y": [
+            "overall",
+            "potential",
+            "attacking_crossing",
+            "attacking_finishing",
+            "defending_marking",
+            "goalkeeping_diving",
+            "goalkeeping_handling",
+            "goalkeeping_speed",
+            "goalkeeping_reflexes",
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "why": "Guides feature selection for predictive models and reveals linked skills (e.g., pace-dribbling)."
+        },
+        {
+          "plot_type": "violin plot, box plot",
+          "title": "Wage Distribution by League",
+          "description": "Visualizes the distribution and spread of wages per league, including tails and multi-modality.",
+          "x": "league_name",
+          "y": "wage_eur",
+          "why": "Shows compensation structure differences that impact transfer targets and budget planning."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Top Clubs by Average Potential",
+          "description": "Ranks clubs by mean potential (aggregate: mean), optionally filtered to clubs with sufficient sample size.",
+          "x": "club_name",
+          "y": "potential",
+          "why": "Identifies academies/teams with strong growth prospects for scouting partnerships."
+        },
+        {
+          "plot_type": "radar chart",
+          "title": "Player Attribute Profiles (Pace/Shoot/Pass/Dribble/Defend/Physic)",
+          "description": "Compares multi-attribute skill profiles across selected players.",
+          "x": [
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "y": [
+            "pace",
+            "shooting",
+            "passing",
+            "dribbling",
+            "defending",
+            "physic"
+          ],
+          "group_by": "short_name",
+          "why": "Ideal for scouting reports and stylistic comparisons between players."
+        },
+        {
+          "plot_type": "scatter plot, bubble chart",
+          "title": "Dribbling vs Passing by Preferred Foot (Size = Skill Moves)",
+          "description": "Maps technical ability by plotting dribbling against passing; bubble size encodes skill moves and color by preferred foot.",
+          "x": "dribbling",
+          "y": "passing",
+          "z": "skill_moves",
+          "group_by": "preferred_foot",
+          "why": "Highlights creative profiles and two-footedness tendencies for role fit."
+        },
+        {
+          "plot_type": "box plot, violin plot",
+          "title": "Weak Foot Rating by Preferred Foot",
+          "description": "Compares distributions of weak-foot ratings across left- and right-footed players.",
+          "x": "preferred_foot",
+          "y": "weak_foot",
+          "why": "Assesses ambidexterity differences relevant to tactical flexibility."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Average Wage by International Reputation",
+          "description": "Shows mean wage for each international reputation level (aggregate: mean).",
+          "x": "international_reputation",
+          "y": "wage_eur",
+          "why": "Quantifies market premium associated with global reputation."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Overall vs Potential",
+          "description": "Plots overall against potential to identify underdeveloped talents (gap to potential).",
+          "x": "overall",
+          "y": "potential",
+          "group_by": "league_name",
+          "why": "Useful for talent ID and forecasting development trajectories by league context."
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "Country",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "description": "This dataset provides annual GDP data for 196 countries from 2005 to 2025, measured in USD billions. Data is sourced from the IMF and includes both historical (2005–2024) and projected (2025) values. It captures major global economic events such as the 2008 financial crisis and the 2020 COVID-19 pandemic. Some values may be missing for countries that did not report data.",
+        "goal": "Enable analysis of global and regional GDP growth, build forecasting models, benchmark economic performance, assess impacts of global crises, and support visualization, education, and policy research.",
+        "indices": [
+          "Country"
+        ],
+        "sample_data": [
+          {
+            "2005": 6167,
+            "2010": 15325,
+            "2015": 20057,
+            "2020": 20136,
+            "2025": null,
+            "Country": "Afghanistan"
+          },
+          {
+            "2005": 8148,
+            "2010": 12079,
+            "2015": 11525,
+            "2020": 15271,
+            "2025": 28372,
+            "Country": "Albania"
+          },
+          {
+            "2005": 107047,
+            "2010": 177785,
+            "2015": 187494,
+            "2020": 164774,
+            "2025": 268885,
+            "Country": "Algeria"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "Country"
+        ],
+        "numerical_columns": [
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "date_columns": [],
+        "unique_columns": [
+          "Country"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0f6fcebbd5dd97cff9423",
+        "createdAt": "2025-10-04T10:29:16.265Z",
+        "updatedAt": "2025-10-04T10:29:16.265Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+          {
+            "plot_type": "area chart",
+            "title": "Global GDP (Sum) 2005–2025",
+            "description": "Total world GDP by year (sum across all countries), showing historical levels and the 2025 projection.",
+            "x": "Year",
+            "y": "Global GDP (USD billions, sum across countries)",
+            "why": "Aggregating to the global level highlights macro trends and the impact of events like 2008 and 2020."
+          },
+          {
+            "plot_type": "line chart",
+            "title": "GDP Trajectories by Country (2005–2025)",
+            "description": "Country-level GDP over time; filter to a subset (e.g., top economies or regions) for clarity.",
+            "x": "Year",
+            "y": "GDP (USD billions)",
+            "group_by": "Country",
+            "why": "Enables benchmarking and comparative analysis of economic performance over time."
+          },
+          {
+            "plot_type": "heatmap",
+            "title": "GDP Heatmap by Country and Year",
+            "description": "Color-encoded GDP values for each country-year, revealing patterns, outliers, and structural shifts.",
+            "x": "Year",
+            "y": "Country",
+            "z": "GDP (USD billions)",
+            "why": "Compactly shows cross-country and temporal variation; missing values are easily spotted."
+          },
+          {
+            "plot_type": "bar chart",
+            "title": "Top 10 Economies: 2024 vs 2025 Projection",
+            "description": "Grouped bars comparing 2024 actual vs 2025 projected GDP for the top 10 countries by 2024 GDP.",
+            "x": "Country",
+            "y": [
+              "2024",
+              "2025"
+            ],
+            "why": "Highlights near-term changes and projected shifts among the largest economies."
+          },
+          {
+            "plot_type": "line chart",
+            "title": "YoY GDP Growth Rate by Country",
+            "description": "Year-over-year percent growth of GDP for each country; smooth or filter to selected countries as needed.",
+            "x": "Year",
+            "y": "YoY Growth (%)",
+            "group_by": "Country",
+            "why": "Growth rates normalize size differences and reveal expansions, recessions, and volatility."
+          },
+          {
+            "plot_type": "bubble chart, scatter plot",
+            "title": "Financial Crisis Impact: 2008 vs 2009 GDP",
+            "description": "Each point is a country; position shows 2008 vs 2009 GDP, bubble size encodes percent change.",
+            "x": "2008",
+            "y": "2009",
+            "z": "YoY change (%) to 2009",
+            "why": "Points below the diagonal indicate contraction in 2009, quantifying the 2008–09 shock."
+          },
+          {
+            "plot_type": "box plot",
+            "title": "Distribution of YoY Growth During COVID-19",
+            "description": "Cross-country distribution of YoY growth for 2020 (vs 2019) and 2021 (vs 2020).",
+            "x": "Year (YoY label: 2020, 2021)",
+            "y": "YoY Growth (%)",
+            "why": "Summarizes how broadly countries contracted in 2020 and recovered in 2021."
+          },
+          {
+            "plot_type": "violin plot, box plot",
+            "title": "GDP Distribution Across Countries in Key Years",
+            "description": "Distribution of country GDPs for 2007, 2009, 2020, and 2025 to compare pre/post-crisis and projections.",
+            "x": "Year (2007, 2009, 2020, 2025)",
+            "y": "GDP (USD billions)",
+            "why": "Shows changes in dispersion and skewness across major economic periods."
+          },
+          {
+            "plot_type": "pie chart",
+            "title": "Share of Global GDP by Country (Top 10) — 2024",
+            "description": "Top 10 countries by 2024 GDP plus an 'Others' slice to show concentration of global GDP.",
+            "x": "Country",
+            "y": "2024",
+            "why": "Communicates how GDP is concentrated among leading economies."
+          },
+          {
+            "plot_type": "scatter plot",
+            "title": "Pre- vs Post-COVID Growth: Country CAGRs",
+            "description": "Each point is a country; compares CAGR in 2005–2019 to CAGR in 2019–2024.",
+            "x": "CAGR 2005–2019 (%)",
+            "y": "CAGR 2019–2024 (%)",
+            "why": "Identifies countries with structural growth slowdowns or accelerations after COVID-19."
+          },
+          {
+            "plot_type": "heatmap",
+            "title": "Missing GDP Data Matrix",
+            "description": "Binary heatmap of data availability (present/missing) by country and year.",
+            "x": "Year",
+            "y": "Country",
+            "z": "Missing (1 if null, 0 otherwise)",
+            "why": "Helps assess data quality and informs imputation or filtering strategies."
+          }
+        ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "timestamp",
+          "name",
+          "symbol",
+          "price_usd",
+          "vol_24h",
+          "total_vol",
+          "chg_24h",
+          "chg_7d",
+          "market_cap"
+        ],
+        "description": "This dataset contains hourly cryptocurrency and stock market data collected from Coingecko starting in March 2025. The pipeline demonstrates practical ETL and automation skills with ingestion via Python, offloading into BigQuery, and publishing to Kaggle. It is continuously updated and suitable for SQL practice, EDA, time-series forecasting, and correlation analysis between global assets.",
+        "goal": "Provide a reproducible, continuously updated dataset for monitoring cryptocurrency markets, practicing SQL, exploring time-series analysis, and building machine learning models for forecasting.",
+        "indices": [
+          "timestamp",
+          "symbol"
+        ],
+        "sample_data": [
+          {
+            "timestamp": "2025-10-04 10:39:04",
+            "name": "Wrapped stETH",
+            "symbol": "wsteth",
+            "price_usd": "$5,473.68",
+            "vol_24h": "$16,967,327.00",
+            "total_vol": "0.00%",
+            "chg_24h": "+0.95%",
+            "chg_7d": "+12.10%",
+            "market_cap": "$17,717,180,801"
+          },
+          {
+            "timestamp": "2025-10-04 10:39:04",
+            "name": "Wrapped Beacon ETH",
+            "symbol": "wbeth",
+            "price_usd": "$4,858.33",
+            "vol_24h": "$10,005,863.00",
+            "total_vol": "0.00%",
+            "chg_24h": "+0.96%",
+            "chg_7d": "+12.01%",
+            "market_cap": "$15,858,554,368"
+          },
+          {
+            "timestamp": "2025-10-04 10:39:04",
+            "name": "Figure Heloc",
+            "symbol": "figr_heloc",
+            "price_usd": "$1.01",
+            "vol_24h": "$16,646,092.00",
+            "total_vol": "0.00%",
+            "chg_24h": "+0.05%",
+            "chg_7d": "-1.60%",
+            "market_cap": "$12,943,728,044"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "name",
+          "symbol"
+        ],
+        "numerical_columns": [
+          "price_usd",
+          "vol_24h",
+          "chg_24h",
+          "chg_7d",
+          "market_cap"
+        ],
+        "date_columns": [
+          "timestamp"
+        ],
+        "unique_columns": [
+          "timestamp",
+          "symbol"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0f3c4043515411307d586",
+        "createdAt": "2025-10-04T10:15:32.305Z",
+        "updatedAt": "2025-10-04T10:15:32.305Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+        {
+          "plot_type": "line chart",
+          "title": "Hourly Price Trends by Asset",
+          "description": "Multi-series line chart of price_usd over time, grouped by symbol. Filter to top N by market_cap to avoid clutter.",
+          "x": "timestamp",
+          "y": "price_usd",
+          "group_by": "symbol",
+          "why": "Tracks intraday momentum and regime shifts; ideal for monitoring and forecasting."
+        },
+        {
+          "plot_type": "area chart",
+          "title": "Total Market Capitalization Over Time",
+          "description": "Area chart of the aggregated (sum) market_cap across all symbols per timestamp.",
+          "x": "timestamp",
+          "y": "market_cap",
+          "why": "Shows overall market growth/decline and cycles at an hourly granularity."
+        },
+        {
+          "plot_type": "bar chart",
+          "title": "Top Movers: 24h Change by Asset (Latest Hour)",
+          "description": "Sorted bar chart of chg_24h for the most recent timestamp to identify winners and losers.",
+          "x": "symbol",
+          "y": "chg_24h",
+          "why": "Quick snapshot of short-term performance for monitoring and alerts."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Momentum Map: 7d vs 24h Percentage Change",
+          "description": "Scatter of chg_7d (x) vs chg_24h (y) per symbol at the latest timestamp; quadrants indicate trend continuation or reversals.",
+          "x": "chg_7d",
+          "y": "chg_24h",
+          "group_by": "symbol",
+          "why": "Assesses momentum and mean-reversion candidates at a glance."
+        },
+        {
+          "plot_type": "bubble chart",
+          "title": "Liquidity vs. Price with Market Cap Size (Latest Hour)",
+          "description": "Bubble plot of vol_24h (x) vs price_usd (y) with bubble size by market_cap for the latest snapshot.",
+          "x": "vol_24h",
+          "y": "price_usd",
+          "z": "market_cap",
+          "group_by": "symbol",
+          "why": "Highlights liquid, large-cap assets and potential outliers."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Correlation Matrix of Market Metrics",
+          "description": "Heatmap of pairwise correlations among {price_usd, vol_24h, chg_24h, chg_7d, market_cap} using aligned hourly data.",
+          "x": "metric",
+          "y": "metric",
+          "z": "correlation",
+          "why": "Reveals relationships useful for feature engineering and risk management."
+        },
+        {
+          "plot_type": "area chart",
+          "title": "Stacked 24h Volume by Asset Over Time (Top N)",
+          "description": "Stacked area of vol_24h by symbol across timestamps. Optionally normalize to percentage to view share of volume.",
+          "x": "timestamp",
+          "y": "vol_24h",
+          "group_by": "symbol",
+          "why": "Shows shifts in trading activity and market participation over time."
+        },
+        {
+          "plot_type": "box plot,violin plot",
+          "title": "Price Dispersion by Asset (Last 7 Days)",
+          "description": "Distribution of hourly price_usd per symbol over the last 7 days.",
+          "x": "symbol",
+          "y": "price_usd",
+          "why": "Compares volatility and tail behavior across assets."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Intraday Volume Seasonality",
+          "description": "Average vol_24h by hour_of_day (derived from timestamp) and day_of_week to uncover time-of-day/week patterns.",
+          "x": "hour_of_day",
+          "y": "day_of_week",
+          "z": "avg_vol_24h",
+          "why": "Supports scheduling of trades and detecting predictable liquidity windows."
+        },
+        {
+          "plot_type": "pie chart",
+          "title": "Market Cap Share by Asset (Latest Hour)",
+          "description": "Pie chart of each symbol’s share of total market_cap at the most recent timestamp. Filter to top N and group the rest as 'Other'.",
+          "x": "symbol",
+          "y": "market_cap",
+          "why": "Summarizes market dominance and concentration at a glance."
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "Store",
+          "Date",
+          "Weekly_Sales",
+          "Holiday_Flag",
+          "Temperature",
+          "Fuel_Price",
+          "CPI",
+          "Unemployment"
+        ],
+        "description": "This dataset represents weekly sales records of one of the largest retail chains in the world. It includes information about store identifiers, weekly sales figures, holidays, weather conditions, fuel prices, consumer price index (CPI), and unemployment rate.",
+        "goal": "To analyze how various economic and environmental factors, such as temperature, fuel price, CPI, and unemployment, influence the store's weekly sales. The analysis can also help build a machine learning model to forecast sales and identify cost-reduction opportunities.",
+        "indices": [
+          "Store",
+          "Date"
+        ],
+        "sample_data": [
+          {
+            "Store": 1,
+            "Date": "2010-02-05",
+            "Weekly_Sales": 1643690.9,
+            "Holiday_Flag": 0,
+            "Temperature": 42.31,
+            "Fuel_Price": 2.572,
+            "CPI": 211.0963582,
+            "Unemployment": 8.106
+          },
+          {
+            "Store": 2,
+            "Date": "2010-02-05",
+            "Weekly_Sales": 1641957.44,
+            "Holiday_Flag": 0,
+            "Temperature": 38.51,
+            "Fuel_Price": 2.548,
+            "CPI": 211.2421698,
+            "Unemployment": 8.324
+          },
+          {
+            "Store": 3,
+            "Date": "2010-02-05",
+            "Weekly_Sales": 1611968.17,
+            "Holiday_Flag": 0,
+            "Temperature": 39.93,
+            "Fuel_Price": 2.514,
+            "CPI": 210.7501048,
+            "Unemployment": 8.623
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "Store",
+          "Holiday_Flag"
+        ],
+        "numerical_columns": [
+          "Weekly_Sales",
+          "Temperature",
+          "Fuel_Price",
+          "CPI",
+          "Unemployment"
+        ],
+        "date_columns": [
+          "Date"
+        ],
+        "unique_columns": [
+          "Store",
+          "Date"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0e193e440392ee57b7af5",
+        "createdAt": "2025-10-04T08:57:55.910Z",
+        "updatedAt": "2025-10-04T08:57:55.910Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+        {
+          "plot_type": "line chart",
+          "title": "Weekly Sales Over Time by Store",
+          "description": "Trends of weekly sales for each store across the full time period.",
+          "x": "Date",
+          "y": "Weekly_Sales",
+          "group_by": "Store",
+          "why": "Highlights seasonality, store-level trends, and anomalies that can inform forecasting and store benchmarking."
+        },
+        {
+          "plot_type": "area chart",
+          "title": "Total Weekly Sales Over Time (All Stores)",
+          "description": "Aggregated total weekly sales across all stores to show overall trend and seasonality.",
+          "x": "Date",
+          "y": "Weekly_Sales",
+          "group_by": "None",
+          "why": "Gives an overall view of demand cycles to guide forecasting and capacity planning."
+        },
+        {
+          "plot_type": "area chart, line chart",
+          "title": "Weekly Sales Over Time by Holiday vs Non-Holiday",
+          "description": "Compares weekly sales dynamics during holiday weeks versus non-holiday weeks.",
+          "x": "Date",
+          "y": "Weekly_Sales",
+          "group_by": "Holiday_Flag",
+          "why": "Quantifies holiday impact on sales to support promotional planning and inventory decisions."
+        },
+        {
+          "plot_type": "box plot",
+          "title": "Weekly Sales Distribution by Holiday Flag",
+          "description": "Distribution of weekly sales during holiday (1) and non-holiday (0) weeks.",
+          "x": "Holiday_Flag",
+          "y": "Weekly_Sales",
+          "why": "Shows median and variability differences that indicate uplift and volatility around holidays."
+        },
+        {
+          "plot_type": "violin plot",
+          "title": "Weekly Sales Distribution by Store",
+          "description": "Distribution of weekly sales for each store.",
+          "x": "Store",
+          "y": "Weekly_Sales",
+          "why": "Reveals store performance dispersion and outliers to identify best/worst performers."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Weekly Sales vs Temperature",
+          "description": "Relationship between temperature and weekly sales, differentiated by holiday flag.",
+          "x": "Temperature",
+          "y": "Weekly_Sales",
+          "group_by": "Holiday_Flag",
+          "why": "Assesses weather sensitivity and whether holidays moderate the temperature-sales effect."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Weekly Sales vs Unemployment",
+          "description": "Relationship between unemployment rate and weekly sales, split by holiday flag.",
+          "x": "Unemployment",
+          "y": "Weekly_Sales",
+          "group_by": "Holiday_Flag",
+          "why": "Evaluates macroeconomic pressure on demand and possible differences during holiday periods."
+        },
+        {
+          "plot_type": "bubble chart",
+          "title": "Fuel Price vs Weekly Sales Sized by CPI",
+          "description": "Fuel price on the x-axis, sales on the y-axis, CPI encoded as bubble size; color by holiday flag.",
+          "x": "Fuel_Price",
+          "y": "Weekly_Sales",
+          "z": "CPI",
+          "group_by": "Holiday_Flag",
+          "why": "Explores combined effects of fuel costs and inflation on sales with holiday context."
+        },
+        {
+          "plot_type": "scatter plot",
+          "title": "Weekly Sales vs CPI",
+          "description": "Direct relationship between CPI and weekly sales.",
+          "x": "CPI",
+          "y": "Weekly_Sales",
+          "group_by": "Holiday_Flag",
+          "why": "Tests price-level sensitivity of demand to inform pricing and promotions."
+        },
+        {
+          "plot_type": "heatmap",
+          "title": "Correlation Matrix of Sales and Drivers",
+          "description": "Correlation heatmap for Weekly_Sales, Temperature, Fuel_Price, CPI, and Unemployment.",
+          "x": [
+            "Weekly_Sales",
+            "Temperature",
+            "Fuel_Price",
+            "CPI",
+            "Unemployment"
+          ],
+          "y": [
+            "Weekly_Sales",
+            "Temperature",
+            "Fuel_Price",
+            "CPI",
+            "Unemployment"
+          ],
+          "why": "Quickly identifies linear relationships to guide feature selection for forecasting models."
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "_id",
+          "firstName",
+          "lastName",
+          "gender",
+          "state",
+          "DOB",
+          "dayMonth",
+          "lastBirthdayWishYear",
+          "account_name",
+          "isAdmin",
+          "type",
+          "createdAt"
+        ],
+        "description": "Dataset containing Climax Realtors' demographic and registration information. Each record represents a realtor with details such as name, gender, state, account name, date of birth, and creation date.",
+        "goal": "Visualize the distribution of realtors across states, gender balance, growth over time, and age demographics.",
+        "indices": [
+          "state",
+          "gender",
+          "DOB",
+          "createdAt"
+        ],
+        "sample_data": [
+          {
+            "_id": "68dd3a37c12bd548b040ce0e",
+            "firstName": "Chiamaka",
+            "lastName": "Gilbert",
+            "gender": "Female",
+            "state": "Imo",
+            "DOB": "1989-08-23",
+            "dayMonth": "23-8",
+            "lastBirthdayWishYear": "1970-01-01",
+            "account_name": "GILBERT CHIAMAKA DORATHY",
+            "isAdmin": false,
+            "type": "external",
+            "createdAt": "2025-10-01"
+          },
+          {
+            "_id": "68dc465ac12bd548b040cdf2",
+            "firstName": "Kindness",
+            "lastName": "Joseph",
+            "gender": "Female",
+            "state": "Rivers",
+            "DOB": "2002-07-21",
+            "dayMonth": "21-7",
+            "lastBirthdayWishYear": "1970-01-01",
+            "account_name": "JOSEPH KINDNESS OTUOMASIRICHI",
+            "isAdmin": false,
+            "type": "external",
+            "createdAt": "2025-09-30"
+          },
+          {
+            "_id": "68da5b9ac12bd548b040cdc9",
+            "firstName": "Choice",
+            "lastName": "Amadi",
+            "gender": "Female",
+            "state": "Rivers",
+            "DOB": "1997-04-08",
+            "dayMonth": "8-4",
+            "lastBirthdayWishYear": "1970-01-01",
+            "account_name": "AMADI CHOICE OMASIRICHI",
+            "isAdmin": false,
+            "type": "external",
+            "createdAt": "2025-09-29"
+          },
+          {
+            "_id": "68c72c1fc12bd548b040cd47",
+            "firstName": "Lilian",
+            "lastName": "Tamuno",
+            "gender": "Female",
+            "state": "Rivers",
+            "DOB": "2002-10-06",
+            "dayMonth": "6-10",
+            "lastBirthdayWishYear": "1970-01-01",
+            "account_name": "LILIAN IBINABO TAMUNO",
+            "isAdmin": false,
+            "type": "external",
+            "createdAt": "2025-09-14"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "state",
+          "account_name",
+          "type"
+        ],
+        "numerical_columns": [],
+        "date_columns": [
+          "DOB",
+          "createdAt",
+          "lastBirthdayWishYear"
+        ],
+        "unique_columns": [
+          "_id"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e0cd8ae440392ee57b7af3",
+        "createdAt": "2025-10-04T07:32:26.467Z",
+        "updatedAt": "2025-10-04T07:32:26.467Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+          {
+            "plot_type": "bar chart, choropleth map",
+            "title": "Realtors by State",
+            "description": "Counts the number of registered realtors per state.",
+            "x": "state",
+            "y": "count",
+            "why": "Directly addresses the distribution across states and highlights concentration hotspots."
+          },
+          {
+            "plot_type": "pie chart, bar chart",
+            "title": "Gender Distribution of Realtors",
+            "description": "Shows the overall gender balance among registered realtors.",
+            "x": "gender",
+            "y": "count",
+            "why": "Provides a clear snapshot of gender balance as requested."
+          },
+          {
+            "plot_type": "line chart, area chart",
+            "title": "Monthly Registrations Over Time",
+            "description": "Tracks the trend of new realtor registrations by month.",
+            "x": "createdAt (month)",
+            "y": "count of registrations",
+            "why": "Reveals growth over time and seasonality in sign-ups."
+          },
+          {
+            "plot_type": "stacked bar chart, grouped bar chart",
+            "title": "Registrations by State and Gender",
+            "description": "Breaks down realtor counts by state and gender.",
+            "x": "state",
+            "y": "count",
+            "group_by": "gender",
+            "why": "Combines geographic distribution with gender balance for richer insights."
+          },
+          {
+            "plot_type": "histogram, box plot",
+            "title": "Age Distribution of Realtors",
+            "description": "Distribution of ages calculated from DOB to the current date.",
+            "x": "age (years, derived from DOB)",
+            "y": "count",
+            "why": "Directly addresses age demographics and identifies dominant age ranges."
+          },
+          {
+            "plot_type": "box plot, violin plot",
+            "title": "Age by Gender",
+            "description": "Compares age distributions across genders.",
+            "x": "gender",
+            "y": "age (years, derived from DOB)",
+            "why": "Explores whether age profiles differ by gender."
+          },
+          {
+            "plot_type": "heatmap",
+            "title": "Registrations Heatmap by Month and State",
+            "description": "Heatmap of monthly registration counts across states.",
+            "x": "createdAt (month)",
+            "y": "state",
+            "z": "count of registrations",
+            "why": "Highlights temporal and geographic patterns simultaneously."
+          },
+          {
+            "plot_type": "bar chart",
+            "title": "Birth Month Distribution",
+            "description": "Counts realtors by birth month derived from DOB.",
+            "x": "month (from DOB)",
+            "y": "count",
+            "why": "Offers additional demographic insight and potential seasonality in birthdays."
+          }
+        ]
+    }
+  },
+  {
+    "status": "success",
+    "message": "Request created",
+    "data": {
+      "request": {
+        "columns": [
+          "CustomerID",
+          "Name",
+          "Age",
+          "Gender",
+          "JoinDate",
+          "TotalPurchases",
+          "Country"
+        ],
+        "description": "We want to visualize customer demographics and their purchase behavior.",
+        "goal": "Compare purchase patterns across different demographics.",
+        "indices": [
+          "CustomerID"
+        ],
+        "sample_data": [
+          {
+            "CustomerID": "CUST001",
+            "Name": "John Doe",
+            "Age": 28,
+            "Gender": "Male",
+            "JoinDate": "2022-01-15",
+            "TotalPurchases": 12,
+            "Country": "Nigeria"
+          },
+          {
+            "CustomerID": "CUST002",
+            "Name": "Jane Smith",
+            "Age": 34,
+            "Gender": "Female",
+            "JoinDate": "2021-11-20",
+            "TotalPurchases": 7,
+            "Country": "Ghana"
+          },
+          {
+            "CustomerID": "CUST003",
+            "Name": "Ahmed Ali",
+            "Age": 41,
+            "Gender": "Male",
+            "JoinDate": "2023-05-10",
+            "TotalPurchases": 20,
+            "Country": "Kenya"
+          }
+        ],
+        "file_url": [],
+        "categorical_columns": [
+          "Gender",
+          "Country"
+        ],
+        "numerical_columns": [
+          "Age",
+          "TotalPurchases"
+        ],
+        "date_columns": [
+          "JoinDate"
+        ],
+        "unique_columns": [
+          "CustomerID"
+        ],
+        "suggestions": [],
+        "status": "active",
+        "chatGPT_response": [],
+        "_id": "68e080716cc184399ddabd95",
+        "createdAt": "2025-10-04T02:03:29.920Z",
+        "updatedAt": "2025-10-04T02:03:29.920Z",
+        "__v": 0
+      },
+      "visuals_sugg": [
+          {
+            "plot_type": "bar chart",
+            "title": "Average Purchases by Gender",
+            "description": "Shows the average TotalPurchases per customer for each gender.",
+            "x": "Gender",
+            "y": "TotalPurchases",
+            "why": "Highlights differences in purchase intensity across genders."
+          },
+          {
+            "plot_type": "box plot",
+            "title": "Distribution of Purchases by Country",
+            "description": "Displays the spread and outliers of TotalPurchases for customers in each country.",
+            "x": "Country",
+            "y": "TotalPurchases",
+            "why": "Reveals variability and median purchases across countries, not just averages."
+          },
+          {
+            "plot_type": "scatter plot",
+            "title": "Age vs Total Purchases by Gender",
+            "description": "Plots each customer to show how TotalPurchases relate to Age, colored by Gender.",
+            "x": "Age",
+            "y": "TotalPurchases",
+            "group_by": "Gender",
+            "why": "Assesses whether age correlates with purchasing and if patterns differ by gender."
+          },
+          {
+            "plot_type": "heatmap",
+            "title": "Average Purchases by Age (binned) and Country",
+            "description": "Heatmap of mean TotalPurchases across age bins and countries.",
+            "x": "Age (binned)",
+            "y": "Country",
+            "z": "Average TotalPurchases",
+            "why": "Captures interaction effects between age and country on purchasing."
+          },
+          {
+            "plot_type": "line chart",
+            "title": "Average Purchases by Join Month and Gender",
+            "description": "Tracks average TotalPurchases of customers grouped by their JoinDate month, split by Gender.",
+            "x": "JoinDate (monthly)",
+            "y": "TotalPurchases",
+            "group_by": "Gender",
+            "why": "Compares purchase behavior of join cohorts over time across genders."
+          },
+          {
+            "plot_type": "bar chart",
+            "title": "Total Purchases by Country, Stacked by Gender",
+            "description": "Sum of TotalPurchases aggregated by Country with segments for each Gender.",
+            "x": "Country",
+            "y": "TotalPurchases",
+            "group_by": "Gender",
+            "why": "Shows how much each gender contributes to total purchases within each country."
+          },
+          {
+            "plot_type": "histogram",
+            "title": "Purchase Distribution by Gender",
+            "description": "Overlaid histograms of TotalPurchases for each Gender.",
+            "x": "TotalPurchases",
+            "y": "Count",
+            "group_by": "Gender",
+            "why": "Compares the shape and skew of purchase distributions across genders."
+          },
+          {
+            "plot_type": "pie chart",
+            "title": "Share of Total Purchases by Country",
+            "description": "Proportion of the sum of TotalPurchases contributed by each Country.",
+            "x": "Country",
+            "y": "TotalPurchases",
+            "why": "Quickly identifies which countries account for the largest share of purchases."
+          }
+        ]
+    }
+  }
+]

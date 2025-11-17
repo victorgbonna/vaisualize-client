@@ -1,0 +1,379 @@
+home_team,away_team,match_period,game_week,match_date,match_time,stadium,score_line,total_goals,away_goals,home_goals,referee,min 1-15 goals,min 16-30 goals,min 31-45+ goals,min 46-60 goals,min 61-75 goals,min 76-90+ goals,45+ goals,90+ goals,1st_half goals,2nd_half goals,stoppage_time goals,normal_time goals,min 1-15 home goals,min 1-15 away goals,min 16-30 home goals,min 16-30 away goals,min 31-45+ home goals,min 31-45+ away goals,min 46-60 home goals,min 46-60 away goals,min 61-75 home goals,min 61-75 away goals,min 76-90+ home goals,min 76-90+ away goals,45+ home goals,45+ away goals,90+ home goals,90+ away goals,1st_half home goals,1st_half away goals,2nd_half home goals,2nd_half away goals,stoppage_time home goals,stoppage_time away goals,normal_time home goals,normal_time away goals
+West Ham United,Manchester City,standard kick-off,1,7 August 2022,16:30 BST,London Stadium,0–2,2,2,0,Michael Oliver,0,0,1,0,1,0,0,0,1,1,0,2,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2
+Manchester City,Bournemouth,standard kick-off,2,13 August 2022,15:00 BST,Etihad Stadium,4–0,4,0,4,David Coote,0,1,2,0,0,1,0,0,3,1,0,4,0,0,1,0,2,0,0,0,0,0,1,0,0,0,0,0,3,0,1,0,0,0,4,0
+Newcastle United,Manchester City,standard kick-off,3,21 August 2022,16:30 BST,St James' Park,3–3,6,3,3,Jarred Gillett,1,1,1,2,1,0,0,0,3,3,0,6,0,1,1,0,1,0,1,1,0,1,0,0,0,0,0,0,2,1,1,2,0,0,3,3
+Manchester City,Crystal Palace,standard kick-off,4,27 August 2022,15:00 BST,Etihad Stadium,4–2,6,2,4,Darren England,1,1,0,1,2,1,0,0,2,4,0,6,0,1,0,1,0,0,1,0,2,0,1,0,0,0,0,0,0,2,4,0,0,0,4,2
+Manchester City,Nottingham Forest,late kick-off,5,31 August 2022,19:30 BST,Etihad Stadium,6–0,6,0,6,Paul Tierney,1,1,1,1,1,1,0,0,3,3,0,6,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,3,0,3,0,0,0,6,0
+Aston Villa,Manchester City,standard kick-off,6,3 September 2022,17:30 BST,Villa Park,1–1,2,1,1,Simon Hooper,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1
+Wolverhampton Wanderers,Manchester City,early kick-off,8,17 September 2022,12:30 BST,Molineux,0–3,3,3,0,Anthony Taylor,1,1,0,0,1,0,0,0,2,1,0,3,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,2,0,1,0,0,0,3
+Manchester City,Manchester United,early kick-off,9,2 October 2022,14:00 BST,Etihad Stadium,6–3,9,3,6,Michael Oliver,1,0,3,1,2,2,0,1,4,5,1,8,1,0,0,0,3,0,0,1,2,0,0,2,0,0,0,1,4,0,2,3,0,1,6,2
+Manchester City,Southampton,standard kick-off,10,8 October 2022,15:00 BST,Etihad Stadium,4–0,4,0,4,Andrew Madley,0,1,1,1,1,0,0,0,2,2,0,4,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,2,0,2,0,0,0,4,0
+Liverpool,Manchester City,standard kick-off,11,16 October 2022,16:30 BST,Anfield,1–0,1,0,1,Anthony Taylor,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Manchester City,Brighton & Hove Albion,standard kick-off,13,22 October 2022,15:00 BST,Etihad Stadium,3–1,4,1,3,Craig Pawson,0,1,1,1,1,0,0,0,2,2,0,4,0,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,2,0,1,1,0,0,3,1
+Leicester City,Manchester City,early kick-off,14,29 October 2022,12:30 BST,King Power Stadium,0–1,1,1,0,Robert Jones,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Manchester City,Fulham,standard kick-off,15,5 November 2022,15:00 GMT,Etihad Stadium,2–1,3,1,2,Darren England,0,2,0,0,0,1,0,1,2,1,1,2,0,0,1,1,0,0,0,0,0,0,1,0,0,0,1,0,1,1,1,0,1,0,1,1
+Manchester City,Brentford,early kick-off,16,12 November 2022,12:30 GMT,Etihad Stadium,1–2,3,2,1,Peter Bankes,0,1,1,0,0,1,1,1,2,1,2,1,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,0,1,1,1,0,1
+Leeds United,Manchester City,late kick-off,17,28 December 2022,20:00 GMT,Elland Road,1–3,4,3,1,Stuart Attwell,0,0,1,1,2,0,1,0,1,3,1,3,0,0,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,1,2,0,1,1,2
+Manchester City,Everton,standard kick-off,18,31 December 2022,15:00 GMT,Etihad Stadium,1–1,2,1,1,Andrew Madley,0,1,0,0,1,0,0,0,1,1,0,2,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,1
+Chelsea,Manchester City,late kick-off,19,5 January 2023,20:00 GMT,Stamford Bridge,0–1,1,1,0,Paul Tierney,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Manchester United,Manchester City,early kick-off,20,14 January 2023,12:30 GMT,Old Trafford,2–1,3,1,2,Stuart Attwell,0,0,0,1,0,2,0,0,0,3,0,3,0,0,0,0,0,0,0,1,0,0,2,0,0,0,0,0,0,0,2,1,0,0,2,1
+Manchester City,Tottenham Hotspur,late kick-off,7,19 January 2023,20:00 GMT,Etihad Stadium,4–2,6,2,4,Simon Hooper,0,0,2,2,1,1,1,0,2,4,1,5,0,0,0,0,0,2,2,0,1,0,1,0,0,1,0,0,0,2,4,0,0,1,4,1
+Manchester City,Wolverhampton Wanderers,early kick-off,21,22 January 2023,14:00 GMT,Etihad Stadium,3–0,3,0,3,David Coote,0,0,1,2,0,0,0,0,1,2,0,3,0,0,0,0,1,0,2,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,3,0
+Tottenham Hotspur,Manchester City,standard kick-off,22,5 February 2023,16:30 GMT,Tottenham Hotspur Stadium,1–0,1,0,1,Andrew Madley,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Manchester City,Aston Villa,standard kick-off,23,12 February 2023,16:30 GMT,Etihad Stadium,3–1,4,1,3,Robert Jones,1,0,2,0,1,0,1,0,3,1,1,3,1,0,0,0,2,0,0,0,0,1,0,0,1,0,0,0,3,0,0,1,1,0,2,1
+Arsenal,Manchester City,late kick-off,12,15 February 2023,19:30 GMT,Emirates Stadium,1–3,4,3,1,Anthony Taylor,0,1,1,0,1,1,0,0,2,2,0,4,0,0,0,1,1,0,0,0,0,1,0,1,0,0,0,0,1,1,0,2,0,0,1,3
+Nottingham Forest,Manchester City,standard kick-off,24,18 February 2023,15:00 GMT,City Ground,1–1,2,1,1,Graham Scott,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,1,1
+Bournemouth,Manchester City,standard kick-off,25,25 February 2023,17:30 GMT,Dean Court,1–4,5,4,1,Paul Tierney,1,1,1,1,0,1,0,0,3,2,0,5,0,1,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,3,1,1,0,0,1,4
+Manchester City,Newcastle United,early kick-off,26,4 March 2023,12:30 GMT,Etihad Stadium,2–0,2,0,2,Simon Hooper,1,0,0,0,1,0,0,0,1,1,0,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Crystal Palace,Manchester City,standard kick-off,27,11 March 2023,17:30 GMT,Selhurst Park,0–1,1,1,0,Robert Jones,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1
+Manchester City,Liverpool,early kick-off,29,1 April 2023,12:30 BST,Etihad Stadium,4–1,5,1,4,Simon Hooper,0,2,0,2,1,0,0,0,2,3,0,5,0,0,1,1,0,0,2,0,1,0,0,0,0,0,0,0,1,1,3,0,0,0,4,1
+Southampton,Manchester City,standard kick-off,30,8 April 2023,17:30 BST,St Mary's Stadium,1–4,5,4,1,Robert Jones,0,0,1,1,3,0,0,0,1,4,0,5,0,0,0,0,0,1,0,1,1,2,0,0,0,0,0,0,0,1,1,3,0,0,1,4
+Manchester City,Leicester City,standard kick-off,31,15 April 2023,17:30 BST,Etihad Stadium,3–1,4,1,3,Darren England,2,1,0,0,1,0,0,0,3,1,0,4,2,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,3,0,0,1,0,0,3,1
+Manchester City,Arsenal,late kick-off,33,26 April 2023,20:00 BST,Etihad Stadium,4–1,5,1,4,Michael Oliver,1,0,1,1,0,2,1,1,2,3,2,3,1,0,0,0,1,0,1,0,0,0,1,1,1,0,1,0,2,0,2,1,2,0,2,1
+Fulham,Manchester City,early kick-off,34,30 April 2023,14:00 BST,Craven Cottage,1–2,3,2,1,Simon Hooper,2,0,1,0,0,0,0,0,3,0,0,3,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,1,2
+Manchester City,West Ham United,late kick-off,28,3 May 2023,20:00 BST,Etihad Stadium,3–0,3,0,3,John Brooks,0,0,0,1,1,1,0,0,0,3,0,3,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,3,0,0,0,3,0
+Manchester City,Leeds United,standard kick-off,35,6 May 2023,15:00 BST,Etihad Stadium,2–1,3,1,2,Andrew Madley,0,2,0,0,0,1,0,0,2,1,0,3,0,0,2,0,0,0,0,0,0,0,0,1,0,0,0,0,2,0,0,1,0,0,2,1
+Everton,Manchester City,early kick-off,36,14 May 2023,14:00 BST,Goodison Park,0–3,3,3,0,Anthony Taylor,0,0,2,1,0,0,0,0,2,1,0,3,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,3
+Manchester City,Chelsea,standard kick-off,37,21 May 2023,16:00 BST,Etihad Stadium,1–0,1,0,1,Michael Oliver,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Brighton & Hove Albion,Manchester City,late kick-off,32,24 May 2023,20:00 BST,Falmer Stadium,1–1,2,1,1,Stuart Attwell,0,1,1,0,0,0,0,0,2,0,0,2,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Brentford,Manchester City,standard kick-off,38,28 May 2023,16:30 BST,Brentford Community Stadium,1–0,1,0,1,John Brooks,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Crystal Palace,Arsenal,late kick-off,1,5 August 2022,20:00 BST,Selhurst Park,0–2,2,2,0,Anthony Taylor,0,1,0,0,0,1,0,0,1,1,0,2,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+Arsenal,Leicester City,standard kick-off,2,13 August 2022,15:00 BST,Emirates Stadium,4–2,6,2,4,Darren England,0,1,1,2,2,0,0,0,2,4,0,6,0,0,1,0,1,0,1,1,1,1,0,0,0,0,0,0,2,0,2,2,0,0,4,2
+Bournemouth,Arsenal,standard kick-off,3,20 August 2022,17:30 BST,Vitality Stadium,0–3,3,3,0,Craig Pawson,2,0,0,1,0,0,0,0,2,1,0,3,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,3
+Arsenal,Fulham,standard kick-off,4,27 August 2022,17:30 BST,Emirates Stadium,2–1,3,1,2,Jarred Gillett,0,0,0,1,1,1,0,0,0,3,0,3,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,2,1,0,0,2,1
+Arsenal,Aston Villa,late kick-off,5,31 August 2022,19:30 BST,Emirates Stadium,2–1,3,1,2,Robert Jones,0,1,0,0,1,1,0,0,1,2,0,3,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,2,1
+Manchester United,Arsenal,standard kick-off,6,4 September 2022,16:30 BST,Old Trafford,3–1,4,1,3,Paul Tierney,0,0,1,1,2,0,0,0,1,3,0,4,0,0,0,0,1,0,0,1,2,0,0,0,0,0,0,0,1,0,2,1,0,0,3,1
+Brentford,Arsenal,early kick-off,8,18 September 2022,12:00 BST,Gtech Community Stadium,0–3,3,3,0,David Coote,0,2,0,1,0,0,0,0,2,1,0,3,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,3
+Arsenal,Tottenham Hotspur,early kick-off,9,1 October 2022,12:30 BST,Emirates Stadium,3–1,4,1,3,Anthony Taylor,0,1,1,1,1,0,0,0,2,2,0,4,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,1,1,2,0,0,0,3,1
+Arsenal,Liverpool,standard kick-off,10,9 October 2022,16:30 BST,Emirates Stadium,3–2,5,2,3,Michael Oliver,1,0,2,1,0,1,1,0,3,2,1,4,1,0,0,0,1,1,0,1,0,0,1,0,1,0,0,0,2,1,1,1,1,0,2,2
+Leeds United,Arsenal,early kick-off,11,16 October 2022,14:00 BST,Elland Road,0–1,1,1,0,Chris Kavanagh,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Southampton,Arsenal,early kick-off,13,23 October 2022,14:00 BST,St. Mary's Stadium,1–1,2,1,1,Robert Jones,1,0,0,0,1,0,0,0,1,1,0,2,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Arsenal,Nottingham Forest,early kick-off,14,30 October 2022,14:00 GMT,Emirates Stadium,5–0,5,0,5,Simon Hooper,1,0,0,3,0,1,0,0,1,4,0,5,1,0,0,0,0,0,3,0,0,0,1,0,0,0,0,0,1,0,4,0,0,0,5,0
+Chelsea,Arsenal,early kick-off,15,6 November 2022,12:00 GMT,Stamford Bridge,0–1,1,1,0,Michael Oliver,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Wolverhampton Wanderers,Arsenal,late kick-off,16,12 November 2022,19:45 GMT,Molineux Stadium,0–2,2,2,0,Stuart Attwell,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2
+Arsenal,West Ham United,late kick-off,17,26 December 2022,20:00 GMT,Emirates Stadium,3–1,4,1,3,Michael Oliver,0,1,0,2,1,0,0,0,1,3,0,4,0,0,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,1,3,0,0,0,3,1
+Brighton & Hove Albion,Arsenal,standard kick-off,18,31 December 2022,17:30 GMT,Falmer Stadium,2–4,6,4,2,Anthony Taylor,1,0,1,1,2,1,0,0,2,4,0,6,0,1,0,0,0,1,0,1,1,1,1,0,0,0,0,0,0,2,2,2,0,0,2,4
+Arsenal,Newcastle United,late kick-off,19,3 January 2023,19:45 GMT,Emirates Stadium,0–0,0,0,0,Andrew Madley,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Tottenham Hotspur,Arsenal,standard kick-off,20,15 January 2023,16:30 GMT,Tottenham Hotspur Stadium,0–2,2,2,0,Craig Pawson,1,0,1,0,0,0,0,0,2,0,0,2,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2
+Arsenal,Manchester United,standard kick-off,21,22 January 2023,16:30 GMT,Emirates Stadium,3–2,5,2,3,Anthony Taylor,0,2,0,2,0,1,0,0,2,3,0,5,0,0,1,1,0,0,1,1,0,0,1,0,0,0,0,0,1,1,2,1,0,0,3,2
+Everton,Arsenal,early kick-off,22,4 February 2023,12:30 GMT,Goodison Park,1–0,1,0,1,David Coote,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Arsenal,Brentford,standard kick-off,23,11 February 2023,15:00 GMT,Emirates Stadium,1–1,2,1,1,Peter Bankes,0,0,0,0,2,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1
+Aston Villa,Arsenal,early kick-off,24,18 February 2023,12:30 GMT,Villa Park,2–4,6,4,2,Simon Hooper,1,1,1,0,1,2,0,2,3,3,2,4,1,0,0,1,1,0,0,0,0,1,0,2,0,0,0,2,2,1,0,3,0,2,2,2
+Leicester City,Arsenal,standard kick-off,25,25 February 2023,15:00 GMT,King Power Stadium,0–1,1,1,0,Craig Pawson,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Arsenal,Everton,late kick-off,7,1 March 2023,19:45 GMT,Emirates Stadium,4–0,4,0,4,Michael Oliver,0,0,2,0,1,1,1,0,2,2,1,3,0,0,0,0,2,0,0,0,1,0,1,0,1,0,0,0,2,0,2,0,1,0,3,0
+Arsenal,Bournemouth,standard kick-off,26,4 March 2023,15:00 GMT,Emirates Stadium,3–2,5,2,3,Chris Kavanagh,1,0,0,1,2,1,0,1,1,4,1,4,0,1,0,0,0,0,0,1,2,0,1,0,0,0,1,0,0,1,3,1,1,0,2,2
+Fulham,Arsenal,early kick-off,27,12 March 2023,14:00 GMT,Craven Cottage,0–3,3,3,0,David Coote,0,2,1,0,0,0,1,0,3,0,1,2,0,0,0,2,0,1,0,0,0,0,0,0,0,1,0,0,0,3,0,0,0,1,0,2
+Arsenal,Crystal Palace,early kick-off,28,19 March 2023,14:00 GMT,Emirates Stadium,4–1,5,1,4,Stuart Attwell,0,1,1,1,2,0,0,0,2,3,0,5,0,0,1,0,1,0,1,0,1,1,0,0,0,0,0,0,2,0,2,1,0,0,4,1
+Arsenal,Leeds United,standard kick-off,29,1 April 2023,15:00 BST,Emirates Stadium,4–1,5,1,4,Darren England,0,0,1,2,0,2,0,0,1,4,0,5,0,0,0,0,1,0,2,0,0,0,1,1,0,0,0,0,1,0,3,1,0,0,4,1
+Liverpool,Arsenal,standard kick-off,30,9 April 2023,16:30 BST,Anfield,2–2,4,2,2,Paul Tierney,1,1,1,0,0,1,0,0,3,1,0,4,0,1,0,1,1,0,0,0,0,0,1,0,0,0,0,0,1,2,1,0,0,0,2,2
+West Ham United,Arsenal,early kick-off,31,16 April 2023,14:00 BST,London Stadium,2–2,4,2,2,David Coote,2,0,1,1,0,0,0,0,3,1,0,4,0,2,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,2,1,0,0,0,2,2
+Arsenal,Southampton,late kick-off,32,21 April 2023,20:00 BST,Emirates Stadium,3–3,6,3,3,Simon Hooper,2,1,0,0,1,2,0,0,3,3,0,6,0,2,1,0,0,0,0,0,0,1,2,0,0,0,0,0,1,2,2,1,0,0,3,3
+Arsenal,Chelsea,late kick-off,34,2 May 2023,20:00 BST,Emirates Stadium,3–1,4,1,3,Robert Jones,0,1,2,0,1,0,0,0,3,1,0,4,0,0,1,0,2,0,0,0,0,1,0,0,0,0,0,0,3,0,0,1,0,0,3,1
+Newcastle United,Arsenal,standard kick-off,35,7 May 2023,16:30 BST,St James' Park,0–2,2,2,0,Chris Kavanagh,1,0,0,0,1,0,0,0,1,1,0,2,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2
+Arsenal,Brighton & Hove Albion,standard kick-off,36,14 May 2023,16:30 BST,Emirates Stadium,0–3,3,3,0,Andrew Madley,0,0,0,1,0,2,0,1,0,3,1,2,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,1,0,0,0,3,0,1,0,2
+Nottingham Forest,Arsenal,standard kick-off,37,20 May 2023,17:30 BST,City Ground,1–0,1,0,1,Anthony Taylor,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Arsenal,Wolverhampton Wanderers,standard kick-off,38,28 May 2023,16:30 BST,Emirates Stadium,5–0,5,0,5,Andre Marriner,2,1,0,1,0,1,0,0,3,2,0,5,2,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,3,0,2,0,0,0,5,0
+Newcastle United,Nottingham Forest,standard kick-off,1,6 August 2022,15:00 BST,St James' Park,2–0,2,0,2,Simon Hooper,0,0,0,1,0,1,0,0,0,2,0,2,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+Brighton & Hove Albion,Newcastle United,standard kick-off,2,13 August 2022,15:00 BST,Falmer Stadium,0–0,0,0,0,Graham Scott,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Wolverhampton Wanderers,Newcastle United,early kick-off,4,28 August 2022,14:00 BST,Molineux,1–1,2,1,1,Peter Bankes,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,1,1
+Liverpool,Newcastle United,late kick-off,5,31 August 2022,20:00 BST,Anfield,2–1,3,1,2,Andre Marriner,0,0,1,0,1,1,0,1,1,2,1,2,0,0,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,1,2,0,1,0,1,1
+Newcastle United,Crystal Palace,standard kick-off,6,3 September 2022,15:00 BST,St James' Park,0–0,0,0,0,Michael Salisbury,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Newcastle United,Bournemouth,standard kick-off,8,17 September 2022,15:00 BST,St James' Park,1–1,2,1,1,Craig Pawson,0,0,0,0,2,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1
+Fulham,Newcastle United,standard kick-off,9,1 October 2022,15:00 BST,Craven Cottage,1–4,5,4,1,Darren England,1,0,2,1,0,1,0,0,3,2,0,5,0,1,0,0,0,2,0,1,0,0,1,0,0,0,0,0,0,3,1,1,0,0,1,4
+Newcastle United,Brentford,standard kick-off,10,8 October 2022,15:00 BST,St James' Park,5–1,6,1,5,John Brooks,0,2,0,2,0,2,0,0,2,4,0,6,0,0,2,0,0,0,1,1,0,0,2,0,0,0,0,0,2,0,3,1,0,0,5,1
+Manchester United,Newcastle United,early kick-off,11,16 October 2022,14:00 BST,Old Trafford,0–0,0,0,0,Craig Pawson,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Newcastle United,Everton,late kick-off,12,19 October 2022,19:30 BST,St James' Park,1–0,1,0,1,Tony Harrington,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Tottenham Hotspur,Newcastle United,standard kick-off,13,23 October 2022,16:30 BST,Tottenham Hotspur Stadium,1–2,3,2,1,Jarred Gillett,0,0,2,1,0,0,0,0,2,1,0,3,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,1,2
+Newcastle United,Aston Villa,standard kick-off,14,29 October 2022,15:00 BST,St James' Park,4–0,4,0,4,Paul Tierney,0,0,1,2,1,0,1,0,1,3,1,3,0,0,0,0,1,0,2,0,1,0,0,0,1,0,0,0,1,0,3,0,1,0,3,0
+Southampton,Newcastle United,early kick-off,15,6 November 2022,14:00 GMT,St Mary's Stadium,1–4,5,4,1,Stuart Attwell,0,0,1,1,1,2,0,1,1,4,1,4,0,0,0,0,0,1,0,1,0,1,1,1,0,0,0,1,0,1,1,3,0,1,1,3
+Newcastle United,Chelsea,standard kick-off,16,12 November 2022,17:30 GMT,St James' Park,1–0,1,0,1,Robert Jones,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Leicester City,Newcastle United,standard kick-off,17,26 December 2022,15:00 GMT,King Power Stadium,0–3,3,3,0,Jarred Gillett,2,0,1,0,0,0,0,0,3,0,0,3,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3
+Newcastle United,Leeds United,standard kick-off,18,31 December 2022,15:00 GMT,St James' Park,0–0,0,0,0,Simon Hooper,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Newcastle United,Fulham,early kick-off,20,15 January 2023,14:00 GMT,St James' Park,1–0,1,0,1,Robert Jones,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Crystal Palace,Newcastle United,standard kick-off,21,21 January 2023,17:30 GMT,Selhurst Park,0–0,0,0,0,Craig Pawson,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Newcastle United,West Ham United,standard kick-off,22,4 February 2023,17:30 GMT,St James' Park,1–1,2,1,1,Peter Bankes,1,0,1,0,0,0,0,0,2,0,0,2,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Bournemouth,Newcastle United,standard kick-off,23,11 February 2023,17:30 GMT,Vitality Stadium,1–1,2,1,1,Stuart Attwell,0,1,1,0,0,0,1,0,2,0,1,1,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,1,1,0
+Newcastle United,Liverpool,standard kick-off,24,18 February 2023,17:30 GMT,St James' Park,0–2,2,2,0,Anthony Taylor,1,1,0,0,0,0,0,0,2,0,0,2,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2
+Newcastle United,Wolverhampton Wanderers,standard kick-off,27,12 March 2023,16:30 GMT,St James' Park,2–1,3,1,2,Andrew Madley,0,1,0,0,1,1,0,0,1,2,0,3,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,2,1
+Nottingham Forest,Newcastle United,late kick-off,28,17 March 2023,20:00 GMT,City Ground,1–2,3,2,1,Paul Tierney,0,1,1,0,0,1,1,1,2,1,2,1,0,0,1,0,0,1,0,0,0,0,0,1,0,1,0,1,1,1,0,1,0,2,1,0
+Newcastle United,Manchester United,standard kick-off,29,2 April 2023,16:30 BST,St James' Park,2–0,2,0,2,Stuart Attwell,0,0,0,0,1,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+West Ham United,Newcastle United,late kick-off,7,5 April 2023,20:00 BST,London Stadium,1–5,6,5,1,Craig Pawson,2,0,1,1,0,2,0,0,3,3,0,6,0,2,0,0,1,0,0,1,0,0,0,2,0,0,0,0,1,2,0,3,0,0,1,5
+Brentford,Newcastle United,standard kick-off,30,8 April 2023,15:00 BST,Brentford Community Stadium,1–2,3,2,1,Chris Kavanagh,0,0,1,1,1,0,1,0,1,2,1,2,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,1,0,0,2,1,0,0,2
+Aston Villa,Newcastle United,early kick-off,31,15 April 2023,12:30 BST,Villa Park,3–0,3,0,3,John Brooks,1,0,0,0,1,1,0,0,1,2,0,3,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,2,0,0,0,3,0
+Newcastle United,Tottenham Hotspur,early kick-off,32,23 April 2023,14:00 BST,St James' Park,6–1,7,1,6,David Coote,3,2,0,1,1,0,0,0,5,2,0,7,3,0,2,0,0,0,0,1,1,0,0,0,0,0,0,0,5,0,1,1,0,0,6,1
+Everton,Newcastle United,late kick-off,33,27 April 2023,19:45 BST,Goodison Park,1–4,5,4,1,Andre Marriner,0,1,0,0,2,2,0,0,1,4,0,5,0,0,0,1,0,0,0,0,0,2,1,1,0,0,0,0,0,1,1,3,0,0,1,4
+Newcastle United,Southampton,early kick-off,34,30 April 2023,14:00 BST,St James' Park,3–1,4,1,3,Anthony Taylor,0,0,1,1,0,2,0,0,1,3,0,4,0,0,0,0,0,1,1,0,0,0,2,0,0,0,0,0,0,1,3,0,0,0,3,1
+Leeds United,Newcastle United,early kick-off,36,13 May 2023,12:30 BST,Elland Road,2–2,4,2,2,Simon Hooper,1,0,1,0,1,1,0,0,2,2,0,4,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,0,2,2
+Newcastle United,Brighton & Hove Albion,late kick-off,25,18 May 2023,19:30 BST,St James' Park,4–1,5,1,4,Robert Jones,0,1,1,1,0,2,1,1,2,3,2,3,0,0,1,0,1,0,0,1,0,0,2,0,1,0,1,0,2,0,2,1,2,0,2,1
+Newcastle United,Leicester City,late kick-off,37,22 May 2023,20:00 BST,St James' Park,0–0,0,0,0,Andre Marriner,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Chelsea,Newcastle United,standard kick-off,38,28 May 2023,16:30 BST,Stamford Bridge,1–1,2,1,1,Jarred Gillett,1,1,0,0,0,0,0,0,2,0,0,2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Fulham,Liverpool,early kick-off,1,6 August 2022,12:30 BST,Craven Cottage,2–2,4,2,2,Andrew Madley,0,0,1,0,2,1,0,0,1,3,0,4,0,0,0,0,1,0,0,0,1,1,0,1,0,0,0,0,1,0,1,2,0,0,2,2
+Liverpool,Crystal Palace,late kick-off,2,15 August 2022,20:00 BST,Anfield,1–1,2,1,1,Paul Tierney,0,0,1,0,1,0,0,0,1,1,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Manchester United,Liverpool,late kick-off,3,22 August 2022,20:00 BST,Old Trafford,2–1,3,1,2,Michael Oliver,0,1,0,1,0,1,0,0,1,2,0,3,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Liverpool,Bournemouth,standard kick-off,4,27 August 2022,15:00 BST,Anfield,9–0,9,0,9,Stuart Attwell,2,1,2,1,1,2,0,0,5,4,0,9,2,0,1,0,2,0,1,0,1,0,2,0,0,0,0,0,5,0,4,0,0,0,9,0
+Everton,Liverpool,early kick-off,6,3 September 2022,12:30 BST,Goodison Park,0–0,0,0,0,Anthony Taylor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Liverpool,Brighton & Hove Albion,standard kick-off,9,1 October 2022,15:00 BST,Anfield,3–3,6,3,3,Andrew Madley,1,1,1,1,1,1,0,0,3,3,0,6,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,0,1,2,2,1,0,0,3,3
+Liverpool,West Ham United,late kick-off,12,19 October 2022,19:30 BST,Anfield,1–0,1,0,1,Stuart Attwell,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Nottingham Forest,Liverpool,early kick-off,13,22 October 2022,12:30 BST,City Ground,1–0,1,0,1,Paul Tierney,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Liverpool,Leeds United,late kick-off,14,29 October 2022,19:45 BST,Anfield,1–2,3,2,1,Michael Oliver,2,0,0,0,0,1,0,0,2,1,0,3,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,1,2
+Tottenham Hotspur,Liverpool,standard kick-off,15,6 November 2022,16:30 GMT,Tottenham Hotspur Stadium,1–2,3,2,1,Andrew Madley,1,0,1,0,1,0,0,0,2,1,0,3,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,2,1,0,0,0,1,2
+Liverpool,Southampton,standard kick-off,16,12 November 2022,15:00 GMT,Anfield,3–1,4,1,3,Simon Hooper,2,1,1,0,0,0,0,0,4,0,0,4,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,3,1,0,0,0,0,3,1
+Aston Villa,Liverpool,standard kick-off,17,26 December 2022,17:30 GMT,Villa Park,1–3,4,3,1,Paul Tierney,1,0,1,1,0,1,0,0,2,2,0,4,0,1,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,2,1,1,0,0,1,3
+Liverpool,Leicester City,late kick-off,18,30 December 2022,20:00 GMT,Anfield,2–1,3,1,2,Craig Pawson,1,0,2,0,0,0,0,0,3,0,0,3,0,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,2,1
+Brentford,Liverpool,standard kick-off,19,2 January 2023,17:30 GMT,Brentford Community Stadium,3–1,4,1,3,Stuart Attwell,0,1,1,1,0,1,0,0,2,2,0,4,0,0,1,0,1,0,0,1,0,0,1,0,0,0,0,0,2,0,1,1,0,0,3,1
+Brighton & Hove Albion,Liverpool,standard kick-off,20,14 January 2023,15:00 GMT,Falmer Stadium,3–0,3,0,3,Darren England,0,0,0,2,0,1,0,0,0,3,0,3,0,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,3,0,0,0,3,0
+Liverpool,Chelsea,early kick-off,21,21 January 2023,12:30 GMT,Anfield,0–0,0,0,0,Michael Oliver,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Wolverhampton Wanderers,Liverpool,standard kick-off,22,4 February 2023,15:00 GMT,Molineux Stadium,3–0,3,0,3,Paul Tierney,2,0,0,0,1,0,0,0,2,1,0,3,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2,0,1,0,0,0,3,0
+Liverpool,Everton,late kick-off,23,13 February 2023,20:00 GMT,Anfield,2–0,2,0,2,Simon Hooper,0,0,1,1,0,0,0,0,1,1,0,2,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Crystal Palace,Liverpool,late kick-off,25,25 February 2023,19:45 GMT,Selhurst Park,0–0,0,0,0,Darren England,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Liverpool,Wolverhampton Wanderers,late kick-off,7,1 March 2023,20:00 GMT,Anfield,2–0,2,0,2,Paul Tierney,0,0,0,0,1,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+Liverpool,Manchester United,standard kick-off,26,5 March 2023,16:30 GMT,Anfield,7–0,7,0,7,Andrew Madley,0,0,1,2,2,2,0,0,1,6,0,7,0,0,0,0,1,0,2,0,2,0,2,0,0,0,0,0,1,0,6,0,0,0,7,0
+Bournemouth,Liverpool,early kick-off,27,11 March 2023,12:30 GMT,Vitality Stadium,1–0,1,0,1,John Brooks,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Chelsea,Liverpool,late kick-off,8,4 April 2023,20:00 BST,Stamford Bridge,0–0,0,0,0,Anthony Taylor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Leeds United,Liverpool,late kick-off,31,17 April 2023,20:00 BST,Elland Road,1–6,7,6,1,Craig Pawson,0,0,2,2,2,1,0,0,2,5,0,7,0,0,0,0,0,2,1,1,0,2,0,1,0,0,0,0,0,2,1,4,0,0,1,6
+Liverpool,Nottingham Forest,standard kick-off,32,22 April 2023,15:00 BST,Anfield,3–2,5,2,3,Michael Oliver,0,0,0,3,2,0,0,0,0,5,0,5,0,0,0,0,0,0,2,1,1,1,0,0,0,0,0,0,0,0,3,2,0,0,3,2
+West Ham United,Liverpool,late kick-off,33,26 April 2023,19:45 BST,London Stadium,1–2,3,2,1,Chris Kavanagh,1,1,0,0,1,0,0,0,2,1,0,3,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,2
+Liverpool,Tottenham Hotspur,standard kick-off,34,30 April 2023,16:30 BST,Anfield,4–3,7,3,4,Paul Tierney,3,0,1,0,0,3,0,2,4,3,2,5,3,0,0,0,0,1,0,0,0,0,1,2,0,0,1,1,3,1,1,2,1,1,3,2
+Liverpool,Fulham,late kick-off,28,3 May 2023,20:00 BST,Anfield,1–0,1,0,1,Stuart Attwell,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Liverpool,Brentford,standard kick-off,35,6 May 2023,17:30 BST,Anfield,1–0,1,0,1,Anthony Taylor,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Leicester City,Liverpool,late kick-off,36,15 May 2023,20:00 BST,King Power Stadium,0–3,3,3,0,Craig Pawson,0,0,2,0,1,0,0,0,2,1,0,3,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,2,0,1,0,0,0,3
+Liverpool,Aston Villa,standard kick-off,37,20 May 2023,15:00 BST,Anfield,1–1,2,1,1,John Brooks,0,1,0,0,0,1,0,0,1,1,0,2,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,1,1
+Southampton,Liverpool,standard kick-off,38,28 May 2023,16:30 BST,St Mary's Stadium,4–4,8,4,4,Darren England,2,2,0,1,3,0,0,0,4,4,0,8,0,2,2,0,0,0,1,0,1,2,0,0,0,0,0,0,2,2,2,2,0,0,4,4
+Manchester United,Brighton & Hove Albion,early kick-off,1,7 August 2022,14:00 BST,Old Trafford,1–2,3,2,1,Paul Tierney,0,1,1,0,1,0,0,0,2,1,0,3,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,2,1,0,0,0,1,2
+West Ham United,Brighton & Hove Albion,early kick-off,3,21 August 2022,14:00 BST,London Stadium,0–2,2,2,0,Anthony Taylor,0,1,0,0,1,0,0,0,1,1,0,2,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2
+Brighton & Hove Albion,Leeds United,standard kick-off,4,27 August 2022,15:00 BST,Falmer Stadium,1–0,1,0,1,Michael Salisbury,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Fulham,Brighton & Hove Albion,late kick-off,5,30 August 2022,19:30 BST,Craven Cottage,2–1,3,1,2,Thomas Bramall,0,0,0,3,0,0,0,0,0,3,0,3,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,2,1,0,0,2,1
+Brighton & Hove Albion,Leicester City,early kick-off,6,4 September 2022,14:00 BST,Falmer Stadium,5–2,7,2,5,Tony Harrington,3,0,1,0,2,1,0,1,4,3,1,6,2,1,0,0,0,1,0,0,2,0,1,0,0,0,1,0,2,2,3,0,1,0,4,2
+Brighton & Hove Albion,Tottenham Hotspur,standard kick-off,10,8 October 2022,17:30 BST,Falmer Stadium,0–1,1,1,0,Tony Harrington,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Brentford,Brighton & Hove Albion,late kick-off,11,14 October 2022,20:00 BST,Brentford Community Stadium,2–0,2,0,2,Michael Salisbury,0,1,0,0,1,0,0,0,1,1,0,2,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Brighton & Hove Albion,Nottingham Forest,late kick-off,12,18 October 2022,19:30 BST,Falmer Stadium,0–0,0,0,0,Darren England,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Brighton & Hove Albion,Chelsea,standard kick-off,14,29 October 2022,15:00 BST,Falmer Stadium,4–1,5,1,4,Andrew Madley,2,0,1,1,0,1,0,1,3,2,1,4,2,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0,3,0,1,1,1,0,3,1
+Wolverhampton Wanderers,Brighton & Hove Albion,standard kick-off,15,5 November 2022,15:00 GMT,Molineux,2–3,5,3,2,Graham Scott,2,0,2,0,0,1,0,0,4,1,0,5,1,1,0,0,1,1,0,0,0,0,0,1,0,0,0,0,2,2,0,1,0,0,2,3
+Brighton & Hove Albion,Aston Villa,early kick-off,16,13 November 2022,14:00 GMT,Falmer Stadium,1–2,3,2,1,Chris Kavanagh,1,1,0,1,0,0,0,0,2,1,0,3,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,1,0,0,1,2
+Southampton,Brighton & Hove Albion,standard kick-off,17,26 December 2022,15:00 GMT,St Mary's Stadium,1–3,4,3,1,Robert Jones,1,0,1,1,1,0,0,0,2,2,0,4,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,2,1,1,0,0,1,3
+Everton,Brighton & Hove Albion,late kick-off,19,3 January 2023,19:45 GMT,Goodison Park,1–4,5,4,1,Andre Marriner,1,0,0,3,0,1,0,1,1,4,1,4,0,1,0,0,0,0,0,3,0,0,1,0,0,0,1,0,0,1,1,3,1,0,0,4
+Leicester City,Brighton & Hove Albion,standard kick-off,21,21 January 2023,15:00 GMT,King Power Stadium,2–2,4,2,2,Thomas Bramall,0,1,1,0,1,1,0,0,2,2,0,4,0,0,0,1,1,0,0,0,1,0,0,1,0,0,0,0,1,1,1,1,0,0,2,2
+Brighton & Hove Albion,Bournemouth,standard kick-off,22,4 February 2023,15:00 GMT,Falmer Stadium,1–0,1,0,1,Craig Pawson,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Crystal Palace,Brighton & Hove Albion,standard kick-off,23,11 February 2023,15:00 GMT,Selhurst Park,1–1,2,1,1,Michael Oliver,0,0,0,0,2,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1
+Brighton & Hove Albion,Fulham,standard kick-off,24,18 February 2023,15:00 GMT,Falmer Stadium,0–1,1,1,0,Darren England,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1
+Brighton & Hove Albion,West Ham United,standard kick-off,26,4 March 2023,15:00 GMT,Falmer Stadium,4–0,4,0,4,Stuart Attwell,0,1,0,1,1,1,0,0,1,3,0,4,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,3,0,0,0,4,0
+Leeds United,Brighton & Hove Albion,standard kick-off,27,11 March 2023,15:00 GMT,Elland Road,2–2,4,2,2,Paul Tierney,0,0,2,0,1,1,0,0,2,2,0,4,0,0,0,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,0,2,2
+Brighton & Hove Albion,Crystal Palace,late kick-off,8,15 March 2023,19:30 GMT,Falmer Stadium,1–0,1,0,1,Peter Bankes,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Brighton & Hove Albion,Brentford,standard kick-off,29,1 April 2023,15:00 BST,Falmer Stadium,3–3,6,3,3,Michael Oliver,1,3,0,1,0,1,0,0,4,2,0,6,0,1,2,1,0,0,0,1,0,0,1,0,0,0,0,0,2,2,1,1,0,0,3,3
+Bournemouth,Brighton & Hove Albion,late kick-off,7[102],4 April 2023,19:45 BST,Vitality Stadium,0–2,2,2,0,Darren Bond,0,1,0,0,0,1,0,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1
+Tottenham Hotspur,Brighton & Hove Albion,standard kick-off,30,8 April 2023,15:00 BST,Tottenham Hotspur Stadium,2–1,3,1,2,Stuart Attwell,1,0,1,0,0,1,0,0,2,1,0,3,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,1,1,0,0,0,2,1
+Chelsea,Brighton & Hove Albion,standard kick-off,31,15 April 2023,15:00 BST,Stamford Bridge,1–2,3,2,1,Robert Jones,1,0,1,0,1,0,0,0,2,1,0,3,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,2
+Nottingham Forest,Brighton & Hove Albion,late kick-off,33,26 April 2023,19:30 BST,City Ground,3–1,4,1,3,Jarred Gillett,0,0,2,0,1,1,1,1,2,2,2,2,0,0,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1,1,2,0,2,0,1,1
+Brighton & Hove Albion,Wolverhampton Wanderers,standard kick-off,34,29 April 2023,15:00 BST,Falmer Stadium,6–0,6,0,6,David Coote,2,1,1,1,1,0,0,0,4,2,0,6,2,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,4,0,2,0,0,0,6,0
+Brighton & Hove Albion,Manchester United,late kick-off,28,4 May 2023,20:00 BST,Falmer Stadium,1–0,1,0,1,Andre Marriner,0,0,0,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,0,0
+Brighton & Hove Albion,Everton,standard kick-off,35,8 May 2023,17:30 BST,Falmer Stadium,1–5,6,5,1,Simon Hooper,1,1,1,0,0,3,0,1,3,3,1,5,0,1,0,1,0,1,0,0,0,0,1,2,0,0,0,1,0,3,1,2,0,1,1,4
+Brighton & Hove Albion,Southampton,early kick-off,37,21 May 2023,14:00 BST,Falmer Stadium,3–1,4,1,3,Paul Tierney,0,1,1,1,1,0,0,0,2,2,0,4,0,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,2,0,1,1,0,0,3,1
+Aston Villa,Brighton & Hove Albion,standard kick-off,38,28 May 2023,16:30 BST,Villa Park,2–1,3,1,2,David Coote,1,1,1,0,0,0,0,0,3,0,0,3,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,2,1
+Bournemouth,Aston Villa,standard kick-off,1,6 August 2022,15:00 BST,Vitality Stadium,2–0,2,0,2,Peter Bankes,1,0,0,0,0,1,0,0,1,1,0,2,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2,0
+Aston Villa,Everton,early kick-off,2,13 August 2022,12:30 BST,Villa Park,2–1,3,1,2,Michael Oliver,0,0,1,0,0,2,0,0,1,2,0,3,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0,1,0,1,1,0,0,2,1
+Crystal Palace,Aston Villa,standard kick-off,3,20 August 2022,15:00 BST,Selhurst Park,3–1,4,1,3,Andrew Madley,2,0,0,1,1,0,0,0,2,2,0,4,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,1,2,0,0,0,3,1
+Aston Villa,West Ham United,early kick-off,4,28 August 2022,14:00 BST,Villa Park,0–1,1,1,0,David Coote,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Aston Villa,Southampton,late kick-off,8,16 September 2022,20:00 BST,Villa Park,1–0,1,0,1,Tony Harrington,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Leeds United,Aston Villa,standard kick-off,9,2 October 2022,16:30 BST,Elland Road,0–0,0,0,0,Stuart Attwell,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Nottingham Forest,Aston Villa,late kick-off,10,10 October 2022,20:00 BST,The City Ground,1–1,2,1,1,Anthony Taylor,1,1,0,0,0,0,0,0,2,0,0,2,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Aston Villa,Chelsea,early kick-off,11,16 October 2022,14:00 BST,Villa Park,0–2,2,2,0,Robert Jones,1,0,0,0,1,0,0,0,1,1,0,2,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2
+Fulham,Aston Villa,late kick-off,12,20 October 2022,19:30 BST,Craven Cottage,3–0,3,0,3,Michael Oliver,0,0,1,0,1,1,0,0,1,2,0,3,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,2,0,0,0,3,0
+Aston Villa,Brentford,early kick-off,13,23 October 2022,14:00 BST,Villa Park,4–0,4,0,4,Darren England,3,0,0,1,0,0,0,0,3,1,0,4,3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,3,0,1,0,0,0,4,0
+Aston Villa,Manchester United,early kick-off,15,6 November 2022,14:00 GMT,Villa Park,3–1,4,1,3,Anthony Taylor,2,0,1,1,0,0,0,0,3,1,0,4,2,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,2,1,1,0,0,0,3,1
+Tottenham Hotspur,Aston Villa,early kick-off,18,1 January 2023,14:00 GMT,Tottenham Hotspur Stadium,0–2,2,2,0,John Brooks,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2
+Aston Villa,Wolverhampton Wanderers,late kick-off,19,4 January 2023,20:00 GMT,Villa Park,1–1,2,1,1,Jarred Gillett,1,0,0,0,0,1,0,0,1,1,0,2,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,1,1
+Aston Villa,Leeds United,late kick-off,20,13 January 2023,20:00 GMT,Villa Park,2–1,3,1,2,Michael Oliver,1,0,0,0,1,1,0,0,1,2,0,3,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Southampton,Aston Villa,standard kick-off,21,21 January 2023,15:00 GMT,St Mary's Stadium,0–1,1,1,0,Michael Salisbury,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1
+Aston Villa,Leicester City,standard kick-off,22,4 February 2023,15:00 GMT,Villa Park,2–4,6,4,2,Darren England,2,0,3,0,0,1,1,0,5,1,1,5,1,1,0,0,1,2,0,0,0,0,0,1,0,1,0,0,2,3,0,1,0,1,2,3
+Everton,Aston Villa,standard kick-off,25,25 February 2023,15:00 GMT,Goodison Park,0–2,2,2,0,Anthony Taylor,0,0,0,0,1,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,2,0,0,0,2
+Aston Villa,Crystal Palace,standard kick-off,26,4 March 2023,15:00 GMT,Villa Park,1–0,1,0,1,Craig Pawson,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+West Ham United,Aston Villa,early kick-off,27,12 March 2023,14:00 GMT,London Stadium,1–1,2,1,1,Chris Kavanagh,0,2,0,0,0,0,0,0,2,0,0,2,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Aston Villa,Bournemouth,standard kick-off,28,18 March 2023,15:00 GMT,Villa Park,3–0,3,0,3,Robert Jones,1,0,0,0,0,2,0,0,1,2,0,3,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,1,0,2,0,0,0,3,0
+Chelsea,Aston Villa,standard kick-off,29,1 April 2023,17:30 BST,Stamford Bridge,0–2,2,2,0,Andrew Madley,0,1,0,1,0,0,0,0,1,1,0,2,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,2
+Leicester City,Aston Villa,late kick-off,7,4 April 2023,19:45 BST,King Power Stadium,1–2,3,2,1,Graham Scott,0,1,1,0,0,1,0,0,2,1,0,3,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,1,2
+Aston Villa,Nottingham Forest,standard kick-off,30,8 April 2023,15:00 BST,Villa Park,2–0,2,0,2,Anthony Taylor,0,0,0,1,0,1,0,1,0,2,1,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,2,0,1,0,1,0
+Brentford,Aston Villa,standard kick-off,32,22 April 2023,15:00 BST,Brentford Community Stadium,1–1,2,1,1,Michael Salisbury,0,0,0,0,1,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,0,0,1,1
+Aston Villa,Fulham,late kick-off,33,25 April 2023,19:45 BST,Villa Park,1–0,1,0,1,Thomas Bramall,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Manchester United,Aston Villa,early kick-off,34,30 April 2023,14:00 BST,Old Trafford,1–0,1,0,1,Jarred Gillett,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Wolverhampton Wanderers,Aston Villa,standard kick-off,35,6 May 2023,15:00 BST,Molineux Stadium,1–0,1,0,1,Stuart Attwell,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Aston Villa,Tottenham Hotspur,standard kick-off,36,13 May 2023,15:00 BST,Villa Park,2–1,3,1,2,Peter Bankes,1,0,0,0,1,1,0,0,1,2,0,3,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Tottenham Hotspur,Southampton,standard kick-off,1,6 August 2022,15:00 BST,Tottenham Hotspur Stadium,4–1,5,1,4,Andre Marriner,1,1,1,0,2,0,0,0,3,2,0,5,0,1,1,0,1,0,0,0,2,0,0,0,0,0,0,0,2,1,2,0,0,0,4,1
+Chelsea,Tottenham Hotspur,standard kick-off,2,14 August 2022,16:30 BST,Stamford Bridge,2–2,4,2,2,Anthony Taylor,0,1,0,0,1,2,0,1,1,3,1,3,0,0,1,0,0,0,0,0,0,1,1,1,0,0,0,1,1,0,1,2,0,1,2,1
+Tottenham Hotspur,Wolverhampton Wanderers,early kick-off,3,20 August 2022,12:30 BST,Tottenham Hotspur Stadium,1–0,1,0,1,Simon Hooper,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Nottingham Forest,Tottenham Hotspur,standard kick-off,4,28 August 2022,16:30 BST,City Ground,0–2,2,2,0,Craig Pawson,1,0,0,0,0,1,0,0,1,1,0,2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+West Ham United,Tottenham Hotspur,late kick-off,5,31 August 2022,19:45 BST,London Stadium,1–1,2,1,1,Peter Bankes,0,0,1,1,0,0,0,0,1,1,0,2,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Tottenham Hotspur,Fulham,standard kick-off,6,3 September 2022,15:00 BST,Tottenham Hotspur Stadium,2–1,3,1,2,Stuart Attwell,0,0,1,0,1,1,0,0,1,2,0,3,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Tottenham Hotspur,Leicester City,standard kick-off,7,17 September 2022,17:30 BST,Tottenham Hotspur Stadium,6–2,8,2,6,Simon Hooper,2,1,1,1,1,2,0,0,4,4,0,8,1,1,1,0,0,1,1,0,1,0,2,0,0,0,0,0,2,2,4,0,0,0,6,2
+Tottenham Hotspur,Everton,standard kick-off,10,15 October 2022,17:30 BST,Tottenham Hotspur Stadium,2–0,2,0,2,Paul Tierney,0,0,0,1,0,1,0,0,0,2,0,2,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+Manchester United,Tottenham Hotspur,late kick-off,11,19 October 2022,20:15 BST,Old Trafford,2–0,2,0,2,Simon Hooper,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2,0
+Bournemouth,Tottenham Hotspur,standard kick-off,13,29 October 2022,15:00 BST,Dean Court,2–3,5,3,2,Anthony Taylor,0,1,0,2,1,1,0,1,1,4,1,4,0,0,1,0,0,0,1,1,0,1,0,1,0,0,0,1,1,0,1,3,0,1,2,2
+Tottenham Hotspur,Leeds United,standard kick-off,15,12 November 2022,15:00 GMT,Tottenham Hotspur Stadium,4–3,7,3,4,Michael Salisbury,1,1,1,1,0,3,0,0,3,4,0,7,0,1,1,0,0,1,1,0,0,0,2,1,0,0,0,0,1,2,3,1,0,0,4,3
+Brentford,Tottenham Hotspur,early kick-off,16,26 December 2022,12:30 GMT,Brentford Community Stadium,2–2,4,2,2,David Coote,1,0,0,1,2,0,0,0,1,3,0,4,1,0,0,0,0,0,1,0,0,2,0,0,0,0,0,0,1,0,1,2,0,0,2,2
+Crystal Palace,Tottenham Hotspur,late kick-off,18,4 January 2023,20:00 GMT,Selhurst Park,0–4,4,4,0,Michael Oliver,0,0,0,2,2,0,0,0,0,4,0,4,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,4,0,0,0,4
+Fulham,Tottenham Hotspur,late kick-off,21,23 January 2023,20:15 GMT,Craven Cottage,0–1,1,1,0,Paul Tierney,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0
+Leicester City,Tottenham Hotspur,standard kick-off,23,11 February 2023,15:00 GMT,King Power Stadium,4–1,5,1,4,Michael Salisbury,1,2,1,0,0,1,1,0,4,1,1,4,0,1,2,0,1,0,0,0,0,0,1,0,1,0,0,0,3,1,1,0,1,0,3,1
+Tottenham Hotspur,West Ham United,standard kick-off,24,19 February 2023,16:30 GMT,Tottenham Hotspur Stadium,2–0,2,0,2,Michael Oliver,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2,0
+Tottenham Hotspur,Chelsea,early kick-off,25,26 February 2023,13:30 GMT,Tottenham Hotspur Stadium,2–0,2,0,2,Stuart Attwell,0,0,0,1,0,1,0,0,0,2,0,2,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+Wolverhampton Wanderers,Tottenham Hotspur,standard kick-off,26,4 March 2023,15:00 GMT,Molineux Stadium,1–0,1,0,1,Tim Robinson,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Tottenham Hotspur,Nottingham Forest,standard kick-off,27,11 March 2023,15:00 GMT,Tottenham Hotspur Stadium,3–1,4,1,3,Craig Pawson,0,1,1,0,1,1,0,0,2,2,0,4,0,0,1,0,1,0,0,0,1,0,0,1,0,0,0,0,2,0,1,1,0,0,3,1
+Southampton,Tottenham Hotspur,standard kick-off,28,18 March 2023,15:00 GMT,St Mary's Stadium,3–3,6,3,3,Simon Hooper,0,0,1,1,2,2,1,1,1,5,2,4,0,0,0,0,0,1,1,0,0,2,2,0,0,1,1,0,0,1,3,2,1,1,2,2
+Everton,Tottenham Hotspur,late kick-off,29,3 April 2023,20:00 BST,Goodison Park,1–1,2,1,1,David Coote,0,0,0,0,1,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,1,1
+Tottenham Hotspur,Bournemouth,standard kick-off,31,15 April 2023,15:15 BST,Tottenham Hotspur Stadium,2–3,5,3,2,Andrew Madley,1,0,1,1,0,2,0,1,2,3,1,4,1,0,0,0,0,1,0,1,0,0,1,1,0,0,0,1,1,1,1,2,0,1,2,2
+Tottenham Hotspur,Manchester United,late kick-off,33,27 April 2023,20:15 BST,Tottenham Hotspur Stadium,2–2,4,2,2,Anthony Taylor,1,0,1,1,0,1,0,0,2,2,0,4,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,2,2,0,0,0,2,2
+Tottenham Hotspur,Crystal Palace,standard kick-off,35,6 May 2023,15:00 BST,Tottenham Hotspur Stadium,1–0,1,0,1,Darren England,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0
+Tottenham Hotspur,Brentford,early kick-off,37,20 May 2023,12:30 BST,Tottenham Hotspur Stadium,1–3,4,3,1,Jarred Gillett,1,0,0,1,1,1,0,0,1,3,0,4,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,1,0,0,3,0,0,1,3
+Leeds United,Tottenham Hotspur,standard kick-off,38,28 May 2023,16:30 BST,Elland Road,1–4,5,4,1,Anthony Taylor,1,0,0,1,2,1,0,1,1,4,1,4,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,1,1,3,0,1,1,3
+Wolverhampton Wanderers,Fulham,standard kick-off,2,13 August 2022,15:00 BST,Molineux Stadium,0–0,0,0,0,John Brooks,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Fulham,Brentford,standard kick-off,3,20 August 2022,15:00 BST,Craven Cottage,3–2,5,2,3,Peter Bankes,1,1,1,0,1,1,0,0,3,2,0,5,1,0,1,0,0,1,0,0,0,1,1,0,0,0,0,0,2,1,1,1,0,0,3,2
+Nottingham Forest,Fulham,late kick-off,8,16 September 2022,20:00 BST,The City Ground,2–3,5,3,2,Jarred Gillett,1,0,0,3,0,1,0,0,1,4,0,5,1,0,0,0,0,0,0,3,0,0,1,0,0,0,0,0,1,0,1,3,0,0,2,3
+West Ham United,Fulham,early kick-off,10,9 October 2022,14:00 BST,London Stadium,3–1,4,1,3,Chris Kavanagh,1,1,0,0,1,1,0,1,2,2,1,3,0,1,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,1,2,0,1,0,2,1
+Fulham,Bournemouth,standard kick-off,11,15 October 2022,15:00 BST,Craven Cottage,2–2,4,2,2,Graham Scott,1,2,0,1,0,0,0,0,3,1,0,4,0,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,2,1,0,0,0,2,2
+Leeds United,Fulham,early kick-off,13,23 October 2022,14:00 BST,Elland Road,2–3,5,3,2,Anthony Taylor,0,2,0,0,1,2,0,1,2,3,1,4,0,0,1,1,0,0,0,0,0,1,1,1,0,0,1,0,1,1,1,2,1,0,1,3
+Fulham,Everton,standard kick-off,14,29 October 2022,17:30 BST,Craven Cottage,0–0,0,0,0,John Brooks,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Fulham,Manchester United,standard kick-off,16,13 November 2022,16:30 GMT,Craven Cottage,1–2,3,2,1,Paul Tierney,1,0,0,0,1,1,0,1,1,2,1,2,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,1,1,0,1,1,1
+Crystal Palace,Fulham,standard kick-off,17,26 December 2022,15:00 GMT,Selhurst Park,0–3,3,3,0,Andrew Madley,0,0,1,0,1,1,0,0,1,2,0,3,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,2,0,0,0,3
+Fulham,Southampton,standard kick-off,18,31 December 2022,15:00 GMT,Craven Cottage,2–1,3,1,2,Graham Scott,0,0,1,1,0,1,0,0,1,2,0,3,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,0,2,1
+Leicester City,Fulham,late kick-off,19,3 January 2023,19:45 GMT,King Power Stadium,0–1,1,1,0,Darren Bond,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Fulham,Chelsea,late kick-off,7,12 January 2023,20:00 GMT,Craven Cottage,2–1,3,1,2,David Coote,0,1,0,1,1,0,0,0,1,2,0,3,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,1,1,0,0,2,1
+Chelsea,Fulham,late kick-off,22,3 February 2023,20:00 GMT,Stamford Bridge,0–0,0,0,0,Stuart Attwell,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Fulham,Nottingham Forest,standard kick-off,23,11 February 2023,15:00 GMT,Craven Cottage,2–0,2,0,2,Andrew Madley,0,1,0,0,0,1,0,0,1,1,0,2,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2,0
+Fulham,Wolverhampton Wanderers,late kick-off,25,24 February 2023,20:00 GMT,Craven Cottage,1–1,2,1,1,Michael Oliver,0,1,0,0,1,0,0,0,1,1,0,2,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Brentford,Fulham,late kick-off,26,6 March 2023,20:00 GMT,Brentford Community Stadium,3–2,5,2,3,Anthony Taylor,1,0,1,1,0,2,0,1,2,3,1,4,1,0,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,1,2,1,0,1,3,1
+Bournemouth,Fulham,standard kick-off,29,1 April 2023,15:00 BST,Vitality Stadium,2–1,3,1,2,Peter Bankes,0,1,0,1,0,1,0,0,1,2,0,3,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,1,2,0,0,0,2,1
+Fulham,West Ham United,standard kick-off,30,8 April 2023,15:00 BST,Craven Cottage,0–1,1,1,0,Jarred Gillett,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Everton,Fulham,standard kick-off,31,15 April 2023,15:00 BST,Goodison Park,1–3,4,3,1,Anthony Taylor,0,1,1,1,1,0,0,0,2,2,0,4,0,0,0,1,1,0,0,1,0,1,0,0,0,0,0,0,1,1,0,2,0,0,1,3
+Fulham,Leeds United,early kick-off,32,22 April 2023,12:30 BST,Craven Cottage,2–1,3,1,2,Peter Bankes,0,0,0,1,1,1,0,0,0,3,0,3,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,2,1,0,0,2,1
+Fulham,Leicester City,standard kick-off,35,8 May 2023,15:00 BST,Craven Cottage,5–3,8,3,5,Robert Jones,1,1,1,2,1,2,0,0,3,5,0,8,1,0,1,0,1,0,1,1,1,0,0,2,0,0,0,0,3,0,2,3,0,0,5,3
+Southampton,Fulham,standard kick-off,36,13 May 2023,15:00 BST,St Mary's Stadium,0–2,2,2,0,Thomas Bramall,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2
+Fulham,Crystal Palace,standard kick-off,37,20 May 2023,15:00 BST,Craven Cottage,2–2,4,2,2,Josh Smith,0,0,2,0,1,1,1,0,2,2,1,3,0,0,0,0,1,1,0,0,1,0,0,1,1,0,0,0,1,1,1,1,1,0,1,2
+Manchester United,Fulham,standard kick-off,38,28 May 2023,16:30 BST,Old Trafford,2–1,3,1,2,Robert Jones,0,1,1,1,0,0,0,0,2,1,0,3,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1
+Crystal Palace,Brentford,late kick-off,5,30 August 2022,19:30 BST,Selhurst Park,1–1,2,1,1,Simon Hooper,0,0,0,1,0,1,0,0,0,2,0,2,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,1,1
+Crystal Palace,Chelsea,standard kick-off,9,1 October 2022,15:00 BST,Selhurst Park,1–2,3,2,1,Chris Kavanagh,1,0,1,0,0,1,0,0,2,1,0,3,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,1,2
+Crystal Palace,Leeds United,early kick-off,10,9 October 2022,14:00 BST,Selhurst Park,2–1,3,1,2,Paul Tierney,1,1,0,0,0,1,0,0,2,1,0,3,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,0,0,2,1
+Leicester City,Crystal Palace,early kick-off,11,15 October 2022,12:30 BST,King Power Stadium,0–0,0,0,0,Andrew Madley,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Crystal Palace,Wolverhampton Wanderers,late kick-off,12,18 October 2022,20:15 BST,Selhurst Park,2–1,3,1,2,David Coote,0,0,1,1,1,0,0,0,1,2,0,3,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,1,2,0,0,0,2,1
+Everton,Crystal Palace,standard kick-off,13,22 October 2022,15:00 BST,Goodison Park,3–0,3,0,3,Simon Hooper,1,0,0,0,1,1,0,0,1,2,0,3,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,2,0,0,0,3,0
+Crystal Palace,Southampton,standard kick-off,14,29 October 2022,15:00 BST,Selhurst Park,1–0,1,0,1,Michael Salisbury,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+West Ham United,Crystal Palace,early kick-off,15,6 November 2022,14:00 GMT,London Stadium,1–2,3,2,1,Paul Tierney,0,1,1,0,0,1,0,1,2,1,1,2,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,1,1,1
+Nottingham Forest,Crystal Palace,standard kick-off,16,12 November 2022,15:00 GMT,City Ground,1–0,1,0,1,John Brooks,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Bournemouth,Crystal Palace,standard kick-off,18,31 December 2022,15:00 GMT,Vitality Stadium,0–2,2,2,0,Andre Marriner,0,1,1,0,0,0,0,0,2,0,0,2,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2
+Chelsea,Crystal Palace,early kick-off,20,15 January 2023,14:00 GMT,Stamford Bridge,1–0,1,0,1,Peter Bankes,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Crystal Palace,Manchester United,late kick-off,7,18 January 2023,20:00 GMT,Selhurst Park,1–1,2,1,1,Robert Jones,0,0,1,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,0,1,0,0,1
+Manchester United,Crystal Palace,standard kick-off,22,4 February 2023,15:00 GMT,Old Trafford,2–1,3,1,2,Andre Marriner,1,0,0,0,1,1,0,0,1,2,0,3,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Brentford,Crystal Palace,standard kick-off,24,18 February 2023,15:00 GMT,Brentford Community Stadium,1–1,2,1,1,Paul Tierney,0,0,0,0,1,1,0,1,0,2,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,1,1,1,0,0,1
+Crystal Palace,Leicester City,standard kick-off,29,1 April 2023,15:00 BST,Selhurst Park,2–1,3,1,2,Tim Robinson,0,0,0,2,0,1,0,1,0,3,1,2,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,2,1,1,0,1,1
+Leeds United,Crystal Palace,early kick-off,30,9 April 2023,14:00 BST,Elland Road,1–5,6,5,1,Simon Hooper,0,1,1,2,1,1,1,0,2,4,1,5,0,0,1,0,0,1,0,2,0,1,0,1,0,1,0,0,1,1,0,4,0,1,1,4
+Southampton,Crystal Palace,standard kick-off,31,15 April 2023,15:00 BST,St Mary's Stadium,0–2,2,2,0,Michael Oliver,0,0,0,1,1,0,0,0,0,2,0,2,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2
+Crystal Palace,Everton,standard kick-off,32,22 April 2023,15:00 BST,Selhurst Park,0–0,0,0,0,John Brooks,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Wolverhampton Wanderers,Crystal Palace,late kick-off,33,25 April 2023,19:30 BST,Molineux Stadium,2–0,2,0,2,Robert Jones,1,0,0,0,0,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0
+Crystal Palace,West Ham United,early kick-off,34,29 April 2023,12:45 BST,Selhurst Park,4–3,7,3,4,Craig Pawson,2,2,1,0,2,0,0,0,5,2,0,7,1,1,2,0,0,1,0,0,1,1,0,0,0,0,0,0,3,2,1,1,0,0,4,3
+Crystal Palace,Bournemouth,standard kick-off,36,13 May 2023,15:00 BST,Selhurst Park,2–0,2,0,2,Michael Salisbury,0,0,1,1,0,0,0,0,1,1,0,2,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Crystal Palace,Nottingham Forest,standard kick-off,38,28 May 2023,16:30 BST,Selhurst Park,1–1,2,1,1,Thomas Bramall,0,0,1,0,1,0,0,0,1,1,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Everton,Chelsea,standard kick-off,1,6 August 2022,17:30 BST,Goodison Park,0–1,1,1,0,Craig Pawson,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0
+Leeds United,Chelsea,early kick-off,3,21 August 2022,14:00 BST,Elland Road,3–0,3,0,3,Stuart Attwell,0,0,2,0,1,0,0,0,2,1,0,3,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,2,0,1,0,0,0,3,0
+Chelsea,Leicester City,standard kick-off,4,27 August 2022,15:00 BST,Stamford Bridge,2–1,3,1,2,Paul Tierney,0,0,0,1,2,0,0,0,0,3,0,3,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,2,1,0,0,2,1
+Southampton,Chelsea,late kick-off,5,30 August 2022,19:45 BST,St Mary's Stadium,2–1,3,1,2,Michael Oliver,0,2,1,0,0,0,1,0,3,0,1,2,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,0,2,1,0,0,1,0,1,1
+Chelsea,West Ham United,standard kick-off,6,3 September 2022,15:00 BST,Stamford Bridge,2–1,3,1,2,Andrew Madley,0,0,0,0,1,2,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,2,1,0,0,2,1
+Chelsea,Wolverhampton Wanderers,standard kick-off,10,8 October 2022,15:00 BST,Stamford Bridge,3–0,3,0,3,Simon Hooper,0,0,1,1,0,1,1,0,1,2,1,2,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,2,0,1,0,2,0
+Brentford,Chelsea,late kick-off,12,19 October 2022,19:30 BST,Brentford Community Stadium,0–0,0,0,0,Jarred Gillett,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Chelsea,Manchester United,standard kick-off,13,22 October 2022,17:30 BST,Stamford Bridge,1–1,2,1,1,Stuart Attwell,0,0,0,0,0,2,0,1,0,2,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,1,1,0,1,1,0
+Chelsea,Bournemouth,standard kick-off,17,27 December 2022,17:30 GMT,Stamford Bridge,2–0,2,0,2,Simon Hooper,0,2,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0
+Nottingham Forest,Chelsea,standard kick-off,18,1 January 2023,16:30 GMT,City Ground,1–1,2,1,1,Peter Bankes,0,1,0,0,1,0,0,0,1,1,0,2,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+West Ham United,Chelsea,early kick-off,23,11 February 2023,12:30 GMT,London Stadium,1–1,2,1,1,Craig Pawson,0,2,0,0,0,0,0,0,2,0,0,2,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1
+Chelsea,Southampton,standard kick-off,24,18 February 2023,15:00 GMT,Stamford Bridge,0–1,1,1,0,David Coote,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0
+Chelsea,Leeds United,standard kick-off,26,4 March 2023,15:00 GMT,Stamford Bridge,1–0,1,0,1,Michael Oliver,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Leicester City,Chelsea,standard kick-off,27,11 March 2023,15:00 GMT,King Power Stadium,1–3,4,3,1,Andre Marriner,1,0,2,0,0,1,1,0,3,1,1,3,0,1,0,0,1,1,0,0,0,0,0,1,0,1,0,0,1,2,0,1,0,1,1,2
+Chelsea,Everton,standard kick-off,28,18 March 2023,17:30 GMT,Stamford Bridge,2–2,4,2,2,Darren England,0,0,0,1,1,2,0,0,0,4,0,4,0,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0,0,0,2,2,0,0,2,2
+Wolverhampton Wanderers,Chelsea,standard kick-off,30,8 April 2023,15:00 BST,Molineux Stadium,1–0,1,0,1,Peter Bankes,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Chelsea,Brentford,late kick-off,33,26 April 2023,19:45 BST,Stamford Bridge,0–2,2,2,0,Andrew Madley,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+Bournemouth,Chelsea,standard kick-off,35,6 May 2023,15:00 GMT,Dean Court,1–3,4,3,1,John Brooks,1,1,0,0,0,2,0,0,2,2,0,4,0,1,1,0,0,0,0,0,0,0,0,2,0,0,0,0,1,1,0,2,0,0,1,3
+Chelsea,Nottingham Forest,standard kick-off,36,13 May 2023,15:00 BST,Stamford Bridge,2–2,4,2,2,Paul Tierney,1,0,0,2,1,0,0,0,1,3,0,4,0,1,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0,1,2,1,0,0,2,2
+Manchester United,Chelsea,late kick-off,32,25 May 2023,20:00 BST,Old Trafford,4–1,5,1,4,Stuart Attwell,1,0,1,0,1,2,1,0,2,3,1,4,1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,2,0,2,1,1,0,3,1
+Leeds United,Wolverhampton Wanderers,standard kick-off,1,6 August 2022,15:00 BST,Elland Road,2–1,3,1,2,Robert Jones,1,1,0,0,1,0,0,0,2,1,0,3,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1
+Bournemouth,Wolverhampton Wanderers,late kick-off,5,31 August 2022,19:30 BST,Vitality Stadium,0–0,0,0,0,Anthony Taylor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Wolverhampton Wanderers,Southampton,standard kick-off,6,3 September 2022,15:00 BST,Molineux Stadium,1–0,1,0,1,John Brooks,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0
+West Ham United,Wolverhampton Wanderers,standard kick-off,9,1 October 2022,17:30 BST,London Stadium,2–0,2,0,2,Paul Tierney,0,1,0,1,0,0,0,0,1,1,0,2,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Wolverhampton Wanderers,Nottingham Forest,standard kick-off,11,15 October 2022,15:00 BST,Molineux Stadium,1–0,1,0,1,Thomas Bramall,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Wolverhampton Wanderers,Leicester City,early kick-off,13,23 October 2022,14:00 BST,Molineux Stadium,0–4,4,4,0,Michael Oliver,1,1,0,0,1,1,0,0,2,2,0,4,0,1,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,2,0,2,0,0,0,4
+Brentford,Wolverhampton Wanderers,standard kick-off,14,29 October 2022,15:00 BST,Brentford Community Stadium,1–1,2,1,1,Bobby Madley,0,0,0,2,0,0,0,0,0,2,0,2,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1
+Everton,Wolverhampton Wanderers,standard kick-off,17,26 December 2022,15:00 GMT,Goodison Park,1–2,3,2,1,Craig Pawson,1,1,0,0,0,1,0,1,2,1,1,2,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,1,1,1
+Wolverhampton Wanderers,Manchester United,early kick-off,18,31 December 2022,12:30 GMT,Molineux Stadium,0–1,1,1,0,Robert Jones,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1
+Wolverhampton Wanderers,West Ham United,standard kick-off,20,14 January 2023,15:00 GMT,Molineux Stadium,1–0,1,0,1,Simon Hooper,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Southampton,Wolverhampton Wanderers,standard kick-off,23,11 February 2023,15:00 GMT,St Mary's Stadium,1–2,3,2,1,Jarred Gillett,0,1,0,0,1,1,0,0,1,2,0,3,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,2,0,0,1,2
+Wolverhampton Wanderers,Bournemouth,standard kick-off,24,18 February 2023,15:00 GMT,Molineux Stadium,0–1,1,1,0,Michael Salisbury,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Wolverhampton Wanderers,Leeds United,standard kick-off,28,18 March 2023,15:00 GMT,Molineux Stadium,2–4,6,4,2,Michael Salisbury,1,0,0,1,3,1,0,1,1,5,1,5,0,1,0,0,0,0,0,1,2,1,0,1,0,0,0,1,0,1,2,3,0,1,2,3
+Nottingham Forest,Wolverhampton Wanderers,standard kick-off,29,1 April 2023,15:00 BST,City Ground,1–1,2,1,1,Chris Kavanagh,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,1,1
+Wolverhampton Wanderers,Brentford,standard kick-off,31,15 April 2023,15:00 BST,Molineux Stadium,2–0,2,0,2,Paul Tierney,0,1,0,0,1,0,0,0,1,1,0,2,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Leicester City,Wolverhampton Wanderers,standard kick-off,32,22 April 2023,15:00 BST,King Power Stadium,2–1,3,1,2,Andrew Madley,1,0,1,0,1,0,0,0,2,1,0,3,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1
+Manchester United,Wolverhampton Wanderers,standard kick-off,36,13 May 2023,15:00 BST,Old Trafford,2–0,2,0,2,John Brooks,0,0,1,0,0,1,0,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0
+Wolverhampton Wanderers,Everton,standard kick-off,37,20 May 2023,15:00 BST,Molineux Stadium,1–1,2,1,1,David Coote,0,0,1,0,0,1,0,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,1,1,0
+Nottingham Forest,West Ham United,early kick-off,2,14 August 2022,14:00 BST,City Ground,1–0,1,0,1,Robert Jones,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0
+Everton,West Ham United,early kick-off,7,18 September 2022,14:15 BST,Goodison Park,1–0,1,0,1,Michael Oliver,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Southampton,West Ham United,early kick-off,10,16 October 2022,14:00 BST,St Mary's Stadium,1–1,2,1,1,Peter Bankes,0,1,0,0,1,0,0,0,1,1,0,2,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,1
+West Ham United,Bournemouth,late kick-off,12,24 October 2022,20:00 BST,London Stadium,2–0,2,0,2,David Coote,0,0,1,0,0,1,0,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0
+Manchester United,West Ham United,standard kick-off,13,30 October 2022,16:15 GMT,Old Trafford,1–0,1,0,1,Chris Kavanagh,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+West Ham United,Leicester City,standard kick-off,15,12 November 2022,15:00 GMT,London Stadium,0–2,2,2,0,Jarred Gillett,1,0,0,0,0,1,0,0,1,1,0,2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+West Ham United,Brentford,late kick-off,17,30 December 2022,19:45 GMT,London Stadium,0–2,2,2,0,Darren England,0,1,1,0,0,0,0,0,2,0,0,2,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2
+Leeds United,West Ham United,late kick-off,18,4 January 2023,19:45 GMT,Elland Road,2–2,4,2,2,David Coote,0,1,1,1,1,0,0,0,2,2,0,4,0,0,1,0,0,1,0,1,1,0,0,0,0,0,0,0,1,1,1,1,0,0,2,2
+West Ham United,Everton,standard kick-off,20,21 January 2023,15:00 GMT,London Stadium,2–0,2,0,2,Stuart Attwell,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0
+West Ham United,Nottingham Forest,standard kick-off,24,25 February 2023,15:00 GMT,London Stadium,4–0,4,0,4,Jarred Gillett,0,0,0,0,2,2,0,0,0,4,0,4,0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,4,0,0,0,4,0
+West Ham United,Southampton,early kick-off,27,2 April 2023,14:00 BST,London Stadium,1–0,1,0,1,Paul Tierney,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Bournemouth,West Ham United,early kick-off,31,23 April 2023,14:00 BST,Vitality Stadium,0–4,4,4,0,Anthony Taylor,2,0,1,0,1,0,0,0,3,1,0,4,0,2,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,3,0,1,0,0,0,4
+West Ham United,Manchester United,late kick-off,35,7 May 2023,19:00 BST,London Stadium,1–0,1,0,1,Peter Bankes,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Brentford,West Ham United,early kick-off,36,13 May 2023,14:00 BST,Gtech Community Stadium,2–0,2,0,2,Michael Oliver,0,1,1,0,0,0,0,0,2,0,0,2,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0
+West Ham United,Leeds United,early kick-off,37,21 May 2023,13:30 BST,London Stadium,3–1,4,1,3,Peter Bankes,0,1,1,0,1,1,0,1,2,2,1,3,0,0,0,1,1,0,0,0,1,0,1,0,0,0,1,0,1,1,2,0,1,0,2,1
+Leicester City,West Ham United,standard kick-off,38,28 May 2023,16:30 BST,King Power Stadium,2–1,3,1,2,Simon Hooper,0,0,1,0,1,1,0,0,1,2,0,3,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,1,1,0,0,2,1
+Nottingham Forest,Bournemouth,standard kick-off,6,3 September 2022,15:00 BST,City Ground,2–3,5,3,2,Michael Oliver,0,0,2,1,1,1,1,0,2,3,1,4,0,0,0,0,2,0,0,1,0,1,0,1,1,0,0,0,2,0,0,3,1,0,1,3
+Bournemouth,Brentford,standard kick-off,8,1 October 2022,15:00 BST,Vitality Stadium,0–0,0,0,0,Thomas Bramall,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Bournemouth,Leicester City,standard kick-off,9,8 October 2022,15:00 BST,Vitality Stadium,2–1,3,1,2,Michael Salisbury,1,0,0,0,2,0,0,0,1,2,0,3,0,1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,2,0,0,0,2,1
+Bournemouth,Southampton,late kick-off,11,19 October 2022,19:30 BST,Vitality Stadium,0–1,1,1,0,John Brooks,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Leeds United,Bournemouth,standard kick-off,14,5 November 2022,15:00 GMT,Elland Road,4–3,7,3,4,Tony Harrington,2,1,0,2,1,1,0,0,3,4,0,7,1,1,0,1,0,0,1,1,1,0,1,0,0,0,0,0,1,2,3,1,0,0,4,3
+Bournemouth,Everton,standard kick-off,15,12 November 2022,15:00 GMT,Vitality Stadium,3–0,3,0,3,Craig Pawson,0,2,0,0,1,0,0,0,2,1,0,3,0,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,2,0,1,0,0,0,3,0
+Manchester United,Bournemouth,late kick-off,18,3 January 2023,20:00 GMT,Old Trafford,3–0,3,0,3,Michael Salisbury,0,1,0,1,0,1,0,0,1,2,0,3,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,2,0,0,0,3,0
+Brentford,Bournemouth,standard kick-off,19,14 January 2023,17:30 GMT,Brentford Community Stadium,2–0,2,0,2,Jarred Gillett,0,0,1,0,1,0,0,0,1,1,0,2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Bournemouth,Nottingham Forest,standard kick-off,20,21 January 2023,15:00 GMT,Vitality Stadium,1–1,2,1,1,Andrew Madley,0,1,0,0,0,1,0,0,1,1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,1,1
+Leicester City,Bournemouth,standard kick-off,30,8 April 2023,15:00 BST,King Power Stadium,0–1,1,1,0,David Coote,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Southampton,Bournemouth,late kick-off,33,27 April 2023,19:45 BST,St Mary's Stadium,0–1,1,1,0,Darren England,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Bournemouth,Leeds United,early kick-off,34,30 April 2023,14:00 BST,Vitality Stadium,4–1,5,1,4,Chris Kavanagh,0,2,1,0,1,1,0,1,3,2,1,4,0,0,2,0,0,1,0,0,1,0,1,0,0,0,1,0,2,1,2,0,1,0,3,1
+Bournemouth,Manchester United,standard kick-off,37,20 May 2023,15:00 BST,Vitality Stadium,0–1,1,1,0,Chris Kavanagh,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Everton,Bournemouth,standard kick-off,38,28 May 2023,16:30 BST,Goodison Park,1–0,1,0,1,Stuart Attwell,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Everton,Nottingham Forest,standard kick-off,3,20 August 2022,15:00 BST,Goodison Park,1–1,2,1,1,Andre Marriner,0,0,0,0,0,2,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1
+Leicester City,Nottingham Forest,late kick-off,9,3 October 2022,20:00 BST,King Power Stadium,4–0,4,0,4,Robert Jones,0,2,1,0,1,0,0,0,3,1,0,4,0,0,2,0,1,0,0,0,1,0,0,0,0,0,0,0,3,0,1,0,0,0,4,0
+Nottingham Forest,Brentford,standard kick-off,15,5 November 2022,15:00 GMT,City Ground,2–2,4,2,2,Andre Marriner,0,1,1,0,1,1,1,1,2,2,2,2,0,0,1,0,0,1,0,0,0,1,1,0,0,1,1,0,1,1,1,1,1,1,1,1
+Manchester United,Nottingham Forest,late kick-off,17,27 December 2022,20:00 GMT,Old Trafford,3–0,3,0,3,Anthony Taylor,0,2,0,0,0,1,0,0,2,1,0,3,0,0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,1,0,0,0,3,0
+Southampton,Nottingham Forest,late kick-off,19,4 January 2023,19:30 GMT,St Mary's Stadium,0–1,1,1,0,Thomas Bramall,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Nottingham Forest,Leicester City,standard kick-off,20,14 January 2023,15:00 GMT,City Ground,2–0,2,0,2,Paul Tierney,0,0,0,1,0,1,0,0,0,2,0,2,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0
+Nottingham Forest,Leeds United,early kick-off,22,5 February 2023,14:00 GMT,City Ground,1–0,1,0,1,Robert Jones,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Nottingham Forest,Everton,early kick-off,26,5 March 2023,14:00 GMT,City Ground,2–2,4,2,2,John Brooks,1,2,0,0,0,1,0,0,3,1,0,4,0,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,1,2,1,0,0,0,2,2
+Leeds United,Nottingham Forest,late kick-off,7,4 April 2023,19:45 BST,Elland Road,2–1,3,1,2,Robert Jones,1,1,1,0,0,0,1,0,3,0,1,2,0,1,1,0,1,0,0,0,0,0,0,0,1,0,0,0,2,1,0,0,1,0,1,1
+Nottingham Forest,Manchester United,standard kick-off,31,16 April 2023,16:30 BST,City Ground,0–2,2,2,0,Simon Hooper,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+Brentford,Nottingham Forest,standard kick-off,34,29 April 2023,15:00 BST,Gtech Community Stadium,2–1,3,1,2,Peter Bankes,0,0,1,0,0,2,1,1,1,2,2,1,0,0,0,0,0,1,0,0,0,0,2,0,0,1,1,0,0,1,2,0,1,1,1,0
+Nottingham Forest,Southampton,late kick-off,35,8 May 2023,20:00 BST,City Ground,4–3,7,3,4,Michael Oliver,0,3,1,1,1,1,0,1,4,3,1,6,0,0,2,1,1,0,0,1,1,0,0,1,0,0,0,1,3,1,1,2,0,1,4,2
+Brentford,Everton,standard kick-off,4,27 August 2022,15:00 BST,Gtech Community Stadium,1–1,2,1,1,John Brooks,0,1,0,0,0,1,0,0,1,1,0,2,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,1,1
+Leeds United,Everton,late kick-off,5,30 August 2022,20:00 BST,Elland Road,1–1,2,1,1,Darren England,0,1,0,1,0,0,0,0,1,1,0,2,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1
+Southampton,Everton,standard kick-off,9,1 October 2022,15:00 BST,St Mary's Stadium,1–2,3,2,1,Andre Marriner,0,0,0,3,0,0,0,0,0,3,0,3,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,1,2,0,0,1,2
+Everton,Manchester United,late kick-off,10,9 October 2022,19:00 BST,Goodison Park,1–2,3,2,1,David Coote,2,0,1,0,0,0,0,0,3,0,0,3,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,1,2
+Everton,Leicester City,standard kick-off,15,5 November 2022,17:30 GMT,Goodison Park,0–2,2,2,0,David Coote,0,0,1,0,0,1,0,0,1,1,0,2,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,2
+Everton,Southampton,standard kick-off,20,14 January 2023,15:00 GMT,Goodison Park,1–2,3,2,1,John Brooks,0,0,1,1,0,1,0,0,1,2,0,3,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,0,2,0,0,1,2
+Everton,Leeds United,standard kick-off,24,18 February 2023,15:00 GMT,Goodison Park,1–0,1,0,1,Andrew Madley,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+Everton,Brentford,standard kick-off,27,11 March 2023,15:00 GMT,Goodison Park,1–0,1,0,1,Simon Hooper,1,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Manchester United,Everton,early kick-off,30,8 April 2023,12:30 BST,Old Trafford,2–0,2,0,2,Michael Oliver,0,0,1,0,1,0,0,0,1,1,0,2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,2,0
+Leicester City,Everton,late kick-off,34,1 May 2023,20:00 BST,King Power Stadium,2–2,4,2,2,Michael Oliver,1,1,1,1,0,0,0,0,3,1,0,4,0,1,1,0,1,0,0,1,0,0,0,0,0,0,0,0,2,1,0,1,0,0,2,2
+Leicester City,Brentford,early kick-off,1,7 August 2022,14:00 BST,King Power Stadium,2–2,4,2,2,Jarred Gillett,0,0,1,1,1,1,0,0,1,3,0,4,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0,1,0,1,2,0,0,2,2
+Leicester City,Southampton,standard kick-off,3,20 August 2022,15:00 BST,King Power Stadium,1–2,3,2,1,Michael Salisbury,0,0,0,1,1,1,0,0,0,3,0,3,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,1,2,0,0,1,2
+Leicester City,Manchester United,late kick-off,5,1 September 2022,20:00 BST,King Power Stadium,0–1,1,1,0,Craig Pawson,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+Leicester City,Leeds United,late kick-off,11,20 October 2022,20:15 BST,King Power Stadium,2–0,2,0,2,Peter Bankes,0,1,1,0,0,0,0,0,2,0,0,2,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0
+Manchester United,Leicester City,early kick-off,23,19 February 2023,14:00 GMT,Old Trafford,3–0,3,0,3,Stuart Attwell,0,1,0,1,1,0,0,0,1,2,0,3,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,2,0,0,0,3,0
+Southampton,Leicester City,standard kick-off,25,4 March 2023,17:30 GMT,St Mary's Stadium,1–0,1,0,1,Robert Jones,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+Brentford,Leicester City,standard kick-off,27,18 March 2023,15:00 GMT,Brentford Community Stadium,1–1,2,1,1,Darren Bond,0,0,1,1,0,0,0,0,1,1,0,2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1
+Leeds United,Leicester City,late kick-off,33,25 April 2023,20:00 BST,Elland Road,1–1,2,1,1,Paul Tierney,0,1,0,0,0,1,0,0,1,1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,1,1
+Southampton,Leeds United,standard kick-off,2,13 August 2022,15:00 BST,St Mary's Stadium,2–2,4,2,2,Tony Harrington,0,0,0,2,1,1,0,0,0,4,0,4,0,0,0,0,0,0,0,2,1,0,1,0,0,0,0,0,0,0,2,2,0,0,2,2
+Brentford,Leeds United,standard kick-off,6,3 September 2022,15:00 BST,Gtech Community Stadium,5–2,7,2,5,Robert Jones,0,1,2,1,0,3,1,1,3,4,2,5,0,0,1,0,1,1,1,0,0,0,2,1,0,1,1,0,2,1,3,1,1,1,4,1
+Leeds United,Brentford,early kick-off,19,22 January 2023,14:00 GMT,Elland Road,0–0,0,0,0,Peter Bankes,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Manchester United,Leeds United,late kick-off,21,8 February 2023,20:00 GMT,Old Trafford,2–2,4,2,2,Simon Hooper,1,0,0,1,2,0,0,0,1,3,0,4,0,1,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,1,2,1,0,0,2,2
+Leeds United,Manchester United,early kick-off,22,12 February 2023,14:00 GMT,Elland Road,0–2,2,2,0,Paul Tierney,0,0,0,0,0,2,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2
+Leeds United,Southampton,standard kick-off,24,25 February 2023,15:00 GMT,Elland Road,1–0,1,0,1,Peter Banks,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0
+Southampton,Manchester United,early kick-off,4,27 August 2022,12:30 BST,St Mary's Stadium,0–1,1,1,0,Andy Madley,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+Brentford,Southampton,standard kick-off,21,4 February 2023,15:00 GMT,Brentford Community Stadium,3–0,3,0,3,Darren Bond,0,0,2,0,0,1,0,0,2,1,0,3,0,0,0,0,2,0,0,0,0,0,1,0,0,0,0,0,2,0,1,0,0,0,3,0
+Manchester United,Southampton,early kick-off,26,12 March 2023,14:00 GMT,Old Trafford,0–0,0,0,0,Anthony Taylor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Southampton,Brentford,late kick-off,27,15 March 2023,19:30 GMT,St Mary's Stadium,0–2,2,2,0,Michael Salisbury,0,0,1,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1

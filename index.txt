@@ -1,0 +1,70 @@
+indicate aggregate value for those that need it
+always one value for barchart both x and y
+highlight that all x and y, z and groupby values must be a column itself
+do not include top number(like tiop 10, top 5), rather just say -most, highest, or any other adjective
+do not give a value of group by or z or any data f it is not needed
+
+  const arrangeCards=(cards)=>{
+        let num_in_cards=[...Array(16).keys()]
+        let alpha_in_cards=['Jack', 'Queen', 'King']
+        for (const card of cards){
+            if(+card){
+
+            }
+        }
+
+        const cards_right_order = [...Array(16).keys(), 'Jack', 'Queen', 'King']
+        cards.sort((a,b)=>cards_right_order.indexOf(a)-cards_right_order.indexOf(b)) 
+    }
+
+
+// <div>
+              //   <table className=" table border-separate border-spacing-x-8 border-spacing-y-2 w-full">
+              //     <thead>
+              //       <tr className="text-sm text-left">
+              //         <th>League</th>
+              //         <th className="">Season</th>
+              //         <th className="text-left">Date</th>
+                    
+              //       </tr>
+              //     </thead>
+              //   </table>
+              //   <div className="w-full max-h-[180px] overflow-y-auto flex">
+              //     <table className="table border-separate border-spacing-x-8 border-spacing-y-4 w-full">
+              //     <tbody>
+              //         {seasons_data?.data?.seasons?.map(({league, year,created_at},ind)=>
+              //           <tr key={ind} className="text-xs text-left">
+              //             <td>
+              //               <div className="flex items-end gap-x-[2px]">
+              //                 <img src={'/images/'+league?.replace(' ', '')?.toLowerCase()+'.svg'}/>
+              //                 <p className="text-black font-semibold" 
+              //                   style={
+              //                     league==="epl"?{textTransform:"uppercase"}:
+              //                       {textTransform:"capitalize"}
+              //                   }
+                                
+              //                 >{league}</p>
+              //               </div>
+                            
+              //             </td>
+              //             <td className="text-[#2C2C2C] text-right">
+              //               <p className="pl-[30px]">{year}</p>
+              //             </td>
+              //             <td className="text-black font-medium text-right">
+              //                 {
+              //                   (() => {
+              //                     const date = new Date(created_at);
+              //                     const day = date.getDate();
+              //                     const month = date.getMonth() + 1;
+              //                     const year = date.getFullYear();
+              //                     const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+                            
+              //                     return `${day}/${month < 10 ? '0' + month : month}/${year}, ${time}`;
+              //                   })()
+              //                 }
+              //             </td>
+              //           </tr>                    
+              //         )}
+              //     </tbody>
+              //   </table>
+              //   </div>

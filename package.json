@@ -1,0 +1,34 @@
+{
+  "name": "vaisualize-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@sgratzl/chartjs-chart-boxplot": "^4.4.5",
+    "@tanstack/react-query": "^5.90.2",
+    "axios": "^1.12.2",
+    "chart.js": "^4.5.0",
+    "csv-parser": "^3.2.0",
+    "d3.js": "^0.0.2-security",
+    "next": "13.5.6",
+    "papaparse": "^5.5.3",
+    "react": "^18",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18",
+    "react-toastify": "^11.0.5",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "postcss": "^8",
+    "tailwindcss": "^3"
+  }
+}
