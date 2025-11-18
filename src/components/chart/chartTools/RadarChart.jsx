@@ -11,7 +11,11 @@ export default function RadarChart({x,y:z}) {
       
     const {dataArray}=useContext(DataRequestContext);
 
+
     const options = {
+      responsive: true,
+  maintainAspectRatio: true,
+  aspectRatio: 1.5,
         responsive: true,
         scales: {
         r: {
@@ -48,25 +52,35 @@ export default function RadarChart({x,y:z}) {
         let isAverageCount=false
 
         const data = zLabels?.map((zValue,index)=>{
-            const find_z_in_data=dataArray?.filter((dataRow)=>dataRow[z]===zValue)
-            let z_actual_value_in_data=null
-            if(find_z_in_data.length<=1){
-              z_actual_value_in_data=find_z_in_data[0]
-            }
-            else{
-              z_actual_value_in_data= find_z_in_data.reduce((acc, a)=>acc+(a??0),0)
-              if (!isAverageCount){
-                isAverageCount=true
-              }
-            }
+            const find_z_in_data=dataArray?.find((dataRow)=>dataRow[z]===zValue)
+            // console.log({find_z_in_data})
+            // z_actual_value_in_data=find_z_in_data[0]
+
             // let z_avg_value_in_data= find_z_in_data.length===1?find_z_in_data[0]:find
             return (
                 {
                   label: zValue,
-                  data:x[0]?.map((ability_key)=>+find_z_in_data[ability_key] ?? 0),
+                  data:x[0]?.map(ability_key=>+find_z_in_data[ability_key]),
+                  //   (ability_key)=>{
+                  //     let z_actual_value_in_data=0
+                  //     if(find_z_in_data.length<=1){
+                  //       z_actual_value_in_data=+find_z_in_data[0][ability_key]
+                  //     }
+                  //     else{
+                  //       const total=find_z_in_data.reduce((acc, a)=>acc+(+(a[ability_key])??0),0)
+                  //       if(!isAverageCount){
+                  //         isAverageCount=true
+                  //       }
+                  //       z_actual_value_in_data=Math.round((total/find_z_in_data.length)*100)/100
+                  //       console.log({z_actual_value_in_data, ability_key})
+                  //     }
+                  //     // console.log({z_actual_value_in_data})
+                  //     return +z_actual_value_in_data
+                  //   }
+                  // ),
                   backgroundColor: colors[index % colors.length].replace('1)', '0.3)'),
-                  borderColor: colors[index % colors.length],
-                  borderWidth: 2,
+                  borderColor: colors[index % colors.length].replace('1)', '0.5)'),
+                  borderWidth: 1,
                 }
             )
         })
@@ -92,7 +106,7 @@ export default function RadarChart({x,y:z}) {
         // ],
         // };
         // consolelog({datasets:data, labels:x[0]?.xProp})
-        return {datasets:data, labels:x[0].map((x)=>x+(isAverageCount?'(mean v.)':''))}
+        return {datasets:data, labels:x[0]}
     },[meta])
 
     useEffect(()=>{
@@ -109,8 +123,8 @@ export default function RadarChart({x,y:z}) {
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <div className="h-full w-full flex justify-center">
-            <div className="w-[400px] tablet:h-fit">
+        <div className="h-full flex justify-center">
+            <div className="w-[600px] h-[600px]">
                 <Radar data={data} options={options} />
             </div>
         </div>

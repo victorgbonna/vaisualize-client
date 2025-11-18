@@ -68,9 +68,12 @@ const timeStampControl={
 
         return !isNaN(date) ? 'adjusted-date' : null;
     },
-    isDate:(value)=> {
+    isDate:(value,c=false)=> {
         if (value instanceof Date && !isNaN(value.getTime())) return true;
         const d = new Date(value);
+        if(c){
+            console.log({z:d.getTime(), d,value})
+        }
         return !isNaN(d.getTime());
     },
     parseTimestamp:({pattern, value})=>{

@@ -97,7 +97,6 @@ function HeatmapChart({x,y}){
     //     })
     // })
 
-    console.log(heatmap_x_and_y)
     const heatmap_color='rgba(21, 105, 56, '
 
 
@@ -169,7 +168,7 @@ function HeatmapChart({x,y}){
                             }}
                             className={`text-white text-sm font-bold border border-slate-300 text-center h-8 text-black`} 
                             key={j}>
-                                {heat_pack[0][num_entry]}
+                                {num_entry?.toLowerCase()==='age'?Math.round(value):value}
                             </td>
                         )
                     }

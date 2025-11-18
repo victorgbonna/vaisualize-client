@@ -54,6 +54,7 @@ export default function Home() {
       {/* <BoxPlotExample/> */}
       {/* <></> */}
       <div 
+        
       // style={{backgroundImage: `}} 
         className="relative h-screen  w-screen tablet:h-fit p-6 flex flex-cols items-center tablet:hidden">
         {/* <img className="z-1 absolute inset-0 h-full w-full" 

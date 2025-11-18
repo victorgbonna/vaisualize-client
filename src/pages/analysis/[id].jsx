@@ -67,7 +67,7 @@ function AnalysisC() {
                 header: true,
                 skipEmptyLines: true,
             });
-            console.log({chatGPT_response:data.chatGPT_response})
+            // console.log({chatGPT_response:data.chatGPT_response})
             const {visuals, metrics}= data.chatGPT_response[0].visuals_obj ?? data.chatGPT_response[0]
             // const {chatGPT_response:visuals_sugg[0].visuals_obj, ...request}= data
             
@@ -206,7 +206,7 @@ function CardBox(){
                         .filter(n => freq[n] === max)
                 }
                 else if (aggregate.includes('min')){
-                    const date_type=isDate(data[0][column])
+                    const date_type= isNaN(parseInt(data[0][column]))? isDate(data[0][column]):false
                     let values= data.map(
                         (row)=>date_type?row[column]:convertToDigit(row[column]))?.filter((x)=>!!x)
                     if(date_type){
@@ -217,7 +217,7 @@ function CardBox(){
                     }
                 }
                 else if (aggregate.includes('max')){
-                    const date_type=isDate(data[0][column])
+                    const date_type= isNaN(parseInt(data[0][column]))? isDate(data[0][column]):false
                     let values= data.map(
                         (row)=>date_type?row[column]:convertToDigit(row[column]))?.filter((x)=>!!x)
                     if(date_type){
