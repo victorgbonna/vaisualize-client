@@ -193,7 +193,7 @@ function groupByXandCollectY({data, xKeys, yKey, sorted_key=null, aggregate='ave
   const rows = data;
   const sumsByGroup = {};
   const countsByGroup = {};
-  const isAverageCount=false
+  let isAverageCount=false
 
   for (const row of rows) {
     const group = row?.[yKey] ?? 'unknown';
