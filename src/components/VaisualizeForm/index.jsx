@@ -406,7 +406,7 @@ function ColumnSetup({multiselect, first5rows, setMultiselect}){
                                     <p>{belonged_category.replace('_', ' ')}</p>
                                 </div>
                                 <div className="flex gap-x-2 items-center">
-                                    <button onClick={()=>{
+                                    <button disabled={!multiselect?.columns?.includes(col)} onClick={()=>{
                                         setOpenModal({
                                             type:'switch',
                                             value:belonged_category, label:col,
