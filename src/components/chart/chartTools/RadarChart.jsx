@@ -14,9 +14,7 @@ export default function RadarChart({x,y:z}) {
 
     const options = {
       responsive: true,
-  maintainAspectRatio: true,
-  aspectRatio: 1.5,
-        responsive: true,
+  maintainAspectRatio: false,
         scales: {
         r: {
           pointLabels: {
@@ -106,7 +104,20 @@ export default function RadarChart({x,y:z}) {
         // ],
         // };
         // consolelog({datasets:data, labels:x[0]?.xProp})
-        return {datasets:data, labels:x[0]}
+        return {datasets:data, labels:x[0].map((label)=>{
+          const labels_into_array=label.split(' ')
+          const labels_length= label.length
+          let label_output=label
+          if(labels_into_array.length>1){
+            label_output=labels_into_array[0][0]+labels_into_array[0][1]+labels_into_array[0][2]+'. '+labels_into_array[1]
+          }
+          else if(labels_length>12){
+
+          }
+          return(
+            label_output
+          )
+        })}
     },[meta])
 
     useEffect(()=>{
@@ -117,14 +128,14 @@ export default function RadarChart({x,y:z}) {
     },[])
     if (!data) return null
     return (
-    <div className="flex justify-center w-full relative">
+    <div className="flex justify-center w-full relative tablet:block">
         <SlideThrough 
           onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <div className="h-full flex justify-center">
-            <div className="w-[600px] h-[600px]">
+        <div className="h-full flex justify-center tablet:block">
+            <div className="w-[600px] h-[400px] tablet:w-full tablet:w-[410px] tablet:h-[400px]">
                 <Radar data={data} options={options} />
             </div>
         </div>

@@ -7,14 +7,13 @@ import { API_ENDPOINTS, consolelog, PAGE_ROUTES, timeStampControl } from "@/conf
 import ModalLayout from "../modal/modalLayout";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function VaisualizeForm(){
     const [formData, setFormData]= useState({})
     const {postData}= useHttpServices()
     
     const {  uploadFile, fileData, previewSrc, getFileName, setPreviewSrc, setFileData} =useFileInput()
-
-
     const datasetInfo = [
         {
             label: "Title",
@@ -22,6 +21,7 @@ export default function VaisualizeForm(){
             type: "text",
             placeholder: "Enter dataset name (e.g. Hypertension Risk Data)",
             required: true,
+            maxlength:55
         },
         {
             label: "Category",
@@ -32,11 +32,28 @@ export default function VaisualizeForm(){
             required: true,
         },
         {
+            label: "Mode",
+            name: "mode",
+            type: "select",
+            placeholder: "Select Display",
+            options: ["Public", "Private"],
+            required: true,
+        },
+        {
+            label: "Display Status",
+            name: "display",
+            type: "select",
+            placeholder: "Display Mode",
+            options: ["Public", "Private"],
+            required: true,
+        },
+        {
             label: "Description",
             name: "description",
             type: "textarea",
             placeholder: "Briefly describe what the dataset is about...",
             required: true,
+            maxlength:180
         },
         {
             label: "Goal / Objective",
@@ -44,6 +61,7 @@ export default function VaisualizeForm(){
             type: "textarea",
             placeholder: "What do you want to achieve or analyze with this dataset?",
             required: true,
+            maxlength:300
         }
     ];
     const [multiselect, setMultiselect]= useState({
@@ -51,47 +69,7 @@ export default function VaisualizeForm(){
         categorical_columns:[],numerical_columns:[],
         date_columns:[], non_placed_columns:[]
     })
-    const datasetStructureFields = [
-    {
-        label: "Columns (Field Names)",
-        name: "columns",
-        type: "multi-input",
-        placeholder: "Enter all column names in your dataset",
-        required: true,
-    },
-    {
-        label: "Categorical Columns",
-        name: "categorical_columns",
-        type: "multi-select",
-        placeholder: "Select categorical columns (e.g. gender, region)",
-        optionsSource: "columns", 
-        required: false,
-    },
-    {
-        label: "Numerical Columns",
-        name: "numerical_columns",
-        type: "multi-select",
-        placeholder: "Select numeric columns (e.g. age, income)",
-        optionsSource: "columns",
-        required: false,
-    },
-    {
-        label: "Date Columns",
-        name: "date_columns",
-        type: "multi-select",
-        placeholder: "Select columns with date/time values (if any)",
-        optionsSource: "columns",
-        required: false,
-    },
-    {
-        label: "Unique Columns",
-        name: "unique_columns",
-        type: "multi-select",
-        placeholder: "Select columns that uniquely identify each record (e.g. ID, email)",
-        optionsSource: "columns",
-        required: false,
-    }
-    ];
+    
     const formChange=(e, key, option=false)=>{
         if (option) return setFormData({...formData,[key]:e})
         return setFormData({...formData,[key]:e.target.value})
@@ -249,65 +227,82 @@ export default function VaisualizeForm(){
         }, 2000);
         return
     }})
+    
     return(
-      <section id="form" className="overflow-x-hidden  px-10 tablet:px-5">
-            <div>
-                <h2 className="text-center mt-6">Let vAIsualize be your personal data assistant</h2>
+      <section id="form" className="bg-[#F4E5FD] overflow-x-hidden py-[60px] px-10 tablet:px-5">
+        <div className="shadow-xl bg-[#EEF4FA] rounded-[33px] pb-6">
+            <div className="rounded-t-[33px] herobtn px-6 py-5 flex items-center gap-x-1.5">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.6875 4.05513V13.0616C10.6875 13.7184 10.1568 14.2491 9.5 14.2491C8.84316 14.2491 8.3125 13.7184 8.3125 13.0616V4.05513L5.58867 6.77895C5.1248 7.24282 4.37148 7.24282 3.90762 6.77895C3.44375 6.31509 3.44375 5.56177 3.90762 5.0979L8.65762 0.3479C9.12148 -0.115967 9.8748 -0.115967 10.3387 0.3479L15.0887 5.0979C15.5525 5.56177 15.5525 6.31509 15.0887 6.77895C14.6248 7.24282 13.8715 7.24282 13.4076 6.77895L10.6875 4.05513ZM2.375 13.0616H7.125C7.125 14.3715 8.19004 15.4366 9.5 15.4366C10.81 15.4366 11.875 14.3715 11.875 13.0616H16.625C17.935 13.0616 19 14.1266 19 15.4366V16.6241C19 17.934 17.935 18.9991 16.625 18.9991H2.375C1.06504 18.9991 0 17.934 0 16.6241V15.4366C0 14.1266 1.06504 13.0616 2.375 13.0616ZM16.0312 16.9209C16.2675 16.9209 16.494 16.8271 16.661 16.6601C16.828 16.4931 16.9219 16.2665 16.9219 16.0303C16.9219 15.7941 16.828 15.5676 16.661 15.4006C16.494 15.2335 16.2675 15.1397 16.0312 15.1397C15.795 15.1397 15.5685 15.2335 15.4015 15.4006C15.2345 15.5676 15.1406 15.7941 15.1406 16.0303C15.1406 16.2665 15.2345 16.4931 15.4015 16.6601C15.5685 16.8271 15.795 16.9209 16.0312 16.9209Z" fill="white"/>
+                </svg>
+                <p className="font-semibold text-white text-xl">vAIsualize - Upload Your Data</p>
             </div>
-            <div className="grid grid-cols-2 tablet:grid-cols-1 pt-4 pb-5 gap-10">
-                <div className="w-full">
-                    <p className="text-left text-sm text-gray-600 mb-3">DataSet Info</p>
+            <div>
+
+            </div>
+            <div className="grid grid-cols-1 px-6 tablet:grid-cols-1 pt-4 pb-5 gap-10">
+                <div className="w-full ">
+                    <p className="text-left text-sm font-semibold mb-5 text-xl text-black  uppercase mt-3">DataSet Info</p>
                     <div>
-                        <div className="w-full flex flex-col gap-5">
-                            {datasetInfo.map(({label, name, type, options, placeholder},ind)=>
+                        <div className="w-full flex flex-col gap-5 grid grid-cols-2 gap-x-5 tablet:grid-cols-1">
+                            {datasetInfo.map(({label, name, type, options, placeholder, maxlength},ind)=>
                                 <Fragment key={ind}>
                                     {type==='text'?
-                                    <div>
-                                        <p>{label}</p>
+                                    <div className={ind===0?' col-span-2 ':''}>
+                                        <p className="font-medium">{label}</p>
                                         <input type={type} onChange={(e)=>formChange(e, name)}
                                             value={formData[name] || ''} 
-                                            className="border-gray-400 py-2.5 px-3 gap-x-2 w-full border rounded-md text-sm tablet:text-base  py-1 border-gray-600 px-3"
+                                            className=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
                                             placeholder={placeholder}
+                                            maxLength={maxlength}
                                         />
                                     </div>:
                                     type==='select'?
                                     <div className="w-full">
-                                        <p>{label}</p>
+                                        <p className="font-medium">{label}</p>
                                         <SelectOption
                                             options={
                                                 options
                                             }
+                                            // optionClass=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base"
                                             value={formData[name] || ''} 
                                             onChange={(e)=>formChange(e,name, true)}
                                             label={label}
                                         />
                                     </div>:
                                     <div>
-                                        <p>{label}</p>
+                                        <p className="font-medium">{label}</p>
                                         <textarea value={formData[name] || ''} 
                                             onChange={(e)=>formChange(e,name)}
-                                            className="w-full h-[100px] border-gray-400 border rounded-md text-sm tablet:text-base  py-1 border-gray-600 px-3"
-                                            placeholder={placeholder}/>
+                                            className="w-full p-3 h-[100px] rounded-md gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
+                                            placeholder={placeholder}
+                                            maxLength={maxlength}    
+                                        />
                                     </div>
                                     }
                                 </Fragment>
                             )}
                         </div>
-                        <div className="relative">
-                            <p className="text-[14px] font-medium mb-2">{'Upload Dataset(CSV/Excel)'}</p>
+                        <div className="relative py-8 rounded-md border bg-white mt-8 border-dashed border-[#8F34E9] flex flex-col items-center justify-center">
+                            <img src="/svg/upload-purple.svg" alt="upload-purple" className="w-10 h-10"/>
+                            {fileData?.value? 
+                                <p className="text-[18px] font-medium mb-2">{getFileName(fileData?.value)}</p>
+                            :  <>
+                            
+                                <p className="text-[18px] font-medium mb-2">{'Upload your file here'}</p>
+                            </>
+                            
+                            }
+                            <p className="text-[14px] font-medium text-gray-600">{'(CSV/Excel)'}</p>                                
+
                             <button onClick={(e)=>{
                                 e.preventDefault()
                                 document.querySelector('#img').click()
-                            }} className="flex gap-x-2 rounded-md bg-white border border-[#0D6EFD] p-2">
-                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 12V3.85L4.4 6.45L3 5L8 0L13 5L11.6 6.45L9 3.85V12H7ZM0 16V11H2V14H14V11H16V16H0Z" fill="#4AA5FF"/>
-                                </svg>
-                                <p className="text-base tablet:text-sm">{!fileData?.value?'Add file':'Edit file'}</p>
+                            }} className="flex gap-x-2 rounded-md mt-8 p1 py-3.5 px-12 rounded-md items-center">
+                                <img src="/svg/link-attached.svg" className="w-5 h-5"/>
+                                <p className="text-base text-white">{!fileData?.value?'Add file':'Change file'}</p>
                             </button>
-                            {fileData?.value? 
-                                <p className="absolute left-[40%] bottom-0 text-sm font-medium w-[200px]">{getFileName(fileData?.value)}</p>
-                            :null
-                            }
+                            
                             <input type="file" accept=".csv, .xlsx" name="coverImg" 
                                 className="hidden" id="img"
                                 onChange={(e)=>previewPic(e)}
@@ -319,20 +314,41 @@ export default function VaisualizeForm(){
                 <ColumnSetup multiselect={multiselect} 
                     setMultiselect={setMultiselect}
                     first5rows={first5rows}
-                />}
+                />
+                } 
             </div>
-            <div className="pb-6">
-                <LoadButton onClick={()=>requestChatGPT()}
-                className="bg-blue-500 py-2 px-6 rounded-md text-white" 
-                    disabled={!formData.title  || !formData.goal  || !formData.description || !fileData?.value}                    
-                    isLoading={isLoading}>
-                    Submit 
-                </LoadButton>
+            <div className="py-6 px-5">
+                <div className="px-5 relative">
+                    <LoadButton onClick={()=>requestChatGPT()}
+                    activeClass=" button1 "
+                    className={"font-medium px-6 text-lg text-white h-full w-full py-3.5"} 
+                        disabled={
+                            !formData.title  || !formData.goal  || !formData.description 
+                            || !fileData?.value || !multiselect.columns.length 
+                        }                    
+                        isLoading={isLoading}>
+                        Start AI Analysis
+                    </LoadButton>
+                </div>
             </div>
+            <div className="px-5">
+                <div className="rounded-xl bg-[#FFE9F6] py-3.5 px-5 border border-[#E34AA5] flex items-center justify-between ">            
+                    <div className="flex items-center gap-x-2">
+                        <img src="/svg/info.svg" className="w-5 h-5" />
+                        <p>NEED HELP? <span>Contact our AI data experts</span></p>  
+                    </div>
+                    <Link href={API_ENDPOINTS.CONTACT_LINE} className="p2 rounded-lg px-4 py-2.5">
+                        <p className="text-white">Get Assistance</p>
+                    </Link>
+                </div>
+            </div>
+
+        </div>
+        
       </section>
     )
 }
-function ColumnSetup({multiselect, first5rows, setMultiselect}){
+function ColumnSetup({multiselect, first5rows, setMultiselect, onClose=()=>null}){
     const [openModal, setOpenModal]= useState(null)
 
     const addColumn = ({col, cat}) => {
@@ -366,19 +382,75 @@ function ColumnSetup({multiselect, first5rows, setMultiselect}){
       });
       setOpenModal(null)
     };
-    // console.log({multi_select})
+
+    const datasetStructureFields = [
+    {
+        label: "Columns (Field Names)",
+        name: "columns",
+        type: "multi-input",
+        placeholder: "Enter all column names in your dataset",
+        required: true,
+    },
+    {
+        label: "Unique Columns",
+        name: "unique_columns",
+        type: "multi-select",
+        placeholder: "Select columns that uniquely identify each record (e.g. ID, email)",
+        optionsSource: "columns",
+        required: false,
+    },
+    {
+        label: "Categorical Columns",
+        name: "categorical_columns",
+        type: "multi-select",
+        placeholder: "Select categorical columns (e.g. gender, region)",
+        optionsSource: "columns", 
+        required: false,
+    },
+    {
+        label: "Numerical Columns",
+        name: "numerical_columns",
+        type: "multi-select",
+        placeholder: "Select numeric columns (e.g. age, income)",
+        optionsSource: "columns",
+        required: false,
+    },
+    {
+        label: "Date Columns",
+        name: "date_columns",
+        type: "multi-select",
+        placeholder: "Select columns with date/time values (if any)",
+        optionsSource: "columns",
+        required: false,
+    },
+    {
+        label: "Non Labelled Columns",
+        name: "string_columns",
+        type: "multi-input",
+        placeholder: "Enter all column names in your dataset",
+        required: true,
+    },
+    {
+        label: "Excluded Columns",
+        name: "excluded_columns",
+        type: "multi-input",
+        placeholder: "Enter all column names in your dataset",
+        required: true,
+    },
+    ];
     return (
-        <div>
-            <div className="">
-                <p className="text-left text-sm text-gray-600 mb-3">Column Setup</p>
-                <div>
-                    <p className="text-sm">Note that:</p> 
-                    <p className="text-xs italic">{"1) IDs alone may not always represent uniqueness accurately. You can combine fields such as first name and last name into a single unique identifier) before uploading. You may also upload a separate CSV or Excel file if you have preprocessed this combination."}</p>
-                    <p className="text-xs italic">{"2) For accurate processing, please ensure all numerical fields are converted to plain numbers before uploading.Remove any attached units (e.g., 'kg', '%', '$') or symbols to maintain consistency."}</p>
+        <div className="bg-white rounded-lg py-3 ">
+            <div>
+                <p className="pl-5 text-left text-lg font-semibold pb-3 border-b">Column Setup</p>
+                
+                <div className="px-5 mt-4">
+                    <p className="text-sm font-semibold">Note that:</p> 
+                    <p className="text-sm ">{"1) IDs alone may not always represent uniqueness accurately. You can combine fields such as first name and last name into a single unique identifier) before uploading. You may also upload a separate CSV or Excel file if you have preprocessed this combination."}</p>
+                    <p className="text-sm mt-3">{"2) For accurate processing, please ensure all numerical fields are converted to plain numbers before uploading. Remove any attached units (e.g., 'kg', '%', '$') or symbols to maintain consistency."}</p>
                     
                 </div>
-                <div className="gap-5 flex flex-col mt-4">
-                    {multiselect?.all_columns?.map((col,ind)=>{
+                <div className="gap-5 mt-4 grid-2-no-row-height justify-between">
+                    {/* {multiselect?.all_columns?.map((col,ind)=>{
                         let belonged_category=''
 
                         for (const key of Object.keys(multiselect).slice(2)) {
@@ -431,7 +503,105 @@ function ColumnSetup({multiselect, first5rows, setMultiselect}){
                             
                         </div>
                         )
+                    })} */}
+                    {datasetStructureFields.slice(1,6).map((cat,ind)=>{
+                        const belonged_category=cat.name
+                        // const columns_under_this_category= multiselect?.all_columns?.filter(())
+                        return(
+                        <div key={ind} className="px-5 griditem">
+                            <div className="flex gap-x-1.5 items-center mb-2">
+                                <div className="rounded-full w-3 h-3 p2"></div>
+                                <p className="font-medium">{cat.label}</p>
+                            </div>
+                            <div className="max-h-[500px] overflow-y-auto">
+                                <div className="flex-col flex gap-y-2">
+                                    {multiselect[cat.name]?.map((col,ind)=>
+                                    <div key={ind} className="flex justify-between bg-[#F5F5FA] px-4 py-3 rounded-lg items-center">
+                                        <div className="flex flex-col w-[120px]">
+                                            <p className="text-sm">{col}</p>
+                                            <p className="text-sm text-gray-700 truncate">{first5rows[0][col]}</p>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            {/* <div>
+                                                <p>{belonged_category.replace('_', ' ')}</p>
+                                            </div> */}
+                                            <div className="flex gap-x-2 items-center gap-y-4">
+                                                <button disabled={!multiselect?.columns?.includes(col)} onClick={()=>{
+                                                    setOpenModal({
+                                                        type:'switch',
+                                                        value:belonged_category, label:col,
+                                                    })
+                                                }} className="p1 text-white text-sm px-2 py-1.5 rounded-lg">switch</button>
+                                                {multiselect?.columns?.includes(col)?
+                                                    <button 
+                                                        onClick={()=>{
+                                                            excludeColumn({col, cat:belonged_category})
+                                                        }}
+                                                        className="p3 text-white text-sm px-2 py-1.5 rounded-lg">exclude</button>:
+                                                    <button  className="p2 text-white text-sm px-2 py-1.5 rounded-lg" 
+                                                    onClick={()=>{
+                                                        setOpenModal({
+                                                            label:col, type:'add'
+                                                        })
+
+                                                    }}>include</button>
+                                                }
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        )
                     })}
+                    <div className="px-5 griditem">
+                        <div className="flex gap-x-1.5 items-center mb-2">
+                            <div className="rounded-full w-3 h-3 bg-red-500"></div>
+                            <p className="font-medium">{'Excluded Columns'}</p>
+                        </div>
+                        <div className="max-h-[500px] overflow-y-auto">
+                            <div className="flex-col flex gap-y-2">
+                                {multiselect?.all_columns?.filter((col)=>!multiselect?.columns.includes(col))?.map((col,ind)=>
+                                <div key={ind} className="flex justify-between bg-[#F5F5FA] px-4 py-3 rounded-lg items-center">
+                                    <div className="flex flex-col w-[120px]">
+                                        <p className="text-sm">{col}</p>
+                                        <p className="text-sm text-gray-700 truncate">{first5rows[0][col]}</p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        {/* <div>
+                                            <p>{belonged_category.replace('_', ' ')}</p>
+                                        </div> */}
+                                        <div className="flex gap-x-2 items-center gap-y-4">
+                                            <button disabled={!multiselect?.columns?.includes(col)} onClick={()=>{
+                                                setOpenModal({
+                                                    type:'switch',
+                                                    value:belonged_category, label:col,
+                                                })
+                                            }} className="invisible p1 text-white text-sm px-2 py-1.5 rounded-lg">switch</button>
+                                            {multiselect?.columns?.includes(col)?
+                                                <button 
+                                                    onClick={()=>{
+                                                        excludeColumn({col, cat:belonged_category})
+                                                    }}
+                                                    className="bg-[#E64545] text-white text-sm px-2 py-1.5 rounded-lg">exclude</button>:
+                                                <button  className="p2 text-white text-sm px-2 py-1.5 rounded-lg" 
+                                                onClick={()=>{
+                                                    setOpenModal({
+                                                        label:col, type:'add'
+                                                    })
+
+                                                }}>include</button>
+                                            }
+                                        </div>
+                                    </div>
+                                            
+                                </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {openModal? 
@@ -469,12 +639,13 @@ function SelectColumn({onClose, onChange, label, options, value}){
                 onChange={(e)=>{
                     setOption(e)
                 }}
+                containerClass={' border'}
             />
             <div className="flex justify-center mt-4">
                 <button onClick={()=>onChange(
                     {col:label, cat:option, ex_cat:value})
                 } disabled={!option}
-                className="bg-blue-600 text-white text-sm py-2 px-3 rounded-md ">
+                className="p2 text-white w-full py-3 px-8 rounded-lg ">
                     Update
                 </button>
             </div>

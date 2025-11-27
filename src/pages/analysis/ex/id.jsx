@@ -6,7 +6,7 @@ import ChartLayout from "@/components/default";
 
 import {HistogramGrouped, BoxPlot, ViolinPlot, ScatterPlot, BubbleChart, BarChart, HeatmapChart,RadarChart, AreaChart, LinePlot, PieChart} from "@/components/chart/chartTools";
 import { DataFetch, SelectOption } from "@/components";
-import { API_ENDPOINTS, commafy, consolelog, timeStampControl } from "@/configs";
+import { API_ENDPOINTS, consolelog, timeStampControl } from "@/configs";
 import { DataRequestContext, UseDataRequestContextComponent } from "@/context";
 import { useQuery } from "@tanstack/react-query";
 import { useHttpServices } from "@/hooks";
@@ -26,9 +26,6 @@ function AnalysisC() {
     const router = useRouter()
     // const dataList = data_json;
     const {setDataArray:setData, setVisualsSugg, setDataMetrics:setMetrics}= useContext(DataRequestContext)
-    
-    const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
-    const [timeLeft, setTimeLeft] = useState('');
 
     const {getData, getDataWithoutBaseUrl}= useHttpServices()
     const getARequest=async()=>{    
@@ -47,7 +44,21 @@ function AnalysisC() {
         retry:false, enabled:!!router.isReady
         }
     )
-
+    // useEffect(() => {
+    //     fetch("/vaisualize_test_files/fc26.csv")
+    //     .then((res) => res.text())
+    //     .then((csvText) => {
+    //         const result = Papa.parse(csvText, {
+    //             header: true,
+    //             skipEmptyLines: true,
+    //         });
+    //         const {visuals_sugg, request}= response_data().data
+    //         setData(result.data);
+    //         setMetrics(request)
+    //         consolelog({visuals_sugg})
+    //         setVisualsSugg(visuals_sugg)
+    //     });
+    // }, [req_data]);
     const read_into_csv=async(data)=>{
         fetch(data?.file_url?.[0])
         .then((res) => res.text())
@@ -94,6 +105,7 @@ function AnalysisC() {
             return;
         }
 
+        // ========= EXCEL (xls / xlsx) =========
         if (lower.endsWith(".xlsx") || lower.endsWith(".xls")) {
             const res = await fetch(fileUrl);
             const buffer = await res.arrayBuffer();
@@ -122,33 +134,8 @@ function AnalysisC() {
     };
     useEffect(()=>{
         if(!req_data) return
-        
-        read_into_file(req_data?.request)
-        const created = new Date(req_data?.request?.createdAt).getTime();
-        const expiry = created + 2 * 24 * 60 * 60 * 1000
-        
-        const tick = () => {
-            const remaining = expiry - Date.now();
-            setTimeLeft(remaining);
-        };
-
-        tick(); 
-
-        const interval = setInterval(tick, 1000);
-
-        return () => clearInterval(interval);       
+        read_into_file(req_data?.request)        
     },[req_data])
-
-    const formatTime = (ms) => {
-        if(!ms) return null
-        const totalSeconds = Math.floor(ms / 1000);
-        const days = Math.floor(totalSeconds / (24 * 3600));
-        const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-
-        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    };
     return (
     <DataFetch
         isLoading={reqLoading} 
@@ -156,42 +143,24 @@ function AnalysisC() {
         errorMsg={error?.message}
         isEmpty={false}
     >
-        <div>
-            <div style={{
-                boxShadow: '1px 0px 50px -8px rgba(24, 24, 27, 0.1)'
-            }} className="flex tablet:flex-col items-center justify-between rounded-b-md sticky tablet:relative tablet:w-full top-0 z-[99] border w-full left-0 right-0 h-fit bg-white py-7 px-10 tablet:px-4">
+        <div className="p-6">
+            <h1 className="text-xl font-semibold mb-4">{req_data?.request?.title}</h1>
+            
+            <section className="grid grid">
                 <div>
-                    <h1 className="text-2xl font-semibold text-[#5345E6]">{req_data?.request?.title}</h1>
-                    <p className="text-gray-700 text-sm tablet:mt-2">This visuals expires in {formatTime(timeLeft)} — Subscribe for premium to cancel</p>
-                </div>
-                <div className="relative tablet:mt-6">
-                    <button className="p2 gap-x-2 flex px-10 rounded-lg py-3.5">
-                        <img src="/svg/metric/star.svg" alt="star" />
-                        <p className="text-white font-semibold">Get Premium</p>
-                    </button>
-                    <div
-                        className="absolute right-[-20px] top-[-20px] h-[50px] w-[50px] flex items-center justify-center">
-                        <img src="/svg/discount.svg" className="absolute inset-0 h-full w-full "/>
-                        <div className="relative z-2 text-center text-white">
-                            <p className="mb-[-10px] text-sm font-semibold">80%</p>
-                            <small className="text-[9px] font-medium">OFF</small>
-                        </div>
-
+                    <div>
+                        <h2>{req_data?.request?.description}</h2>
+                        <p>{req_data?.request?.goal}</p>
                     </div>
-                </div>
-
-            </div>
-            <div className="px-8 py-7 bg-g tablet:px-4" >
-                <p className="w-[90%] tablet:text-sm tablet:w-[95%]">{req_data?.request?.description}</p>
-                <div className="mt-11 mb-20">
+                    
                     <CardBox/>
+                    <section>
+                        <VisualCharts/>
+                    </section>
+                    
                 </div>
-                <div>
-                    <VisualCharts/>
-                </div>
-            </div>
+            </section>
         </div>
-
     </DataFetch>
     
   );
@@ -202,11 +171,10 @@ function CardBox(){
     const {isDate, convertToDigit}= timeStampControl
     // console.log({metrics})
     return(
-    <div className="grid grid-cols-5 tablet:grid-cols-1 gap-x-8 gap-y-14 justify-between items-center number_card">
+    <div className="grid grid-cols-6 gap-x-20 items-center number_card">
         {metrics?.map(({label, aggregate, column},ind)=>
             {
                 let aggregate_value=[]
-                let aggregate_icon= API_ENDPOINTS.METRIC_ICONS.find(({match})=>label?.includes(match)) || {match:'', value:'chart.svg'}
                 if(aggregate.includes('count')){
                     let values= data.map((row)=>row[column])?.filter((x)=>!!x)
                     aggregate_value=[[...new Set(values)].length]
@@ -239,15 +207,12 @@ function CardBox(){
                 }
                 else if (aggregate.includes('min')){
                     const date_type= isNaN(parseInt(data[0][column]))? isDate(data[0][column]):false
-                    
                     let values= data.map(
                         (row)=>date_type?row[column]:convertToDigit(row[column]))?.filter((x)=>!!x)
                     if(date_type){
-                        aggregate_icon=API_ENDPOINTS.METRIC_ICONS.find(({match})=>match==='Mindate')
                         aggregate_value=[minmaxDate({values,aggregate:'max'})]
                     }
                     else{
-                        aggregate_icon=API_ENDPOINTS.METRIC_ICONS.find(({match})=>match==='Min')
                         aggregate_value=[Math.min(...values)]
                     }
                 }
@@ -256,28 +221,19 @@ function CardBox(){
                     let values= data.map(
                         (row)=>date_type?row[column]:convertToDigit(row[column]))?.filter((x)=>!!x)
                     if(date_type){
-                        aggregate_icon=API_ENDPOINTS.METRIC_ICONS.find(({match})=>match==='Maxdate')
                         aggregate_value=[minmaxDate({values,aggregate:'max'})]
                     }
                     else{
-                        aggregate_icon=API_ENDPOINTS.METRIC_ICONS.find(({match})=>match==='Max')
                         aggregate_value=[Math.max(...values)]
                     }
                 }
                 return(
                 <Fragment key={ind}>
-                    <div className="py-4 px-5 shadow-lg bg-white rounded-lg  tablet:py-10" style={{
-                        borderColor:'rgba(56, 56, 56, 0.12)',
-                        borderWidth:'1.5px'
-                    }}>
-                        <div className="p-2 p1 rounded-md w-fit mb-2">
-                            <img style={aggregate_icon?{}:{visibility:'hidden'}} src={"/svg/metric/"+(aggregate_icon?.value || 'chart.svg')} alt={aggregate_icon?.value} className="w-5 h-5"/>
-                        </div>
-                        <p className="capitalize text-[13px] mb-[6px] text-[#1D1E25] tablet:text-base">{label}</p>
-                        <p className="text-3xl font-semibold">
-                            {commafy(aggregate_value[0])}
-                            {!aggregate_value.length?<span className="text-sm text-gray-600">+</span>:<></>}
-                        </p>
+                    <div>
+                        <p className="uppercase">{label}</p>
+                        <p>{aggregate_value?.map((value,ind)=>
+                            <span key={ind}>{value}</span>
+                        )}</p>
                     </div>
                 </Fragment>
             )}
@@ -337,10 +293,10 @@ function ExCardBox(){
 function VisualCharts(){
     const {visualsSugg:visuals_sugg}= useContext(DataRequestContext)
     // if(!data.length, !chartType) return null
-    // console.log({visuals_sugg})
+    console.log({visuals_sugg})
     return(
-        <section className="grid grid-cols-2 tablet:grid-cols-1 gap-x-5 gap-y-8 w-full items-start">
-           {visuals_sugg?.map(({plot_type, title,unit, description,x,y,group_by,z, aggregate, why},ind)=>{
+        <section className="grid grid-cols-2 gap-x-5 gap-y-8 w-full items-start">
+           {visuals_sugg?.map(({plot_type, title,unit, description,x,y,group_by,z, aggregate},ind)=>{
                     return(
                         <Fragment key={ind}>
                             <ChartComponent 
@@ -350,7 +306,6 @@ function VisualCharts(){
                                 group_by={group_by}
                                 aggregate={aggregate}
                                 unit={unit}
-                                why={why}
                             />
                         </Fragment>
                     )
@@ -361,7 +316,7 @@ function VisualCharts(){
     )
 }
 
-function ChartComponent({plot_type, x, z=null, y, why, title,unit,aggregate, description, group_by=null}){
+function ChartComponent({plot_type, x, z=null, y, title,unit,aggregate, description, group_by=null}){
     const [chartType, setChartType]= useState(plot_type.split(',')[0])
     const [mount, setMount]= useState(false)
     const charts_done=[
@@ -396,18 +351,15 @@ function ChartComponent({plot_type, x, z=null, y, why, title,unit,aggregate, des
     const Chart= useMemo(()=>{
         return componentMap[chartType]
     },[chartType])
+
     // if(!mount) return null
     if(!charts_done.includes(chartType)) return null 
     return(
-        <div className="relative bg-white rounded-lg shadow-lg py-4 px-3 w-full relative tablet:overflow-x-auto"
-        style={{
-            borderColor:'rgba(56, 56, 56, 0.12)',
-            borderWidth:'1.5px'
-        }}
-        >
-            <div className="relative mb-4 flex justify-between items-center">
-                <div className="flex relative items-center gap-x-2">
-                    <p className="font-semibold">{title}</p>
+        <div className="relative">
+            <div className="flex justify-between items-center">
+                <div className="flex items-center gap-x-2">
+                    <p className="">{title}</p>
+
                     {plot_type.split(',').length>1?
                         <div className="">
                             <SelectOption options={[...plot_type.split(',')].map((x)=>x.trim())}
@@ -418,16 +370,11 @@ function ChartComponent({plot_type, x, z=null, y, why, title,unit,aggregate, des
                         :null
                     }
                 </div>
-                <button onClick={()=>setMount(!mount)}>
-                    <img src="/svg/info.svg"/>
+                <button>
+                    <p className="text-xs">info</p>
                 </button>
-                {mount?
-                    <div className="w-[300px] text-center shadow-md bg-white border h-fit absolute top-[30px] text-xs p-2 rounded-md right-0 z-[2]">
-                        <p>{why}</p>
-                    </div>
-                :null}
             </div>
-            <div className="p-2 rounded-b-md bg-g pt-5">
+            <div>
                 <Chart 
                     x={[x]} y={[y]} group_by={group_by} 
                     aggregation={aggregate} 

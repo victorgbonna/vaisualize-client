@@ -38,6 +38,8 @@ function BubbleChart({x,y, group_by, z}){
   };
 
   const options = {
+    maintainAspectRatio:false,
+    responsive:true,
     plugins: {
       legend: { display: false },
       title: { display: false }, 
@@ -80,7 +82,9 @@ function BubbleChart({x,y, group_by, z}){
         <p className='text-xs'>{group_by}</p>
       </div>
     </div>
-    <Bubble data={data} options={options} />
+    <div className="h-[400px]  tablet:w-[500px] tablet:h-[350px]">
+      <Bubble data={data} options={options} />
+    </div>
     </>
   )
 }

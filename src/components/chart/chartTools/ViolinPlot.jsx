@@ -19,6 +19,7 @@ function ViolinPlot({x,y}){
 
   const options = {
     responsive: true,
+    maintainAspectRatio:false,
     plugins: {
       title: {
         display: false,
@@ -104,7 +105,9 @@ function ViolinPlot({x,y}){
           pages={meta.pages}
           currentPage={meta.page}
         />
-      <Chart type="violin" data={data} options={options} />
+      <div className="h-[400px] tablet:w-[500px] tablet:h-[350px]">
+        <Chart type="violin" data={data} options={options} />
+      </div>
     </div>
   );
 };

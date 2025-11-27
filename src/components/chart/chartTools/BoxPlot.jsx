@@ -45,6 +45,7 @@ function BoxPlot({x, y, aggregation}){
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { position: "", display:false },
     },
@@ -118,7 +119,9 @@ function BoxPlot({x, y, aggregation}){
           currentPage={meta.page}
         />
         {/* :null} */}
+      <div className="h-[400px] tablet:w-[500px] tablet:h-[350px]">
       <Chart type="boxplot" data={data} options={options} />
+      </div>
     </div>
   );
 };

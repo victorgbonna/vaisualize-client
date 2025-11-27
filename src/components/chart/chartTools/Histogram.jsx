@@ -108,7 +108,8 @@ function HistogramZ({x, y, z=null, title, group_by, aggregation='count'}){
     datasets,
   };
     const options = {
-      responsive: true,
+responsive: true,
+  maintainAspectRatio: false,
       plugins: {
         legend: { position: "top" , display:false},
         title: { display: true, text: y[0] },
@@ -128,7 +129,7 @@ function HistogramZ({x, y, z=null, title, group_by, aggregation='count'}){
     };
 
   return (
-    <div className="">
+    <div className="h-[400px] tablet:w-[500px] tablet:h-[350px]">
       <Bar data={chartData} options={options} />
     </div>
   );
@@ -221,7 +222,8 @@ function HistogramSingle({x,y,z, aggregation='count'}){
   const options = {
     // categoryPercentage: 1.0,
       // barPercentage: 1.0,
-    responsive: true,
+  responsive: true,
+  maintainAspectRatio: false,
     plugins: {
       legend: { position: "", display:false },
       title: { display: false, text: "Histogram Example" },
@@ -238,7 +240,7 @@ function HistogramSingle({x,y,z, aggregation='count'}){
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="h-[400px] w-full max-w-2xl mx-auto tablet:w-[500px] tablet:h-[350px]">
       {/* <DND/> */}
       <Bar data={chartData} options={options} />
     </div>

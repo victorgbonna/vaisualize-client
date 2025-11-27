@@ -1,3 +1,7 @@
+export {default as VisualCard} from './helper/VisualCard';
+
+export {default as AutoSlider} from './helper/AutoSlider';
+
 export {default as VaisualizeForm} from './VaisualizeForm';
 
 export {default as SelectMultiple} from './helper/SelectOption/selectMultiple';
@@ -10,6 +14,7 @@ export { default as SelectOptionAsObjectValue } from './helper/SelectOption/valu
 export { default as SelectOption } from './helper/SelectOption';
 
 export {default as Chart} from './chart/Chart';
+
 
 
 // export { default as DataFetch } = require("./helper/Datafetch");

@@ -1,5 +1,5 @@
 const commafy = (x) => {
-    if(!x || typeof x !=='number') return x
+  if(!x || typeof x !=='number') return x
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   const kFormatter=(num)=> {

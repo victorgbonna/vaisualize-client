@@ -1,79 +1,20 @@
-
-// import { HeatmapComponent, Inject, Tooltip } from '@syncfusion/ej2-react-Heatmap';
-
 import { consolelog, pagination } from "@/configs";
 import { DataRequestContext } from "@/context";
 import { useContext, useEffect, useState } from "react";
 
-function ExHeatmapChart({x,y}){
-  let HeatmapData= [
-    [52, 65, 67, 45, 37, 52],
-    [68, null, 63, 51, 30, 51],
-    [7, 16, 47, null, 88, 6],
-    [66, 64, null, 40, 47, 41],
-    [14, 46, 97, 69, null, 3],
-    [54, 46, 61, 46, null, 39]
 
-  ];
-  return (
-   <div className="overflow-x-auto">
-        <table style={{height:400}} className={` tablet:h-[350px] h-[400px] border-separate border-spacing-2 bg-red-400`}>
-            <thead>
-            <tr className="text-sm">
-                <th className="font-medium">Interval</th>
-                {x.map((num_cols,ind)=>
-                    <th className="min-w-[50px] font-semibold text-gray-600 text-xs" key={ind}>{'wk-'+(num_cols)}</th>
-                )}
-                
-            </tr>
-            </thead>
-            <tbody>
-            {x.map((num_cols,ind)=>{
-                return(
-                <tr key={ind}>
-                    <td className="text-gray-600 text-xs">{num_cols}</td>
-                    {x.map((num_cols_2,j)=>{
-                        const value = correlationMatrix[i][j];
-                        const intensity = Math.round(Math.abs(value) * 900);
-                        return(
-                            <td 
-                            style={{
-                                backgroundColor:
-                                intensity==10?"rgb(220 252 231)":
-                                intensity==20?"rgb(187 247 208)":
-                                intensity==30?"rgb(134 239 172)":
-                                intensity==40?"rgb(74 222 128)":
-                                intensity==50?"rgb(34 197 94)":
-                                intensity==60?"rgb(22 163 74)":
-                                intensity==70?"rgb(21 128 61)":
-                                intensity==80?"rgb(22 101 52)":
-                                intensity==90?"rgb(20 83 45)":
-                                "#ffffff"
-                            }}
-                            className={`text-sm border border-slate-300 text-center h-20 text-black`} 
-                            key={num_cols_2}>
-                                {value.toFixed(2)}
-                            </td>
-                        )
-                    }
-
-                    )}
-                    
-                </tr>)
-                })}
-            </tbody>
-        </table>
-    </div>
-  );
-}
-function HeatmapChart({x,y}){
+function ActualHeatmapChart({x,y}){
     const [meta, setMeta]= useState({page:1, pages:1, limit:4})
     const {dataArray}= useContext(DataRequestContext)
     const [labels_max, setLabelsMax]=useState({})
 
-    const {result:heatmap_x_and_y, isAverageCount}= groupByXandCollectY(
-        {data:dataArray, xKeys:x[0], yKey:y[0], sorted_key:null});
-    
+    const {result:heatmap_x_and_y, isAverageCount, x_vals, y_vals}= 
+        groupByXandCollectY(
+            {
+                data:dataArray, xKeys:x[0], yKey:y[0], 
+                sorted_key:null, aggregate:'sum'
+            }
+        );
     
     useEffect(()=>{
       let labels_max_const={}
@@ -84,7 +25,7 @@ function HeatmapChart({x,y}){
       }
       setLabelsMax(labels_max_const)
 
-      const count=Object.keys(heatmap_x_and_y)?.length
+      const count=Object.keys(x_vals)?.length
       const result=pagination({page:meta.page, count})
       setMeta({...meta, ...result})
         
@@ -107,7 +48,7 @@ function HeatmapChart({x,y}){
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <table className={`border-collapse border-spacing-2 w-full`}>
+        <table style={{height:400}} className={`border-collapse border-spacing-2 w-full`}>
             <thead>
                 <tr className="text-sm">
                     <th className="h-fit w-[150px] px-4 py-2 text-gray-600 text-xs font-medium"><p className="underline">{y}</p><p>{'attributes'+isAverageCount?'(mean val)':''}</p></th>
@@ -119,7 +60,6 @@ function HeatmapChart({x,y}){
             </thead>
             <tbody>
             {x[0].map((num_entry,ind)=>{
-                // return null
                 return(
                 <tr key={ind} className="w-full">
                     <td className="text-gray-600 text-sm text-center">
@@ -166,7 +106,7 @@ function HeatmapChart({x,y}){
                                
                                 :"#ffffff"
                             }}
-                            className={`text-white text-sm font-bold border border-slate-300 text-center h-20 text-black`} 
+                            className={`text-white text-sm font-bold border border-slate-300 text-center h-8 text-black`} 
                             key={j}>
                                 {num_entry?.toLowerCase()==='age'?Math.round(value):value}
                             </td>
@@ -247,4 +187,4 @@ function SlideThrough({onPageClick, pages, currentPage}){
   )
 }
 
-export default HeatmapChart;
+export default ActualHeatmapChart;

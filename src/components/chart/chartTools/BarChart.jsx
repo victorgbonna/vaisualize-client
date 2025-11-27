@@ -27,12 +27,12 @@ import { Bar } from "react-chartjs-2";
 export default function BarChart(props){
   const max_limit_of_group_by= props?.group_by?[...new Set(props?.data?.map((row)=>row[group_by]))]:[]
   return(
-    <>
+    <div>
     {props?.group_by?
       <BarChartGroupBy {...props}/>:
       <BarChartSingle {...props}/>
     }
-    </>
+    </div>
   )
 }
 function BarChartGroupBy({x, y, aggregation, group_by, unit}) {
@@ -68,7 +68,9 @@ function BarChartGroupBy({x, y, aggregation, group_by, unit}) {
     }, [meta, groupedData]);
 
   const options = {
-    responsive: true,
+responsive: true,
+  maintainAspectRatio: false,
+
     plugins: {
       legend: { position: "top", display: false },
       title: { display: false, text: "Monthly Sales" },
@@ -89,13 +91,15 @@ function BarChartGroupBy({x, y, aggregation, group_by, unit}) {
   },[])
   if(!data) return null
   return (
-    <div className="w-full relative">
+    <div className="w-full relative tablet:h-full">
       <SlideThrough 
           onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
           pages={meta.pages}
           currentPage={meta.page}
         />
+      <div className="h-[400px] tablet:w-[500px] tablet:h-[350px]">
       {data?<Bar data={data} options={options} />:null}
+      </div>
     </div>
   )
 }
@@ -137,7 +141,8 @@ function BarChartSingle({x, y, aggregation, unit}) {
     return data
   }, [meta])
   const options = {
-    responsive: true,
+responsive: true,
+  maintainAspectRatio: false,
     plugins: {
       legend: { position: "top", display: false },
       title: { display: false, text: "Monthly Sales" },
@@ -159,13 +164,16 @@ function BarChartSingle({x, y, aggregation, unit}) {
   },[])
   if(!data) return null
   return (
-    <div className="w-full relative">
+    <div className="w-full relative tabet:h-full">
       <SlideThrough 
           onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
           pages={meta.pages}
           currentPage={meta.page}
         />
-      {data?<Bar data={data} options={options} />:null}
+      <div className="h-[400px] tablet:w-[500px] tablet:h-[350px]">
+        {data?<Bar data={data} options={options} />:null}
+      </div>
+
     </div>
   )
 }

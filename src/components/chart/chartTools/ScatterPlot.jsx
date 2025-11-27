@@ -59,6 +59,8 @@ function ScatterPlotGroupBy({x,y, group_by}){
     //   }
     // },
     // tooltips: { enabled: true },
+    responsive: true,
+  maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       title: { display: false }, 
@@ -115,8 +117,9 @@ function ScatterPlotGroupBy({x,y, group_by}){
           </div>
 
       </div>
-
-      <Scatter data={data} options={options} />
+      <div className='h-[400px] tablet:h-[350px] tablet:w-[500px]'>
+        <Scatter data={data} options={options} />
+      </div>
     </div>
   )
 }
@@ -183,7 +186,7 @@ function ScatterPlotSingle({x,y}){
 
   if(!data) return null
   return(
-    <div className="w-full relative">
+    <div className="w-full relative ">
       
       <SlideThrough 
         onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
@@ -205,8 +208,9 @@ function ScatterPlotSingle({x,y}){
           </div>
 
       </div>
-
-      <Scatter data={data} options={options} />
+      <div className='tablet:h-[350px] tablet:w-[500px] h-[400px]'>
+        <Scatter data={data} options={options} />
+      </div>
     </div>
   )
 }

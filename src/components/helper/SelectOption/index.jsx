@@ -20,7 +20,7 @@ export default function SelectOption(
     return (   
     <div ref={ref} className="z-[8]">
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
-        <div className={` cursor-pointer flex justify-between border rounded-md text-sm tablet:text-base text-graySubHd py-1 border-gray-400 px-3 py-2.5  gap-x-2 items-center  ${containerClass || ''} ${isInput && !options.includes(value)?' border-red-100 ':''}`}  
+        <div className={` cursor-pointer flex justify-between items-center rounded-md text-sm tablet:text-base  py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base  ${containerClass || ''} ${isInput && !options.includes(value)?' border-red-100 ':''}`}  
             style={{
             background: '#FFFFFF',
             // border: '1px solid #CABECF',

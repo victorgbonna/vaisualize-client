@@ -438,7 +438,8 @@ function LineChartGroupBy({x,y,group_by, aggregation, title,why, description, un
     }, [meta, groupedData]);
 
   const options = {
-    responsive: true,
+          responsive: true,
+  maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -466,7 +467,7 @@ function LineChartGroupBy({x,y,group_by, aggregation, title,why, description, un
   },[])
   if(!data) return null
   return(
-    <div className="w-full relative">
+    <div className="w-full relative tablet:overflow-x-hidden tablet:w-[400px]">
         {error?
           <div className='absolute bg-white text-black flex items-center justify-center w-full top-0 bottom-0 right-0 left-0'>
               <p className='italic w-[80%]'>{error}</p>
@@ -477,7 +478,9 @@ function LineChartGroupBy({x,y,group_by, aggregation, title,why, description, un
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <Line data={data} options={options} />
+        <div className="tablet:w-[500px] tablet:h-[350px]">
+          <Line data={data} options={options} />
+        </div>
     </div>
   ) 
 }
@@ -520,7 +523,8 @@ function LineChartSingle({x,y,group_by, aggregation, title,why, description, uni
       return data
     },[meta])
   const options = {
-    responsive: true,
+responsive: true,
+  maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -559,7 +563,9 @@ function LineChartSingle({x,y,group_by, aggregation, title,why, description, uni
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <Line data={data} options={options} />
+        <div className=" tablet:w-[500px] tablet:h-[350px]">
+          <Line data={data} options={options} />
+        </div>
     </div>
   ) 
 }

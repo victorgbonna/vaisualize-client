@@ -64,6 +64,7 @@ function AreaChartGroupBy({x,y,group_by, aggregation, title,why, description, un
 
   const options = {
     responsive: true,
+    maintainAspectRatio:false,
     plugins: {
       legend: {
         position: "top",
@@ -102,7 +103,9 @@ function AreaChartGroupBy({x,y,group_by, aggregation, title,why, description, un
           pages={meta.pages}
           currentPage={meta.page}
         />
+      <div className="h-[400px]  tablet:w-[500px] tablet:h-[350px]">  
         <Line data={data} options={options} />
+      </div>
     </div>
   ) 
 }
@@ -146,6 +149,7 @@ function AreaChartSingle({x,y,group_by, aggregation, title,why, description, uni
     },[meta])
   const options = {
     responsive: true,
+    maintainAspectRatio:false,
     plugins: {
       legend: {
         position: "top",
@@ -184,7 +188,9 @@ function AreaChartSingle({x,y,group_by, aggregation, title,why, description, uni
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <Line data={data} options={options} />
+        <div className="h-[400px]  tablet:w-[500px] tablet:h-[350px]">
+          <Line data={data} options={options} />
+        </div>
     </div>
   ) 
 }
