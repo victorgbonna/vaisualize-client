@@ -1,8 +1,31 @@
 const API_ENDPOINTS = {
+  MY_DETAILS:{
+    NAME:'Victor Chiedo Ogbonn',
+    EMAIL:'victorgbonna',
+    PHONE:'08102603301',
+    WHATSAPP:'https://wa.me/2348102603301',
+    FB:'',
+    X:'',
+    
+    LINKEDIN:'https://www.linkedin.com/in/victorgbonna/',
+    ACCOUNT_DETAILS:{
+      NAIRA:{
+        ACCOUNT_NAME:'OGBONNA VICTOR CHIEDOZIE',
+        BANK_NAME:'UBA',
+        ACCOUNT_NUMBER:'2096277247'
+      },
+      DOLLARS:{
+        ACCOUNT_NAME:'OGBONNA VICTOR CHIEDOZIE',
+        BANK_NAME:'UBA',
+        ACCOUNT_NUMBER:'2096277247'
+      }
+    }
+  },
   MAKE_A_REQUEST:'requests/prompt-visuals',
   GET_REQUEST:(x)=>{
     return 'requests/get/one/'+x
   },
+  GET_ALL_PUBLIC_REQUESTS:'requests/get/all-public',
   METRIC_ICONS:[
     {match:'Rating', value:'star.svg'},
     {match:'Maxdate', value:'calendar.svg'},

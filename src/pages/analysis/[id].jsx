@@ -9,8 +9,9 @@ import { DataFetch, SelectOption } from "@/components";
 import { API_ENDPOINTS, commafy, consolelog, timeStampControl } from "@/configs";
 import { DataRequestContext, UseDataRequestContextComponent } from "@/context";
 import { useQuery } from "@tanstack/react-query";
-import { useHttpServices } from "@/hooks";
+import { useFileInput, useHttpServices } from "@/hooks";
 import { useRouter } from "next/router";
+import { ModalLayout } from "@/components/modal";
 
 export default function ChartAnalysis() {
     return (
@@ -29,6 +30,7 @@ function AnalysisC() {
     
     const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
     const [timeLeft, setTimeLeft] = useState('');
+    const [openModal, setOpenModal]= useState('')
 
     const {getData, getDataWithoutBaseUrl}= useHttpServices()
     const getARequest=async()=>{    
@@ -136,6 +138,13 @@ function AnalysisC() {
 
         const interval = setInterval(tick, 1000);
 
+        setTimeout(() => {
+            setOpenModal({
+                label:req_data?.request?.title,
+                id:req_data?.request?._id
+            })
+        }, 3000);
+
         return () => clearInterval(interval);       
     },[req_data])
 
@@ -149,51 +158,61 @@ function AnalysisC() {
 
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     };
+    
     return (
-    <DataFetch
-        isLoading={reqLoading} 
-        isError={isReqError} 
-        errorMsg={error?.message}
-        isEmpty={false}
-    >
-        <div>
-            <div style={{
-                boxShadow: '1px 0px 50px -8px rgba(24, 24, 27, 0.1)'
-            }} className="flex tablet:flex-col items-center justify-between rounded-b-md sticky tablet:relative tablet:w-full top-0 z-[99] border w-full left-0 right-0 h-fit bg-white py-7 px-10 tablet:px-4">
-                <div>
-                    <h1 className="text-2xl font-semibold text-[#5345E6]">{req_data?.request?.title}</h1>
-                    <p className="text-gray-700 text-sm tablet:mt-2">This visuals expires in {formatTime(timeLeft)} — Subscribe for premium to cancel</p>
-                </div>
-                <div className="relative tablet:mt-6">
-                    <button className="p2 gap-x-2 flex px-10 rounded-lg py-3.5">
-                        <img src="/svg/metric/star.svg" alt="star" />
-                        <p className="text-white font-semibold">Get Premium</p>
-                    </button>
-                    <div
-                        className="absolute right-[-20px] top-[-20px] h-[50px] w-[50px] flex items-center justify-center">
-                        <img src="/svg/discount.svg" className="absolute inset-0 h-full w-full "/>
-                        <div className="relative z-2 text-center text-white">
-                            <p className="mb-[-10px] text-sm font-semibold">80%</p>
-                            <small className="text-[9px] font-medium">OFF</small>
+    <>
+        <DataFetch
+            isLoading={reqLoading} 
+            isError={isReqError} 
+            errorMsg={error?.message}
+            isEmpty={false}
+        >
+            <div>
+                <div style={{
+                    boxShadow: '1px 0px 50px -8px rgba(24, 24, 27, 0.1)'
+                }} className="flex tablet:flex-col items-center justify-between rounded-b-md sticky tablet:relative tablet:w-full top-0 z-[99] border w-full left-0 right-0 h-fit bg-white py-7 px-10 tablet:px-4">
+                    <div>
+                        <h1 className="text-2xl font-semibold text-[#5345E6]">{req_data?.request?.title}</h1>
+                        {/* <p className="text-gray-700 text-sm tablet:mt-2">This visuals expires in {formatTime(timeLeft)} — Subscribe for premium to cancel</p> */}
+                    </div>
+                    <div className="gap-x-[4px] relative tablet:mt-6 flex items-center">
+                        <div className="flex-col flex justify-end gap-y-[6px]">
+                            <p className="text-sm">This visual expires in</p>
+                            <p className="text-[#C40404]">{formatTime(timeLeft)}</p>
                         </div>
+                        <button className="p2 px-10 rounded-lg py-3">
+                            <div className="mb-[3px] gap-x-2 flex items-center">
+                                <img src="/svg/metric/star.svg" alt="star" />
+                                <p className="text-white font-semibold">Get Premium</p>
+                            </div>
+                            <p>{'(To keep your visual forever)'}</p>
+                        </button>
+                        <div
+                            className="absolute right-[-20px] top-[-20px] h-[40px] w-[40px] flex items-center justify-center">
+                            <img src="/svg/discount.svg" className="absolute inset-0 h-full w-full "/>
+                            <div className="relative z-2 text-center text-white">
+                                <p className="mb-[-10px] text-sm font-semibold">80%</p>
+                                <small className="text-[9px] font-medium">OFF</small>
+                            </div>
 
+                        </div>
+                    </div>
+
+                </div>
+                <div className="px-8 py-7 bg-g tablet:px-4" >
+                    <p className="w-[90%] tablet:text-sm tablet:w-[95%]">{req_data?.request?.description}</p>
+                    <div className="mt-11 mb-20">
+                        <CardBox/>
+                    </div>
+                    <div>
+                        <VisualCharts/>
                     </div>
                 </div>
-
             </div>
-            <div className="px-8 py-7 bg-g tablet:px-4" >
-                <p className="w-[90%] tablet:text-sm tablet:w-[95%]">{req_data?.request?.description}</p>
-                <div className="mt-11 mb-20">
-                    <CardBox/>
-                </div>
-                <div>
-                    <VisualCharts/>
-                </div>
-            </div>
-        </div>
 
-    </DataFetch>
-    
+        </DataFetch>
+        {openModal}
+    </>
   );
 }
 
@@ -437,86 +456,320 @@ function ChartComponent({plot_type, x, z=null, y, why, title,unit,aggregate, des
         </div>
     )
 }
-function analyzeColumnsOnce({data, metrics}) {
-  const result = {
-    unique: {},
-    categorical: {},
-    numerical: {},
-    date: {},
-  };
-  let metrics_render= []
+// function analyzeColumnsOnce({data, metrics}) {
+//   const result = {
+//     unique: {},
+//     categorical: {},
+//     numerical: {},
+//     date: {},
+//   };
+//   let metrics_render= []
 
-  for (const metric of metrics) {
-    const {}= metric
-  }
-  for (let index = 0; index < metrics_render.length; index++) {
-    const element = a;
+//   for (const metric of metrics) {
+//     const {}= metric
+//   }
+//   for (let index = 0; index < metrics_render.length; index++) {
+//     const element = a;
     
-  }
-  return result;
-}
-function ex_analyzeColumnsOnce({data, request}) {
-  const result = {
-    unique: {},
-    categorical: {},
-    numerical: {},
-    date: {},
-  };
-  console.log({request})
-  const uniqueSets = {};
-  const categoricalSets = {};
-  const numericalTotals = {};
-  const dateSets = {};
+//   }
+//   return result;
+// }
+// function ex_analyzeColumnsOnce({data, request}) {
+//   const result = {
+//     unique: {},
+//     categorical: {},
+//     numerical: {},
+//     date: {},
+//   };
+//   console.log({request})
+//   const uniqueSets = {};
+//   const categoricalSets = {};
+//   const numericalTotals = {};
+//   const dateSets = {};
 
-  const allCols = {
-    unique: request?.unique_columns || [],
-    categorical: request?.categorical_columns?.slice(0, 4) || [],
-    numerical: request?.numerical_columns?.slice(0, 4) || [],
-    date: request?.date_columns?.slice(0, 4) || [],
-  };
+//   const allCols = {
+//     unique: request?.unique_columns || [],
+//     categorical: request?.categorical_columns?.slice(0, 4) || [],
+//     numerical: request?.numerical_columns?.slice(0, 4) || [],
+//     date: request?.date_columns?.slice(0, 4) || [],
+//   };
 
 
-  allCols.unique.forEach(col => (uniqueSets[col] = new Set()));
-  allCols.categorical.forEach(col => (categoricalSets[col] = new Set()));
-  allCols.numerical.forEach(col => (numericalTotals[col] = 0));
-  allCols.date.forEach(col => (dateSets[col] = { months: new Set(), years: new Set() }));
+//   allCols.unique.forEach(col => (uniqueSets[col] = new Set()));
+//   allCols.categorical.forEach(col => (categoricalSets[col] = new Set()));
+//   allCols.numerical.forEach(col => (numericalTotals[col] = 0));
+//   allCols.date.forEach(col => (dateSets[col] = { months: new Set(), years: new Set() }));
 
-  data.forEach(item => {
-    for (const col in uniqueSets) uniqueSets[col].add(item[col]);
-    for (const col in categoricalSets) categoricalSets[col].add(item[col]);
-    for (const col in numericalTotals) numericalTotals[col] += +item[col] || 0;
-    for (const col in dateSets) {
-      const d = new Date(item[col]);
-      if (!isNaN(d)) {
-        dateSets[col].months.add(`${d.getFullYear()}-${d.getMonth() + 1}`);
-        dateSets[col].years.add(d.getFullYear());
-      }
+//   data.forEach(item => {
+//     for (const col in uniqueSets) uniqueSets[col].add(item[col]);
+//     for (const col in categoricalSets) categoricalSets[col].add(item[col]);
+//     for (const col in numericalTotals) numericalTotals[col] += +item[col] || 0;
+//     for (const col in dateSets) {
+//       const d = new Date(item[col]);
+//       if (!isNaN(d)) {
+//         dateSets[col].months.add(`${d.getFullYear()}-${d.getMonth() + 1}`);
+//         dateSets[col].years.add(d.getFullYear());
+//       }
+//     }
+//   });
+
+//   for (const col in uniqueSets) {
+//     const count = uniqueSets[col].size;
+//     if (count > 3 && count !== data.length) result.unique[col] = count;
+//   }
+
+//   for (const col in categoricalSets) {
+//     const count = categoricalSets[col].size;
+//     if (count > 3 && count !== data.length) result.categorical[col] = count;
+//   }
+
+//   for (const col in numericalTotals) {
+//     if (col.includes('id')) continue;
+//     Math.round((numericalTotals[col] / data.length) * 100) / 100
+//     const avg = Math.round((numericalTotals[col] / data.length) * 100) / 100;
+//     if (avg) result.numerical[col] = avg;
+//   }
+
+//   for (const col in dateSets) {
+//     if (['dob', 'date of birth'].includes(col.toLowerCase())) continue;
+//     const { months, years } = dateSets[col];
+//     result.date[col] = { years: years.size, months: months.size };
+//   }
+
+//   return result;
+// }
+
+function SubscribeBox({onNext, onClose}){
+    const [step, setStep]= useState(0)
+    const features=[
+        {label:'Your visual will last for a lifetime', isActive:true},
+        {label:'Make unlimited datasets analysis', isActive:true},
+        {label:'Generate detailed reports'},
+        {label:'Add customized visuals'}
+    ]
+    const {postData}= useHttpServices()
+
+    const {  uploadFile, fileData, previewSrc, getFileName, setPreviewSrc, setFileData} =useFileInput()
+    const formChange=(e, key, option=false)=>{
+        if (option) return setFormData({...formData,[key]:e})
+        return setFormData({...formData,[key]:e.target.value})
     }
-  });
+    const datasetInfo = [
+        {
+            label: "Your Nick Name",
+            name: "nickname",
+            type: "text",
+            placeholder: "analyzer(sa)ndro??",
+            required: true,
+            maxlength:55
+        },
+        {
+            label: "Yur Email",
+            name: "email",
+            type: "email",
+            placeholder: "youremail@gmail.com",
+            required: true,
+            maxlength:55
+        },
+        {
+            label: "Your Whatsapp Line",
+            name: "whatsapp",
+            type: "text",
+            placeholder: "+91 377778890",
+            required: true,
+            maxlength:55
+        },
+         
+    ];
+    return(
+        <ModalLayout onClose={onClose}>
+            <div 
+                onClick={(e)=> e.stopPropagation()} 
+                className={"bg-white rounded-md px-3 py-5 text-center w-[400px] tablet:w-full "}>
+                <div className="px-2 top-0 sticky">
+                    <div className="flex justify-between items-center mb-8">
+                        {/* <button style={step?{}:{visibility:'hidden'}} onClick={()=>setStep(0)}>
+                        <img src="/svg/arrow-left.svg" alt="arrow-left" className="w-5 h-5"/>
+                        </button> */}
+                    <img className="cursor-pointer" onClick={
+                            ()=>{
+                                setShowModal('') 
+                                setSearchStatus(null)
+                            }
+                        } alt="icon" src={'/svg/close.svg'}/>
+                    </div>
+                    <div className="mt-4">
+                        <p>Upgrade to Premium</p>
+                        <p>{"This won't last forever"}</p>
+                        <p>Upgrade to make it last forever</p>
+                    </div>
+                </div>
+                <div>            
+                    <div className="mt-1 px-2">     
+                        <div className="p-3 bg-[#EEF4FA] rounded-lg">
+                            <div className="flex items-center gap-x-2 mb-2.5">
+                                <img src="" alt="star"/>
+                                <p className="font-semibold text-xl">Premium Features:</p>
+                            </div>
+                            <div className="flex flex-col gap-y-3">
+                                {features.map(({isActive, label},ind)=>
+                                    <div key={ind} className="flex gap-x-[2px] items-center">
+                                        <img src={isActive?'/svg/tick.svg':'/svg/circle.svg'} />
+                                        <p style={!isActive?{opacity:'0.5'}:{}}>{label}</p>
+                                        {isActive?
+                                        <p className="p-[5px] rounded-[22px]" style={{
+                                            background:'rgba(90, 102, 111, 0.16)'
+                                        }}>
+                                            Coming soon
+                                        </p>
+                                        :null
+                                        }
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="border-[#8F34E9] border pr-4 py-4 rounded-lg">
+                            <div className="flex items-center gap-x-[3px]">
+                                {/* <img src="/svg/dollar.svg" alt="dollar" /> */}
+                                <p><span>{'$'}</span>Pricing:</p>
+                            </div>
+                            <div className="flex justify-center items-center gap-x-5">
+                                {[{label:'Original', price:'$10'},{label:'Discount', price:'5'}]
+                                    .map(({label, price},ind)=>
+                                    <div key={ind}>
+                                        <p>{label}</p>
+                                        <p>{price}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-x-4">
+                            <button className="w-full py-2.5 rounded-lg p1">
+                                {'Not Now'}
+                            </button>
+                            <button className="w-full py-2.5 rounded-lg p2">
+                                {'Continue'}
+                            </button>
+                    </div>
+                    <div>
+                        <div className="w-full flex flex-col gap-5 grid grid-cols-2 gap-x-5 tablet:grid-cols-1">
+                            {datasetInfo.map(({label, name, type, options, placeholder, maxlength},ind)=>
+                                <Fragment key={ind}>
+                                    {type==='text'?
+                                    <div className={ind===0?' col-span-2 ':''}>
+                                        <p className="font-medium">{label}</p>
+                                        <input type={type} onChange={(e)=>formChange(e, name)}
+                                            value={formData[name] || ''} 
+                                            className=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
+                                            placeholder={placeholder}
+                                            maxLength={maxlength}
+                                        />
+                                    </div>:
+                                    type==='select'?
+                                    <div className="w-full">
+                                        <p className="font-medium">{label}</p>
+                                        <SelectOption
+                                            options={
+                                                options
+                                            }
+                                            // optionClass=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base"
+                                            value={formData[name] || ''} 
+                                            onChange={(e)=>formChange(e,name, true)}
+                                            label={label}
+                                        />
+                                    </div>:
+                                    <div>
+                                        <p className="font-medium">{label}</p>
+                                        <textarea value={formData[name] || ''} 
+                                            onChange={(e)=>formChange(e,name)}
+                                            className="w-full p-3 h-[100px] rounded-md gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
+                                            placeholder={placeholder}
+                                            maxLength={maxlength}    
+                                        />
+                                    </div>
+                                    }
+                                </Fragment>
+                            )}
+                        </div>
+                        <div className="relative py-8 rounded-md border bg-white mt-8 border-dashed border-[#8F34E9] flex flex-col items-center justify-center">
+                            <img src="/svg/upload-purple.svg" alt="upload-purple" className="w-10 h-10"/>
+                            {fileData?.value? 
+                                <p className="text-[18px] font-medium mb-2">{getFileName(fileData?.value)}</p>
+                            :  <>
+                            
+                                <p className="text-[18px] font-medium mb-2">{'Upload your file here'}</p>
+                            </>
+                            
+                            }
+                            <p className="text-[14px] font-medium text-gray-600">{'(CSV/Excel)'}</p>                                
 
-  for (const col in uniqueSets) {
-    const count = uniqueSets[col].size;
-    if (count > 3 && count !== data.length) result.unique[col] = count;
-  }
-
-  for (const col in categoricalSets) {
-    const count = categoricalSets[col].size;
-    if (count > 3 && count !== data.length) result.categorical[col] = count;
-  }
-
-  for (const col in numericalTotals) {
-    if (col.includes('id')) continue;
-    Math.round((numericalTotals[col] / data.length) * 100) / 100
-    const avg = Math.round((numericalTotals[col] / data.length) * 100) / 100;
-    if (avg) result.numerical[col] = avg;
-  }
-
-  for (const col in dateSets) {
-    if (['dob', 'date of birth'].includes(col.toLowerCase())) continue;
-    const { months, years } = dateSets[col];
-    result.date[col] = { years: years.size, months: months.size };
-  }
-
-  return result;
+                            <button onClick={(e)=>{
+                                e.preventDefault()
+                                document.querySelector('#img').click()
+                            }} className="flex gap-x-2 rounded-md mt-8 p1 py-3.5 px-12 rounded-md items-center">
+                                <img src="/svg/link-attached.svg" className="w-5 h-5"/>
+                                <p className="text-base text-white">{!fileData?.value?'Add file':'Change file'}</p>
+                            </button>
+                            
+                            <input type="file" accept=".png, .jpg, .jpeg" name="coverImg" 
+                                className="hidden" id="img"
+                                onChange={(e)=>previewSrc(e)}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="w-full">
+                            <button className="w-full py-2.5 rounded-lg p2">Submit Payment</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="/svg/note.svg"/>
+                        <p>Payment Details:</p>
+                    </div>
+                    <div className="w-full flex flex-col gap-5 grid grid-cols-2 gap-x-5 tablet:grid-cols-1">
+                        {datasetInfo.map(({label, name, type, options, placeholder, maxlength},ind)=>
+                            <Fragment key={ind}>
+                                {type==='text'?
+                                <div className={ind===0?' col-span-2 ':''}>
+                                    <p className="font-medium">{label}</p>
+                                    <input type={type} onChange={(e)=>formChange(e, name)}
+                                        value={formData[name] || ''} 
+                                        className=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
+                                        placeholder={placeholder}
+                                        maxLength={maxlength}
+                                    />
+                                </div>:
+                                type==='select'?
+                                <div className="w-full">
+                                    <p className="font-medium">{label}</p>
+                                    <SelectOption
+                                        options={
+                                            options
+                                        }
+                                        // optionClass=" py-3 px-3 gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base"
+                                        value={formData[name] || ''} 
+                                        onChange={(e)=>formChange(e,name, true)}
+                                        label={label}
+                                    />
+                                </div>:
+                                <div>
+                                    <p className="font-medium">{label}</p>
+                                    <textarea value={formData[name] || ''} 
+                                        onChange={(e)=>formChange(e,name)}
+                                        className="w-full p-3 h-[100px] rounded-md gap-x-2 w-full mt-2.5 rounded-md text-sm tablet:text-base "
+                                        placeholder={placeholder}
+                                        maxLength={maxlength}    
+                                    />
+                                </div>
+                                }
+                            </Fragment>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </ModalLayout>
+    )
 }
-

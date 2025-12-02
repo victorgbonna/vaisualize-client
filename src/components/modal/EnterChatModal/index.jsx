@@ -8,7 +8,7 @@ import { API_ENDPOINTS, consolelog } from "@/configs";
 // import { PAGE_ROUTES } from '@/configs';
 
 
-export default function EnterChatModal({onNext}) {
+export default function EnterChatModal({onNext, onClose}) {
     const { showModal, setShowModal } = useContext(EnterChatContext);
     const [msgObj, setMsgObj]= useState({})
     const [searchStatus, setSearchStatus]= useState(null)

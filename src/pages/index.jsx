@@ -14,9 +14,9 @@ import { AutoSlider, iconSvgPath, VaisualizeForm, VisualCard } from "@/component
 export default function Home() {
   const { showModal, setShowModal } = useContext(EnterChatContext);
   const socials=[
-    {href:'/', src:'twitter-x.svg'},
-    {href:'/', src:'linkedin.svg', extra:true},
-    {href:'/', src:'insta.svg'},
+    // {href:'/', src:'twitter-x.svg'},
+    {href:API_ENDPOINTS.MY_DETAILS.LINKEDIN, src:'linkedin.svg', extra:true},
+    // {href:'/', src:'insta.svg'},
   ]
 
   return (
@@ -53,7 +53,7 @@ export default function Home() {
 
 
       </section>
-      <div className="bg-white pt-20">
+      <div className="bg-white pt-20 tablet:px-4">
         <section className="flex justify-center flex-col items-center">
         <div className="text-center">
             <p className="text-[35px] font-semibold">How v<span>AI</span>sualize works</p>
@@ -61,7 +61,7 @@ export default function Home() {
         </div>
         <Steps/>
         
-        <div className="h-full flex flex-col items-center justify-center z-10 relative">
+        <div className="h-full flex flex-col items-center justify-center z-10 relative tablet:px-4">
             <div className="relative w-fit h-fit mt-8">
                 <button className="buttonreal flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
                     {/* <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" /> */}
@@ -71,9 +71,9 @@ export default function Home() {
         </div>
       </section>
       </div>
-      <RecentWorks/>
+      {/* <RecentWorks/> */}
       <VaisualizeForm/>
-      <section className="pt-16 flex flex-col items-center">
+      <section className="pt-16 flex flex-col items-center tablet:px-4">
         <div className="text-center mb-8">
           <h6 className="text-2xl font-medium">NEED HUMAN EXPERTISE?</h6>
           <p className="text-sm text-[#5D5C5C]">Connect with our data professionals for deeper insights</p>
@@ -97,7 +97,7 @@ export default function Home() {
 
                 <p className="text-white">FOLLOW</p>
               </div>
-              <Link href={API_ENDPOINTS.CONTACT_LINE} className="p1 w-fit rounded-lg px-8 py-2 flex gap-x-3 flex items-center">
+              <Link href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} className="p1 w-fit rounded-lg px-8 py-2 flex gap-x-3 flex items-center">
                 <img src="/svg/comment.svg" className="w-5 h-5"/>
                 <p className="text-white">CONTACT EXPERT</p>
               </Link>

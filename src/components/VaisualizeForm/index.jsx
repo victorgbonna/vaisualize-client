@@ -327,7 +327,7 @@ export default function VaisualizeForm(){
                             || !fileData?.value || !multiselect.columns.length 
                         }                    
                         isLoading={isLoading}>
-                        Start AI Analysis
+                        Start Analyzing
                     </LoadButton>
                 </div>
             </div>
@@ -337,7 +337,7 @@ export default function VaisualizeForm(){
                         <img src="/svg/info.svg" className="w-5 h-5" />
                         <p>NEED HELP? <span>Contact our AI data experts</span></p>  
                     </div>
-                    <Link href={API_ENDPOINTS.CONTACT_LINE} className="p2 rounded-lg px-4 py-2.5">
+                    <Link href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} className="p2 rounded-lg px-4 py-2.5">
                         <p className="text-white">Get Assistance</p>
                     </Link>
                 </div>
