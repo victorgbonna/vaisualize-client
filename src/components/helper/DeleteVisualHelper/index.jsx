@@ -36,7 +36,7 @@ export default function DeleteVisualHelper({onClick,active, setActive, onClose, 
                 }
                 onNext={()=>deleteChart()}
                 html={<p className="text-center text-base">
-                    Confirm delete: "<b>{active.title}</b>"?
+                    Confirm delete: &quot;<b>{active.title}</b>&quot;?
                 </p>}
                 continueClass={' p3 '}
                 cancelClass=" p1 "
