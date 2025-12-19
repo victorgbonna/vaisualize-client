@@ -197,7 +197,8 @@ function SlideThrough({onPageClick, pages, currentPage}){
 }
 function aggregateValues({data, x, y, unit='', aggregation, group_by}) {
   const grouped = {}; // grouped[timeKey][groupKey] = {total, count}
-  const {convertToDigit, extractDateUnit, shortMonths, shortWeekdays} = timeStampControl;
+  const {convertToDigit, extractDateUnit, shortMonths, shortWeekdays, weekGroups}= timeStampControl
+
   for (let index = 0; index < data.length; index++) {
     const item = data[index];
     const timeKey = unit?extractDateUnit({value: item[x], unit}) ?? 'N/B':item[x] ?? 'N/B';
@@ -228,7 +229,20 @@ function aggregateValues({data, x, y, unit='', aggregation, group_by}) {
         : aggregation === 'count' ? groups[gk]?.count || 0
         : aggregation === 'average' ? (groups[gk]?.count ? groups[gk].total / groups[gk].count : 0)
         : 0
-    }))
+    })).sort((a, b) => {
+      if(!unit){
+        return b.value - a.value;
+      }
+      if (unit?.includes('week')) {
+        return weekGroups.indexOf(a.key) - weekGroups.indexOf(b.key);
+      } else if (unit?.includes('day')) {
+        return shortWeekdays.indexOf(a.key) - shortWeekdays.indexOf(b.key);
+      } else if (unit?.includes('mon')) {
+        return shortMonths.indexOf(a.key) - shortMonths.indexOf(b.key);
+      } else {
+        return b.value - a.value;
+      }
+    })
   }));
   // const groupedData= unit?.includes('day')?datasets.sort((a,b)=> shortWeekdays.indexOf(a.key)-shortWeekdays.indexOf(b.key)):unit?.includes('mon')?datasets.sort((a,b)=> shortMonths.indexOf(a.key)-shortMonths.indexOf(b.key)):datasets
 
@@ -237,7 +251,7 @@ function aggregateValues({data, x, y, unit='', aggregation, group_by}) {
 
  function aggregateValuesSingle({data, x, y, aggregation, unit}) {
     let grouped=[]
-    const {convertToDigit, extractDateUnit, shortMonths, shortWeekdays}= timeStampControl
+    const {convertToDigit, extractDateUnit, shortMonths, shortWeekdays, weekGroups}= timeStampControl
     
     for (let index = 0; index < data.length; index++) {
       const item = data[index];
@@ -261,5 +275,10 @@ function aggregateValues({data, x, y, unit='', aggregation, group_by}) {
         {}
       )   
     }));
-    return unit?.includes('day')?aggregated.sort((a,b)=> shortWeekdays.indexOf(a.key)-shortWeekdays.indexOf(b.key)):unit?.includes('mon')?aggregated.sort((a,b)=> shortMonths.indexOf(a.key)-shortMonths.indexOf(b.key)):aggregated.sort((a, b) => b.value - a.value);
+    return !unit?aggregated.sort((a, b) => b.value - a.value):
+      unit?.includes('week')?aggregated.sort((a,b)=> weekGroups.indexOf(a.key)-weekGroups.indexOf(b.key)):
+      unit?.includes('day')?
+      aggregated.sort((a,b)=> shortWeekdays.indexOf(a.key)-shortWeekdays.indexOf(b.key)):
+      unit?.includes('mon')?aggregated.sort((a,b)=> shortMonths.indexOf(a.key)-shortMonths.indexOf(b.key)):
+      aggregated.sort((a, b) => b.value - a.value);
   }

@@ -1,5 +1,5 @@
 import { useFileInput, useHttpServices, useToast } from "@/hooks";
-import { Fragment, useEffect, useState } from "react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { LoadButton, SelectMultiple, SelectOption } from "..";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
@@ -69,6 +69,7 @@ export default function VaisualizeForm(){
         categorical_columns:[],numerical_columns:[],
         date_columns:[], non_placed_columns:[]
     })
+    const [loadingState, setLoadingState]= useState('')
     
     const formChange=(e, key, option=false)=>{
         if (option) return setFormData({...formData,[key]:e})
@@ -192,13 +193,25 @@ export default function VaisualizeForm(){
         return;
       }
     };
+    const intervalRef= useRef(null)
 
     const requestChatGPTQuery= async()=>{
         // const {error:fileError}= formValidator(formData, imageUrl?.value)
         // if (fileError) {
         //     consolelog({fileError})
-        //     throw {error:fileError}
+        //     throw {error:fileError}p
         // }
+        setLoadingState('starting')
+        
+        intervalRef.current = setInterval(() => {
+            setLoadingState(prev => {
+                if (prev === "starting") return "reasoning";
+                if (prev === "reasoning") return "analyzing";
+                if (prev === "analyzing") return "plotting";
+                return "uploading";
+            })
+        }, 17000);
+
         
         const { url, delete_token, error: imageError } = await uploadFile()
         
@@ -208,39 +221,52 @@ export default function VaisualizeForm(){
         }
 
         const body={...multiselect, ...formData, file_url:url, sample_data:first5rows}
+      
         return await postData({path:API_ENDPOINTS.MAKE_A_REQUEST,body})
+      
     }
     // const router= useRouter()
-
+    const stopInterval = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
+    };
     const {mutate:requestChatGPT, isPending:isLoading}=useMutation({
     mutationFn: ()=>requestChatGPTQuery(),
     onError:({error})=>{
         console.log({error})
+        stopInterval()
+        setLoadingState('')
         return NotifyError(error.message || 'Could not get data')
     },
     onSuccess:({data})=>{
         // consolelog({mutation:data})
         // data:{request, visuals_sugg}
-        NotifySuccess('Done. Request Gotten. Wait 2 secs.')
+        stopInterval()
+        setLoadingState('processing')
+        // NotifySuccess('Done. Request Gotten. Wait 2 secs.')
+        
         setTimeout(() => {
+            setLoadingState('completed')
             window.location.href=PAGE_ROUTES.GET_ONE_VISUAL(data?.data?._id)      
         }, 2000);
         return
     }})
     
     return(
-      <section id="form" className="bg-[#F4E5FD] overflow-x-hidden py-[60px] px-10 tablet:px-5">
+      <section id="form" className="bg-[#F4E5FD] overflow-x-hidden py-[60px] px-10 tablet:px-4">
         <div className="shadow-xl bg-[#EEF4FA] rounded-[33px] pb-6">
-            <div className="rounded-t-[33px] herobtn px-6 py-5 flex items-center gap-x-1.5">
+            <div className="rounded-t-[33px] herobtn px-6 py-5 flex items-center gap-x-1.5 tablet:justify-center">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.6875 4.05513V13.0616C10.6875 13.7184 10.1568 14.2491 9.5 14.2491C8.84316 14.2491 8.3125 13.7184 8.3125 13.0616V4.05513L5.58867 6.77895C5.1248 7.24282 4.37148 7.24282 3.90762 6.77895C3.44375 6.31509 3.44375 5.56177 3.90762 5.0979L8.65762 0.3479C9.12148 -0.115967 9.8748 -0.115967 10.3387 0.3479L15.0887 5.0979C15.5525 5.56177 15.5525 6.31509 15.0887 6.77895C14.6248 7.24282 13.8715 7.24282 13.4076 6.77895L10.6875 4.05513ZM2.375 13.0616H7.125C7.125 14.3715 8.19004 15.4366 9.5 15.4366C10.81 15.4366 11.875 14.3715 11.875 13.0616H16.625C17.935 13.0616 19 14.1266 19 15.4366V16.6241C19 17.934 17.935 18.9991 16.625 18.9991H2.375C1.06504 18.9991 0 17.934 0 16.6241V15.4366C0 14.1266 1.06504 13.0616 2.375 13.0616ZM16.0312 16.9209C16.2675 16.9209 16.494 16.8271 16.661 16.6601C16.828 16.4931 16.9219 16.2665 16.9219 16.0303C16.9219 15.7941 16.828 15.5676 16.661 15.4006C16.494 15.2335 16.2675 15.1397 16.0312 15.1397C15.795 15.1397 15.5685 15.2335 15.4015 15.4006C15.2345 15.5676 15.1406 15.7941 15.1406 16.0303C15.1406 16.2665 15.2345 16.4931 15.4015 16.6601C15.5685 16.8271 15.795 16.9209 16.0312 16.9209Z" fill="white"/>
                 </svg>
-                <p className="font-semibold text-white text-xl">vAIsualize - Upload Your Data</p>
+                <p className="font-semibold text-white text-xl tablet:text-base" onClick={()=>requestChatGPT()}>WebBi - Upload Your Data</p>
             </div>
             <div>
 
             </div>
-            <div className="grid grid-cols-1 px-6 tablet:grid-cols-1 pt-4 pb-5 gap-10">
+            <div className="grid grid-cols-1 px-6 tablet:px-4 tablet:grid-cols-1 pt-4 pb-5 gap-10">
                 <div className="w-full ">
                     <p className="text-left text-sm font-semibold mb-5 text-xl text-black  uppercase mt-3">DataSet Info</p>
                     <div>
@@ -248,7 +274,7 @@ export default function VaisualizeForm(){
                             {datasetInfo.map(({label, name, type, options, placeholder, maxlength},ind)=>
                                 <Fragment key={ind}>
                                     {type==='text'?
-                                    <div className={ind===0?' col-span-2 ':''}>
+                                    <div className={ind===0?' col-span-2 tablet:col-span-1':''}>
                                         <p className="font-medium">{label}</p>
                                         <input type={type} onChange={(e)=>formChange(e, name)}
                                             value={formData[name] || ''} 
@@ -321,6 +347,7 @@ export default function VaisualizeForm(){
                 <div className="px-5 relative">
                     <LoadButton onClick={()=>requestChatGPT()}
                     activeClass=" button1 "
+                    customDisabled={true}
                     className={"font-medium px-6 text-lg text-white h-full w-full py-3.5"} 
                         disabled={
                             !formData.title  || !formData.goal  || !formData.description 
@@ -332,12 +359,12 @@ export default function VaisualizeForm(){
                 </div>
             </div>
             <div className="px-5">
-                <div className="rounded-xl bg-[#FFE9F6] py-3.5 px-5 border border-[#E34AA5] flex items-center justify-between ">            
+                <div className="rounded-xl bg-[#FFE9F6] py-3.5 px-5 border border-[#E34AA5] flex items-center justify-between tablet:flex-col tablet:gap-y-3 ">            
                     <div className="flex items-center gap-x-2">
                         <img src="/svg/info.svg" className="w-5 h-5" />
-                        <p>NEED HELP? <span>Contact our AI data experts</span></p>  
+                        <p className="tablet:text-sm">NEED HELP? <span>Contact our AI data experts</span></p>  
                     </div>
-                    <Link href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} className="p2 rounded-lg px-4 py-2.5">
+                    <Link href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} className="tablet:w-full tablet:text-center p2 rounded-lg px-4 py-2.5">
                         <p className="text-white">Get Assistance</p>
                     </Link>
                 </div>
@@ -345,6 +372,8 @@ export default function VaisualizeForm(){
 
         </div>
         
+      {loadingState?<LoadingComponent loadingState={loadingState}/>:null}
+      
       </section>
     )
 }
@@ -443,13 +472,13 @@ function ColumnSetup({multiselect, first5rows, setMultiselect, onClose=()=>null}
             <div>
                 <p className="pl-5 text-left text-lg font-semibold pb-3 border-b">Column Setup</p>
                 
-                <div className="px-5 mt-4">
+                <div className="px-5 mt-4 tablet:px-4">
                     <p className="text-sm font-semibold">Note that:</p> 
                     <p className="text-sm ">{"1) IDs alone may not always represent uniqueness accurately. You can combine fields such as first name and last name into a single unique identifier) before uploading. You may also upload a separate CSV or Excel file if you have preprocessed this combination."}</p>
                     <p className="text-sm mt-3">{"2) For accurate processing, please ensure all numerical fields are converted to plain numbers before uploading. Remove any attached units (e.g., 'kg', '%', '$') or symbols to maintain consistency."}</p>
                     
                 </div>
-                <div className="gap-5 mt-4 grid-2-no-row-height justify-between">
+                <div className="gap-5 mt-4 grid-2-no-row-height justify-between tablet:flex-col tablet:flex">
                     {/* {multiselect?.all_columns?.map((col,ind)=>{
                         let belonged_category=''
 
@@ -511,7 +540,7 @@ function ColumnSetup({multiselect, first5rows, setMultiselect, onClose=()=>null}
                         <div key={ind} className="px-5 griditem">
                             <div className="flex gap-x-1.5 items-center mb-2">
                                 <div className="rounded-full w-3 h-3 p2"></div>
-                                <p className="font-medium">{cat.label}</p>
+                                <p className="font-medium ">{cat.label}</p>
                             </div>
                             <div className="max-h-[500px] overflow-y-auto">
                                 <div className="flex-col flex gap-y-2">
@@ -519,7 +548,9 @@ function ColumnSetup({multiselect, first5rows, setMultiselect, onClose=()=>null}
                                     <div key={ind} className="flex justify-between bg-[#F5F5FA] px-4 py-3 rounded-lg items-center">
                                         <div className="flex flex-col w-[120px]">
                                             <p className="text-sm">{col}</p>
-                                            <p className="text-sm text-gray-700 truncate">{first5rows[0][col]}</p>
+                                            <p className="text-sm text-gray-700 truncate tablet:text-sm tablet:hidden">{first5rows[0][col]}</p>
+
+                                            <p className="text-sm text-gray-700 truncate tablet:text-sm tablet:block pc:hidden largepc:hidden">{first5rows[0][col]?.slice(0,6)}</p>
                                         </div>
                                         <div className="flex flex-col">
                                             {/* <div>
@@ -652,4 +683,59 @@ function SelectColumn({onClose, onChange, label, options, value}){
 
         </div>
     </ModalLayout>)
+}
+
+function LoadingComponent({loadingState}){
+    
+    return(
+    <ModalLayout onClose={()=>null}>
+        <div 
+            onClick={(e)=> e.stopPropagation()} 
+            className={"bg-[#F5F5FA] rounded-[30px] text-center w-[450px] tablet:w-full "}>
+          <div className="px-7 p1 py-4 rounded-t-[30px] w-full flex items-center gap-x-3">
+            <img src="/svg/robot.svg" />
+            <p className="text-white">Webbi - Your Personal Visualization Assistant</p>
+          </div>
+          <div className="py-20 flex relative flex-col tablet:py-10 px-10 tablet:px-5 justify-center items-center">
+            <div>
+              {/* <div className="bg-white p-2 rounded-md absolute top-10 right-[-80px] transform -translate-x-1/2 shadow-md w-[200px]">
+                <p className="italic text-sm">{loadingState}</p>
+              </div> */}
+              <img className="mt-[-50px]" src="/gif/brainstorm.gif" alt="brainstorm" />
+              <div>
+                <p className="text-sm text-gray-800 text-center">{loadingState+'...'}</p>
+              </div>
+            </div>
+            <div className="bg-[#D9D9D9] rounded-[22px] h-3 w-[300px] mt-4">
+              <div className="p-1 h-full animate-pulse p2 rounded-[22px]"
+                style={{
+                  width:
+                    !loadingState?'0':
+                    loadingState==='starting'?'10%':loadingState=== 'next'?'25%':
+                    loadingState==='next3'?'35%':loadingState==='next4'?'55%':
+                    loadingState==='uploading'?'65%':loadingState==='processing'?'80%':'100%',
+                  transition:'width 0.5s ease-in-out'
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+    </ModalLayout>
+    )
+} 
+
+function Interval_func() {
+    let intervalId = null;
+
+    const setIntervalId = (id) => {
+        intervalId = id;
+    };
+
+    const clearStoredInterval = () => {
+    if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    };
+
 }

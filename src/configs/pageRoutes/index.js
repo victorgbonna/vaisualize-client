@@ -10,8 +10,8 @@ const PAGE_ROUTES = {
   ADMINS:"/admin",
   MAIL:"/send-mail",
 
-  A_COMP:(id)=>{
-    return '/competition/league/'+id
+  A_REQ:(id)=>{
+    return '/analysis/'+id
   },
   A_COMP_EDIT:(id)=>{
     return '/competition/edit/'+id
@@ -19,7 +19,7 @@ const PAGE_ROUTES = {
   ONE_USER:(fId)=>{
     return '/users/p/'+fId
   },
-  GET_ONE_VISUAL:(fId)=>{
+  A_REQUEST_PAGE:(fId)=>{
     return '/analysis/'+fId
   }
   

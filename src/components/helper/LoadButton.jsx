@@ -2,13 +2,17 @@ export default function LoadButton({
   children, 
   className="py-4 bg-primary1 px-12 rounded-lg text-white"
   ,onClick, disabled=false,activeClass='',
+  customDisabled=false,
   isLoading,loadingLabel=<Spinner/>}){
   return (
     <>
         <button 
             onClick={onClick}
             disabled={disabled || isLoading}
-            className={className+ ' btnTrans '+(disabled?' button12 ':activeClass)}>
+            className={customDisabled?
+              className+ ' btnTrans '+(disabled?' button12 ':activeClass):
+              className
+            }>
             {isLoading?
             <div className="flex gap-x-[2px] justify-center ">
               {children}

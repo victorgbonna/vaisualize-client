@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useHttpServices } from "..";
 import { consolelog } from "@/configs";
 
-const useFileInput = () => {
+const useFileInput = (presets=null) => {
   const CLOUD_NAME = "greyhairedgallery";
-  const CLOUD_PRESETS = "vaisualize_doc_urls_364637732837";
+  const CLOUD_PRESETS = presets ?? "vaisualize_doc_urls_364637732837";
 
   const [fileData, setFileData] = useState({});
 
@@ -20,6 +20,7 @@ const useFileInput = () => {
   const previewPic = (e) => {
     const selectedFile = e.target.files[0];
     const value = e.target.value;
+    // console.log({value, selectedFile})
 
     if (!selectedFile || !value) return;
 

@@ -96,24 +96,23 @@ function HeatmapChart({x,y}){
     //         max: Math.max(...dataArray.map((item)=>+item[col] ?? 0))
     //     })
     // })
-
-    const heatmap_color='rgba(21, 105, 56, '
+    const heatmap_color='rgba(30, 60, 150, '
 
 
     return (
-    <div className="  pt-4 border rounded-lg overflow-x-auto overflow-y-auto h-[400px] w-full relative pt-6">
+    <div className="  text-sm rounded-lg overflow-x-auto overflow-y-auto h-[400px] w-full relative pt-2">
         <SlideThrough 
           onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
           pages={meta.pages}
           currentPage={meta.page}
         />
-        <table className={`border-collapse border-spacing-2 w-full`}>
+        <table className={`border-collapse  border-spacing-2 w-full mt-14`}>
             <thead>
                 <tr className="text-sm">
-                    <th className="h-fit w-[150px] px-4 py-2 text-gray-600 text-xs font-medium"><p className="underline">{y}</p><p>{'attributes'+isAverageCount?'(mean val)':''}</p></th>
+                    <th className="h-fit w-[150px] px-4 py-2 text-black text-xs font-medium invisible"><p className="underline">{y}</p><p>{'attributes'+isAverageCount?'(mean val)':''}</p></th>
                     {Object.keys(heatmap_x_and_y)
                         .slice(meta.skip, meta.skip+meta.limit).map((row,ind)=>
-                        <th className="mx-2 px-4 py-2 font-semibold text-gray-600 text-[13px]" key={ind}>{row}</th>
+                        <th className="mx-2 px-4 py-2 font-semibold text-black text-[13px]" key={ind}>{row}</th>
                     )}
                 </tr>
             </thead>
@@ -122,15 +121,16 @@ function HeatmapChart({x,y}){
                 // return null
                 return(
                 <tr key={ind} className="w-full">
-                    <td className="text-gray-600 text-sm text-center">
+                    <td className="text-black text-sm text-center pr-4">
                       <p 
                       // style={{
                       //   overflowWrap: 'break-word', wordBreak: 'break-all'
                       // }} 
-                      className="p">{num_entry} 
-                      <span className="text-[11px] italic">
+                      className="p text-sm font-semibold text-right">{num_entry} 
+                      {/* <span className="text-[11px] italic">
                         {`(max-${labels_max?.[num_entry]?.[0]})`}
-                      </span></p>
+                      </span> */}
+                      </p>
                     </td>
                     {Object.values(heatmap_x_and_y).
                         slice(meta.skip, meta.skip+meta.limit)
@@ -166,7 +166,7 @@ function HeatmapChart({x,y}){
                                
                                 :"#ffffff"
                             }}
-                            className={`text-white text-sm font-bold border border-slate-300 text-center h-20 text-black`} 
+                            className={`text-white text-sm font-bold border border-slate-300 text-center h-[50px] text-black`} 
                             key={j}>
                                 {num_entry?.toLowerCase()==='age'?Math.round(value):value}
                             </td>

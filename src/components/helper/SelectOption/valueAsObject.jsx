@@ -7,6 +7,7 @@ export default function SelectOptionAsObjectValue(
   {options, onChange,label, value,
     leftSibling=null,style={},
     showActiveOption=true,
+    changeAll=false,
     dropdownSrc, errorProp= null, 
     containerClass, valueProp="value", labelProp="label",
     optionClass="absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit"
@@ -34,7 +35,7 @@ export default function SelectOptionAsObjectValue(
                     <p className="w-fit font-medium">
                         {value[labelProp]}
                     </p>:
-                    <p className="opacity-75">
+                    <p className="opacity-50">
                         {label}
                     </p>
                 }
@@ -64,8 +65,8 @@ export default function SelectOptionAsObjectValue(
                 {new_options.map((option,index)=>
                     <li style={value[valueProp]===option[valueProp]?{
                         background:"#CABECF", padding:"9px 10px"
-                    }:{ padding:"9px 10px"}} className="cursor-pointer" key={index} 
-                    onClick={()=>onChange(option)}>{option[labelProp]}</li>           
+                    }:{ padding:"9px 10px"}} className="text-sm cursor-pointer" key={index} 
+                    onClick={()=>onChange(changeAll?option:option[valueProp])}>{option[labelProp]}</li>           
                 )}
 
             </ul>

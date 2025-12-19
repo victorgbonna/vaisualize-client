@@ -3,11 +3,12 @@ import { useEffect, useRef, useState } from "react"
 import iconSvgPath from "../iconSvgPath";
 
 export default function SelectMultiple(
-  {options, onChange, values,label, leftSibling=null,valueProp,
+  {options, onChange, values=[],label, leftSibling=null,valueProp,
     showActiveOption=true, labelProp="label",
+    maxValues, minValues,
     dropdownSrc, errorProp= null, extraClass,
     containerClass, isInput=false,posAttribute={
-        bottom:"100%"
+        top:"100%"
     }, displayDropOnRelative=false,
     optionClass="absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit"
 }) {
@@ -18,6 +19,18 @@ export default function SelectMultiple(
     useOnClickOutside(ref, () => toggle(false));
     // console.log(options[0], valueProp)
     // onMouseLeave={show?() => toggle(false):()=>null}
+    const onCheckClick=(specItem)=>{
+        let specList=values
+        if (specItem.target.checked){
+            // console.log(specItem.target.value)
+        specList=[...specList, specItem.target.value]
+        }
+        else{
+        specList.splice(specList.indexOf(specItem.target.value),1)
+        }
+        onChange([...specList])
+    }
+    
     useEffect(()=>{
         // console.log({text})
         if(!text) {
@@ -37,12 +50,13 @@ export default function SelectMultiple(
         }
         return
     },[text])
+
     return (   
     <div ref={ref} className="z-[8]">
     <div style={{position:"relative", width:"100%"}} onClick={!isInput?() => toggle(!show):()=>null} >
         {/* ${isInput && value && !options.includes(value)?' border-red-100 ':''} */}
         {!isInput?<div 
-        className={`${containerClass || 'w-full bg-white cursor-pointer flex justify-between border border-gray-400 rounded-md text-sm tablet:text-base py-2.5 px-3 gap-x-2 items-center   '}`}  
+        className={`${'flex border mt-2.5 border-gray-200 justify-between w-full bg-white cursor-pointer flex justify-between border border-gray-400 rounded-md text-sm tablet:text-base py-3 px-3 gap-x-2 items-center   '}`}  
             >
                 {leftSibling && leftSibling}
                 
@@ -76,7 +90,7 @@ export default function SelectMultiple(
             value={text} onChange={(e)=>setText(e.target.value)}
         /> } 
         {show ? (
-            <ul className={`${displayDropOnRelative?'  ':' absolute '} h-fit absolute bg-white w-full rounded overflow-auto min-w-fit ${extraClass}`} style={{
+            <ul className={`${displayDropOnRelative?'  ':' absolute '} h-fit top-full absolute bg-white w-full rounded overflow-auto min-w-fit ${extraClass}`} style={{
                 ...posAttribute, maxHeight:"200px", height:'400px',
                 background: '#FFFFFF', zIndex:"4",
                 border: '1px solid #CABECF',borderRadius: '10px'
@@ -93,8 +107,9 @@ export default function SelectMultiple(
                     }:{ padding:"12px 10px"}} className="text-sm border-b-2 cursor-pointer flex items-center gap-x-3" key={index} 
                     >
                         <input 
-                        onChange={(e)=>onChange(e)}
-                            value={option} type="checkbox" 
+                        onChange={(e)=>onCheckClick(e)}
+                            value={option} type="checkbox"
+                            disabled={(!values.includes(option) && (maxValues <= values.length)) ||(values.includes(option) && (minValues >= values.length))} 
                             className="w-5 h-5 cursor-pointer" 
                             checked={values.includes(option)}/>
                         <p>{option}</p>
