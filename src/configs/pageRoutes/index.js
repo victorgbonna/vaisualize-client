@@ -23,6 +23,7 @@ const PAGE_ROUTES = {
     return '/analysis/'+fId
   }
   
+  
 };
 
 export default PAGE_ROUTES

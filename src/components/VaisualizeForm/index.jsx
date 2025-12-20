@@ -249,7 +249,7 @@ export default function VaisualizeForm(){
         
         setTimeout(() => {
             setLoadingState('completed')
-            window.location.href=PAGE_ROUTES.GET_ONE_VISUAL(data?.data?._id)      
+            window.location.href=PAGE_ROUTES.A_REQUEST_PAGE(data?.data?._id)      
         }, 2000);
         return
     }})
