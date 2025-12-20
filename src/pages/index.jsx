@@ -205,7 +205,7 @@ function CSteps(){
           
           <div className="h-full flex flex-col items-center justify-center z-10 relative tablet:px-4">
               <div className="relative w-fit h-fit mt-8">
-                  <Link href='/#form' className="buttonreal flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
+                  <Link href='/#form' className="p1 flex justify-center gap-x-5 items-center h-full px-12 tablet:px-10 py-3 rounded-[30px]">
                       {/* <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" /> */}
                       <p className="text-white font-medium">Get Started</p>
                   </Link>

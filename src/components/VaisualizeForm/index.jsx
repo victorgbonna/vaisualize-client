@@ -220,7 +220,7 @@ export default function VaisualizeForm(){
             throw {error:imageError}
         }
 
-        const body={...multiselect, ...formData, file_url:url, sample_data:first5rows}
+        const body={...multiselect, ...formData, file_url:[url], sample_data:first5rows}
       
         return await postData({path:API_ENDPOINTS.MAKE_A_REQUEST,body})
       
@@ -346,9 +346,8 @@ export default function VaisualizeForm(){
             <div className="py-6 px-5">
                 <div className="px-5 relative">
                     <LoadButton onClick={()=>requestChatGPT()}
-                    activeClass=" button1 "
-                    customDisabled={true}
-                    className={"font-medium px-6 text-lg text-white h-full w-full py-3.5"} 
+                    loadingClass='button1'
+                    className={"font-medium px-6 p2 rounded-lg text-lg text-white h-full w-full py-3.5"} 
                         disabled={
                             !formData.title  
                             || !formData.category || 

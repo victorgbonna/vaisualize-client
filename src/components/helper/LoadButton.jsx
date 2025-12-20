@@ -10,7 +10,7 @@ export default function LoadButton({
             onClick={onClick}
             disabled={disabled || isLoading}
             className={customDisabled?
-              className+ ' btnTrans '+(disabled?' button12 ':activeClass):
+              className+ ' button12 '+activeClass:
               className
             }>
             {isLoading?
