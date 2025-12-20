@@ -207,8 +207,9 @@ export default function VaisualizeForm(){
             setLoadingState(prev => {
                 if (prev === "starting") return "reasoning";
                 if (prev === "reasoning") return "analyzing";
-                if (prev === "analyzing") return "plotting";
-                return "uploading";
+                if (prev === "analyzing") return "still analyzing";
+                if (prev === "still analyzing") return "uploading";
+                return "processing";
             })
         }, 17000);
 
@@ -713,7 +714,9 @@ function LoadingComponent({loadingState}){
                     !loadingState?'0':
                     loadingState==='starting'?'10%':loadingState=== 'reasoning'?'25%':
                     loadingState==='reasoning'?'35%':loadingState==='analyzing'?'55%':
-                    loadingState==='uploading'?'65%':loadingState==='processing'?'80%':'100%',
+                    loadingState==='still analyzing'?'60%':
+                    loadingState==='uploading'?'65%':loadingState==='processing'?'80%':
+                    loadingState==='completed'?'100%':'58%',
                   transition:'width 0.5s ease-in-out'
                 }}
               ></div>

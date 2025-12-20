@@ -220,10 +220,12 @@ function AnalysisC() {
         if(!req_data) return
         
         read_into_file(req_data?.request)
-        if(!req_data?.request?.status!=='break') return
+        // console.log({re:req_data?.request})
+
+        if(req_data?.request?.status!=='break') return
         const created = new Date(req_data?.request?.createdAt).getTime();
         const expiry = created + 2 * 24 * 60 * 60 * 1000
-        
+        // console.log({expiry})
         const tick = () => {
             const remaining = expiry - Date.now();
             setTimeLeft(remaining);
@@ -239,7 +241,7 @@ function AnalysisC() {
                 label:req_data?.request?.title,
                 id:req_data?.request?._id
             })
-        }, 200);
+        }, 5000);
 
         return () => clearInterval(interval);       
     },[req_data])
@@ -427,7 +429,7 @@ function CardBox(){
                         </div>
                         <p className="capitalize text-[13px] mb-[6px] text-[#1D1E25] tablet:text-base">{label}</p>
                         <p className="text-2xl font-semibold">
-                            {commafy(aggregate_value[0])}
+                            {commafy(+aggregate_value[0]?Math.round(aggregate_value*100/100):aggregate_value[0])}
                             {!aggregate_value.length?<span className="text-sm text-gray-600">+</span>:<></>}
                         </p>
                     </div>

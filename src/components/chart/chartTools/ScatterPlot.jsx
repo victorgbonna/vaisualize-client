@@ -60,7 +60,7 @@ function ScatterPlotGroupBy({x,y, group_by}){
     // },
     // tooltips: { enabled: true },
     responsive: true,
-  maintainAspectRatio: false,
+    maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       title: { display: false }, 
@@ -125,22 +125,14 @@ function ScatterPlotGroupBy({x,y, group_by}){
 }
 
 function ScatterPlotSingle({x,y}){
+  
   const {dataArray}=useContext(DataRequestContext);
   const [meta, setMeta]= useState({page:1, pages:1, limit:5})
   const {convertToDigit}=timeStampControl
   const colors = API_ENDPOINTS.GET_COLORS
 
-  const datasets_into_objects= dataArray.map((row)=>({x:row[x[0]], y:row[y[0]]}))
+  const datasets_into_objects= dataArray.map((row)=>({x:convertToDigit(row[x[0]]), y:convertToDigit(row[y[0]])}))
   const datasets = datasets_into_objects
-
-  const data = useMemo(() => {
-    if(!meta.count) return null
-    
-    const data = {
-      datasets:datasets.slice(meta.skip, meta.skip+meta.limit)
-    };
-  return data
-  },[meta])
 
   const options = {
     // onHover: function (event, activeElements) {
@@ -152,6 +144,8 @@ function ScatterPlotSingle({x,y}){
     //   }
     // },
     // tooltips: { enabled: true },
+     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       title: { display: false }, 
@@ -178,38 +172,25 @@ function ScatterPlotSingle({x,y}){
     //   },
     // },
   };
-  useEffect(()=>{
-    const count=datasets.length
-    const result=pagination({page:meta.page, count, limit:5})
-    setMeta({...meta, ...result})
-  },[])
 
-  if(!data) return null
+  // if(!data) return null
   return(
     <div className="w-full relative ">
       
-      <SlideThrough 
+      {/* <SlideThrough 
         onPageClick={(e)=>setMeta({...meta, page:e, skip:(e - 1) * meta.limit})}
         pages={meta.pages}
         currentPage={meta.page}
-      />
-      <div className='absolute w-fit bottom-[55px] right-3 border py-1 px-2 bg-opacity-50 bg-white rounded-md'>
-          <div className='flex items-center gap-x-3'>
-            <div className='flex items-center gap-x-1'>
-              {Object.values(datasets).slice(meta.skip, meta.skip+meta.limit).map((_,index)=> 
-                <Fragment key={index}>
-                  {colors[index] && colors[index] !=='#e4e0e5'?<div style={{borderRadius:50, width:10, height:10, background:colors[index]}} className='border border-black'>
-                
-                  </div>:null}
-                </Fragment>
-              )}
-            </div>
-            <p className='text-xs'>{group_by}</p>
-          </div>
-
-      </div>
-      <div className='tablet:h-[350px] tablet:w-[500px] h-[400px]'>
-        <Scatter data={data} options={options} />
+      /> */}
+      
+      <div className='h-[400px] tablet:h-[350px] tablet:w-[500px]'>
+        <Scatter data={{
+          datasets:[{
+            data:datasets_into_objects
+          }]
+          // datasets_into_objects,
+          // label:''
+        }} options={options} />
       </div>
     </div>
   )
