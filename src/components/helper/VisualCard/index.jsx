@@ -40,7 +40,7 @@ export default function VisualCard({cards}){
     return(
     <div className="mb-10 mt-10" ref={elementRef}>
 
-      <div className=" tablet-hidden flex justify-center gap-x-7 items-center mb-6">
+      <div className=" tablet:hidden flex justify-center gap-x-7 items-center mb-6">
         <button
           disabled={teamCurr === 0}
           onClick={() => setTeamCurr(teamCurr - 1)}
@@ -59,7 +59,7 @@ export default function VisualCard({cards}){
         </button>
       </div>
 
-      <div className=" tablet-hidden overflow-x-hidden px-[20px]">
+      <div className=" tablet:hidden overflow-x-hidden px-[20px]">
         <div
           id="carousel-slides"
           style={{ transform: `translateX(-${teamCurr * 33.5}%)` }}
