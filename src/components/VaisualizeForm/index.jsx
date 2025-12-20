@@ -28,7 +28,7 @@ export default function VaisualizeForm(){
             name: "category",
             type: "select",
             placeholder: "Select category",
-            options: ["Health", "Sports", "Finance", "Education", "Environment",'Entertainment', "Technology",'Housing','Hospitality', "Other"],
+            options: ["Health", "Sports", "Finance", "Education", "Environment",'Entertainment', 'E-commerce',"Technology",'Housing','Hospitality', "Other"],
             required: true,
         },
         {
@@ -36,19 +36,19 @@ export default function VaisualizeForm(){
             name: "mode",
             type: "select",
             placeholder: "Select Display",
-            options: ["Public", "Private"],
+            options: ["public", "private"],
             required: true,
         },
+        // {
+        //     label: "Display Status",
+        //     name: "mode",
+        //     type: "select",
+        //     placeholder: "Display Mode",
+        //     options: ["Public", "Private"],
+        //     required: true,
+        // },
         {
-            label: "Display Status",
-            name: "display",
-            type: "select",
-            placeholder: "Display Mode",
-            options: ["Public", "Private"],
-            required: true,
-        },
-        {
-            label: "Description",
+            label: "Description(optional)",
             name: "description",
             type: "textarea",
             placeholder: "Briefly describe what the dataset is about...",
@@ -56,7 +56,7 @@ export default function VaisualizeForm(){
             maxlength:180
         },
         {
-            label: "Goal / Objective",
+            label: "Goal / Objective(optional)",
             name: "goal",
             type: "textarea",
             placeholder: "What do you want to achieve or analyze with this dataset?",
@@ -350,8 +350,9 @@ export default function VaisualizeForm(){
                     customDisabled={true}
                     className={"font-medium px-6 text-lg text-white h-full w-full py-3.5"} 
                         disabled={
-                            !formData.title  || !formData.goal  || !formData.description 
-                            || !fileData?.value || !multiselect.columns.length 
+                            !formData.title  
+                            || !formData.category || 
+                            !fileData?.value || !multiselect.columns.length 
                         }                    
                         isLoading={isLoading}>
                         Start Analyzing
@@ -703,7 +704,7 @@ function LoadingComponent({loadingState}){
               </div> */}
               <img className="mt-[-50px]" src="/gif/brainstorm.gif" alt="brainstorm" />
               <div>
-                <p className="text-sm text-gray-800 text-center">{loadingState+'...'}</p>
+                <p className="text-sm text-gray-800 mt-4  text-center">{loadingState+'...'}</p>
               </div>
             </div>
             <div className="bg-[#D9D9D9] rounded-[22px] h-3 w-[300px] mt-4">
@@ -711,8 +712,8 @@ function LoadingComponent({loadingState}){
                 style={{
                   width:
                     !loadingState?'0':
-                    loadingState==='starting'?'10%':loadingState=== 'next'?'25%':
-                    loadingState==='next3'?'35%':loadingState==='next4'?'55%':
+                    loadingState==='starting'?'10%':loadingState=== 'reasoning'?'25%':
+                    loadingState==='reasoning'?'35%':loadingState==='analyzing'?'55%':
                     loadingState==='uploading'?'65%':loadingState==='processing'?'80%':'100%',
                   transition:'width 0.5s ease-in-out'
                 }}
