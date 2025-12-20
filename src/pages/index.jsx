@@ -118,15 +118,15 @@ function HeroSection(){
             <p className="tablet:text-center ">WebBi is a straight-to-the-point tool that helps businesses, freelancers and analysts visualize data fast, with no tech skills needed.</p>
             <p className="mb-2 tablet:text-center tablet:mt-3">Filter, plot and modify visuals quickly — no coding needed.</p>
             <div className="relative w-fit h-fit mt-8 flex gap-x-4 gap-y-5 tablet:flex-col tablet:justify-center">
-                <button className="herobtn3 border-dashed bg-white border-2 border-black flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
+                <Link href={'/#samples'} className="herobtn3 border-dashed bg-white border-2 border-black flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
                     {/* <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" /> */}
                     <p className=" font-medium">Explore Samples</p>
-                </button>
+                </Link>
 
-                <button className="herobtn flex justify-center gap-x-3 items-center h-full px-10 py-3 rounded-[30px]">
+                <Link href={'/#form'} className="herobtn flex justify-center gap-x-3 items-center h-full px-10 py-3 rounded-[30px]">
                     <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" />
                     <p className="text-white font-medium">{'Analyze Now (Free)'}</p>
-                </button>
+                </Link>
             </div>
             <div className="mt-10 flex flex-col gap-6 tablet:gap-4 tablet:w-full">
                 <div className="shadow-xl rounded-xl"
@@ -205,10 +205,10 @@ function CSteps(){
           
           <div className="h-full flex flex-col items-center justify-center z-10 relative tablet:px-4">
               <div className="relative w-fit h-fit mt-8">
-                  <button className="buttonreal flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
+                  <Link href='/#form' className="buttonreal flex justify-center gap-x-5 items-center h-full px-10 py-3 rounded-[30px]">
                       {/* <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" /> */}
                       <p className="text-white font-medium">Get Started</p>
-                  </button>
+                  </Link>
               </div>
           </div>
       </section>
@@ -360,6 +360,7 @@ function RecentWorks(){
 
     return(
         <section 
+          id="samples"
           className={` bg-[#EEF4FA] mt-20 py-14 px-20 tablet:px-5`}>
             <div className="text-center x">
                 <h2 className="text-3xl mb-[6px] font-semibold text-[#5345E6]">Recent Analysis</h2>
