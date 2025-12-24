@@ -333,10 +333,14 @@ function EditCharts({data, columns, visualsSugg, onClose, onNext}){
     return(
         <div className="max-h-[450px] tablet:w-full tablet:h-fit">
             <p className="text-xl font-semibold mb-2">Edit Visual</p>
+            
+            <div className="max-h-[350px] overflow-y-auto h-fit">
             <ChartInputBox columns={columns} isEdit={true} 
                 data={data} excludeBtn={true} formData={formData}
                 setFormData={setFormData}
-            />
+            />    
+            </div>
+            
             <div className="flex justify-end tablet:px-0">
                 <LoadButton
                     isLoading={edLoading}
@@ -463,7 +467,9 @@ function ChartInputBox({formData, onNext, setFormData,onClose=()=>null,excludeBt
                                 {order:5}
                             }>
                             {!get_cats.length?
-                                <p className="italic">{no_cat_fields[x]}</p>:
+                                <div className="max-w-[200px]">
+                                <p className="italic">{no_cat_fields[x]}</p>
+                                </div>:
                                 <p className="uppercase font-semibold">
                                     {x.replace('_',' ')}{': '}
                                     <span className="font-medium text-gray-500">{get_cats.length}</span>

@@ -23,7 +23,7 @@ function FilterBoxInner({
 
   const if_filter_cleared=()=>{
     const arr= [...filterArr]
-    if(arr.length===1 && arr[0].length===1 && !hasMeaningfulValue(arr[0].length)){
+    if(arr.length===1 && arr[0].length===1 && !hasMeaningfulValue(arr[0])){
         return true
     }
     return false
