@@ -9,6 +9,7 @@ export default function DataFetch({children,
     if(isLoading || isEmpty){
         return loadingComponent
     }
+
     if(isError){
         return (
             <div className="py-10 flex flex-col items-center justify-center font-semibold text-primary2 text-5 ">

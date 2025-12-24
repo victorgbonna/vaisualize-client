@@ -247,13 +247,12 @@ function AnalysisC() {
     },[req_data])
 
     
-    
     return (
     <>
         <DataFetch
             isLoading={reqLoading} 
             isError={isReqError} 
-            errorMsg={error?.message}
+            errorMsg={error?.error?.message}
             isEmpty={false}
         >
             <div>
@@ -299,9 +298,8 @@ function AnalysisC() {
                         <div className="flex flex-col justify-end items-end">
                             <p className="text-sm italic mb-2">Payment verification still in progress</p>
                             <div className="w-fit">
-                                <p className="italic">Any delay, </p>
                                 <Link className="w-fit text-white py-2 px-5 rounded-lg p2" href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} >
-                                    Contact Us Now
+                                    Contact Us
                                 </Link>
                             </div>
 

@@ -467,7 +467,7 @@ function ChartInputBox({formData, onNext, setFormData,onClose=()=>null,excludeBt
                                 {order:5}
                             }>
                             {!get_cats.length?
-                                <div className="max-w-[200px]">
+                                <div className="max-w-[700px]">
                                 <p className="italic">{no_cat_fields[x]}</p>
                                 </div>:
                                 <p className="uppercase font-semibold">
