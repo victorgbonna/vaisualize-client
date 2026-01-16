@@ -28,6 +28,7 @@ const API_ENDPOINTS = {
     return 'requests/get/one/'+x
   },
   ADD_FILTER:'visuals/filter/add',
+  
   GET_ALL_PUBLIC_REQUESTS:'requests/get/all-public',
   SEND_PAYMENT:'payments/initialize',
   
@@ -287,7 +288,11 @@ const API_ENDPOINTS = {
         },
     }
     
-  }
+  },
+  SEND_CONVO:'conversations/send',
+  GET_CONVO_BY_ID:(id)=>'conversations/get/'+id,
+  ADD_CHAT_TO_VISUALS:'conversations/add-to-visuals',
+  
 };
 
 export default API_ENDPOINTS

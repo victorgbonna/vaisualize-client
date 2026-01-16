@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,13 +26,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Quicksand", sans-serif !important;
+  font-family: "Oswald", sans-serif !important;
 }
 *{
   padding: 0;
   margin: 0;
   scroll-behavior: smooth !important;
-  font-family: "Quicksand", sans-serif !important;
+  font-family: "Oswald", sans-serif !important;
   /* transition-duration: 5s; */
 }
 html, body {
@@ -684,4 +683,181 @@ background: linear-gradient(
 .category-v .category-v-right, .slide-l-v>.ri{
   opacity: 1;
   right: 0;
+}
+
+.thinking::after {
+  content: '';
+  display: inline-block;
+  width: 1.5em;
+  font-size: 18px;
+  /* background: #0000ff; */
+  text-align: left;
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* //from stitch */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hero-perspective {
+  perspective: 2000px;
+}
+.hero-tilt {
+  transform: rotateX(8deg) rotateY(0deg) scale(1);
+  transition: transform 0.5s ease;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.25), 
+              0 30px 60px -30px rgba(0, 0, 0, 0.3), 
+              inset 0 -2px 6px 0 rgba(255, 255, 255, 0.1);
+}
+.floating-chart-card {
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.603);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  padding: 1rem;              
+  border-radius: 1rem;        
+
+  transition-property: all;
+  transition-duration: 700ms; 
+
+  animation: floatUpDown 4s ease-in-out infinite;
+  /* pointer-events: none; */
+}
+.dark .floating-chart {
+  background: rgba(30, 41, 59, 0.85);
+
+}
+
+.floating-chart-card:hover {
+  /* transform: translateY(-0.5rem);
+   */
+    animation-play-state: paused;
+}
+@keyframes floatUp {
+  from {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-0.5rem);
+    opacity: 1;
+  }
+}
+
+.floating-animate {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.hero > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-v > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.step-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.step-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.step-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.step-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.step-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.hero-v .step-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.floating-chart-card {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out ;
+}
+
+.floating-animate {
+  animation: floatIn 0.8s ease-out forwards, floatUpDown 4s ease-in-out infinite;;
+}
+
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* For the RecentWorks section */
+.recent-works-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.recent-works-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

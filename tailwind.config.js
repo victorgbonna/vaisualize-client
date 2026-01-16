@@ -13,12 +13,7 @@ module.exports = {
       phone: { max: "540px" },
     },
     extend: {
-      colors: {
-        green:"#83BC3F",
-        darkgreen:"#80AA4F",
-        graySubHd: "#535353",
-        grayFooter:"#393939"
-      },
+      colors: {primary: "#607AFB", "background-light": "#f5f6f8", "background-dark": "#0f1323"},
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

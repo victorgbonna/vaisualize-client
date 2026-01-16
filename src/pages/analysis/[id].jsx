@@ -5,7 +5,7 @@ import * as XLSX from "xlsx";
 import ChartLayout from "@/components/default";
 
 import {HistogramGrouped, BoxPlot, ViolinPlot, ScatterPlot, BubbleChart, BarChart, HeatmapChart,RadarChart, AreaChart, LinePlot, PieChart} from "@/components/chart/chartTools";
-import { DataFetch, DeleteVisualHelper, FilterBox, LoadButton, SelectFilters, SelectOption, SelectOptionAsObjectValue } from "@/components";
+import { ChatBot, DataFetch, DeleteVisualHelper, FilterBox, LoadButton, SelectFilters, SelectOption, SelectOptionAsObjectValue } from "@/components";
 import { API_ENDPOINTS, commafy, consolelog, timeStampControl } from "@/configs";
 import { DataRequestContext, UseDataRequestContextComponent } from "@/context";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -47,6 +47,7 @@ function AnalysisC() {
     const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
     const [timeLeft, setTimeLeft] = useState('');
     const [openModal, setOpenModal]= useState('')
+    const [mountChat, setMountChat]= useState(false)
 
     const {getData, getDataWithoutBaseUrl}= useHttpServices()
     const getARequest=async()=>{    
@@ -222,7 +223,14 @@ function AnalysisC() {
         read_into_file(req_data?.request)
         // console.log({re:req_data?.request})
 
-        if(req_data?.request?.status!=='break') return
+        if(req_data?.request?.status!=='break') {
+            setTimeout(() => {
+                setMountChat(true)
+            }, 2000);
+
+            return 
+            // () => clearInterval(interval);
+        }
         const created = new Date(req_data?.request?.createdAt).getTime();
         const expiry = created + 2 * 24 * 60 * 60 * 1000
         // console.log({expiry})
@@ -255,7 +263,7 @@ function AnalysisC() {
             errorMsg={error?.error?.message}
             isEmpty={false}
         >
-            <div>
+            <div className="relative">
                 <div style={{
                     boxShadow: '1px 0px 50px -8px rgba(24, 24, 27, 0.1)'
                 }} className="flex tablet:flex-col items-center justify-between rounded-b-md sticky tablet:relative tablet:w-full top-0 z-[99] border w-full left-0 right-0 h-fit bg-white py-7 px-10 tablet:px-4">
@@ -329,6 +337,24 @@ function AnalysisC() {
                         <VisualCharts refetchRequestData={refetchRequestData}/>
                     </div>
                 </div>
+                {mountChat ?
+                    <ChatBox 
+                        onNext={()=>{
+                            setOpenModal({
+                                type:'chatbot'
+                            })
+                        }} 
+                        // onClose={()=>setOpenModal(null)}
+                        // setShowModal={()=>setOpenModal(null)}
+                    />
+                :null}
+                {openModal?.type==='chatbot' ?
+                    <ChatBot 
+                        data={openModal} 
+                        onClose={()=>setOpenModal(null)}
+                        setShowModal={()=>setOpenModal(null)}
+                    />
+                :null}
             </div>
 
         </DataFetch>
@@ -338,6 +364,7 @@ function AnalysisC() {
                 setShowModal={()=>setOpenModal(null)}
             />
         :null}
+        
         {openModal?.type==='filter' ?
             <FilterBox data={openModal} 
                 onClose={()=>setOpenModal(null)}
@@ -1064,6 +1091,47 @@ function SubscribeBox({onNext, onClose, timeLeft, data, setShowModal}){
                 </div>
             </div>
         </ModalLayout>
+    )
+}
+
+function ChatBox({onNext}){
+    const fullText ="Hey 👋 I’m your personal data assistant. Click to talk to me.";
+
+    const [visible, setVisible] = useState(false);
+    const [text, setText] = useState("");
+
+    useEffect(() => {
+    setVisible(true);
+    }, []);
+
+    useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+        setText(fullText.slice(0, i + 1));
+        i++;
+        if (i === fullText.length) clearInterval(interval);
+    }, 35); 
+    return () => clearInterval(interval);
+    }, []);
+    return(
+    <div
+      className={`fixed bottom-10 right-[70px] w-fit transition-all duration-700
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+      `}
+    >
+      <div className="flex flex-col items-end">
+        <div className="bg-gray-100 shadow-xl rounded-lg px-4 py-3 border w-[250px] min-h-[60px] shadow-md">
+          <p className="text-sm italic ">{text}</p>
+        </div>
+
+        <img
+          className="w-20 -mr-[50px] cursor-pointer"
+          src="/svg/robot-assistant.svg"
+          alt="web-bryan"
+          onClick={()=>onNext()}
+        />
+      </div>
+    </div>
     )
 }
 

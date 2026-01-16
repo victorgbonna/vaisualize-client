@@ -1,3 +1,8 @@
+export {default as MainLayout} from './helper/MainLayout';
+
+
+export {default as ChatBot} from './helper/ChatBot';
+
 export {default as DeleteVisualHelper} from './helper/DeleteVisualHelper';
 
 export {default as FilterBox} from './helper/FilterBox';
@@ -21,6 +26,3 @@ export { default as SelectOption } from './helper/SelectOption';
 
 export {default as Chart} from './chart/Chart';
 
-
-
-// export { default as DataFetch } = require("./helper/Datafetch");
