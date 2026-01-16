@@ -1,15 +1,15 @@
 
-// import { EnterChatModal, ModalLayout } from "@/components/modal";
-// import { API_ENDPOINTS, consolelog, PAGE_ROUTES } from "@/configs";
-// import { EnterChatContext } from "@/context";
-// import { useHttpServices } from "@/hooks";
-// import { useQuery } from "@tanstack/react-query";
-// import Head from "next/head";
-// import { useContext, Fragment, useEffect, useState, useRef } from "react";
-// import Link from "next/link";
-// // import sampleData from "@/data/extracted_responses.json";
-// import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
-// import { useRouter } from "next/router";
+import { EnterChatModal, ModalLayout } from "@/components/modal";
+import { API_ENDPOINTS, consolelog, PAGE_ROUTES } from "@/configs";
+import { EnterChatContext } from "@/context";
+import { useHttpServices } from "@/hooks";
+import { useQuery } from "@tanstack/react-query";
+import Head from "next/head";
+import { useContext, Fragment, useEffect, useState, useRef } from "react";
+import Link from "next/link";
+// import sampleData from "@/data/extracted_responses.json";
+import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
+import { useRouter } from "next/router";
 
 // export default function Home() {
 //   const { showModal, setShowModal } = useContext(EnterChatContext);
@@ -887,17 +887,6 @@
 
 //   )
 // }
-import { EnterChatModal, ModalLayout } from "@/components/modal";
-import { API_ENDPOINTS, consolelog } from "@/configs";
-import { EnterChatContext } from "@/context";
-import { useHttpServices } from "@/hooks";
-import { useQuery } from "@tanstack/react-query";
-import Head from "next/head";
-import { useContext, Fragment, useEffect, useState, useRef } from "react";
-import Link from "next/link";
-// import sampleData from "@/data/extracted_responses.json";
-import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
-// import Image from "next/image";
 
 
 export default function Homezzzqsii() {
@@ -922,6 +911,43 @@ export default function Homezzzqsii() {
 
       </div> */}
       <HeroSection/>
+      <CSteps/>
+      
+      <RecentWorks/>
+      <VaisualizeForm/>
+      <section className="pt-16 flex flex-col items-center tablet:px-4">
+        <div className="text-center mb-8">
+          <h6 className="text-2xl font-medium">NEED HUMAN EXPERTISE?</h6>
+          <p className="text-sm text-[#5D5C5C]">Connect with our data professionals for deeper insights</p>
+        </div>
+
+        <div className="rounded-lg bg-[#F5F4FF] flex tablet:flex-col  items-center py-7 px-5 gap-x-10" style={{boxShadow: '0px 10px 21px 0px rgba(0, 0, 0, 0.1)'}}>
+          <img src="/images/victorgbonna.png" alt="victor ogbonna" className="w-[124px] h-[124px] rounded-full object-top object-cover"/>
+          <div className="w-[600px] tablet:w-full tablet:text-center">
+            <p className="text-lg font-medium">Victor Chiedo Ogbonna</p>
+            <p className="text-[#8F34E9]">Senior Software Engineer & Data Expert</p>
+            <p className="italic text-sm mt-4 mb-5">{'“Let me help you interpret complex findings and provide startegic recommendations for your specific use case. With 7+ years of experience, I’ll ensure you get actionable insights.'}</p>
+            <div className="flex items-center gap-4 tablet:flex-col">
+              <div className="w-fit gap-x-3 flex items-center">
+                <div className="flex px-3 py-1 rounded-lg p2 gap-x-2 items-center">
+                  {socials.map(({src, href, extra},ind)=>
+                    <Link href={href} key={ind} className="flex items-center gap-x-1 py-2">
+                      <img src={'/svg/socials/'+src} className="w-5 h-5" style={extra?{marginTop:'-5px',filter: 'brightness(0) invert(1)'}:{filter: 'brightness(0) invert(1)'}}/>
+                    </Link>
+                  )}
+                </div>
+
+                <p className="text-black font-semibold">FOLLOW</p>
+              </div>
+              <Link href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} className="p1 w-fit rounded-lg px-8 py-2 flex gap-x-3 flex items-center">
+                <img src="/svg/comment.svg" className="w-5 h-5"/>
+                <p className="text-white">CONTACT EXPERT</p>
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
       </>
     </main>
 
@@ -1056,7 +1082,7 @@ function CSteps(){
           
           <div className="h-full flex flex-col items-center justify-center z-10 relative tablet:px-4">
               <div className="relative w-fit h-fit mt-8">
-                  <Link href='/#form' className="p1 flex justify-center gap-x-5 items-center h-full px-12 tablet:px-10 py-3 rounded-[30px]">
+                  <Link href='/mvp/#form' className="p1 flex justify-center gap-x-5 items-center h-full px-12 tablet:px-10 py-3 rounded-[30px]">
                       {/* <img style={{filter:'brightness(0) invert(1)'}} src="/svg/upload.svg" alt="upload" /> */}
                       <p className="text-white font-medium">Get Started</p>
                   </Link>

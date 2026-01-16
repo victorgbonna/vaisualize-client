@@ -295,7 +295,7 @@ function CSteps(){
         <section className="x flex justify-center flex-col items-center">
           <div className="text-center mb-20">
             <h2 className="font-display text-4xl tablet:text-3xl font-bold mb-4">From data to insight in minutes</h2>
-            <p className="text-slate-600 mx-auto">Stop wasting hours on manual formatting. WebBi's provided AI assistant does the heavy lifting for you.</p>
+            <p className="text-slate-600 mx-auto">{"Stop wasting hours on manual formatting. WebBi's provided AI assistant does the heavy lifting for you."}</p>
           </div>
           <div className="u">
             <Steps/>
@@ -381,7 +381,7 @@ function LLM(){
               <img src="/svg/robot.svg" alt="robot" className="w-7 h-7 tablet:h-4"/>
             </div>
             <div className="bg-white p-5"  style={{borderTopRightRadius:20, borderBottomRightRadius:20, borderBottomLeftRadius:20}}>
-            <p className="text-sm mb-4 w-[80%]">Here's your revenue growth. You saw a <span className="text-green-500 font-bold">+24%</span> increase in Q4 compared to Q3.</p>
+            <p className="text-sm mb-4 w-[80%]">{`Here's your revenue growth. You saw a <span className="text-green-500 font-bold">+24%</span> increase in Q4 compared to Q3.`}</p>
               <div className="h-48 tablet:h-[130px] bg-slate-50 rounded-xl p-4 flex items-end justify-between gap-2">
                 <div className="w-full bg-primary/20 h-[30%] rounded-t-sm"></div>
                 <div className="w-full bg-primary/30 h-[45%] rounded-t-sm"></div>
@@ -613,8 +613,8 @@ function Steps(){
           <div className="w-8 h-8 rounded-xl bg-red-400"></div>
           <div className="w-8 h-8 rounded-xl bg-blue-400"></div>
           <div className="w-8 h-8 rounded-xl bg-amber-400"></div>
-          {colors_s.map((x)=>
-            <div style={{background:x}} 
+          {colors_s.map((x,ind)=>
+            <div key={ind} style={{background:x}} 
               className="w-8 h-8 rounded-xl"></div>
           )}
           <div className="relative inline-flex items-center gap-x-2">
@@ -806,7 +806,7 @@ function Footer(){
         <p className="text-slate-600 max-w-2xl mx-auto mb-10 text-lg tablet:text-base">WebBi helps you understand your data instantly, without technical expertise. Join 20,000+ teams visualizing better.</p>
         <div className="flex tablet:flex-row items-center justify-center gap-4 tablet:flex-col tablet:w-full">
           <Link href={'/'} className="w-fit tablet:w-full bg-primary text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/40 transition-all">Start for free</Link>
-          <Link href={'/indexc'} className="w-fit tablet:w-full px-10 py-4 rounded-full font-bold text-lg border border-slate-300 dark:border-slate-700 hover:bg-white  transition-all">See examples</Link>
+          <Link href={'/mvp'} className="w-fit tablet:w-full px-10 py-4 rounded-full font-bold text-lg border border-slate-300 dark:border-slate-700 hover:bg-white  transition-all">See examples</Link>
         </div>
       </div>
       <div className="grid tablet:grid-cols-1 grid-cols-5 gap-12 border-t border-slate-200  pt-16 tablet:pt-10 tablet:px-5 tablet:pr-8">
@@ -825,7 +825,7 @@ function Footer(){
         </p>
 
         <div className="flex gap-4">
-          <Link
+          <Link href={'/'}
             className="w-10 h-10 rounded-full border p-2 border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
            
           >
@@ -835,7 +835,7 @@ function Footer(){
             
           </Link>
 
-          <Link
+          <Link href={'/'}
             className="w-10 h-10 rounded-full border p-2 border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
            
           >

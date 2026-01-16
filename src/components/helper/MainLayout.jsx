@@ -124,9 +124,9 @@ function TabletNav(){
 
 function Brand(){
     return(
-        <div className="flex items-center gap-x-[5px]">
+        <Link href='/' className="flex items-center gap-x-[5px]">
             <img className="w-[40px] h-[40px]" src="/images/webbi.png" alt="webbi logo" />
             <h1 className=" text-2xl font-bold tracking-tight">WebBi</h1>
-        </div>
+        </Link>
     )
 }
