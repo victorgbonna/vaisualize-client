@@ -887,17 +887,17 @@
 
 //   )
 // }
-// import { EnterChatModal, ModalLayout } from "@/components/modal";
-// import { API_ENDPOINTS, consolelog } from "@/configs";
-// import { EnterChatContext } from "@/context";
-// import { useHttpServices } from "@/hooks";
-// import { useQuery } from "@tanstack/react-query";
-// import Head from "next/head";
-// import { useContext, Fragment, useEffect, useState, useRef } from "react";
-// import Link from "next/link";
-// // import sampleData from "@/data/extracted_responses.json";
-// import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
-// // import Image from "next/image";
+import { EnterChatModal, ModalLayout } from "@/components/modal";
+import { API_ENDPOINTS, consolelog } from "@/configs";
+import { EnterChatContext } from "@/context";
+import { useHttpServices } from "@/hooks";
+import { useQuery } from "@tanstack/react-query";
+import Head from "next/head";
+import { useContext, Fragment, useEffect, useState, useRef } from "react";
+import Link from "next/link";
+// import sampleData from "@/data/extracted_responses.json";
+import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
+// import Image from "next/image";
 
 
 export default function Homezzzqsii() {
