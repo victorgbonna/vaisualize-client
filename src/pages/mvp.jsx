@@ -443,7 +443,7 @@ import { useRouter } from "next/router";
       
 //       <div className="text-center mb-16">
 //         <h2 className="text-4xl tablet:text-3xl font-bold mb-4">Everything you need to scale</h2>
-//         <p className="text-slate-600 dark:text-slate-400">Power packed features for heavy-duty analysis.</p>
+//         <p className="text-slate-600 ">Power packed features for heavy-duty analysis.</p>
 //       </div>
 
 //       <div className="grid grid-cols-3 justify-between px-24 gap-6 tablet:px-6 tablet:grid-cols-1" >

@@ -5,7 +5,7 @@ import { EnterChatContext } from "@/context";
 import { useHttpServices } from "@/hooks";
 import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
-import { useContext, Fragment, useEffect, useState, useRef } from "react";
+import { useContext, Fragment, useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 // import sampleData from "@/data/extracted_responses.json";
 import { AutoSlider, DataFetch, iconSvgPath, ImageContainer, VaisualizeForm, VisualCard } from "@/components";
@@ -30,12 +30,13 @@ export default function Home() {
       <div className="overflow-hidden">
 
       <HeroSection/>
+
       <NextSection/>
       <CSteps/>
       <Features/>
       <LLM/>
       <Scale/>
-      <Footer/>
+      {/* <Footer/> */}
       </div>
     </main>
 
@@ -128,7 +129,7 @@ function HeroSection(){
   return(
     <section
         ref={elementRef}
-        className={`  hero ${isVisible?" hero-v ":"  "} bg-indigo-400/10 relative h-[80vh] w-screen flex flex-col justify-center items-center tablet:h-fit p-6 overflow-visible`}>        
+        className={`  hero ${isVisible?" hero-v ":"  "} bg-indigo-400/10 relative h-[80vh] w-screen flex flex-col justify-center items-center tablet:h-fit p-6 overflow-visible tablet:pt-20`}>        
         <div>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden">
           <div className="absolute bottom-[-10%] left-[-10%] w-[100%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full"></div>
@@ -276,7 +277,7 @@ function CSteps(){
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 } 
+      { threshold: 0.2 } 
     );
 
     if (elementRef.current) {
@@ -290,10 +291,10 @@ function CSteps(){
     };
   }, []);
   return(
-    <div ref={elementRef} 
-      className={` hero ${isVisible?" hero-v ":"  "} hero pt-20 px-20 tablet:px-5 pb-20 tablet:py-10 `}>
+    <div  
+      className={` pt-20 px-20 tablet:px-5 pb-20 tablet:py-10 `}>
         <section className="x flex justify-center flex-col items-center">
-          <div className="text-center mb-20">
+          <div ref={elementRef} className={`text-center mb-20 hero ${isVisible?" hero-v ":"  "} hero `}>
             <h2 className="font-display text-4xl tablet:text-3xl font-bold mb-4">From data to insight in minutes</h2>
             <p className="text-slate-600 mx-auto">{"Stop wasting hours on manual formatting. WebBi's provided AI assistant does the heavy lifting for you."}</p>
           </div>
@@ -314,6 +315,29 @@ function CSteps(){
 }
 
 function Features(){
+   const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.4 } 
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
   const features = [
     {
       id: "no-technical-overload",
@@ -342,9 +366,10 @@ function Features(){
   ];
 
   return(
-    <section className="py-24 bg-slate-50 grid grid-cols-3 px-20 gap-8 tablet:px-4 tablet:grid-cols-1">
+    <section className={` py-24 bg-slate-50 px-20  tablet:px-4 tablet:grid-cols-1`}>
+      <div ref={elementRef} className={` card-slides ${isVisible?' card-slides-ac  ':'  '} grid grid-cols-3 gap-8 tablet:grid-cols-1`}>
       {features.map(({title, description, svg, color},ind)=>  
-        <div key={ind} className="p-8 bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div key={ind} className="  p-8 bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
           <div className={`p-2 w-fit 
               ${color==='red'?' bg-red-100 ':color==='green'?' bg-green-100 ':' bg-blue-100 '} 
               flex items-center justify-center rounded-2xl mb-6`}>
@@ -357,13 +382,39 @@ function Features(){
         </div>
 
       )}
+      </div>
     </section>
   )
 }
 function LLM(){
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.4 } 
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
+
   return(
-    <section className="h-fit py-24 px-7 grid grid-cols-5 relative bg-slate-100 tablet:grid-cols-1">
-      <div className="shadow-2xl bg-slate-800 pl-10 h-[80vh] tablet:h-fit rounded-l-[20px] tablet:py-12 tablet:rounded-bl-none tablet:rounded-t-[20px]  flex flex-col justify-center col-span-2">
+    <section className="h-fit py-24 px-7 tablet:px-3 relative bg-slate-100">
+      <div ref={elementRef} className={` grid grid-cols-5 tablet:grid-cols-1 `}>
+      <div className="shadow-2xl bg-slate-800 pl-10 h-[80vh] tablet:h-fit rounded-l-[20px] tablet:py-12 tablet:rounded-bl-none tablet:rounded-t-[20px]  flex flex-col justify-center col-span-2 tablet:px-2 ">
         <span className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-4">Interactive AI</span>
         <h2 className="text-white text-4xl font-bold mb-6">Chat with your data.</h2>
         <p className="text-slate-400 mb-8 text-lg w-[85%]">{"Just ask. WebBi's AI understands context and nuances in your business data."}</p>
@@ -371,34 +422,112 @@ function LLM(){
           <Questions/>
         </div>
       </div>
-      <div className="col-span-3 shadow-2xl bg-slate-700 tablet:p-8 p-12 relative flex flex-col rounded-r-[20px] items-center justify-center tablet:py-12 tablet:rounded-tr-none tablet:rounded-b-[20px]">  
-        <div className="flex flex-col items-end">
-          <div className="mb-5 w-fit bg-primary flex px-5 py-3 rounded-2xl rounded-tr-none shadow-lg">
-            <p className="text-right text-white">Show me revenue growth this year</p>                     
-          </div>
-          <div className="flex items-start gap-x-3">
-            <div className="bg-primary p-1 rounded-full tablet:p-2">
-              <img src="/svg/robot.svg" alt="robot" className="w-7 h-7 tablet:h-4"/>
-            </div>
-            <div className="bg-white p-5"  style={{borderTopRightRadius:20, borderBottomRightRadius:20, borderBottomLeftRadius:20}}>
-            <p className="text-sm mb-4 w-[80%]">{`Here's your revenue growth. You saw a <span className="text-green-500 font-bold">+24%</span> increase in Q4 compared to Q3.`}</p>
-              <div className="h-48 tablet:h-[130px] bg-slate-50 rounded-xl p-4 flex items-end justify-between gap-2">
-                <div className="w-full bg-primary/20 h-[30%] rounded-t-sm"></div>
-                <div className="w-full bg-primary/30 h-[45%] rounded-t-sm"></div>
-                <div className="w-full bg-primary/40 h-[40%] rounded-t-sm"></div>
-                <div className="w-full bg-primary/60 h-[65%] rounded-t-sm"></div>
-                <div className="w-full bg-primary/80 h-[80%] rounded-t-sm"></div>
-                <div className="w-full bg-primary h-full rounded-t-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div className="col-span-3 shadow-2xl min-h-[300px] bg-slate-700 tablet:p-8 p-12 relative flex flex-col rounded-r-[20px] items-center justify-center tablet:py-12 tablet:rounded-tr-none tablet:rounded-b-[20px]">  
+        {isVisible?<ChatBotDummy/>:null}
+      </div>
       </div>
     </section>
   )
 }
+function ChatBotDummy(){
+  const fullText ="Show me revenue growth this year";
 
+    const [visible, setVisible] = useState(false);
+    const [text, setText] = useState("");
+    const [textFull, setTextFull]= useState(false)
+    const [showReply, setShowReply]= useState(false)
+
+    useEffect(() => {
+    setVisible(true);
+    }, []);
+
+    useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+        setText(fullText.slice(0, i + 1));
+        i++;
+        if (i === fullText.length) {
+          clearInterval(interval);
+          setTextFull(true)
+        }
+    }, 35); 
+    return () => clearInterval(interval);
+    }, []);
+    useEffect(()=>{
+      if(!textFull) return
+      setTimeout(() => {
+        setShowReply(true)
+      }, 3000);
+    },[textFull])
+  return(
+    <div className={`flex flex-col items-end  ${
+      visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+    }`}>
+      <div className="mb-5 w-fit min-w-[100px] bg-primary flex px-5 py-3 rounded-2xl rounded-tr-none shadow-lg">
+        <p className="text-right text-white">{text}</p>                     
+      </div>
+      
+      <div style={text!==fullText?{visibility:'hidden'}:{}} className="flex items-start gap-x-3">
+        <div className="bg-primary p-1 rounded-full tablet:p-2">
+          <img src="/svg/robot.svg" alt="robot" className="w-7 h-7 tablet:h-4"/>
+        </div>
+        <div className={"bg-white p-5 w-full "}  style={{borderTopRightRadius:20, borderBottomRightRadius:20, borderBottomLeftRadius:20}}>
+        
+        {
+          0?
+          <div className="h-48 tablet:h-[130px] tablet:w-full">
+            <p className="text-gray-500 thinking" style={{letterSpacing:'3px'}}></p>
+          </div>:
+          <div className={'relative'}>
+            {!showReply?
+            <div className={`${!showReply?' skeleton-white ':'  '} z-[2] absolute inset-0 bg-white`}>
+
+            </div>:null}
+            <div style={showReply?{}:{opacity:'0.1'}}>
+            <p className="text-sm mb-4 w-[80%]">Here is your revenue growth. You saw a <span className="text-green-500 font-bold">+24%</span> increase in Q4 compared to Q3.</p>
+            <div className="h-48 tablet:h-[130px] bg-slate-50 rounded-xl p-4 flex items-end justify-between gap-2">
+              <div className="w-full bg-primary/20 h-[30%] rounded-t-sm"></div>
+              <div className="w-full bg-primary/30 h-[45%] rounded-t-sm"></div>
+              <div className="w-full bg-primary/40 h-[40%] rounded-t-sm"></div>
+              <div className="w-full bg-primary/60 h-[65%] rounded-t-sm"></div>
+              <div className="w-full bg-primary/80 h-[80%] rounded-t-sm"></div>
+              <div className="w-full bg-primary h-full rounded-t-sm"></div>
+            </div>
+            </div>
+          </div>
+        }
+        </div>
+      </div>
+      
+    </div>
+  )
+
+}
 function Scale(){
+    const [isVisible, setIsVisible] = useState(false);
+    const elementRef = useRef(null);
+    
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.3 } 
+      );
+
+      if (elementRef.current) {
+        observer.observe(elementRef.current);
+      }
+
+      return () => {
+        if (elementRef.current) {
+          observer.unobserve(elementRef.current);
+        }
+      };
+    }, []);
   const features = [
     {
       title: "Advanced Filtering",
@@ -439,11 +568,11 @@ function Scale(){
   ];
 
   return(
-    <div className="relative bg-slate-100 py-20">
+    <div ref={elementRef} className={`hero ${isVisible?' hero-v ':'  '} relative bg-slate-100 py-20 tablet:py-5 tablet:px-5`}>
       
       <div className="text-center mb-16">
         <h2 className="text-4xl tablet:text-3xl font-bold mb-4">Everything you need to scale</h2>
-        <p className="text-slate-600 dark:text-slate-400">Power packed features for heavy-duty analysis.</p>
+        <p className="text-slate-600 ">Power packed features for heavy-duty analysis.</p>
       </div>
 
       <div className="grid grid-cols-3 justify-between px-24 gap-6 tablet:px-6 tablet:grid-cols-1" >
@@ -469,7 +598,10 @@ function Questions(){
   return(
     <div className="space-y-3">
       {questions.map((x,ind)=>
-        <div key={ind} className="flex gap-x-[6px] items-center">
+        <div key={ind} 
+          className="slide-up-item flex gap-x-[6px] items-center "
+          style={{ animationDelay: `${ind * 0.5}s`  }}
+        >
           <img src="/svg/blue-tick.svg" className="w-5 h-5" />
           <p className="text-slate-300">{x}</p>
         </div>
@@ -531,144 +663,239 @@ function ChartIcon({src, minusCount}){
 function Steps(){
   const router= useRouter()
   const [colors_s, set_colors_s]= useState([])
-    const visualizeSteps = [
-      {
-        step: 1,
-        title: "Upload Your Data",
-        description:
-          "Connect your live Google Sheets, upload a CSV, or simply paste your values. WebBi ingests it all seamlessly.",
-        image: "upload-step.jpg",
-        component: 
-        <div 
-           className="cursor-pointer p-6 bg-slate-50 rounded-xl border-2 border-dotted border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center gap-3"
-          onClick={()=>router.push(PAGE_ROUTES.AUTH_ROUTES.LOGIN)}>
-          <img src="/svg/file.svg" alt="file" className="w-8 h-8" />
-          <p className="text-sm text-slate-500">Drop your file here</p>
-        </div>
-      },
-      {
-        step: 2,
-        title: "Data Modelling",
-        description:  
-          "Our system identifies your columns and suggests the best mappings. Clean your data without writing a single formula.",
-        image: "modelling-2.jpg",
-        component: 
-        <div className="gap-y-3 flex flex-col">
-          {[{label:'Revenue', type:'Numerical'},
-            {label:'Onboarding Date', type:'Date'},
-            {label:'Product_ID', type:'Foreign Key', linkTo:'Product"s Table'}
-          ].map(({label, type, linkTo},ind)=>
-            <div className="flex gap-x-[6px] items-center justify-between text-sm border rounded-lg py-2 px-4" key={ind}>
-              <p className="text-[15px]">{label}</p>
-              <div>
-
-                {
-                  linkTo?
-                  <div className="gap-x-[6px] text-[13px] flex items-center">
-                    <p className="bg-gray-800 p-2 text-white px-2 py-0.5 rounded text-xs text-white">FK</p>
-                    <img src="/svg/arrow-back2.svg" style={{transform:'rotate(180deg)'}} alt="arrow" className="w-4 h-4"/>
-                    <p className="text-gray-400">{linkTo}</p>
-                  </div>
-                  :
-                  <span className="bg-blue-100  text-primary px-2 py-0.5 rounded text-[13px]">{type}</span>
-
-                }
-              </div>
-            </div>
-          )}
-        </div>,
-      },
-      {
-        step: 3,
-        title: "Generate Visuals",
-        description:
-          "Build visuals manually, or enable AI to automatically generate insightful, interactive charts from your data.",
-        image: "plotting-3.jpg",
-        component: 
-          <div className=" p-4 bg-primary/10 border border-primary/20 rounded-xl">
-            <div className="flex items-center gap-x-[8px] w-full">
-              <div className="bg-primary rounded-full p-2">
-                <img src="/svg/metric/twinkle.svg" alt="magic" className="w-3 h-3"/>
-              </div>
-              <div className="h-2 w-3/4 bg-primary/20 rounded"></div>
-
-            </div>
-            <div className="grid mt-4 grid-cols-2 gap-x-4">
-              {[1,2].map((x)=>
-                <div key={x} className="h-16 bg-white rounded-lg">
-
-                </div>
-              )}
-            </div>
-          </div>,
-      },
-      {
-        step: 4,
-        title: "Review & Modify",
-        description:
-          "Easily tweak colors, change chart types and add annotations using a powerful, intuitive editor.",
-        image: "fine-tune-step.jpg",
-        component: 
-        <div className="grid grid-cols-10 relative gap-[3px] tablet:grid-cols-8 max-w-[350px] items-center">
-          <div className="w-8 h-8 rounded-xl bg-red-400"></div>
-          <div className="w-8 h-8 rounded-xl bg-blue-400"></div>
-          <div className="w-8 h-8 rounded-xl bg-amber-400"></div>
-          {colors_s.map((x,ind)=>
-            <div key={ind} style={{background:x}} 
-              className="w-8 h-8 rounded-xl"></div>
-          )}
-          <div className="relative inline-flex items-center gap-x-2">
-            <label
-              htmlFor="color-picker"
-              className="cursor-pointer w-8 h-8 rounded-xl border-2 border-slate-200 flex items-center justify-center hover:border-primary"
-            >
-              <img src="/svg/palette.svg" />
-            </label>
-
-            <input
-              id="color-picker"
-              type="color"
-              className="absolute opacity-0 pointer-events-none"
-              onChange={(e) => set_colors_s((prev) => [...prev, e.target.value])}
-            />
-          </div>
+  const visualizeSteps = [
+    {
+      step: 1,
+      title: "Upload Your Data",
+      description:
+        "Connect your live Google Sheets, upload a CSV, or simply paste your values. WebBi ingests it all seamlessly.",
+      image: "upload-step.jpg",
+      component: 
+      <div 
+          className="slide-up-item cursor-pointer p-6 bg-slate-50 rounded-xl border-2 border-dotted border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center gap-3"
+        onClick={()=>router.push(PAGE_ROUTES.AUTH_ROUTES.LOGIN)}>
+        <img
+          src="/svg/file.svg"
+          alt="file"
+          className="w-8 h-8 animate-shake"
+        />
+        <p className="text-sm text-slate-500">Drop your file here</p>
+      </div>
+    },
+    {
+      step: 2,
+      title: "Data Modelling",
+      description:  
+        "Our system identifies your columns and suggests the best mappings. Clean your data without writing a single formula.",
+      image: "modelling-2.jpg",
+      component: 
+      <div className="gap-y-3 flex flex-col">
+        {[
+          { label: "Revenue", type: "Numerical" },
+          { label: "Onboarding Date", type: "Date" },
+          { label: "Product_ID", type: "Foreign Key", linkTo: 'Product"s Table' },
+        ].map(({ label, type, linkTo }, ind) => (
           
-        </div>
+          <div
+            key={ind}
+            className="slide-up-item flex gap-x-[6px] items-center justify-between text-sm border rounded-lg py-2 px-4"
+            style={{ animationDelay: `${ind * 0.5}s`  }}
+          >
+            <p className="text-[15px]">{label}</p>
+
+            {linkTo ? (
+              <div className="gap-x-[6px] text-[13px] flex items-center">
+                <p className="bg-gray-800 px-2 py-0.5 rounded text-xs text-white">
+                  FK
+                </p>
+                <img
+                  src="/svg/arrow-back2.svg"
+                  alt="arrow"
+                  className="w-4 h-4 rotate-180"
+                />
+                <p className="text-gray-400">{linkTo}</p>
+              </div>
+            ) : (
+              <span className="bg-blue-100 text-primary px-2 py-0.5 rounded text-[13px]">
+                {type}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
       },
-    ];
+    {
+      step: 3,
+      title: "Generate Visuals",
+      description:
+        "Build visuals manually, or enable AI to automatically generate insightful, interactive charts from your data.",
+      image: "plotting-3.jpg",
+      component: 
+        <div className=" slide-up-item p-4 bg-primary/10 border border-primary/20 rounded-xl">
+          <div className="flex items-center gap-x-[8px] w-full">
+            <div className="bg-primary rounded-full p-2">
+              <img src="/svg/metric/twinkle.svg" alt="magic" className="w-3 h-3"/>
+            </div>
+            <div className="h-2 w-3/4 bg-primary/20 rounded skeleton-blue"></div>
+
+          </div>
+          <div className="grid mt-4 grid-cols-2 gap-x-4">
+            {[1,2].map((x)=>
+              <div key={x} className="h-16 skeleton-white rounded-lg">
+
+              </div>
+            )}
+          </div>
+        </div>,
+    },
+    {
+      step: 4,
+      title: "Review & Modify",
+      description:
+        "Easily tweak colors, change chart types and add annotations using a powerful, intuitive editor.",
+      image: "fine-tune-step.jpg",
+      component: 
+      <div className="floating-animate-left grid grid-cols-10 relative gap-[3px] tablet:grid-cols-8 max-w-[350px] items-center">
+        <div className=" w-8 h-8 rounded-xl bg-red-400"></div>
+        <div  className=" w-8 h-8 rounded-xl bg-blue-400"></div>
+        <div className=" w-8 h-8 rounded-xl bg-amber-400"></div>
+        {colors_s.map((x,ind)=>
+          <div key={ind} style={{background:x}} 
+            className="w-8 h-8 rounded-xl"></div>
+        )}
+        <div className="relative inline-flex items-center gap-x-2">
+          <label
+            htmlFor="color-picker"
+            className="animate-shake cursor-pointer w-8 h-8 rounded-xl border-2 border-slate-200 flex items-center justify-center hover:border-primary"
+          >
+            <img src="/svg/palette.svg" />
+          </label>
+
+          <input
+            id="color-picker"
+            type="color"
+            className="absolute opacity-0 pointer-events-none"
+            onChange={(e) => set_colors_s((prev) => [...prev, e.target.value])}
+          />
+        </div>
+        
+      </div>
+    },
+  ];
+  
 
     return(
         <div className="pb-5 grid grid-cols-1 mt-10 px-8 tablet:px-5 justify-center gap-y-20 tablet:gap-y-10 tablet:grid-cols-1 items-start tablet:mt-10 ">
-            {visualizeSteps.map(({step, title, description, image, component},ind)=>
-                <div key={ind} className="step-card flex tablet:flex-col tablet:gap-y-2 gap-x-14 items-center">
-                    <div className="w-[800px] tablet:w-full " style={ind%2?{order:3}:{}}>
-                      <div className="flex items-center gap-x-2">
-                        <p className=" bg-primary w-10 h-10 rounded-full text-white flex justify-center items-center text-center text-sm">{step}</p>
-                        <h3 className="text-2xl font-bold">{title}</h3>
-                      </div>
-                      <div className="text-slate-600 mt-3">
-                        <p>{description}</p>
-                      </div>
-                      <div className="mt-4">
-                        {component}
-                      </div>
-                    </div>
-                    <ImageContainer className={'h-64 w-full tablet:order-[4]'} imgClass={'rounded-2xl object-cover object-center'}
-                     src={'/images/steps/'+image}
-                    />
-                    {/* <div className="card bg-[#E34AA5] p-3 rounded-md p-[24px] mb-3 rounded-lg w-fit">
-                        <img src={'/svg/steps/'+image} alt={image} className="w-6 h-6"/>
-                    </div>
-                    <div className="text-center w-[350px] tablet:w-full">
-                        <p className="font-semibold text-xl">STEP {ind+1}</p>
-                        <p className={`font-semibold text-lg gradient-p ${ind===0?' p1 ':ind===1?' p2 ':ind===2?' p3 ':' p1 '}`}>{title}</p>
-                        <p className="text-[#5D5C5C] mt-4 text-[15px]">{description}</p>
-                    </div> */}
-
-                </div>
+            {visualizeSteps.map((props,ind)=>
+                <Fragment key={ind}>
+                  <Order {...props} ind={ind}/>
+                </Fragment>
+                
             )}
         </div>
     )
+}
+function Order({step, title, description, image, component, ind}){
+  const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleComp, setIsVisibleComp] = useState(false);
+
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+        // reset when scrolling out
+        // else {
+        //   setIsVisible(false);
+        // }
+      },
+      { 
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      } 
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []); 
+
+  useEffect(()=>{
+    if(!isVisible) return setIsVisibleComp(false)
+    setTimeout(() => {
+      return setIsVisibleComp(true)
+    }, 1000);
+  },[isVisible])
+// const isVisibleComp= useMemo(()=>{
+//   if(!isVisible) return false
+//   setTimeout(() => {
+//     return true
+//   }, 500);
+// },[isVisible])
+
+  return(
+    <div 
+      ref={elementRef}
+      className={`flex tablet:flex-col tablet:gap-y-2 gap-x-14 items-center 
+        transition-all duration-700 ease-out
+        ${isVisible 
+          ? 'opacity-100 translate-y-0 step-card' 
+          : 'opacity-0 translate-y-16'
+        }`}
+    >
+      <div className="w-[800px] tablet:w-full" style={ind%2 ? {order:3} : {}}>
+        <div 
+          className={`flex items-center gap-x-2 transition-all duration-500 delay-100
+            ${isVisible 
+              ? 'opacity-100 translate-x-0 step-number' 
+              : 'opacity-0 -translate-x-8'
+            }`}
+        >
+          <p className="bg-primary w-10 h-10 rounded-full text-white flex justify-center items-center text-center text-sm">
+            {step}
+          </p>
+          <h3 className="text-2xl font-bold">{title}</h3>
+        </div>
+        
+        <div 
+          className={`transition-all duration-500 delay-200
+            ${isVisible 
+              ? 'opacity-100 translate-y-0 step-content' 
+              : 'opacity-0 translate-y-8'
+            }`}
+        >
+          <div className="text-slate-600 mt-3">
+            <p>{description}</p>
+          </div>
+          {isVisibleComp?
+          <div className="mt-4 " style={{}}>
+            {component}
+          </div>:
+          <div className="h-[200px]" style={ind===3?{height:'50px'}:{}}>
+
+          </div>
+          }
+        </div>
+      </div>
+      
+      <ImageContainer 
+        className={`h-64 w-full tablet:order-[4] transition-all duration-700 delay-300
+          ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        imgClass={'rounded-2xl object-cover object-center'}
+        src={'/images/steps/'+image}
+      />
+    </div>
+  )
 }
 
 function RecentWorks(){
@@ -780,114 +1007,60 @@ function NextSection(){
           />
         </div>
       </div>
-      <div className="mt-[80px] tablet:mt-14 tablet px-5">
-        <p className="text-center  text-sm font-semibold text-slate-500 mb-10 uppercase tracking-widest">Trusted by freelancers, analysts and startups</p>
-        <div className="flex justify-center gap-x-10">
-          <span className="text-2xl font-black font-display tracking-tight">SMARTHUB ACADEMY</span>
-          <span className="text-2xl font-black font-display tracking-tight">DATACUBE</span>
-          <span className="text-2xl font-black font-display tracking-tight">VOID.IO</span>
-          <span className="text-2xl font-black font-display tracking-tight">STRATA</span>
-          <span className="text-2xl font-black font-display tracking-tight">Z-CORP</span>
-          <span className="text-2xl font-black font-display tracking-tight">AURORA</span> 
-        </div>
-
-      </div>
+      <Partnership/>
     </div>
   )
 }
 
 
-function Footer(){
+
+function Partnership(){
+  const partners = [
+    "SMARTHUB ACADEMY",
+    "DATACUBE",
+    "VOID.IO",
+    "STRATA",
+    "Z-CORP",
+    "AURORA",
+  ];
   return(
-  <footer className="bg-slate-50 border-t border-slate-200 pt-24 pb-12">
-    <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-20 px-6">
-        <h2 className="font-display text-4xl tablet:text:3xl font-bold mb-6 ">Start making sense of your data.</h2>
-        <p className="text-slate-600 max-w-2xl mx-auto mb-10 text-lg tablet:text-base">WebBi helps you understand your data instantly, without technical expertise. Join 20,000+ teams visualizing better.</p>
-        <div className="flex tablet:flex-row items-center justify-center gap-4 tablet:flex-col tablet:w-full">
-          <Link href={'/'} className="w-fit tablet:w-full bg-primary text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/40 transition-all">Start for free</Link>
-          <Link href={'/mvp'} className="w-fit tablet:w-full px-10 py-4 rounded-full font-bold text-lg border border-slate-300 dark:border-slate-700 hover:bg-white  transition-all">See examples</Link>
+    
+    <div className="mt-[80px] tablet:mt-14 tablet px-5">
+        <p className="text-center  text-sm font-semibold text-slate-500 mb-10 uppercase tracking-widest">Trusted by freelancers, analysts and startups</p>
+         <div className="relative w-full overflow-hidden">
+        <div className="flex w-max animate-marquee gap-x-10  -translate-x-1/2 justify-between">
+        
+          {partners.map((item, index) => (
+            <span
+              key={`first-${index}`}
+              className="text-2xl font-black font-display tracking-tight whitespace-nowrap"
+            >
+              {item}
+            </span>
+          ))}
+
+          {partners.map((item, index) => (
+            <span
+              key={`second-${index}`}
+              className="text-2xl font-black font-display tracking-tight whitespace-nowrap"
+            >
+              {item}
+            </span>
+          ))}
+          {partners.map((item, index) => (
+            <span
+              key={`third-${index}`}
+              className="text-2xl font-black font-display tracking-tight whitespace-nowrap"
+            >
+              {item}
+            </span>
+          ))}
+         
+        </div>
         </div>
       </div>
-      <div className="grid tablet:grid-cols-1 grid-cols-5 gap-12 border-t border-slate-200  pt-16 tablet:pt-10 tablet:px-5 tablet:pr-8">
-      <div className="col-span-2 lg:col-span-2">
-        <div className="flex items-center gap-2 mb-6">
-          {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"> */}
-            <img src="/images/webbi.png" alt="webbi logo" className="w-8 h-8" />
-          {/* </div> */}
-          <span className="font-display text-xl font-bold tracking-tight">
-            WebBi
-          </span>
-        </div>
-
-        <p className="text-slate-500 text-sm max-w-xs mb-8">
-          The modern BI tool for the rest of us. Turning spreadsheets into stories since 2026.
-        </p>
-
-        <div className="flex gap-4">
-          <Link href={'/'}
-            className="w-10 h-10 rounded-full border p-2 border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
-           
-          >
-            <img src="/svg/socials/linkedin.svg" className="w-full h-full" style={{
-              filter: 'grayscale(100%) brightness(0%)'
-            }}/>
-            
-          </Link>
-
-          <Link href={'/'}
-            className="w-10 h-10 rounded-full border p-2 border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
-           
-          >
-            <img src="/svg/socials/twitter-x.svg" className="w-full h-full" style={{
-              filter: 'grayscale(100%) brightness(0%)'
-            }}/>
-            
-          </Link>
-
-        </div>
-      </div>
-
-      <div>
-        <h4 className="font-bold mb-6">Product</h4>
-        <ul className="space-y-4 text-sm text-slate-500">
-          <li><Link href='/' className="hover:text-primary transition-colors" >Integrations</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors" >Data Security</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors" >Pricing</Link></li>
-          {/* <li><Link href='/' className="hover:text-primary transition-colors">Templates</Link></li> */}
-        </ul>
-      </div>
-
-      <div>
-        <h4 className="font-bold mb-6">Company</h4>
-        <ul className="space-y-4 text-sm text-slate-500">
-          <li><Link href='/' className="hover:text-primary transition-colors">About Us</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors">Careers</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors">Blog</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors">Contact</Link></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 className="font-bold mb-6">Legal</h4>
-        <ul className="space-y-4 text-sm text-slate-500">
-          <li><Link href='/' className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors">Terms of Service</Link></li>
-          <li><Link href='/' className="hover:text-primary transition-colors">Cookie Policy</Link></li>
-        </ul>
-      </div>
-    </div>
-
-<div className="mt-20 pt-8 border-t border-slate-200 text-center text-xs text-slate-400">
-  &copy;{new Date().getFullYear()} WebBi Technologies Inc. All rights reserved. Made for data lovers.
-</div>
-
-    </div>
-  </footer>
-
   )
 }
-
 
 
 

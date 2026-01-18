@@ -43,14 +43,15 @@ const PAGE_ROUTES = {
         }
       ]
     },
-    {label:'Blogs', route:'/blogs'},
+    {label:'Community', route:'/community'},
+    {label:'FAQs', route:'/faqs'},
     {label:'Pricing', route:'/pricing'},
     {label:'Log In', isAuth:true, route:'/auth/login'},
     {label:'Register', isAuth:true, route:'/auth/register'},
   ],
   AUTH_ROUTES:{
-    LOGIN:'/auth/login',
-    REGISTER:'/auth/register'
+    LOGIN:'/auth/sign-in',
+    REGISTER:'/auth/sign-up'
   },
 
   A_REQ:(id)=>{

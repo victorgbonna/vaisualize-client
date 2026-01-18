@@ -1,11 +1,16 @@
+export {default as ContactTemplate} from './helper/ContactTemplate';
+
 export {default as MainLayout} from './helper/MainLayout';
 
+export {default as FaqHelper} from './helper/FaqHelper';
 
 export {default as ChatBot} from './helper/ChatBot';
 
 export {default as DeleteVisualHelper} from './helper/DeleteVisualHelper';
 
 export {default as FilterBox} from './helper/FilterBox';
+
+export {default as InputHelper} from './helper/InputHelper';
 
 export {default as VisualCard} from './helper/VisualCard';
 

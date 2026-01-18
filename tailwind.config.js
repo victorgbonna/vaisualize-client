@@ -36,8 +36,13 @@ module.exports = {
           "0%": { top: "-100px" },
           "100%": { top: "0px" },
         },
+
         twirl: {
           "0%": { transform: "translateY(100%)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
@@ -45,6 +50,8 @@ module.exports = {
         appear: "appear 1.2s ease-in",
         twirlf: "twirl 0.2s ease-in forwards",
         twirlb: "twirl 0.2s 0.2s ease-out forwards reverse",
+        marquee: "marquee 20s linear infinite",
+
       },
     },
   },

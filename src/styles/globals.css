@@ -111,7 +111,7 @@ ul {
 .marquee-item {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee 3s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 @keyframes marquee {
@@ -773,9 +773,23 @@ background: linear-gradient(
     opacity: 1;
   }
 }
+@keyframes floatLeft {
+  from {
+    transform: translateX(30px);
+    /* opacity: 0; */
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 .floating-animate {
   animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.floating-animate-left {
+  animation: floatLeft 1s ease-out;
 }
 
 .hero > * {
@@ -788,6 +802,16 @@ background: linear-gradient(
   opacity: 1;
   transform: translateY(0);
 }
+.card-slides  {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.card-slides-ac  {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 
 
 .step-card {
@@ -803,6 +827,7 @@ background: linear-gradient(
 .step-card:nth-child(2) {
   transition-delay: 0.2s;
 }
+
 
 .step-card:nth-child(3) {
   transition-delay: 0.3s;
@@ -849,6 +874,14 @@ background: linear-gradient(
     transform: translateY(-10px);
   }
 }
+@keyframes marquee {
+  0% { transform: translateX(0) };
+  100% {transform: translateX(-50%)};
+}
+/* .marquee{
+  animation: marquee 25s linear infinite;
+  animation-delay: 1s;
+} */
 
 /* For the RecentWorks section */
 .recent-works-section {
@@ -860,4 +893,146 @@ background: linear-gradient(
 .recent-works-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.sinput::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+.sinput::-webkit-input-placeholder {
+  color: #9ca3af;
+}
+
+.sinput:-ms-input-placeholder {
+  color: #9ca3af;
+}
+/* #39434d */
+
+.register-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.register-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+
+.register-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+
+.register-scroll::-webkit-scrollbar-thumb:hover {
+  background: #607AFB;
+}
+
+
+.step-card {
+  opacity: 1;
+}
+
+.step-number {
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.step-content {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: slideUp 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes shake {
+  0%   { transform: translateX(0) rotate(0deg); }
+  15%  { transform: translateX(-2px) rotate(-2deg); }
+  30%  { transform: translateX(2px) rotate(2deg); }
+  45%  { transform: translateX(-2px) rotate(-2deg); }
+  60%  { transform: translateX(2px) rotate(2deg); }
+  75%  { transform: translateX(-1px) rotate(-1deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.animate-shake {
+  animation: shake 1s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slide-up-item {
+  opacity: 0;
+  transform: translateY(16px);
+  /* animation-delay: 3s; */
+  animation: slideUpFade 0.45s ease-out forwards;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-up-item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes whiteShimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+.skeleton-white {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.7) 25%,
+    rgba(255, 255, 255, 0.95) 37%,
+    rgba(255, 255, 255, 0.7) 63%
+  );
+  background-size: 200% 100%;
+  animation: whiteShimmer 1s ease-in-out infinite;
+}
+
+@keyframes blueShimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+.skeleton-blue {
+  background: linear-gradient(
+    90deg,
+    rgba(96, 122, 251, 0.15) 25%,
+    rgba(96, 122, 251, 0.35) 37%,
+    rgba(96, 122, 251, 0.15) 63%
+  );
+  background-size: 200% 100%;
+  animation: blueShimmer 1.6s ease-in-out infinite;
 }
