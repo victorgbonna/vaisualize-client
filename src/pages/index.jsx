@@ -529,12 +529,7 @@ function Scale(){
       };
     }, []);
   const features = [
-    {
-      title: "Advanced Filtering",
-      description:
-        "Drill down into your data with multi-layer conditional filters.",
-      svg: "features/filter.svg",
-    },
+    
     {
       title: "Auto Chart Selection",
       description:
@@ -546,6 +541,12 @@ function Scale(){
       description:
         "Perform AED operations on visuals to keep charts accurate and up to date.",
       svg: "features/auto-charts.svg",
+    },
+    {
+      title: "Advanced Filtering",
+      description:
+        "Drill down into your data with multi-layer conditional filters.",
+      svg: "features/filter.svg",
     },
     {
       title: "Annotations & Insights",
@@ -668,7 +669,7 @@ function Steps(){
       step: 1,
       title: "Upload Your Data",
       description:
-        "Connect your live Google Sheets, upload a CSV, or simply paste your values. WebBi ingests it all seamlessly.",
+        "Connect your live Google Sheets, upload a CSV, customized forms or simply paste your values. WebBi ingests it all seamlessly.",
       image: "upload-step.jpg",
       component: 
       <div 
@@ -686,7 +687,7 @@ function Steps(){
       step: 2,
       title: "Data Modelling",
       description:  
-        "Our system identifies your columns and suggests the best mappings. Clean your data without writing a single formula.",
+        "Our system intelligently detects your columns, suggests the best mappings and lets you seamlessly create relationships between tables.",
       image: "modelling-2.jpg",
       component: 
       <div className="gap-y-3 flex flex-col">
@@ -752,7 +753,7 @@ function Steps(){
       step: 4,
       title: "Review & Modify",
       description:
-        "Easily tweak colors, change chart types and add annotations using a powerful, intuitive editor.",
+        "Easily perform AED operations on charts, tweak colors, annotations and switch chart types using a powerful, intuitive editor. Also apply filters to focus on what matters most.",
       image: "fine-tune-step.jpg",
       component: 
       <div className="floating-animate-left grid grid-cols-10 relative gap-[3px] tablet:grid-cols-8 max-w-[350px] items-center">
