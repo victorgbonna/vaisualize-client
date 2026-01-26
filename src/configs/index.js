@@ -8,6 +8,7 @@ export {default as pagination} from './pagination';
 
 export { default as baseURL } from './baseUrl';
 export { default as consolelog } from './consolelog';
+export { default as appLinkConverter } from './appLinkConverter';
 export { default as API_ENDPOINTS } from './apiEndpoints';
 
 export { default as commafy } from './commafy';

@@ -1,4 +1,11 @@
 const API_ENDPOINTS = {
+  AUTH_ENDPOINTS:{
+    NORMAL_SIGNUP:'auth/sign-up',
+    NORMAL_SIGNIN:'auth/sign-in',
+    OAUTH_SIGNUP:'auth/google/sign-up',
+    OAUTH_SIGNIN:'auth/google/sign-in'
+  },
+
   MY_DETAILS:{
     NAME:'Victor Chiedo Ogbonn',
     EMAIL:'victorgbonna',

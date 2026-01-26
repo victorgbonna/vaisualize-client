@@ -1,8 +1,10 @@
 import { baseURL, consolelog } from "@/configs";
 import axios from "axios";
-
+import { useSession} from "next-auth/react";
 
 const useHttpServices = () => {
+  const { data: session } = useSession();
+  // consolelog({session})
   const postData = async ({path, body}) => {
     //clear whitespace in body
     // body=trimObject(body)
@@ -48,12 +50,13 @@ const useHttpServices = () => {
   };
   const postProtectedData = async ({path, body={}, userType}) => {
     consolelog({path})
-
+    const accessToken = session?.access_token;
+    return {session, accessToken}
     const headers={
       authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
     }
     try {
-      
+      return headers 
       const { data } = await axios.post(`${baseURL}/${path}`, body, {headers});
       consolelog(data.status);
       return {data}

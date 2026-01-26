@@ -1,15 +1,22 @@
-import { ImageContainer, InputHelper } from "@/components";
-import { PAGE_ROUTES } from "@/configs";
+import { ImageContainer, InputHelper, LoadButton } from "@/components";
+import { API_ENDPOINTS, appLinkConverter, consolelog, PAGE_ROUTES } from "@/configs";
 import Image from "next/image";
 import Link from "next/link";
+import { getProviders, signIn } from "next-auth/react";
 import { useRef, useState, useEffect, Fragment } from "react";
+import { useRouter } from "next/router";
+import { useToast, useValidations } from "@/hooks";
+import { useMutation } from "@tanstack/react-query";
+import { setCookie } from "cookies-next";
 
-export default function Signin(){
+
+export default function Signin({ providers }){
 
 const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
   // const router = useRouter()
   const [formData, setFormData]= useState({})
+  const {NotifyError, NotifySuccess}= useToast()
 const inputFields = [
   {
     label: "Email",
@@ -27,28 +34,66 @@ const inputFields = [
     // extraText: "Minimum 8 characters with at least one number."
   }
 ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 } 
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+const {isEmail}= useValidations()
+const router= useRouter()
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
       }
-    };
-  }, []);
+    },
+    { threshold: 0.3 } 
+  );
+
+  if (elementRef.current) {
+    observer.observe(elementRef.current);
+  }
+
+  return () => {
+    if (elementRef.current) {
+      observer.unobserve(elementRef.current);
+    }
+  };
+}, []);
+
+useEffect(()=>{
+  console.log(router.query.r)
+  if(!router.isReady) return
+  const {error}= router.query
+  if(error){
+    NotifyError(error)
+  }
+  return
+},[router.isReady])
  
+const logFuncQuery=async()=>{
+  
+  const res= await signIn("credentials", {
+    email:formData.email,
+    password:formData.password,
+    redirect: false,
+  });
+  if(res.error){
+    consolelog({res:res.error})
+    throw Error(res.error);
+  }
+  
+}
+  const {mutate:logFunc, isPending:logLoading}=useMutation({
+    mutationFn: ()=>logFuncQuery(),
+    onError:(error)=>{
+      return NotifyError(error.message || 'Could not get data')
+    },
+    onSuccess:()=>{
+      setFormData({})
+      NotifySuccess('Logged in Successfully.')
+      window.location.href= router.query?.r ?? PAGE_ROUTES.DASHBOARD
+      return
+    }})
+  
+  
+  
   return(
     <main
         ref={elementRef}
@@ -66,10 +111,25 @@ const inputFields = [
                         <h1 className="text-2xl mb-2 font-semibold">Welcome Back</h1>
                     </div>
                     <div className="w-full">
-                        <button className="border border-gray-300 flex items-center justify-center w-full flex items-center gap-x-3 rounded-2xl bg-white mb-5 py-3">
+                        {Object.values(providers).filter(({name})=>name!=='Credentials').map((provider) => (
+                          <button
+                            key={provider.name}
+                            onClick={async() => {
+
+                              signIn(provider.id, {
+                                callbackUrl: appLinkConverter(PAGE_ROUTES.DASHBOARD), 
+                                state: JSON.stringify({
+                                  userType: "admin",
+                                  intent: "sign-up",
+                                })
+                              }
+                            )}}
+                            className="border border-gray-300 flex items-center justify-center w-full flex items-center gap-x-3 rounded-2xl bg-white mb-5 py-3"
+                          >
                             <img src="/svg/socials/google.svg" alt="socials" className="w-5 h-5"/>
-                            <p>Continue with Google</p>
-                        </button>
+                            <p>Continue with {provider.name}</p>
+                          </button>
+                        ))}
                         <div className="relative mb-6 w-full flex justify-center">
                             <div className=" absolute left-0 right-0 mt-2.5">
                                 <div className="w-full border-t border-slate-600 h-2"></div>
@@ -93,7 +153,12 @@ const inputFields = [
                     </div>
                     <div className="w-full mt-5">
             
-                        <button className="bg-primary text-lg px-8 py-2.5 w-full text-white rounded-2xl my-4">Log In</button>
+                        <LoadButton disabled={!isEmail(formData.email) || !formData.password}
+                          onClick={()=>logFunc()} 
+                          isLoading={logLoading}
+                          className="bg-primary text-lg px-8 py-2.5 w-full text-white rounded-2xl my-4">
+                          Log In
+                        </LoadButton>
                         <p className="text-center">{"Don't have an account? "} <Link href={PAGE_ROUTES.AUTH_ROUTES.REGISTER} className="text-primary">Register</Link></p>
                     </div>
                 </div>
@@ -111,4 +176,10 @@ const inputFields = [
         
     </main>
   )
+}
+
+
+export async function getServerSideProps(req) {
+  const providers = await getProviders();
+  return { props: { providers } };
 }

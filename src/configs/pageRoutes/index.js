@@ -53,7 +53,7 @@ const PAGE_ROUTES = {
     LOGIN:'/auth/sign-in',
     REGISTER:'/auth/sign-up'
   },
-
+  DASHBOARD:'/app/projects',
   A_REQ:(id)=>{
     return '/analysis/'+id
   },
@@ -65,7 +65,23 @@ const PAGE_ROUTES = {
   },
   A_REQUEST_PAGE:(fId)=>{
     return '/analysis/'+fId
-  }
+  },
+
+  PROTECTED_SIDEBARS:[
+    {label:'Community', link:'/communities', isNotPage:true, svg:'community.svg'},
+    {label:'Suggestion', link:'/suggestion', isNotPage:true, svg:'suggestion.svg'},
+    {label:'What"s New', link:'/whats-new', isNotPage:true, svg:'rocket.svg'},
+
+    // <a href="https://iconscout.com/icons/arrow-text-box" class="text-underline font-size-sm" target="_blank">Arrow Text Box</a> by <a href="https://iconscout.com/contributors/iconscout" class="text-underline font-size-sm" target="_blank">IconScout Store</a>
+    {label:'Projects', link:'/projects', svg:'projects.svg'},
+    {label:'Datasets', link:'/datasets', svg:'table.svg'},
+    {label:'Forms', disabled:true, link:'/forms', svg:'forms.svg'},
+    {label:'Talk to Datai', link:'/datai', svg:'datai.svg'},
+    {label:'Infographics', disabled:true, svg:'info.png', attr:'https://iconscout.com/contributors/iconscout - Icon Scout Store'},
+    {label:'Defaults', link:'/default-theme', svg:'stack.svg'},
+    {label:'Settings', link:'/settings', svg:'settings.svg'},
+    {label:'Billing', disabled:true, svg:'billing.svg'},
+  ]
   
   
 };

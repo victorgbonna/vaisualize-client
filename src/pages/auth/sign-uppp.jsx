@@ -5,23 +5,21 @@ import Link from "next/link";
 import { useRef, useState, useEffect, Fragment } from "react";
 import { getProviders, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useHttpServices, useToast, useValidations } from "@/hooks";
 import { useMutation } from "@tanstack/react-query";
+import { useHttpServices, useToast, useValidations } from "@/hooks";
+import { setCookie } from "cookies-next";
 
 
 export default function Signup({providers}){
 
 const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
-  const {postData, getData}= useHttpServices()
-  const {isEmail}= useValidations()
-  // const router = useRouter()
-  const {NotifyError, NotifySuccess}= useToast()
-  const [formData, setFormData]= useState({})
-  
   const [agreeTo, setAgreeTo]= useState(false)
-  
-  const router= useRouter()
+  const router = useRouter()
+  const {NotifyError, NotifySuccess}= useToast()
+  const {postData}= useHttpServices()
+  const {isEmail}= useValidations()
+  const [formData, setFormData]= useState({})
   const inputFields = [
     {
       label: "First Name",
@@ -87,7 +85,8 @@ const [isVisible, setIsVisible] = useState(false);
       }
     };
   }, []);
- useEffect(()=>{
+ 
+  useEffect(()=>{
     if(!router.isReady) return
     const {error}= router.query
     if(error){
@@ -95,21 +94,25 @@ const [isVisible, setIsVisible] = useState(false);
     }
     return
   },[router.isReady])
+
+// onClick={() => signIn(provider.id, { callbackUrl:appLinkConverter(PAGE_ROUTES.DASHBOARD), state: JSON.stringify({ action: "sign-up" }) })}
+// "credentials", {
+//       email,
+//       password,
+//       redirect: false, // 👈 CRITICAL
+//     }
 const regFuncQuery=async()=>{
-// return {data:'succesfull'}
-  const {confirm_password, ...rest_of_form}= formData
   return await postData({
-    path:API_ENDPOINTS.AUTH_ENDPOINTS.NORMAL_SIGNUP, 
-    body:{...rest_of_form, medium:'normal'}
+    path:API_ENDPOINTS.AUTH_ROUTES.NORMAL_SIGNUP, 
+    body:{...formData, medium:'normal'}
   })
 }
   const {mutate:regFunc, isPending:regLoading}=useMutation({
-    mutationFn: regFuncQuery,
+    mutationFn: ()=>regFuncQuery(),
     onError:({error})=>{
       return NotifyError(error.message || 'Could not get data')
     },
     onSuccess:()=>{
-      console.log('siccessful')
       setFormData({})
       return NotifySuccess('You have registered. Check your email for activation link.')
     }})
@@ -133,7 +136,12 @@ const regFuncQuery=async()=>{
                       {Object.values(providers).filter(({name})=>name!=='Credentials').map((provider) => (
                           <button
                             key={provider.name}
-                            onClick={() => signIn(provider.id, {callbackUrl:appLinkConverter(PAGE_ROUTES.DASHBOARD), state: JSON.stringify({ action: "sign-up" }) })}
+                            onClick={() => {
+                              setCookie("oauth_intent", "sign-up", {
+                                maxAge: 600
+                              }); 
+                              signIn(provider.id, {callbackUrl: appLinkConverter(PAGE_ROUTES.DASHBOARD)})
+                            }}
                             className="border border-gray-300 flex items-center justify-center w-full flex items-center gap-x-3 rounded-2xl bg-white mb-5 py-3"
                           >
                             <img src="/svg/socials/google.svg" alt="socials" className="w-5 h-5"/>
@@ -165,16 +173,14 @@ const regFuncQuery=async()=>{
                     <div className="w-full">
                         <div className="flex items-center gap-x-2 mt-4 w-full">
                             <input type="radio" className="w-6 h-6" checked={agreeTo} onChange={()=>setAgreeTo(!agreeTo)}/>
-
                             <p className="text-gray-600 text-sm">I agree to the <Link href={'/'} className="text-primary">Terms of Service</Link> and <Link className="text-primary" href={'/'}>Privacy Policy</Link></p>
                         </div>
                         <LoadButton 
                           isLoading={regLoading}
                           onClick={()=>regFunc()}
                           disabled={
-                            !agreeTo || !isEmail(formData.email)
+                            !agreeTo || !isEmail(formData.email) 
                             || !formData.password || !formData.firstName 
-                            ||  formData.password !== formData.confirm_password
                             || !formData.lastName || !formData.phone  
                           }
                           className="mt-4 bg-primary text-lg px-8 py-2.5 w-full text-white rounded-2xl my-4">

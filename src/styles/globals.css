@@ -1036,3 +1036,20 @@ background: linear-gradient(
   background-size: 200% 100%;
   animation: blueShimmer 1.6s ease-in-out infinite;
 }
+
+.Toastify__toast--success {
+  border: 1px solid #3A9EA5 !important;
+  background: #F0F9FA !important;
+  font-size:"13px" !important;
+  color: #000000 !important;
+  font-family: "Oswald", sans-serif !important;
+ 
+
+}
+.Toastify__toast--error {
+  border: 1px solid #EB5757;
+  background: #FAE1E2 !important;
+  font-size:"13px" !important;
+  color: #000000 !important;
+  font-family: "Oswald", sans-serif !important;
+}

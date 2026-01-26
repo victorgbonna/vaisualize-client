@@ -6,6 +6,8 @@ import {
 } from "@tanstack/react-query"
 
 import "react-toastify/dist/ReactToastify.css"; 
+import { SessionProvider } from "next-auth/react"
+
 
 import { Rubik } from 'next/font/google'
 
@@ -16,8 +18,9 @@ import {MainLayout} from "@/components";
 const queryClient = new QueryClient();
 const queryCache = new QueryCache();
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return(<div >
+    <SessionProvider session={session}>
     <QueryClientProvider client={queryClient} queryCache={queryCache}>
     <EnterChatContextComponent>
       <MainLayout>
@@ -26,5 +29,6 @@ export default function App({ Component, pageProps }) {
       </MainLayout>
     </EnterChatContextComponent>
     </QueryClientProvider>
+    </SessionProvider>
   </div>)
 }

@@ -1,4 +1,5 @@
-import { PAGE_ROUTES } from "@/configs";
+import { consolelog, PAGE_ROUTES } from "@/configs";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
@@ -6,12 +7,30 @@ import { Fragment, useEffect, useState } from "react";
 export default function MainLayout({children}){
     const [mount, setMount]= useState(0)
     const router= useRouter()
-
+    const {status}= useSession()
     useEffect(()=>{
         if(!router) return
-        if(router?.pathname?.includes('auth/')) return setMount(-1)
+        if(!status || status==='loading') return
+
+        const isLoggedIn= status==='authenticated'
+        const isUserProtectedPath= router?.pathname?.includes('app')
+        const isGuestOnlyPath = router?.pathname?.includes('auth/')
+        // console.log({status,isLoggedIn, isUserProtectedPath, isGuestOnlyPath, router:router?.pathname})
+
+        if(isLoggedIn && isGuestOnlyPath){
+            window.location.href=PAGE_ROUTES.DASHBOARD;
+            return
+        }
+        if(!isLoggedIn && isUserProtectedPath){
+            window.location.hraef=PAGE_ROUTES.AUTH_ROUTES.LOGIN+'?r='+encodeURIComponent(router.pathname);
+            return
+        }
+
+        if(isGuestOnlyPath || isUserProtectedPath) return setMount(-1)
+        
         setMount(1)
-    },[router.pathname])
+    },[router.pathname, status])
+
     if (!mount){
         return null
     }
@@ -20,7 +39,7 @@ export default function MainLayout({children}){
     <>
         {mount>0?
         <>
-        <Nav/>
+        <Nav isLoggedIn={status==='authenticated'}/>
         <div className="overflow-x-hidden">
             {children}
         </div>
@@ -37,20 +56,19 @@ export default function MainLayout({children}){
 
 
 
-function Nav(){
-
+function Nav({isLoggedIn}){
     return (
         <nav className="bg-white border border-slate-200 shadow-sm sticky top-0 z-[99] left-0 right-0">
-            <PcNav/>
-            <TabletNav/>
+            <PcNav isLoggedIn={isLoggedIn}/>
+            <TabletNav isLoggedIn={isLoggedIn}/>
         </nav>
     )
 }
 
-function PcNav(){
+function PcNav({isLoggedIn}){
     const [showSubLinks, setShowSubLinks]= useState(null)
     return(
-        <div onMouseLeave={()=>setShowSubLinks(null)} className="tablet:hidden relative  flex items-center justify-between py-4 px-[50px]">
+        <div className="tablet:hidden relative  flex items-center justify-between py-4 px-[50px]">
             <Brand/>
             <div className="flex text-[15px] gap-8 font-medium items-center">
                 {PAGE_ROUTES.CENTER_NAVS
@@ -59,9 +77,12 @@ function PcNav(){
                     <Fragment key={index}>
                         {!hasSublinks?
                             <Link href={route} className="hover:text-primary transition-colors">{label}</Link>:
-                            <button 
-                                onMouseEnter={()=>setShowSubLinks(routes)} 
-                                className="flex items-center gap-x-[8px] hover:text-primary transition-colors">
+                            <button onClick={()=>{
+                                if(!showSubLinks) return setShowSubLinks(routes)
+                                return setShowSubLinks(null)
+                            }} 
+                                style={showSubLinks?{color:'#607AFB'}:{}}
+                                className="flex items-center gap-x-[8px] transition-colors">
                                 <p style={showSubLinks?{color:'#607AFB'}:{}}>{label}</p>
                                 <img className="mt-[2px]" src={!showSubLinks?"/svg/caret-bottom.svg":'/svg/caret-blue-bottom.svg'}  alt="caret" />
                                 
@@ -80,30 +101,39 @@ function PcNav(){
                     )}
                 </div>:null}
             </div>
-            <div className="flex items-center gap-x-4">
+            {isLoggedIn?
+            <Link href={PAGE_ROUTES.DASHBOARD} className="rounded-full bg-primary text-white text-[15px] font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all">
+                Go To Dashboard
+            </Link>
+            :<div className="flex items-center gap-x-4">
                 <Link href={PAGE_ROUTES.AUTH_ROUTES.LOGIN} className="font-semibold px-5 py-2.5 text-[15px]">
                     Log In
                 </Link>
                 <Link href={PAGE_ROUTES.AUTH_ROUTES.REGISTER} className="rounded-full bg-primary text-white text-[15px] font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all">
                     Start for Free
                 </Link>
-            </div>
+            </div>}
         </div>
     )
 }
 
-function TabletNav(){
+function TabletNav({isLoggedIn}){
     const [showSubLinks, setShowSubLinks]= useState(null)
     const [showNav, setShowNav]= useState(false)
     
     return(
         <div>
-        <div className="pc:hidden largepc:hidden tablet:flex items-center justify-between px-4 py-4">
+        <div className="pc:hidden bgpc:hidden tablet:flex items-center justify-between px-4 py-4">
             <Brand/> 
             <div className="flex gap-x-4 items-center">
+                {!isLoggedIn?
                 <Link href={PAGE_ROUTES.AUTH_ROUTES.REGISTER} className="rounded-full bg-primary text-white text-[14px] font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all">
                     Start for Free
+                </Link>:
+                <Link href={PAGE_ROUTES.DASHBOARD} className="rounded-full bg-primary text-white text-[14px] font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all">
+                    Dashboard
                 </Link>
+                }
                 <button className="cursor-pointer" onClick={()=>setShowNav(!showNav)}>
                     <img src="/svg/bar-code.svg" alt="bar code" className="w-6 h-6" />
                 </button>

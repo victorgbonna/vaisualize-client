@@ -551,7 +551,7 @@ function ColumnSetup({multiselect, first5rows, setMultiselect, onClose=()=>null}
                                             <p className="text-sm">{col}</p>
                                             <p className="text-sm text-gray-700 truncate tablet:text-sm tablet:hidden">{first5rows[0][col]}</p>
 
-                                            <p className="text-sm text-gray-700 truncate tablet:text-sm tablet:block pc:hidden largepc:hidden">{first5rows[0][col]?.slice(0,6)}</p>
+                                            <p className="text-sm text-gray-700 truncate tablet:text-sm tablet:block pc:hidden bgpc:hidden">{first5rows[0][col]?.slice(0,6)}</p>
                                         </div>
                                         <div className="flex flex-col">
                                             {/* <div>

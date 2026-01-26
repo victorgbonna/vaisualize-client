@@ -1,4 +1,5 @@
 import { ContactTemplate, FaqHelper } from "@/components";
+import { commafy, PAGE_ROUTES } from "@/configs";
 import Link from "next/link";
 import { Fragment, useMemo, useState } from "react";
 
@@ -13,7 +14,7 @@ const pricingPlans = [
     Yearly:0,
     description: "Best for getting started and exploring your data.",
     features: [
-      { label: "Up to 2 datasets per project", disabled: false },
+      { label: "Up to 3 datasets per project", disabled: false },
       { label: "10 DataAI credits", disabled: false },
       { label: "AI-assisted visual generation", disabled: false },
       { label: "Watermark-free exports", disabled: true},
@@ -121,7 +122,8 @@ const pricingFaqs = [
                     {`Choose the plan that's right for your data needs.`}<br />{`Unlock the power of lightweight BI with a tool built for modern teams.`}
                 </p>
             </div>
-            <div className="flex justify-center mb-14">
+            <div className="flex justify-center mb-5">
+
                 <div className="w-fit flex justify-center p-[3px] bg-slate-50 rounded-full ">
                 {['Monthly', 'Yearly'].map((plan,ind)=>
                     <Fragment key={ind}>
@@ -136,9 +138,14 @@ const pricingFaqs = [
 
                     </Fragment>
                 )}
+                </div>
+                
             </div>
-            </div>
-            
+            <div className="flex justify-center mb-14">
+                <p className="text-slate-700">
+                  N.B - While we are giving temporary free access to all features, <strong>pricing becomes effective from <span className="font-medium text-slate-700">July 2026</span></strong>.
+                </p>
+              </div>
             <div className="grid grid-cols-4 tablet:gap-y-20 gap-4 justify-center tablet:grid-cols-1 px-[80px] mb-[100px] tablet:mb-20 items-center tablet:px-5">
                 {pricingPlans.map(({name, price, currency, interval, description, features, type,cta, popular,...rest},ind)=>
                     <div key={ind} onClick={()=>setCurrentPlan(name)} className="relative py-8 px-7 rounded-2xl border bg-gray-50  shadow-lg">
@@ -154,7 +161,7 @@ const pricingFaqs = [
                             {type==='enterprise'?
                                 <p className="text-4xl font-semibold mb-2">CUSTOM</p>
                                 :
-                                <p className="text-4xl font-semibold mb-2">{'₦'+rest[subPlan]}<span className="text-gray-600 text-xs">/mo</span></p>}
+                                <p className="text-4xl font-semibold mb-2">{'₦'+commafy(rest[subPlan])}<span className="text-gray-600 text-xs">/mo</span></p>}
                         </div>
                         <p className="text-gray-600 h-32 tablet:min-h-32">{description}</p>
                         <div className="mb-7  space-y-2">
@@ -165,7 +172,7 @@ const pricingFaqs = [
                                 </div>
                             )}
                         </div>
-                        <Link href={'/'} className="hover:scale-[1.1] duration-200 flex py-3 bg-gray-800 text-white items-center justify-center border gap-x-2 w-full rounded-full">
+                        <Link href={PAGE_ROUTES.AUTH_ROUTES.REGISTER} className="hover:scale-[1.1] duration-200 flex py-3 bg-gray-800 text-white items-center justify-center border gap-x-2 w-full rounded-full">
                             <p>{cta}</p>
                         </Link>
                     </div>
