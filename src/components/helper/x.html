@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WebBi Step 3: Prepare &amp; Model</title>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111618] dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#f0f3f4] dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3 z-30">
+<div class="flex items-center gap-4 text-[#111618] dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-3xl">database</span>
+</div>
+<h2 class="text-[#111618] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">WebBi</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-[#617c89] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary" href="#">Connect Data</a>
+<a class="text-[#617c89] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary" href="#">Cleanse</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary" href="#">Model &amp; Prepare</a>
+<a class="text-[#617c89] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary" href="#">Visualize</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Save Progress</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvbpGaDuW9J9c-0xmIyF9Mebeq2Lpd7erDcS3rtWJO8Iyr38i8_jiTXZ6GI2ZsJPUQwUUpLHuRYcKe8WBn5p9muXowhDKg1Q1zdEkgoUWwaJAweYLuH3_0_dtKVLZ2wIlcifNXy5eb9QnLQ6yucX0dz4mlYSeHMfv9PQLaVAXOtVquTogQPnV5V2otbkZZGPa9e4011UM6M55k9wdSCGd-Yhx8oMiruFJflsZCx0USGkkztZFlOwKrBL5OXa1rvsjYiWGHUp8ASTo");'></div>
+</div>
+</header>
+<!-- Breadcrumbs -->
+<div class="px-10 py-4 bg-white dark:bg-background-dark border-b border-[#f0f3f4] dark:border-gray-800">
+<div class="flex items-center gap-2">
+<a class="text-[#617c89] dark:text-gray-400 text-sm font-medium hover:text-primary" href="#">Project Q3_Analytics</a>
+<span class="text-[#617c89] dark:text-gray-600">/</span>
+<a class="text-[#617c89] dark:text-gray-400 text-sm font-medium hover:text-primary" href="#">Step 2: Upload</a>
+<span class="text-[#617c89] dark:text-gray-600">/</span>
+<span class="text-[#111618] dark:text-white text-sm font-bold">Step 3: Prepare &amp; Model</span>
+</div>
+</div>
+<!-- Main Content Split Screen -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Sidebar: Datasets -->
+<aside class="w-72 bg-white dark:bg-background-dark border-r border-[#f0f3f4] dark:border-gray-800 flex flex-col p-4">
+<div class="mb-6">
+<h3 class="text-[#111618] dark:text-white text-sm font-bold uppercase tracking-wider mb-4">Datasets</h3>
+<div class="space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary">description</span>
+<div class="flex-1 overflow-hidden">
+<p class="text-[#111618] dark:text-white text-sm font-semibold truncate">Sales_2023.csv</p>
+<p class="text-primary text-[10px] font-bold">ACTIVE</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-[#617c89]">table_chart</span>
+<p class="text-[#617c89] group-hover:text-[#111618] dark:text-gray-400 dark:group-hover:text-white text-sm font-medium truncate">Customer_Dim.xlsx</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-[#617c89]">data_object</span>
+<p class="text-[#617c89] group-hover:text-[#111618] dark:text-gray-400 dark:group-hover:text-white text-sm font-medium truncate">Product_Catalog.json</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-[#617c89]">description</span>
+<p class="text-[#617c89] group-hover:text-[#111618] dark:text-gray-400 dark:group-hover:text-white text-sm font-medium truncate">Regional_Targets.csv</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-[#f0f3f4] dark:border-gray-800">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg h-10 border-2 border-dashed border-gray-300 dark:border-gray-700 text-[#617c89] hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">add</span>
+<span class="text-sm font-bold">Add Dataset</span>
+</button>
+</div>
+</aside>
+<!-- Center: Data Preview & Preparation -->
+<section class="flex-1 flex flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-[#111618] dark:text-white text-[22px] font-bold tracking-tight">Data Preview: Sales_2023.csv</h2>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-sm font-medium hover:shadow-sm">
+<span class="material-symbols-outlined !text-sm">filter_list</span> Filter
+                        </button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-sm font-medium hover:shadow-sm">
+<span class="material-symbols-outlined !text-sm">sort</span> Sort
+                        </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+<th class="p-4 min-w-[150px]">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-gray-500 uppercase">Order_ID</span>
+<div class="relative group">
+<button class="flex items-center gap-1.5 text-primary text-xs font-bold bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
+<span class="material-symbols-outlined !text-[12px]">123</span> NUMBER <span class="material-symbols-outlined !text-[12px]">arrow_drop_down</span>
+</button>
+<!-- Dropdown (Hidden by default, shown on group hover for demo) -->
+<div class="absolute top-full left-0 mt-1 hidden group-hover:block w-32 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl rounded-lg py-2 z-50">
+<div class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined !text-[14px]">abc</span> Text
+                                                    </div>
+<div class="px-3 py-1 bg-primary/10 text-primary font-bold flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined !text-[14px]">123</span> Number
+                                                    </div>
+<div class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined !text-[14px]">calendar_today</span> Date
+                                                    </div>
+</div>
+</div>
+</div>
+</th>
+<th class="p-4 min-w-[200px]">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-gray-500 uppercase">Customer_Name</span>
+<button class="w-fit flex items-center gap-1.5 text-gray-600 dark:text-gray-400 text-xs font-bold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded border border-gray-200 dark:border-gray-700">
+<span class="material-symbols-outlined !text-[12px]">abc</span> TEXT <span class="material-symbols-outlined !text-[12px]">arrow_drop_down</span>
+</button>
+</div>
+</th>
+<th class="p-4 min-w-[150px]">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-gray-500 uppercase">Transaction_Date</span>
+<button class="w-fit flex items-center gap-1.5 text-gray-600 dark:text-gray-400 text-xs font-bold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded border border-gray-200 dark:border-gray-700">
+<span class="material-symbols-outlined !text-[12px]">calendar_month</span> DATE <span class="material-symbols-outlined !text-[12px]">arrow_drop_down</span>
+</button>
+</div>
+</th>
+<th class="p-4 min-w-[150px]">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-gray-500 uppercase">Revenue</span>
+<button class="w-fit flex items-center gap-1.5 text-gray-600 dark:text-gray-400 text-xs font-bold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded border border-gray-200 dark:border-gray-700">
+<span class="material-symbols-outlined !text-[12px]">payments</span> CURRENCY <span class="material-symbols-outlined !text-[12px]">arrow_drop_down</span>
+</button>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+<td class="p-4 text-sm">1001</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">Alice Johnson</td>
+<td class="p-4 text-sm">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">2023-01-15</span>
+</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">$1,200.00</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+<td class="p-4 text-sm">1002</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">Bob Smith</td>
+<td class="p-4 text-sm">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">2023-01-16</span>
+</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">$850.50</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+<td class="p-4 text-sm">1003</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">Charlie Brown</td>
+<td class="p-4 text-sm">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">2023-01-16</span>
+</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">$2,100.00</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+<td class="p-4 text-sm">1004</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">Diana Prince</td>
+<td class="p-4 text-sm">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">2023-01-17</span>
+</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">$450.00</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+<td class="p-4 text-sm">1005</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">Ethan Hunt</td>
+<td class="p-4 text-sm">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">2023-01-18</span>
+</td>
+<td class="p-4 text-sm text-[#617c89] dark:text-gray-400">$3,300.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Define Relationships Section -->
+<div class="mt-8 bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+<h3 class="text-[#111618] dark:text-white text-lg font-bold">Define Relationships</h3>
+</div>
+<p class="text-sm text-[#617c89] dark:text-gray-400">Join columns between datasets to enable cross-source visualization</p>
+</div>
+<div class="flex items-center gap-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-100 dark:border-gray-800">
+<div class="flex-1 space-y-2">
+<label class="text-[10px] font-bold text-gray-400 uppercase">From Table / Column</label>
+<div class="flex gap-2">
+<select class="flex-1 text-sm rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 p-2">
+<option>Sales_2023.csv</option>
+</select>
+<select class="flex-1 text-sm rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 p-2">
+<option>Customer_Name</option>
+<option>Order_ID</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center px-4">
+<span class="material-symbols-outlined text-primary !text-3xl">link</span>
+<span class="text-[10px] font-bold text-primary">INNER JOIN</span>
+</div>
+<div class="flex-1 space-y-2">
+<label class="text-[10px] font-bold text-gray-400 uppercase">To Table / Column</label>
+<div class="flex gap-2">
+<select class="flex-1 text-sm rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 p-2">
+<option>Customer_Dim.xlsx</option>
+</select>
+<select class="flex-1 text-sm rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 p-2">
+<option>FullName</option>
+<option>Cust_ID</option>
+</select>
+</div>
+</div>
+<button class="mt-6 p-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-md transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+<!-- Active Joins -->
+<div class="mt-4 flex gap-2">
+<div class="flex items-center gap-2 bg-primary/5 border border-primary/20 px-3 py-1.5 rounded-full">
+<span class="text-xs font-medium text-primary">Sales.Customer_Name = Customer.FullName</span>
+<button class="text-primary hover:text-red-500"><span class="material-symbols-outlined !text-sm">close</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Validation Bar -->
+<footer class="mt-auto bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 p-4 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-8 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-full">
+<span class="material-symbols-outlined !text-lg">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#111618] dark:text-white">Model Health: Good</p>
+<p class="text-xs text-[#617c89] dark:text-gray-400">4 columns mapped, 1 relationship defined</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111618] dark:text-white text-sm font-bold hover:bg-gray-50 transition-colors">
+<span>Back</span>
+</button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span>Validate for Charts</span>
+<span class="material-symbols-outlined ml-2">trending_up</span>
+</button>
+</div>
+</footer>
+</section>
+</main>
+</body></html>

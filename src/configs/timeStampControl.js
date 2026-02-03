@@ -36,6 +36,15 @@ const timeStampControl={
     shortMonths,
     shortWeekdays,
     weekGroups,
+    formatBytes:(bytes, decimals = 2)=> {
+        if (bytes === 0) return "0 B";
+
+        const k = 1024;
+        const sizes = ["B", "KB", "MB", "GB", "TB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(decimals))} ${sizes[i]}`;
+    },
     extractDateUnit:({unit, value:dateInput})=>{
         const date = new Date(dateInput);
         const u = unit.toLowerCase();
@@ -88,12 +97,27 @@ const timeStampControl={
         return !isNaN(date) ? 'adjusted-date' : null;
     },
     isDate:(value,c=false)=> {
+        const hasSeparators = /[-/:]/.test(value);
+        if (!hasSeparators) return false;
         if (value instanceof Date && !isNaN(value.getTime())) return true;
         const d = new Date(value);
-        if(c){
-            console.log({z:d.getTime(), d,value})
-        }
+        
         return !isNaN(d.getTime());
+    },
+    normalizeMongoFields:(row) => {
+        const newRow = {};
+        for (const key in row) {
+            const val = row[key];
+
+            if (val && typeof val === "object") {
+            if ("$date" in val) newRow[key] = val.$date;
+            else if ("$oid" in val) newRow[key] = val.$oid;
+            else newRow[key] = val;
+            } else {
+            newRow[key] = val;
+            }
+        }
+        return newRow;
     },
     parseTimestamp:({pattern, value})=>{
         if(pattern ==='date') return value

@@ -4,17 +4,17 @@ import { Fragment } from "react";
 
 export default function SideBar({active}){
     return(
-    <aside className="bg-slate-50 pl-8 py-8 w-[250px]">
-            <div className="flex sticky top-0 items-center gap-x-3 mb-5">
-                <div>
+    <aside className="bg-slate-50 border-r pl-8 pt-6 pb-9 w-[250px]">
+            <div className="flex sticky top-0 items-center gap-x-3 mb-0">
+                <Link href={PAGE_ROUTES.HOME}>
                     <img src="/images/webbi.png" alt="webbi" className="w-10 h-10"/>
-                </div>
+                </Link>
                 <div>
                     <h1 className="text-xl font-semibold">WebBi</h1>
                     <p className="text-gray-600">Victor Ogbonna</p>
                 </div>
             </div>
-            <div className=" h-[82vh] overflow-y-scroll pr-5">
+            <div className=" h-[82vh] overflow-y-scroll pr-5 pt-5">
                 <div className="space-y-2">
                     
                     {PAGE_ROUTES.PROTECTED_SIDEBARS.filter(({isNotPage})=>isNotPage)

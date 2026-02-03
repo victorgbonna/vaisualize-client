@@ -295,7 +295,7 @@ input::-webkit-inner-spin-button {
 }
 table {
   border-collapse: separate; 
-  border-spacing: 0 10px ;
+  /* border-spacing: 0 10px ; */
 }
 .Toastify__toast--error {
   border: 1px solid #EB5757;
@@ -878,6 +878,7 @@ background: linear-gradient(
   0% { transform: translateX(0) };
   100% {transform: translateX(-50%)};
 }
+
 /* .marquee{
   animation: marquee 25s linear infinite;
   animation-delay: 1s;

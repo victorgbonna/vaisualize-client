@@ -1,3 +1,7 @@
+export {default as ProgressBar} from './helper/ProgressBar';
+
+export {default as ProjectHelper} from './helper/ProjectHelper';
+
 export {default as AppHeader} from './helper/AppHeader';
 
 export {default as SideBar} from './helper/SideBar';
@@ -36,4 +40,6 @@ export { default as SelectFilters } from './helper/SelectOption/selectFilters';
 export { default as SelectOption } from './helper/SelectOption';
 
 export {default as Chart} from './chart/Chart';
+
+
 

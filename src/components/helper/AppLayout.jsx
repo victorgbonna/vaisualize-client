@@ -4,7 +4,7 @@ export default function AppLayout({active, children}){
     return(
         <div className="flex items-start w-full tablet:flex-col bg-white overflow-y-hidden h-screen">
             <SideBar active={active} />
-            <main className="">
+            <main className="w-full flex-1">
                 <AppHeader active={active}/>
                 {children}
             </main>

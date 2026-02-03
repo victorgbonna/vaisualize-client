@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { SelectOption } from "..";
 
 export default function InputHelper({
   label,
   showLabel,
   textClassName = "",
+  placeholder, options,
   className = "",
   type = "text",
   onChange,
@@ -25,14 +27,30 @@ export default function InputHelper({
         style={showLabel ? { padding: 8 } : {}}
         className={`relative w-full flex flex-row items-center justify-between border bg-white rounded-md py-1 ${className}`}
       >
-        <input
+        {type==='textarea'?
+        <textarea
           value={value || ''}
           onChange={(e) => onChange(e)}
-          placeholder={label}
+          placeholder={placeholder || label}
+          className={`text-[15px] text-black flex-1 w-full ${textClassName}`}
+          // type={type === "password" && !showPassword ? "password" : "text"}
+          {...rest}
+        />
+        :type==='option'?
+        <SelectOption
+          value={value} options={options}
+          onChange={(e)=>onChange(e)}
+          label={placeholder}
+          // className={`text-[15px] text-black w-full ${textClassName}`}
+        />
+        :<input
+          value={value || ''}
+          onChange={(e) => onChange(e)}
+          placeholder={placeholder || label}
           className={`text-[15px] text-black flex-1 w-full ${textClassName}`}
           type={type === "password" && !showPassword ? "password" : "text"}
           {...rest}
-        />
+        />}
 
         {type === "password" ? (
           <button

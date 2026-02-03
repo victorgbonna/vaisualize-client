@@ -54,6 +54,7 @@ const PAGE_ROUTES = {
     REGISTER:'/auth/sign-up'
   },
   DASHBOARD:'/app/projects',
+  CREATE_PROJECT:(id)=>'/app/projects/create?id='+id,
   A_REQ:(id)=>{
     return '/analysis/'+id
   },
@@ -70,7 +71,7 @@ const PAGE_ROUTES = {
   PROTECTED_SIDEBARS:[
     {label:'Community', link:'/communities', isNotPage:true, svg:'community.svg'},
     {label:'Suggestion', link:'/suggestion', isNotPage:true, svg:'suggestion.svg'},
-    {label:'What"s New', link:'/whats-new', isNotPage:true, svg:'rocket.svg'},
+    {label:'What"s New?', link:'/whats-new', isNotPage:true, svg:'rocket.svg'},
 
     // <a href="https://iconscout.com/icons/arrow-text-box" class="text-underline font-size-sm" target="_blank">Arrow Text Box</a> by <a href="https://iconscout.com/contributors/iconscout" class="text-underline font-size-sm" target="_blank">IconScout Store</a>
     {label:'Projects', link:'/projects', svg:'projects.svg'},

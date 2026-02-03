@@ -5,10 +5,11 @@ import iconSvgPath from "../iconSvgPath";
 export default function SelectOption(
   {options, onChange, value,label, leftSibling=null,
     showActiveOption=true,disabled=false,
-    fullContainerClass,
+    fullContainerClass, sideImageValue,
     displayDropOnRelative=false,
     dropdownSrc, errorProp= null, 
     disabled_options=null,
+    valueStyle={},extraOptionClass='',
     containerClass, isInput=false,posAttribute={
         top:"100%"
     },
@@ -21,27 +22,26 @@ export default function SelectOption(
     useOnClickOutside(ref, () => toggle(false));
     // onMouseLeave={show?() => toggle(false):()=>null}
     return (   
-    <div ref={ref} className="z-[8]"
+    <div ref={ref} className="w-full"
         style={{...style}}
     >
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
         <div 
         className=
-            {fullContainerClass ?? ` cursor-pointer flex justify-between items-center  text-sm tablet:text-base px-3 gap-x-2 w-full mt-2.5 text-sm tablet:text-base  rounded-md py-3 ${containerClass || ''} 
+            {fullContainerClass ?? ` z-[4] relative cursor-pointer flex justify-between items-center text-sm tablet:text-base  gap-x-2 w-full tablet:text-base  rounded-md py-1 ${containerClass || ' px-1 bg-white'} 
             ${isInput && !options.includes(value)?' border-red-100 ':''}`}  
-            style={{
-            background: '#FFFFFF',
-            // border: '1px solid #CABECF',
-            // borderRadius: '10px'
-        }}>
+            >
                 {leftSibling && leftSibling}
                 {!isInput
                     ?<>
                     {value?
-                        <p className="w-fit text-black cursor-pointer">
+                        <>
+                        {sideImageValue}
+                        <p style={valueStyle} className="w-fit text-[15px] text-black cursor-pointer">
                             {value}
-                        </p>:
-                        <p className="opacity-50 cursor-pointer">
+                        </p>
+                        </>:
+                        <p className="opacity-50 text-[15px] text-black cursor-pointer">
                             {label}
                         </p>
                     }</>:
@@ -86,8 +86,8 @@ export default function SelectOption(
                 ${displayDropOnRelative?' relative ':' absolute '} bg-white w-full 
                 rounded overflow-auto min-w-fit`} style={{
                 ...posAttribute, maxHeight:"200px",
-                background: '#FFFFFF', zIndex:"4",
-                border: '1px solid #CABECF',borderRadius: '10px'
+                background: '#FFFFFF', zIndex:"6",
+                border: '1px solid #CABECF',borderRadius: '4px'
             }}>
                 {/* {new_options.map((option,index)=>
                     <li style={value===option?{
@@ -97,8 +97,8 @@ export default function SelectOption(
                 )} */}
                 {(!isInput || !value?new_options: new_options.filter((option)=>option?.toLowerCase()?.startsWith(value?.toLowerCase()))).map((option,index)=>
                     <button style={value===option?{
-                        background:"#CABECF", padding:"12px 10px"
-                    }:{ padding:"12px 10px"}} className={"block w-full text-sm border-b-2 cursor-pointer"} key={index} 
+                        background:"#CABECF",
+                    }:{ padding:"12px 10px"}} className={"block w-full text-sm border-b-2 cursor-pointer "+(extraOptionClass || ' py-2 px-2.5 ')} key={index} 
                     onClick={()=>onChange(option)} disabled={(disabled_options?.length)?disabled_options.includes(option):false}>{option}</button>           
                 )}
 

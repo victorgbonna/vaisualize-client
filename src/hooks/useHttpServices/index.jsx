@@ -50,13 +50,11 @@ const useHttpServices = () => {
   };
   const postProtectedData = async ({path, body={}, userType}) => {
     consolelog({path})
-    const accessToken = session?.access_token;
-    return {session, accessToken}
+
     const headers={
-      authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
+      authorization: `Bearer ${userType==="vendor"?session.access_token:session.access_token}`,
     }
     try {
-      return headers 
       const { data } = await axios.post(`${baseURL}/${path}`, body, {headers});
       consolelog(data.status);
       return {data}
@@ -75,7 +73,7 @@ const useHttpServices = () => {
     consolelog({path})
 
     const headers={
-      authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
+      authorization: `Bearer ${userType==="vendor"?session.access_token:session.access_token}`,
     }
     try {
 ;
@@ -96,7 +94,7 @@ const useHttpServices = () => {
     consolelog({path})
 
     const headers={
-      authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
+      authorization: `Bearer ${userType==="vendor"?session.access_token:session.access_token}`,
     }
     try {
 
@@ -117,7 +115,7 @@ const useHttpServices = () => {
     consolelog({path})
 
     const headers={
-      authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
+      authorization: `Bearer ${userType==="vendor"?session.access_token:session.access_token}`,
     }
     try {
 
@@ -141,7 +139,7 @@ const useHttpServices = () => {
       // const { data } 
       const {data}= await axios.get(`${baseURL}/${path}`, {
         headers: {
-          authorization: `Bearer ${userType==="vendor"?vendor_token:token}`,
+          authorization: `Bearer ${userType==="vendor"?session.access_token:session.access_token}`,
         },
       });
       return data;

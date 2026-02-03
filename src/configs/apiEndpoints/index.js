@@ -5,7 +5,7 @@ const API_ENDPOINTS = {
     OAUTH_SIGNUP:'auth/google/sign-up',
     OAUTH_SIGNIN:'auth/google/sign-in'
   },
-
+  GET_MY_REQUESTS:'requests/get/all-public',
   MY_DETAILS:{
     NAME:'Victor Chiedo Ogbonn',
     EMAIL:'victorgbonna',
@@ -300,6 +300,9 @@ const API_ENDPOINTS = {
   GET_CONVO_BY_ID:(id)=>'conversations/get/'+id,
   ADD_CHAT_TO_VISUALS:'conversations/add-to-visuals',
   
+  INITIALIZE_PROJECT:'projects/initialize',
+  GET_PROJECT_DRAFT_DATA:(id)=>'projects/draft/'+id,
+  GET_ALL_DRAFTS:'projects/drafts/all'
 };
 
 export default API_ENDPOINTS

@@ -2,6 +2,8 @@
 // import { useLocalStorage } from './../components/helper/useLocalStorage/index';
 // import { useOnClickOutside } from './../components/helper/useOnClickOutside/index';
 
+export {default as useMultiFileInputs} from './useFileInput/multiple';
+
 export {default as useValidations} from './useValidations';
 
 export {default as useToast} from './useToast';

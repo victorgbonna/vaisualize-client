@@ -32,8 +32,8 @@ export default function ChatBot({
       retry:false, enabled:!!(mount && router?.query?.id)
       }
   )
-const chartInpRef= useRef(null)
-const chartRef= useRef(null)
+  const chartInpRef= useRef(null)
+  const chartRef= useRef(null)
   const sendChatQuery= async(chatObj)=>{
 
       return await postData(
@@ -41,36 +41,36 @@ const chartRef= useRef(null)
             path:API_ENDPOINTS.SEND_CONVO,
             body:{analysis_id:router?.query?.id, content:chatObj.content}
           })
-    }
+  }
 
-    const {mutate:sendChat, isPending}=useMutation({
-        mutationFn: (chat)=>sendChatQuery(chat),
-        onError:({error})=>{
-          // let ex_chats= [...chats]
-          // ex_chats.push(
-          //   {role:'assistant', short_note:'<p>I cannot reply you at the moment, check your network connectivity please.</p>'}
-          // )
-          // setChats([...ex_chats])
-          setChats(prev => [
-            ...prev,
-            {role:'assistant', short_note:'<p>I cannot reply you at the moment, check your network connectivity please.</p>'}
-          ]);
-          return NotifyError(error.message || 'Could not send data')
-        },
-        onSuccess:({data})=>{
-          // let ex_chats= [...chats]
-          // ex_chats.push(
-          //   {role:'assistant', short_note:data?.short_note}
-          // )
-          // setChats([...ex_chats])
-          // console.log({data})
-          setChats(prev => [
-            ...prev,
-            {role:'assistant', short_note:data?.chat?.short_note}
-          ]);
-          return
-        }
-    })
+  const {mutate:sendChat, isPending}=useMutation({
+      mutationFn: (chat)=>sendChatQuery(chat),
+      onError:({error})=>{
+        // let ex_chats= [...chats]
+        // ex_chats.push(
+        //   {role:'assistant', short_note:'<p>I cannot reply you at the moment, check your network connectivity please.</p>'}
+        // )
+        // setChats([...ex_chats])
+        setChats(prev => [
+          ...prev,
+          {role:'assistant', short_note:'<p>I cannot reply you at the moment, check your network connectivity please.</p>'}
+        ]);
+        return NotifyError(error.message || 'Could not send data')
+      },
+      onSuccess:({data})=>{
+        // let ex_chats= [...chats]
+        // ex_chats.push(
+        //   {role:'assistant', short_note:data?.short_note}
+        // )
+        // setChats([...ex_chats])
+        // console.log({data})
+        setChats(prev => [
+          ...prev,
+          {role:'assistant', short_note:data?.chat?.short_note}
+        ]);
+        return
+      }
+  })
   useEffect(()=>{ 
     console.log(chartInpRef.current)
     chartInpRef?.current?.focus()
