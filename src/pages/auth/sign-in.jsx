@@ -16,6 +16,7 @@ const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
   // const router = useRouter()
   const [formData, setFormData]= useState({})
+  const [loggedInClicked, setLoggedInClicked]= useState(false)
   const {NotifyError, NotifySuccess}= useToast()
 const inputFields = [
   {
@@ -113,9 +114,10 @@ const logFuncQuery=async()=>{
                     <div className="w-full">
                         {Object.values(providers).filter(({name})=>name!=='Credentials').map((provider) => (
                           <button
+                            disabled={loggedInClicked}
                             key={provider.name}
                             onClick={async() => {
-
+                              setLoggedInClicked(true)
                               signIn(provider.id, {
                                 callbackUrl: appLinkConverter(PAGE_ROUTES.DASHBOARD), 
                                 state: JSON.stringify({

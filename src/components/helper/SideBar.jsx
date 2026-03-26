@@ -15,8 +15,7 @@ export default function SideBar({active}){
                 </div>
             </div>
             <div className=" h-[82vh] overflow-y-scroll pr-5 pt-5">
-                <div className="space-y-2">
-                    
+                <div className="space-y-2">                    
                     {PAGE_ROUTES.PROTECTED_SIDEBARS.filter(({isNotPage})=>isNotPage)
                         .map((props,ind)=>
                             <Fragment key={ind}>

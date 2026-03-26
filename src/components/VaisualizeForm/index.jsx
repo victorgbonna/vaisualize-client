@@ -242,8 +242,6 @@ export default function VaisualizeForm(){
         return NotifyError(error.message || 'Could not get data')
     },
     onSuccess:({data})=>{
-        // consolelog({mutation:data})
-        // data:{request, visuals_sugg}
         stopInterval()
         setLoadingState('processing')
         // NotifySuccess('Done. Request Gotten. Wait 2 secs.')

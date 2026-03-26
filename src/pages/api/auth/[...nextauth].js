@@ -77,13 +77,19 @@ export default NextAuth({
         
         return true
       },
+      session: {
+        maxAge: 2 * 60 * 60, // 2 days
+      },
+
+      jwt: {
+        maxAge: 2 * 60 * 60, // 2 days
+      },
       async jwt({ token, user, account }) {
         // consolelog({tokezxs:token,user})
         if (user?.access_token) {
           token.access_token = user.access_token
         }
         
-        // For Google OAuth
         if (account?.access_token) {
           token.access_token = account.access_token;
         }
@@ -95,5 +101,5 @@ export default NextAuth({
         return session;
       }
     },
-  });
+});
 

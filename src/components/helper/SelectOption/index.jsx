@@ -9,7 +9,7 @@ export default function SelectOption(
     displayDropOnRelative=false,
     dropdownSrc, errorProp= null, 
     disabled_options=null,
-    valueStyle={},extraOptionClass='',
+    valueStyle={},extraOptionClass='',sliceValue,
     containerClass, isInput=false,posAttribute={
         top:"100%"
     },
@@ -22,7 +22,7 @@ export default function SelectOption(
     useOnClickOutside(ref, () => toggle(false));
     // onMouseLeave={show?() => toggle(false):()=>null}
     return (   
-    <div ref={ref} className="w-full"
+    <div ref={ref} className="w-full z-[8]"
         style={{...style}}
     >
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
@@ -38,7 +38,7 @@ export default function SelectOption(
                         <>
                         {sideImageValue}
                         <p style={valueStyle} className="w-fit text-[15px] text-black cursor-pointer">
-                            {value}
+                            {sliceValue?value?.slice(0,20)+'.':value}
                         </p>
                         </>:
                         <p className="opacity-50 text-[15px] text-black cursor-pointer">

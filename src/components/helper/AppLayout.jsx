@@ -1,9 +1,9 @@
 import { AppHeader, SideBar } from "..";
 
-export default function AppLayout({active, children}){
+export default function AppLayout({active, children, excludeSideBar}){
     return(
         <div className="flex items-start w-full tablet:flex-col bg-white overflow-y-hidden h-screen">
-            <SideBar active={active} />
+            {excludeSideBar?null:<SideBar active={active} />}
             <main className="w-full flex-1">
                 <AppHeader active={active}/>
                 {children}

@@ -1,51 +1,47 @@
-
-import {createContext, useContext, useEffect, useState} from 'react'
+import {createContext, useMemo, useEffect, useState} from 'react'
 
 export const ProjectDataContext = createContext()
 
 export default function ProjectDataContextComponent(
     {children}){ 
-    const [formData, setFormData]=useState('')
-    const [dataCollection, setDataCollection]= useState([])
-    const [multiselect, setMultiselect]= useState({
-        unique_columns:[],columns:[], all_columns:[],
-        categorical_columns:[],numerical_columns:[],
-        date_columns:[], non_placed_columns:[]
-    })
+    const [formData, setFormData] = useState('');
+    const [chartColors, setChartColors] = useState(['#4FC3F7']);
+    const [dataCollection, setDataCollection] = useState([]);
+    const [multiselect, setMultiselect] = useState({
+        unique_columns: [], columns: [], all_columns: [],
+        categorical_columns: [], numerical_columns: [],
+        date_columns: [], non_placed_columns: []
+    });
+    const [step, setStep] = useState(2);
 
-    const [loadingState, setLoadingState]= useState('')
-    
-    const formChange=(e, key, option=false)=>{
-        if (option) return setFormData({...formData,[key]:e})
-        return setFormData({...formData,[key]:e.target.value})
-    }
-    const [step, setStep] =useState(3)
+    const [first5rows, setFirst5Rows] = useState([]);
 
+    const [relationships, setRelationships] = useState([]);
 
+    const [defaults, setDefaults] = useState({
+        background_color: '#FFFFFF',
+        font_color: '#000000',
+        font_family: {label:'Oswald', value:'Oswald'}
+        // chart_colors:['#4E79A7']
+        // , '#F28E2B', '#E15759', '#76B7B2', '#59A14F', '#EDC948', '#B07AA1', '#FF9DA7', '#9C755F', '#BAB0AC']
+    });
 
-    const daysOfWeek = [
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-    ];
+    const isDisabled = useMemo(() => {
+        // const hasFormData = Object.keys(formData).length > 0
+        const hasData = dataCollection.length > 0;
+        return !(hasData);
+    }, [dataCollection]);
 
-    const monthsOfYear = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-    // const {isDate}= timeStampControl
-    const {isDate}= true
-
-    const [first5rows, setFirst5Rows]= useState([])
-    const years = Array.from({ length: 2028 - 2000 }, (_, i) => 2000 + i);
-
-    const dates_term=[...daysOfWeek, ...monthsOfYear, ...years]
-    const MAX_SIZE = 10 * 1024 * 1024;
-
-   
     return(
         <ProjectDataContext.Provider value={{
-            step,setStep, formData, setFormData,
+            step, setStep, formData, setFormData,
             dataCollection, setDataCollection,
-            multiselect, setMultiselect, setFirst5Rows, first5rows
+            relationships, setRelationships,
+            chartColors, setChartColors,
+            default_chart_colors: '#4FC3F7',
+            multiselect, setMultiselect, setFirst5Rows, first5rows,
+            defaults, setDefaults,
+            isDisabled
         }}>
             {children}
         </ProjectDataContext.Provider>

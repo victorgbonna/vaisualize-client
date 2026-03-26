@@ -301,8 +301,16 @@ const API_ENDPOINTS = {
   ADD_CHAT_TO_VISUALS:'conversations/add-to-visuals',
   
   INITIALIZE_PROJECT:'projects/initialize',
+  FINALIZE_PROJECT:'projects/finalize',
   GET_PROJECT_DRAFT_DATA:(id)=>'projects/draft/'+id,
-  GET_ALL_DRAFTS:'projects/drafts/all'
+  GET_ALL_DRAFTS:'projects/drafts/all',
+
+  OWNED_ALL:'projects/owned-all',
+  OWNED_BY_ID:(id)=>'projects/owned/'+id,
+  SHARED_ALL:'projects/shared-all',
+  SHARED_BY_ID:(id)=>'projects/shared/'+id,
+  PUBLIC:'projects/public'
+  
 };
 
 export default API_ENDPOINTS

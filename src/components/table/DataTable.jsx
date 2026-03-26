@@ -7,19 +7,19 @@ import { SelectOption } from "..";
 
 function DataTable({
     data, tableCols, data_type_collection, 
-    modifyColumn, excludedColumns
+    modifyColumn, excludedColumns, activeColl
 }){
     
     return (
         <>
         <div className="overflow-x-auto ">
-            <section className="text-[13px] mt-2 bg-slate-200/20 rounded-md border shadow-lg datatable overflow-x-auto z-[2] rounded-t-md w-screen ">            
+            <section className="text-[13px] mt-2 bg-slate-200/20 rounded-md border shadow-lg datatable overflow-x-auto z-[2] rounded-t-md w-[110vw] ">            
                 <TableLayout
                     className="mb-6 rounded-t-md"
                     theadBg={'#'}
                     th={<TableHead 
                         tableCols={tableCols} 
-
+                        activeColl={activeColl}
                         modifyColumn={modifyColumn}
                         excludedColumns={excludedColumns}
                         data_type_collection={data_type_collection}/>} 
@@ -36,7 +36,7 @@ function DataTable({
 }
 const TableHead= ({
         tableCols, data_type_collection, 
-        excludeColumn, excludedColumns
+        modifyColumn, excludedColumns, activeColl
     }) =>{    
     return (
         <>
@@ -45,8 +45,9 @@ const TableHead= ({
                     <div className="pl-3 uppercase">
                         <p>{col}</p>    
                         <DataTypeSelection
-                            col={col}
-                            excludeColumn={excludeColumn} 
+                            col={col} 
+                            activeColl={activeColl}
+                            modifyColumn={modifyColumn}
                             isIncluded={!excludedColumns?.includes(col)}
                             data_type={data_type_collection?.find((item)=>item.col===col)?.data_type}
                         />
@@ -80,7 +81,7 @@ const TableBody= ({entries, tableCols}) =>{
 
 function DataTypeSelection({
     data_type,col,
-    modifyColumn,
+    modifyColumn,activeColl,
     isIncluded
 }){
     const filtered_options= useMemo(()=>{
@@ -91,15 +92,19 @@ function DataTypeSelection({
         <div className="mt-2 w-fit flex gap-x-1.5 items-center">
             <SelectOption options={filtered_options} value={data_type}
                 sideImageValue={
-                    <img src={`/svg/datatype/${data_type}.svg`} className="w-3 h-3"/>
+                    <img src={`/svg/datatype/${data_type}.svg`} className={data_type==='number' || data_type==='identifier'?'w-4 h-4':"w-3 h-3"}/>
                 }
-                onChange={(new_data_type)=>modifyColumn({mod_type:'switch', data:{col,new_data_type}})}
+                onChange={(new_data_type)=>modifyColumn(
+                    {
+                        mod_type:'switch', 
+                        data:{columnName:col,newType:new_data_type, tableIndex:activeColl}
+                    })}
                 label={'Column'} valueStyle={{fontSize:12, fontWeight:500}}
                 containerClass={'px-2.5 border bg-white'}
                 extraOptionClass='text-[11px] font-normal py-1 px-2'
             />
             <button onClick={()=>modifyColumn(
-                {mod_type:isIncluded?'exclude':'add', data:col}
+                {mod_type:isIncluded?'exclude':'add', data:{columnName:col, tableIndex:activeColl, newType:data_type}}
             )}>
                 <img src={`/svg/${isIncluded?'eye.svg':'eye-closed.svg'}`} alt="eyes" className="w-5 h-5"/>
             </button>

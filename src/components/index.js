@@ -6,6 +6,7 @@ export {default as AppHeader} from './helper/AppHeader';
 
 export {default as SideBar} from './helper/SideBar';
 
+export {default as ColorPicker} from './helper/ColorPicker';
 
 export {default as ContactTemplate} from './helper/ContactTemplate';
 
@@ -40,6 +41,10 @@ export { default as SelectFilters } from './helper/SelectOption/selectFilters';
 export { default as SelectOption } from './helper/SelectOption';
 
 export {default as Chart} from './chart/Chart';
+
+export {default as DisplayProjectId} from './DisplayProjectId';
+
+export {default as ChartEditor} from './ChartEditor';
 
 
 

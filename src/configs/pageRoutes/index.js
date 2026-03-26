@@ -1,4 +1,13 @@
 const PAGE_ROUTES = {
+  FONT_SELECTIONS:[
+    {label:'Oswald', value:'Oswald'},
+    {label:'Inter', value:'Inter'},
+    {label:'Roboto', value:'Roboto'},
+    {label:'Open Sans', value:'Open Sans'},
+    {label:'Arial', value:'Arial'},
+    {label:'Montserrat', value:'Montserrat'},
+    {label:'Poppins', value:'Poppins'},
+  ],
   HOME:'/',
   CENTER_NAVS:[
     {
@@ -53,8 +62,10 @@ const PAGE_ROUTES = {
     LOGIN:'/auth/sign-in',
     REGISTER:'/auth/sign-up'
   },
+
   DASHBOARD:'/app/projects',
   CREATE_PROJECT:(id)=>'/app/projects/create?id='+id,
+  VIEW_PROJECT:(id)=>'/app/projects/v/'+id,
   A_REQ:(id)=>{
     return '/analysis/'+id
   },
@@ -82,7 +93,8 @@ const PAGE_ROUTES = {
     {label:'Defaults', link:'/default-theme', svg:'stack.svg'},
     {label:'Settings', link:'/settings', svg:'settings.svg'},
     {label:'Billing', disabled:true, svg:'billing.svg'},
-  ]
+  ],
+  CREATE_CHARTS:(id)=>'/app/projects/add-chart/'+id,
   
   
 };

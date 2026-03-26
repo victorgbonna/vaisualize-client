@@ -1,5 +1,5 @@
 import { consolelog, PAGE_ROUTES } from "@/configs";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
@@ -105,6 +105,9 @@ function PcNav({isLoggedIn}){
             <Link href={PAGE_ROUTES.DASHBOARD} className="rounded-full bg-primary text-white text-[15px] font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all">
                 Go To Dashboard
             </Link>
+            // <button onClick={()=> signOut({ callbackUrl: "/auth/sign-in" })}>
+            //     Log Out
+            // </button>
             :<div className="flex items-center gap-x-4">
                 <Link href={PAGE_ROUTES.AUTH_ROUTES.LOGIN} className="font-semibold px-5 py-2.5 text-[15px]">
                     Log In

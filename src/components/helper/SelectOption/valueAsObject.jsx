@@ -7,7 +7,7 @@ export default function SelectOptionAsObjectValue(
   {options, onChange,label, value,
     leftSibling=null,style={},
     showActiveOption=true,
-    changeAll=false,
+    changeAll=false,sliceValue,
     dropdownSrc, errorProp= null, 
     containerClass, valueProp="value", labelProp="label",
     optionClass="absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit"
@@ -21,7 +21,7 @@ export default function SelectOptionAsObjectValue(
     return (   
     <div ref={ref} className="z-[8]">
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
-        <div className={"cursor-pointer flex justify-between border rounded-full py-2.5 px-4 gap-x-2 items-center "+containerClass}  
+        <div className={"z-[1] cursor-pointer flex justify-between border rounded-md py-2 px-2.5 gap-x-2 items-center "+containerClass}  
             style={{
             background: '#FFFFFF',
             ...style
@@ -32,10 +32,10 @@ export default function SelectOptionAsObjectValue(
                 {leftSibling &&
                 leftSibling}
                 {value[labelProp]?
-                    <p className="w-fit font-medium">
-                        {value[labelProp]}
+                    <p className="w-fit font-medium text-[15px]">
+                        {sliceValue?value[labelProp]?.slice(0,20)+'.':value[labelProp]}
                     </p>:
-                    <p className="opacity-50">
+                    <p className="opacity-50 text-[15px]">
                         {label}
                     </p>
                 }
@@ -57,7 +57,7 @@ export default function SelectOptionAsObjectValue(
             </div>        
         </div>
         {show && (
-            <ul className={'absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit '+optionClass} style={{
+            <ul className={'z-[8] absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit '+optionClass} style={{
                 top:"100%", maxHeight:"200px", width:"100%",
                 background: '#FFFFFF', zIndex:"4",
                 border: '1px solid #CABECF',borderRadius: '10px'
