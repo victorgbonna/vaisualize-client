@@ -3,7 +3,7 @@ export default function ChartEditor({data}) {
     return (
         <div className="flex items-start">
             <VisualizationTypes/>
-            <DataMapping/>
+            {/* <DataMapping/> */}
             
         </div>
     );
