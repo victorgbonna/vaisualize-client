@@ -110,8 +110,7 @@ function FilterBoxInner({
     const {mutate:resetFilter, isPending:resLoading}=useMutation({
         mutationFn: ()=>saveResetQuery(),
         onError:({error})=>{
-            
-            return NotifyError(error.message || 'Could not get data')
+          return NotifyError(error.message || 'Could not get data')
         },
         onSuccess:()=>{
             NotifySuccess('Filter resets successfully') 

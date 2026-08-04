@@ -4,7 +4,7 @@ import moment from "moment"
 import Link from "next/link"
 import { Fragment, useState, useEffect, useRef } from "react"
 
-export default function VisualCard({cards}){
+export default function VisualCard({cards=[]}){
     const [teamCurr, setTeamCurr]= useState(0)
     const elementRef = useRef(null);
     const [seen,setSeen]= useState(false)
@@ -65,7 +65,7 @@ export default function VisualCard({cards}){
           style={{ transform: `translateX(-${teamCurr * 33.5}%)` }}
           className="flex flex-nowrap gap-6 transition-transform duration-500 ease-in-out"
         >
-          {[...cards, ...cards.slice(0,4)].map((card, ind) => (
+          {[...cards, ...cards.slice(0, 4)].map((card, ind) => (
             <Fragment key={ind}>
               <AnalysisCard key={ind} data={card} index={ind} /> 
             </Fragment>   
@@ -106,7 +106,7 @@ function AnalysisCard({ data, index }){
       <div className="px-5">
         <div className="h-[90px] mt-9 mb-3">
           <p className="text-graySubHd text-[14px] leading-[22px]">
-            {description?.length < 160
+            {!description || description.length < 160
               ? description
               : description.slice(0, 160) + "..."}
           </p>
@@ -145,8 +145,8 @@ function ChartIcons({chart_icons}){
   const [count, setCount]= useState({})
   const [setIcons, setSetIcons]= useState([])
   useEffect(()=>{
-    const no_dupl_icons=chart_icons.filter(({plot_type})=>
-      !plot_type.includes(',')
+    const no_dupl_icons=(chart_icons||[]).filter(({plot_type})=>
+      plot_type && !plot_type.includes(',')
     ).filter((v,i,a)=>
       a.findIndex(t=>(t.plot_type === v.plot_type))===i
     )
@@ -157,7 +157,7 @@ function ChartIcons({chart_icons}){
       errorCount:0,
       showCount:5
     })
-  },[])
+  },[chart_icons])
   // console.log({plot_type})
   return(
     <div className="flex items-end space-x-2.5">
