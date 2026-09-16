@@ -1018,11 +1018,11 @@ function NextSection(){
 function Partnership(){
   const partners = [
     "SMARTHUB ACADEMY",
-    "DATACUBE",
-    "VOID.IO",
-    "STRATA",
-    "Z-CORP",
-    "AURORA",
+    "FANCHALLENGER",
+    "ALTRANEX LTD",
+    "EYES ON THE AI",
+    "AISA ACADEMY",
+    "VAISUALIZE",
   ];
   return(
     
