@@ -74,7 +74,7 @@ function CreateProjects(){
                     />:
                 step===3?
                     <ThirdStep/>:
-                    <FourthStep project_name={project_data?.project?.title}/>
+                    <FourthStep project_name={project_data?.project?.title} uploadImages={uploadImages}/>
                 }
             </section>
             
@@ -143,7 +143,17 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength}){
       if (!file || !value) return;
 
       const fileName = getFileName(value || "").toLowerCase();
+        setFileData((prev) => {
+            const newFileData = [...prev];
 
+            newFileData[ind] = {
+            file,
+            value,
+            fileName,
+            };
+
+            return newFileData;
+        });
       const processParsed = (headers = [], rows = [], fileName, row_length) => {
         // const categorical_columns = [];
         // const numerical_columns = [];
@@ -254,10 +264,9 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength}){
                 return;
             }
             const headers = Object.keys(jsonData[0]);
-            const row_length=jsonData.length
-
+            const row_length = jsonData.length;
             const rows = jsonData.slice(0, 5).map(normalizeMongoFields);
-            processParsed(headers, rows, file.name, file.size, row_length);
+            processParsed(headers, rows, file.name, row_length);
 
             } catch (err) {
             console.error("JSON parse error", err);
@@ -404,7 +413,6 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength}){
     </div>
     )
 }
-
 function ThirdStep(){
     const {dataCollection, setDataCollection, setStep, step}= useContext(ProjectDataContext)
     const [activeColl, setActiveColl]= useState(0)
@@ -469,7 +477,7 @@ function ThirdStep(){
     )
 }
 
-function FourthStep({project_name}){
+function FourthStep({project_name, uploadImages}){
     const {NotifyError, NotifySuccess}= useToast()
     const {postProtectedData}= useHttpServices()
     const router= useRouter()
@@ -482,11 +490,22 @@ function FourthStep({project_name}){
         {label:'Chart Color(s)', value:'chart_colors', type:'multi_options'},
     ]
     const finalizeProjQuery= async()=>{
-        const datasets = dataCollection.map(ds => ({
+        const {imagesURLs, error: uploadError} = await uploadImages()
+        if (uploadError) {
+            throw {error: {message: uploadError}}
+        }
+
+        const data_set_url = imagesURLs
+            .sort((first, second) => first.index - second.index)
+            .map(({url}) => url)
+
+        const datasets = dataCollection.map((ds, ind) => ({
             proj_title:project_name,
             file_name: ds.fileName,
             file_size: ds.size,
+            first_five_rows: ds.rows || [],
             total_rows: ds.row_length ||  0,
+            file_url: data_set_url[ind],
             columns: {
                 all_columns: ds.col?.all_columns || [],
                 active_columns: ds.col?.columns || [],
@@ -528,7 +547,7 @@ function FourthStep({project_name}){
       onSuccess:({data})=>{
         NotifySuccess('Project created successfully')
         // console.log({finalize_project_data:data})
-        window.location.href=PAGE_ROUTES.CREATE_CHARTS(data?.project_id)      
+        window.location.href=PAGE_ROUTES.GO_TO_A_PROJECT(data?.project_id)      
         // router.push(VIEW_PROJECT(data?.project_id))
         return
       }
@@ -808,10 +827,14 @@ function DataRelationship({dataCollection}){
     
     const addRelationship=()=>{
         if(!fromTable?.key_column || !toTable?.key_column) return NotifyError('Please select key columns for both tables to create a relationship.')
-        const if_rel_exists= relationships.find(({from_column, to_column})=>from_column=== fromTable.key_column  || to_column===toTable.key_column)
+        if(fromTable.fileName === toTable.fileName){
+            return NotifyError('You cannot create multiple relationships between the same tables.')
+        }
+        const if_rel_exists= relationships.find(({from_column, to_column})=>from_column=== fromTable.key_column  && to_column===toTable.key_column)
         if(if_rel_exists){
             return NotifyError('Relationship already exists.')
         }
+        
         const newRel={
             from_table: fromTable.fileName,
             from_column: fromTable.key_column,

@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, consolelog } from "@/configs"
+import { API_ENDPOINTS, consolelog, PAGE_ROUTES } from "@/configs"
 import { useHttpServices } from "@/hooks"
 import { useQuery } from "@tanstack/react-query"
 import { useMemo, useState } from "react"
@@ -9,17 +9,30 @@ import Link from "next/link"
 export default function ProjectHelper(){
     const {getData, getProtectedData}= useHttpServices()
     const getMyCharts=async()=>{    
-        return await getProtectedData({path:API_ENDPOINTS.GET_MY_REQUESTS})
+        return await getProtectedData({path:API_ENDPOINTS.OWNED_ALL})
     }
     
     const {isLoading:reqLoading, data:req_data, error, isError:isReqError}= useQuery(
         {
-            queryKey:['personal-visuals'],
+            queryKey:['owned-projects'],
             queryFn:()=>getMyCharts(),
             refetchOnWindowFocus: false,
             retry:false
         }
     )
+    const getMyDraftCharts=async()=>{    
+        return await getProtectedData({path:API_ENDPOINTS.GET_ALL_DRAFTS})
+    }
+    
+    const {isLoading:draftLoading, data:draftData, error:draftError, isError:isDraftError}= useQuery(
+        {
+            queryKey:['draft-projects'],
+            queryFn:()=>getMyDraftCharts(),
+            refetchOnWindowFocus: false,
+            retry:false, enabled:!!req_data?.projects
+        }
+    )
+    console.log({req_data, draftError})
     // const get_all_project_visuals= useMemo(()=>{
     //     if(!req_data) return []
     //     const visuals=req_data?.requests?.map(
@@ -42,9 +55,25 @@ export default function ProjectHelper(){
                 errorMsg={error?.message}
             >
                 <div className="grid grid-cols-3 gap-6 px-8 justify-between">
-                    {req_data?.requests?.map((data,ind)=>
+                    {req_data?.projects?.map((data,ind)=>
                         <ProjectItem key={ind} ind={ind} {...data} />
                     )}
+                    
+                </div>
+            </DataFetch>
+            {
+                draftData?.projects?.length > 0 && <p className="px-8 py-10 text-2xl font-semibold">In Drafts</p>
+            }
+             <DataFetch
+                isLoading={draftLoading}
+                isError={isDraftError}
+                errorMsg={draftError?.message}
+            >
+                <div className="grid grid-cols-3 gap-6 px-8 justify-between">
+                    {draftData?.projects?.map((data,ind)=>
+                        <ProjectItem isDraft={true} key={ind} ind={ind} {...data} />
+                    )}
+                    
                 </div>
             </DataFetch>
         </section>
@@ -53,8 +82,13 @@ export default function ProjectHelper(){
 
 function ProjectItem(props){
     return(
-        <Link href={'/'} className="border rounded-xl hover:border-primary hover:border-2  shadow-lg bg-slate-50 flex flex-col">
-            <ChartSelection firstVisual={props?.visuals_obj?.visuals[0]?.plot_type?.split(',')[0]}/>
+        <Link target="_blank" href={props?.isDraft?PAGE_ROUTES.VIEW_A_DRAFT(props?._id):PAGE_ROUTES.VIEW_PROJECT(props?._id)} className="border rounded-xl hover:border-primary hover:border-2  shadow-lg bg-slate-50 flex flex-col">
+            
+            {props?.visualizations?.[0]?.chartType && !props?.isDraft ? <ChartSelection firstVisual={props?.visualizations?.[0]?.chartType}/> : 
+               <div className="h-48 p-6 relative overflow-hidden flex items-center justify-center">
+                    <img src="/svg/question.svg" alt="question" className="w-8 h-8"/>
+               </div> 
+                }
             <div className="bg-white flex-1 w-full flex items-center justify-between rounded-b-xl px-4 py-5">
                 <div>
                     <p className="text-lg font-semibold mb-2">{props?.title}</p>

@@ -39,6 +39,19 @@ const formatTime = (ms) => {
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     };
 
+const APP_THEME = {
+    accent: '#5345E6',
+    accentSoft: '#EEF0FF',
+    background: '#F5F5FA',
+    darkMuted: '#1F2937',
+    textMuted: '#6B7280',
+    border: '#E5E7EB',
+    success: '#14B8A6',
+    warning: '#F59E0B',
+    danger: '#DC2626',
+    cardShadow: '0 18px 45px -24px rgba(33, 37, 41, 0.18)',
+};
+
 function AnalysisC() {
     const router = useRouter()
     // const dataList = data_json;
@@ -263,80 +276,81 @@ function AnalysisC() {
             errorMsg={error?.error?.message}
             isEmpty={false}
         >
-            <div className="relative">
-                <div style={{
-                    boxShadow: '1px 0px 50px -8px rgba(24, 24, 27, 0.1)'
-                }} className="flex tablet:flex-col items-center justify-between rounded-b-md sticky tablet:relative tablet:w-full top-0 z-[99] border w-full left-0 right-0 h-fit bg-white py-7 px-10 tablet:px-4">
-                    <div className="flex items-center gap-x-5">
-                        <Link href={'/'}>
-                            <img src="/svg/home.svg" alt="home" className="w-8 h-8"/>
-                        </Link>
-                        <h1 className="text-2xl font-semibold text-[#5345E6]">{req_data?.request?.title}</h1>
-                        {/* <p className="text-gray-700 text-sm tablet:mt-2">This visuals expires in {formatTime(timeLeft)} — Subscribe for premium to cancel</p> */}
-                    </div>
-                    <div className="gap-x-[4px] relative tablet:mt-6 flex items-center">
-                        {req_data?.request?.status==='break'?
-                        <>
-                        <div className="flex-col flex justify-end gap-y-[6px] items-end">
-                            <p className="text-sm">This visual expires in</p>
-                            <p className="text-[#C40404] font-semibold">{formatTime(timeLeft)}</p>
-                        </div>
-                        <button onClick={()=>setOpenModal({
-                            label:req_data?.request?.title,
-                            _id:req_data?.request?._id,
-                            type:'subscribe'
-                            })} className="p2 px-10 rounded-lg py-3 flex-col flex items-center ml-3">
-                            <div className="mb-[3px] gap-x-2 flex items-center">
-                                <img src="/svg/metric/star.svg" alt="star" />
-                                <p className="text-white font-semibold">Get Premium</p>
-                            </div>
-                            <p className="text-white">{'(To keep your visual forever)'}</p>
-                        </button>
-                        <div
-                            className="absolute right-[-20px] top-[-20px] h-[40px] w-[40px] flex items-center justify-center">
-                            <img src="/svg/discount.svg" className="absolute inset-0 h-full w-full "/>
-                            <div className="relative z-2 text-center text-white">
-                                <p className="mb-[-10px] text-sm font-semibold">60%</p>
-                                <small className="text-[9px] font-medium">OFF</small>
-                            </div>
-
-                        </div>
-                        </>:
-                        req_data?.request?.status==='pending'?
-                        <div className="flex flex-col justify-end items-end">
-                            <p className="text-sm italic mb-2">Payment verification still in progress</p>
-                            <div className="w-fit">
-                                <Link className="w-fit text-white py-2 px-5 rounded-lg p2" href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} >
-                                    Contact Us
+            <div className="min-h-screen bg-[#F5F5FA] text-slate-900" style={{fontFamily: 'Oswald, sans-serif'}}>
+                <div className="sticky top-0 z-[99] border-b border-slate-200 bg-white/90 backdrop-blur-sm">
+                    <div className="mx-auto max-w-[1600px] px-6 py-5 tablet:px-4">
+                        <div className="flex tablet:flex-col tablet:items-start items-center justify-between gap-4">
+                            <div className="flex items-center gap-x-4">
+                                <Link href={'/'} className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 shadow-sm transition hover:scale-[1.02] hover:border-indigo-200 hover:bg-indigo-50">
+                                    <img src="/svg/home.svg" alt="home" className="w-5 h-5"/>
                                 </Link>
+                                <div>
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">Chart environment</p>
+                                    <h1 className="text-2xl font-semibold text-[#5345E6]">{req_data?.request?.title}</h1>
+                                </div>
                             </div>
-
+                            <div className="flex items-center gap-x-3 tablet:w-full tablet:justify-between">
+                                {req_data?.request?.status==='break'?
+                                <>
+                                    <div className="flex flex-col items-end text-right">
+                                        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Expires in</p>
+                                        <p className="text-[#C40404] font-semibold">{formatTime(timeLeft)}</p>
+                                    </div>
+                                    <button onClick={()=>setOpenModal({
+                                        label:req_data?.request?.title,
+                                        _id:req_data?.request?._id,
+                                        type:'subscribe'
+                                    })} className="rounded-xl bg-[#5345E6] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:brightness-110">
+                                        Get Premium
+                                    </button>
+                                </>:
+                                req_data?.request?.status==='pending'?
+                                <div className="flex items-center gap-3">
+                                    <p className="text-sm italic text-slate-600">Payment verification still in progress</p>
+                                    <Link className="rounded-xl bg-[#5345E6] px-4 py-2.5 text-sm font-semibold text-white" href={API_ENDPOINTS.MY_DETAILS.WHATSAPP} >
+                                        Contact Us
+                                    </Link>
+                                </div>
+                                :<>
+                                    <button onClick={()=>setOpenModal({
+                                        type:'filter', id:req_data?.request?._id, active_filter:req_data?.request?.active_filter
+                                    })} className="flex items-center gap-x-2 rounded-xl bg-[#5345E6] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:brightness-110">
+                                        <img src="/svg/filter.svg" className="w-4 h-4"/>
+                                        <span>Filter Data</span>
+                                    </button>
+                                    <button disabled={true} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-500">
+                                        Select Another Data
+                                    </button>
+                                </>
+                                }
+                            </div>
                         </div>
-                        :<>
-                            <button onClick={()=>setOpenModal({
-                                type:'filter', id:req_data?.request?._id, active_filter:req_data?.request?.active_filter
-                            })} className="px-5 py-2.5 text-[15px] p2 mr-6 tablet:mr-0 rounded-lg text-white flex items-center gap-x-2">
-                                <img src="/svg/filter.svg" className="w-5 h-5"/>
-                                <p>Filter Data</p>
-                            </button>
-                            <button disabled={true} className="text-[15px] px-5 py-2.5 p3 rounded-lg text-white flex items-center gap-x-2">
-                                <img src="/svg/change.svg" className="w-5 h-5"/>
-                                <p>Select Another Data</p>
-                            </button>
-                        </>
-                        }
+                    </div>
+                </div>
+
+                <div className="mx-auto max-w-[1600px] px-6 py-8 tablet:px-4">
+                    <div className="rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_18px_45px_-24px_rgba(33,37,41,0.18)]">
+                        <p className="text-base leading-7 text-slate-600">{req_data?.request?.description}</p>
                     </div>
 
-                </div>
-                <div className="px-8 py-7 bg-g tablet:px-4 bg-[#F5F5FA]" >
-                    <p className="w-[90%] tablet:text-sm tablet:w-[95%]">{req_data?.request?.description}</p>
-                    <div className="mt-11 mb-20">
+                    <div className="mt-8 mb-10">
                         <CardBox/>
                     </div>
-                    <div>
+
+                    <div className="rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_18px_45px_-24px_rgba(33,37,41,0.18)]">
+                        <div className="mb-5 flex items-center justify-between gap-3">
+                            <div>
+                                <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">visual suite</p>
+                                <h2 className="mt-1 text-xl font-semibold text-slate-800">Generated charts</h2>
+                            </div>
+                            <button onClick={()=>setActionModal({status:'add'})} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-[#5345E6]">
+                                Adjust visuals
+                            </button>
+                        </div>
                         <VisualCharts refetchRequestData={refetchRequestData}/>
                     </div>
                 </div>
+
                 {mountChat ?
                     <ChatBox 
                         onNext={()=>{
@@ -344,8 +358,6 @@ function AnalysisC() {
                                 type:'chatbot'
                             })
                         }} 
-                        // onClose={()=>setOpenModal(null)}
-                        // setShowModal={()=>setOpenModal(null)}
                     />
                 :null}
                 {openModal?.type==='chatbot' ?

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function ChartEditor({data}) {
     const [chartOptions, setChartOptions] = useState({})
     return (

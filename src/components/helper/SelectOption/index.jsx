@@ -19,6 +19,7 @@ export default function SelectOption(
     const [show,toggle]= useState(false)
     const new_options= showActiveOption?options:options.filter((opt)=>opt!==value).slice(0, limitOptions || options.length)
     const ref = useRef(); 
+    console.log('new_options', options)
     useOnClickOutside(ref, () => toggle(false));
     // onMouseLeave={show?() => toggle(false):()=>null}
     return (   
@@ -28,7 +29,7 @@ export default function SelectOption(
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
         <div 
         className=
-            {fullContainerClass ?? ` z-[4] relative cursor-pointer flex justify-between items-center text-sm tablet:text-base  gap-x-2 w-full tablet:text-base  rounded-md py-1 ${containerClass || ' px-1 bg-white'} 
+            {fullContainerClass ?? ` z-[4] relative cursor-pointer flex justify-between items-center text-sm tablet:text-base  gap-x-2 w-full tablet:text-base  rounded-md px-3 py-2 ${containerClass || ' px-1 bg-white'} 
             ${isInput && !options.includes(value)?' border-red-100 ':''}`}  
             >
                 {leftSibling && leftSibling}

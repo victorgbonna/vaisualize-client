@@ -23,6 +23,14 @@ const weekGroups = [
   "wk25-28", "wk29-32", "wk33-36", "wk37-40", "wk41-44", "wk45-48", "wk49-52"
 ];
 
+const normalizeDateInput = (value) => {
+    if (value && typeof value === 'object' && '$date' in value) {
+        return value.$date;
+    }
+
+    return value;
+};
+
 // {
 //     movie:{
 //         september:{total:3, count:4},
@@ -46,7 +54,7 @@ const timeStampControl={
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(decimals))} ${sizes[i]}`;
     },
     extractDateUnit:({unit, value:dateInput})=>{
-        const date = new Date(dateInput);
+        const date = new Date(normalizeDateInput(dateInput));
         const u = unit.toLowerCase();
         if (u.includes("year")) {
             return date.getFullYear();

@@ -46,6 +46,10 @@ const API_ENDPOINTS = {
   EDIT_CHART:'visuals/edit', 
   DELETE_CHART:'visuals/delete',
   ADD_CHART:'visuals/add',
+  ASK_DATAI:'visuals/ask-datai',
+  GET_DATAI_CHATS:(projectId)=>`conversations/project/${projectId}`,
+  SEND_DATAI_PROMPT:'conversations/project/ask',
+  UPDATE_DATAI_MESSAGE:(messageId)=>`conversations/${messageId}`,
   METRIC_ICONS:[
     {match:'Rating', value:'star.svg'},
     {match:'Maxdate', value:'calendar.svg'},
@@ -303,14 +307,17 @@ const API_ENDPOINTS = {
   INITIALIZE_PROJECT:'projects/initialize',
   FINALIZE_PROJECT:'projects/finalize',
   GET_PROJECT_DRAFT_DATA:(id)=>'projects/draft/'+id,
-  GET_ALL_DRAFTS:'projects/drafts/all',
+  GET_ALL_DRAFTS:'projects/drafts-all',
 
   OWNED_ALL:'projects/owned-all',
   OWNED_BY_ID:(id)=>'projects/owned/'+id,
   SHARED_ALL:'projects/shared-all',
   SHARED_BY_ID:(id)=>'projects/shared/'+id,
-  PUBLIC:'projects/public'
-  
+  PUBLIC:'projects/public',
+  ADD_VISUALIZATION:(id)=>`projects/${id}/visualizations/add`,
+
+  SEND_SUGGESTION:'feedback/send',
+
 };
 
 export default API_ENDPOINTS

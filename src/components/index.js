@@ -46,5 +46,5 @@ export {default as DisplayProjectId} from './DisplayProjectId';
 
 export {default as ChartEditor} from './ChartEditor';
 
-
+export { default as DataAIResponse } from './helper/DataAIResponse';
 

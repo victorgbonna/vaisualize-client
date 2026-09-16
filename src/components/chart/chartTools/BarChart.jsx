@@ -36,7 +36,7 @@ export default function BarChart(props){
   )
 }
 function BarChartGroupBy({x, y, aggregation, group_by, unit}) {
-    const [meta, setMeta]= useState({page:1, pages:1, limit:unit?20:5})
+    const [meta, setMeta]= useState({page:1, pages:1, limit:unit?20:3})
     const [error, setError]= useState('')
 
     const {dataArray}= useContext(DataRequestContext)

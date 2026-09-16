@@ -80,22 +80,25 @@ const PAGE_ROUTES = {
   },
 
   PROTECTED_SIDEBARS:[
-    {label:'Community', link:'/communities', isNotPage:true, svg:'community.svg'},
-    {label:'Suggestion', link:'/suggestion', isNotPage:true, svg:'suggestion.svg'},
-    {label:'What"s New?', link:'/whats-new', isNotPage:true, svg:'rocket.svg'},
+    {label:'Community', link:'/app/community', isNotPage:true, svg:'community.svg'},
+    {label:'Suggestion', link:'/app/suggestion', isNotPage:true, svg:'suggestion.svg'},
+    {label:'What"s New?', link:'/app/whats-new', isNotPage:true, svg:'rocket.svg'},
 
     // <a href="https://iconscout.com/icons/arrow-text-box" class="text-underline font-size-sm" target="_blank">Arrow Text Box</a> by <a href="https://iconscout.com/contributors/iconscout" class="text-underline font-size-sm" target="_blank">IconScout Store</a>
-    {label:'Projects', link:'/projects', svg:'projects.svg'},
-    {label:'Datasets', link:'/datasets', svg:'table.svg'},
-    {label:'Forms', disabled:true, link:'/forms', svg:'forms.svg'},
-    {label:'Talk to Datai', link:'/datai', svg:'datai.svg'},
+    {label:'Projects', link:'/app/projects', svg:'projects.svg'},
+    {label:'Datasets', link:'/app/datasets', svg:'table.svg'},
+    {label:'Forms', disabled:true, link:'/app/forms', svg:'forms.svg'},
+    {label:'Talk to Datai', link:'/app/datai', svg:'datai.svg'},
     {label:'Infographics', disabled:true, svg:'info.png', attr:'https://iconscout.com/contributors/iconscout - Icon Scout Store'},
-    {label:'Defaults', link:'/default-theme', svg:'stack.svg'},
-    {label:'Settings', link:'/settings', svg:'settings.svg'},
+    {label:'Defaults', link:'/app/default-theme', svg:'stack.svg'},
+    {label:'Settings', link:'/app/settings', svg:'settings.svg'},
     {label:'Billing', disabled:true, svg:'billing.svg'},
   ],
   CREATE_CHARTS:(id)=>'/app/projects/add-chart/'+id,
+  GO_TO_A_PROJECT:(id)=>'/app/projects/v/'+id,
   
+  VIEW_A_PROJECT:(id)=>`/app/projects/v/${id}`,
+  VIEW_A_DRAFT:(id)=>`/app/projects/create?id=${id}`,
   
 };
 

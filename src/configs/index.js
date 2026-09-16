@@ -14,5 +14,5 @@ export { default as API_ENDPOINTS } from './apiEndpoints';
 export { default as commafy } from './commafy';
 export {default as kFormatter} from './kFormatter';
 
-
+export { default as dataiChatFunctionalities } from './dataiChatFunctionalities';
 // consolelog({baseURL, API_ENDPOINTS})
