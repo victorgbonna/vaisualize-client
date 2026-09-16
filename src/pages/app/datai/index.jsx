@@ -168,7 +168,7 @@ function DataAiChatTemplate() {
 
                 <div className="max-w-xl mx-auto space-y-1 mb-8">
                     <h2 className="text-base sm:text-lg font-medium text-slate-700 tracking-tight">
-                        Hi, I'm DataAI — ask a question to query your WebBi data.
+                        {"Hi, I'm DataAI — ask a question to query your WebBi data."}
                     </h2>
                     <p className="text-xs text-slate-400 font-normal">
                         Trained on your schema, relationships, and calculated measures in real time.

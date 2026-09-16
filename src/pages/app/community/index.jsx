@@ -69,8 +69,7 @@ function CommunityTemplate() {
                             Join the WebBI Community
                         </h1>
                         <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
-                            Connect with other WebBI users, share ideas, ask questions, learn from
-                            others, and stay up to date with what's happening around WebBI.
+                            {"Connect with other WebBI users, share ideas, ask questions, learn from others and stay up to date with what's happening around WebBI."}
                         </p>
                     </div>
 
