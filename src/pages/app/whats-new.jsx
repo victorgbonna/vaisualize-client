@@ -5,7 +5,7 @@ const WAITLIST_MESSAGE = "Hi WebBI, I'd like to join the waitlist!";
 
 export default function WhatsNew() {
     return (
-        <AppLayout active={'What"s New?'}>
+        <AppLayout active={"What's New?"}>
             <WhatsNewTemplate />
         </AppLayout>
     );
@@ -27,16 +27,15 @@ function WhatsNewTemplate() {
 
                     <div className="space-y-2">
                         <p className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-primary">
-                            What's New?
+                            {"What's New?"}
                         </p>
                         <h1 className="text-2xl sm:text-4xl font-semibold text-slate-900 tracking-tight">
-                            WebBI is Coming Soon.
+                            {"WebBI is Coming Soon."}
                         </h1>
                     </div>
 
                     <p className="max-w-md text-sm sm:text-base text-slate-500 leading-relaxed">
-                        We're building WebBI to help businesses understand their data and uncover
-                        useful insights, faster and with less friction. Be the first to know when it's ready.
+                        {"We're building WebBI to help businesses understand their data and uncover useful insights, faster and with less friction. Be the first to know when it's ready."}
                     </p>
 
                     <a

@@ -48,13 +48,11 @@ function SuggestionTemplate() {
                     </h1>
 
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                        We don't know everything, and we believe a great product is built with its
-                        users, not just by its developers.
+                        {"We don't know everything, and we believe a great product is built with itsusers, not just by its developers."}
                     </p>
 
                     <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
-                        Every review, suggestion, and complaint is appreciated. We take your feedback
-                        seriously and use it to make WebBI better for users around the world.
+                        {"Every review, suggestion, and complaint is appreciated. We take your feedback seriously and use it to make WebBI better for users around the world."}
                     </p>
                 </div>
 
