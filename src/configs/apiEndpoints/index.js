@@ -42,6 +42,7 @@ const API_ENDPOINTS = {
   GET_FILTER_FOR_VISUALS:(id)=>'visuals/filter/get-all/'+id,
   GET_ALL_FILTERS:'visuals/filter/get-all/',
   RESET_FILTERS:'visuals/filter/reset',
+  GENERATE_FILTER_PLAN:'visuals/filter/generate-plan',
   MASS_UPDATE_VISUALS:'visuals/mass-update',
   EDIT_CHART:'visuals/edit', 
   DELETE_CHART:'visuals/delete',
@@ -317,6 +318,7 @@ const API_ENDPOINTS = {
   ADD_VISUALIZATION:(id)=>`projects/${id}/visualizations/add`,
 
   SEND_SUGGESTION:'feedback/send',
+  
 
 };
 

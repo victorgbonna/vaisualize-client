@@ -6,6 +6,7 @@ import iconSvgPath from "../iconSvgPath";
 export default function SelectOptionAsObjectValue(
   {options, onChange,label, value,
     leftSibling=null,style={},
+    disabled=false,
     showActiveOption=true,
     changeAll=false,sliceValue,
     dropdownSrc, errorProp= null, 
@@ -19,7 +20,7 @@ export default function SelectOptionAsObjectValue(
     useOnClickOutside(ref, () => toggle(false));
     // onMouseLeave={show?() => toggle(false):()=>null}
     return (   
-    <div ref={ref} className="z-[8]">
+    <div style={disabled?{pointerEvents:"none", opacity:0.5}:{}} ref={ref} className="z-[8]">
     <div style={{position:"relative", width:"100%"}} onClick={() => toggle(!show)} >
         <div className={"z-[1] cursor-pointer flex justify-between border rounded-md py-2 px-2.5 gap-x-2 items-center "+containerClass}  
             style={{

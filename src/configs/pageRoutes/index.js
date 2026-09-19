@@ -90,7 +90,7 @@ const PAGE_ROUTES = {
     {label:'Forms', disabled:true, link:'/app/forms', svg:'forms.svg'},
     {label:'Talk to Datai', link:'/app/datai', svg:'datai.svg'},
     {label:'Infographics', disabled:true, svg:'info.png', attr:'https://iconscout.com/contributors/iconscout - Icon Scout Store'},
-    {label:'Defaults', link:'/app/default-theme', svg:'stack.svg'},
+    {label:'Defaults', link:'/app/default', svg:'stack.svg'},
     {label:'Settings', link:'/app/settings', svg:'settings.svg'},
     {label:'Billing', disabled:true, svg:'billing.svg'},
   ],

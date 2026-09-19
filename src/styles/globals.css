@@ -392,6 +392,30 @@ tr:not(:has(th)):hover {
     z-index: -1;
     animation: rainbow-border 2s linear infinite;
 }
+table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto;
+}
+
+th,
+td {
+  white-space: nowrap;
+  padding: 12px 16px;
+}
+th,
+td {
+  min-width: 120px;
+  max-width: 400px;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .button12::before{
     content: '';
     position: absolute;

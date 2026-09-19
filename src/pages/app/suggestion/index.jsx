@@ -41,22 +41,22 @@ function SuggestionTemplate() {
 
     return (
         <main className="flex-1 h-screen overflow-y-auto p-4 sm:p-8">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
-                <div className="lg:sticky lg:top-8 space-y-4 py-2">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-start">
+                <div className="lg:sticky lg:top-8 space-y-3 py-2">
                     <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
                         Help Us Make WebBI Better
                     </h1>
 
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                        {"We don't know everything, and we believe a great product is built with itsusers, not just by its developers."}
+                        {"We don't know everything, and we believe a great product is built with itsusers, not just by its developers. Every review, suggestion, and complaint is appreciated. We take your feedback seriously and use it to make WebBI better for users around the world."}
                     </p>
 
-                    <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
+                    {/* <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
                         {"Every review, suggestion, and complaint is appreciated. We take your feedback seriously and use it to make WebBI better for users around the world."}
-                    </p>
+                    </p> */}
                 </div>
 
-                <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-6 sm:p-8 space-y-5">
+                <div className="bg-white gap-y-4 border border-slate-200 shadow-sm rounded-2xl p-6 sm:p-8 grid tablet:grid-cols-2 grid-cols-3 gap-5">
                     <InputHelper
                         showLabel
                         label="Name"
@@ -73,38 +73,43 @@ function SuggestionTemplate() {
                         value={form.contact}
                         onChange={(e) => updateField('contact')(e.target.value)}
                         className="border-slate-200"
-                        extraText="Your preferred contact info, in case we need to follow up."
+                        // extraText="Your preferred contact info, in case we need to follow up."
                     />
-
+                    <div className=''>
+                        <p className='text-sm sm:text-base mb-1.5'>Category</p>
                     <InputHelper
-                        showLabel
+                        showLabel={false}
                         label="Category"
+                        placeholder="Select a category"
                         type="option"
                         options={CATEGORY_OPTIONS}
                         value={form.category}
                         onChange={(value) => updateField('category')(value)}
-                        className="border-slate-200"
+                        className=" z-[4] relative cursor-pointer flex justify-between items-center text-sm tablet:text-base  gap-x-2 w-full tablet:text-base  rounded-md px-1 "
                     />
-
-                    <InputHelper
-                        showLabel
-                        label="Message"
-                        type="textarea"
-                        rows={6}
-                        placeholder="Tell us what's on your mind..."
-                        value={form.message}
-                        onChange={(e) => updateField('message')(e.target.value)}
-                        className="border-slate-200 items-start"
-                    />
-
-                    <LoadButton
+                    </div>
+                    
+                    <div className='col-span-2'>
+                        <InputHelper
+                            showLabel
+                            label="Message"
+                            type="textarea"
+                            rows={6}
+                            placeholder="Tell us what's on your mind..."
+                            value={form.message}
+                            onChange={(e) => updateField('message')(e.target.value)}
+                            className=" border-slate-200 items-start"
+                        />
+                    </div>
+                </div>
+            
+                 <LoadButton
                         isLoading={isPending}
                         onClick={submitFeedback}
                         className="w-full inline-flex items-center justify-center py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-medium shadow-sm transition"
                     >
                         Send Feedback
                     </LoadButton>
-                </div>
             </div>
         </main>
     );

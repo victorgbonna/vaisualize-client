@@ -38,6 +38,7 @@ export default function InputHelper({
         />
         :type==='option'?
         <SelectOption
+          fullContainerClassName={className || ''}
           value={value} options={options}
           onChange={(e)=>onChange(e)}
           label={placeholder}

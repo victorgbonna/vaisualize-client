@@ -16,7 +16,7 @@ export default function ProjectHelper(){
         {
             queryKey:['owned-projects'],
             queryFn:()=>getMyCharts(),
-            refetchOnWindowFocus: false,
+            refetchOnWindowFocus: true,
             retry:false
         }
     )
@@ -32,7 +32,7 @@ export default function ProjectHelper(){
             retry:false, enabled:!!req_data?.projects
         }
     )
-    console.log({req_data, draftError})
+    // console.log({req_data, draftError})
     // const get_all_project_visuals= useMemo(()=>{
     //     if(!req_data) return []
     //     const visuals=req_data?.requests?.map(

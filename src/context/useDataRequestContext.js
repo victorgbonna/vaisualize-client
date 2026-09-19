@@ -26,7 +26,7 @@ export default function UseDataRequestContextComponent(
     const [columns, setColumns]=useState([])
     const [distinctValues, setDistinctValues]=useState({})
     const [datasets, setDatasets]= useState({})
-    const [project, setProject]= useState([])
+    const [project, setProject]= useState({})
     const [newVisuals, setNewVisuals]=useState([])
     const [visuals, setVisuals]= useState([])
     // this are distinct values -> an object of table_name containing a column object of array of distinct values in case of relationships

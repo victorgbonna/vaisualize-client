@@ -3,20 +3,20 @@ import { API_ENDPOINTS } from "@/configs";
 import { useSession } from "next-auth/react";
 
 const COMMUNITY_PLATFORMS = [
-    {
-        name: 'Discord',
-        description: 'Join live discussions, share ideas, and get quick help from the WebBI community.',
-        action: 'Join Community',
-        link: '#',
-        icon: '/svg/socials/discord.svg',
-    },
-    {
-        name: 'Telegram',
-        description: 'Follow announcements and chat with other WebBI users on the go.',
-        action: 'Join Community',
-        link: '#',
-        icon: '/svg/socials/telegram.svg',
-    },
+    // {
+    //     name: 'Discord',
+    //     description: 'Join live discussions, share ideas, and get quick help from the WebBI community.',
+    //     action: 'Join Community',
+    //     link: '#',
+    //     icon: '/svg/socials/discord.svg',
+    // },
+    // {
+    //     name: 'Telegram',
+    //     description: 'Follow announcements and chat with other WebBI users on the go.',
+    //     action: 'Join Community',
+    //     link: '#',
+    //     icon: '/svg/socials/telegram.svg',
+    // },
     {
         name: 'WhatsApp',
         description: 'Message the WebBI team directly for quick questions and support.',
@@ -61,11 +61,11 @@ function CommunityTemplate() {
     const remainingTokens = session?.user?.remaining_tokens ?? session?.remaining_tokens ?? null;
 
     return (
-        <main className="flex-1 h-screen overflow-y-auto p-4 sm:p-8">
-            <div className="max-w-5xl mx-auto space-y-8">
+        <main className="flex-1 h-screen overflow-y-auto p-3 sm:p-8">
+            <div className="max-w-5xl mx-auto space-y-5">
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-                    <div className="space-y-2 max-w-xl">
-                        <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
+                    <div className="space-y-2 w-full">
+                        <h1 className="text-2xl mt-3 sm:text-3xl font-semibold text-slate-900 tracking-tight">
                             Join the WebBI Community
                         </h1>
                         <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -73,15 +73,15 @@ function CommunityTemplate() {
                         </p>
                     </div>
 
-                    <div className="shrink-0 bg-white border border-primary/20 rounded-2xl px-5 py-3 shadow-sm">
+                    {/* <div className="shrink-0 bg-white border border-primary/20 rounded-2xl px-5 py-3 shadow-sm">
                         <p className="text-xs uppercase tracking-wide text-slate-400 font-medium">Remaining Tokens</p>
                         <p className="text-xl font-semibold text-primary">
                             {remainingTokens !== null ? Number(remainingTokens).toLocaleString() : '—'}
                         </p>
-                    </div>
+                    </div> */}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid tablet:grid-cols-2 grid-cols-3 gap-5">
                     {COMMUNITY_PLATFORMS.map((platform) => (
                         <PlatformCard key={platform.name} {...platform} />
                     ))}
@@ -94,12 +94,15 @@ function CommunityTemplate() {
 function PlatformCard({ name, description, action, link, icon }) {
     return (
         <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4">
-            <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center">
-                {icon ? <img src={icon} alt={name} className="w-5 h-5" /> : <FacebookIcon />}
+            <div className="flex items-center gap-x-2">
+                <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center">
+                    {icon ? <img src={icon} alt={name} className="w-5 h-5" /> : <FacebookIcon />}
+                    
+                </div>
+                <p className="font-semibold text-slate-900">{name}</p>
             </div>
 
             <div className="space-y-1">
-                <p className="font-semibold text-slate-900">{name}</p>
                 <p className="text-sm text-slate-500 leading-relaxed">{description}</p>
             </div>
 
