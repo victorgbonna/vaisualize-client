@@ -1,59 +1,268 @@
 import { AppLayout, DataFetch, LoadButton, SelectOptionAsObjectValue, DataAIResponse } from "@/components";
 import { API_ENDPOINTS } from "@/configs";
+import { DataRequestContext, UseDataRequestContextComponent } from "@/context";
 import { useHttpServices, useToast } from "@/hooks";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export default function DataAiChat() {
+    // console.log('ddd')
     return (
         <AppLayout active={'Talk to Datai'}>
-            <DataAiChatTemplate/>
+            <UseDataRequestContextComponent>
+                <DataAiChatTemplate/>
+            </UseDataRequestContextComponent>
         </AppLayout>
     )
 }   
+const sample_datai_response=[
+    {
+    "status": "success",
+    "formula": {
+        "operation": "group_aggregate",
+        "main_table": "26_fanchallenger_db.transactions.csv",
+        "relationships": [
+            {
+                "from_table": "26_fanchallenger_db.transactions.csv",
+                "from_column": "user",
+                "to_table": "26_fanchallenger_db.users.json",
+                "to_column": "_id"
+            }
+        ],
+        "filters": [
+            {
+                "table": "26_fanchallenger_db.users.json",
+                "field": "favourite_team",
+                "operator": "=",
+                "value": "Arsenal"
+            },
+            {
+                "table": "26_fanchallenger_db.transactions.csv",
+                "field": "type",
+                "operator": "in",
+                "value": [
+                    "deposit",
+                    "withdrawal"
+                ]
+            }
+        ],
+        "group_by": [
+            {
+                "table": "26_fanchallenger_db.transactions.csv",
+                "field": "type"
+            }
+        ],
+        "calculations": [
+            {
+                "field": "amount",
+                "function": "sum"
+            }
+        ],
+        "post_aggregate": null,
+        "sort": [],
+        "limit": null
+    },
+    "response": {
+        "template": "<p>Here are the total deposit and withdrawal amounts made by users who support Arsenal.</p>",
+        "result": [
+            {
+                "type": "",
+                "sum_amount": ""
+            }
+        ]
+    },
+    "pending_questions": []
+}
+,
+{
+    "status": "success",
+    "formula": {
+        "operation": "group_aggregate",
+        "main_table": "26_fanchallenger_db.transactions.csv",
+        "relationships": [
+            {
+                "from_table": "26_fanchallenger_db.transactions.csv",
+                "from_column": "user",
+                "to_table": "26_fanchallenger_db.users.json",
+                "to_column": "_id"
+            }
+        ],
+        "filters": [],
+        "group_by": [
+            {
+                "table": "26_fanchallenger_db.transactions.csv",
+                "field": "user",
+                "showcase_key": [
+                    "first_name",
+                    "last_name"
+                ]
+            }
+        ],
+        "calculations": [
+            {
+                "field": "amount",
+                "function": "sum",
+                "alias": "sum_amount"
+            }
+        ],
+        "post_aggregate": null,
+        "sort": [
+            {
+                "field": "sum_amount",
+                "direction": "desc"
+            }
+        ],
+        "limit": 1
+    },
+    "response": {
+        "template": "<p>Here is the user with the highest total transaction amount.</p>",
+        "result": [
+            {
+                "user": "",
+                "sum_amount": ""
+            }
+        ]
+    },
+    "pending_questions": []
+},
+
+{
+    "status": "success",
+    "formula": {
+        "operation": "group_aggregate",
+        "main_table": "fanchallenger_db.competitions.csv",
+        "relationships": [],
+        "filters": [],
+        "group_by": [
+            {
+                "table": "fanchallenger_db.competitions.csv",
+                "field": "league_name"
+            }
+        ],
+        "calculations": [
+            {
+                "field": "entry_fee",
+                "function": "sum"
+            },
+            {
+                "field": "no_of_managers",
+                "function": "sum"
+            }
+        ],
+        "post_aggregate": null,
+        "sort": [
+            {
+                "field": "sum_entry_fee",
+                "direction": "desc"
+            },
+            {
+                "field": "sum_no_of_managers",
+                "direction": "desc"
+            }
+        ],
+        "limit": 5
+    },
+    "response": {
+        "template": "<p>Here are the top competitions ranked by entry fee (descending), with number of managers used as a tiebreaker.</p>",
+        "result": [
+            {
+                "league_name": "",
+                "sum_entry_fee": "",
+                "sum_no_of_managers": ""
+            }
+        ]
+    },
+    "pending_questions": []
+}
+, 
+{
+    "status": "success",
+    "formula": {
+        "operation": "group_aggregate",
+        "main_table": "26_fanchallenger_db.users.json",
+        "relationships": [],
+        "filters": [],
+        "group_by": [
+            {
+                "table": "26_fanchallenger_db.users.json",
+                "field": "createdAt",
+                "unit": "month"
+            }
+        ],
+        "calculations": [
+            {
+                "field": "_id",
+                "function": "count",
+                "alias": "monthly_registrations",
+                "endTag": "registrations"
+            }
+        ],
+        "post_aggregate": {
+            "function": "average",
+            "field": "monthly_registrations",
+            "alias": "average_monthly_registrations",
+            "endTag": "registrations"
+        },
+        "sort": [],
+        "limit": null
+    },
+    "response": {
+        "template": "<p>Here is the average number of user registrations per month, calculated by counting registrations in each calendar month and then averaging those monthly counts.</p>",
+        "result": [
+            {
+                "average_monthly_registrations": ""
+            }
+        ]
+    },
+    "pending_questions": []
+}
+]
 function DataAiChatTemplate() {
     const [prompt, setPrompt] = useState('')
-    const [project, setProject] = useState({value: '', title: ''})
+    const [projectState, setProjectState] = useState({value: '', title: ''})
     const [newChats, setNewChats] = useState([])
-    const {getProtectedData, postProtectedData} = useHttpServices()
+    const chatSectionRef = useRef(null)
+    const promptTextareaRef = useRef(null)
+    const {getProtectedData, postProtectedData, patchProtectedData} = useHttpServices()
     const {NotifyError} = useToast()
-
+    const { project, setProject } = useContext(DataRequestContext);
+    
     const {data: projectData} = useQuery({
         queryKey: ['all-projects'],
         queryFn: () => getProtectedData({path: API_ENDPOINTS.OWNED_ALL}),
         refetchOnWindowFocus: false,
         retry: false,
     })
-    console.log({projectData})
+    // console.log({projectData})
 
     const projectOptions = useMemo(() => (projectData?.projects)
         // .filter((item) => item._id && item.title)
         , [projectData])
     // const projects = projectOptions.map(({title}) => title)
-    // const projectId = projectOptions.find(({title}) => title === project)?.id
+    // const projectId = projectOptions.find(({title}) => title === projectState)?.id
 
-    // Full project record (title, table_relationships, datasets) needed for the DataAI request/formula execution.
-    const {data: projectDetailData} = useQuery({
-        queryKey: ['project-details', project?._id],
-        queryFn: () => getProtectedData({path: API_ENDPOINTS.OWNED_BY_ID(project._id)}),
-        enabled: Boolean(project?._id),
-        refetchOnWindowFocus: false,
-        retry: false,
-    })
-    const fullProject = projectDetailData?.project
+    // Full projectState record (title, table_relationships, datasets) needed for the DataAI request/formula execution.
+    // const {data: projectDetailData} = useQuery({
+    //     queryKey: ['projectState-details', projectState?._id],
+    //     queryFn: () => getProtectedData({path: API_ENDPOINTS.OWNED_BY_ID(projectState._id)}),
+    //     enabled: Boolean(projectState?._id),
+    //     refetchOnWindowFocus: false,
+    //     retry: false,
+    // })
+    // const projectDetailData?.projectState = projectDetailData?.projectState
 
-    const datasetsByTable = useMemo(() => {
-        const map = {}
-        ;(fullProject?.datasets || []).forEach((dataset) => {
-            if (dataset?.file_name) map[dataset.file_name] = dataset.first_five_rows || []
-        })
-        return map
-    }, [fullProject])
+    // const datasetsByTable = useMemo(() => {
+    //     const map = {}
+    //     ;(projectDetailData?.projectState?.datasets || []).forEach((dataset) => {
+    //         if (dataset?.file_name) map[dataset.file_name] = dataset.first_five_rows || []
+    //     })
+    //     return map
+    // }, [projectDetailData?.projectState])
 
     const {data: chatData, isLoading: chatsLoading, isError: chatsError, error: chatError} = useQuery({
-        queryKey: ['datai-chats', project?._id],
-        queryFn: () => getProtectedData({path: API_ENDPOINTS.GET_DATAI_CHATS(project?._id)}),
-        enabled: Boolean(project?._id),
+        queryKey: ['datai-chats', projectState?._id],
+        queryFn: () => getProtectedData({path: API_ENDPOINTS.GET_DATAI_CHATS(projectState?._id)}),
+        enabled: Boolean(projectState?._id),
         refetchOnWindowFocus: false,
         retry: false,
     })
@@ -66,58 +275,70 @@ function DataAiChatTemplate() {
 
     useEffect(() => {
         setNewChats([])
-    }, [project?._id])
+        if(projectState?._id) {
+            setProject(projectState)
+            return
+        }
+        // setProject(projectState)    
+    }, [projectState?._id])
 
-    const {mutate: sendPrompt, isPending} = useMutation({
-        mutationFn: ({selectedPrompt, existingConversations}) => postProtectedData({
-            path: API_ENDPOINTS.SEND_DATAI_PROMPT,
-            body: {
-                prompt: selectedPrompt,
+    // scroll chat panel to bottom and focus the prompt textarea once fetched chats are rendered
+    useEffect(() => {
+        if (chatsLoading || !chats.length) return
+        requestAnimationFrame(() => {
+            if (chatSectionRef.current) chatSectionRef.current.scrollTop = chatSectionRef.current.scrollHeight
+            promptTextareaRef.current?.focus()
+        })
+    }, [chatsLoading, chats])
+
+    const askDataAI = (selectedPrompt, existingConversations) => {
+        const body={
+                input: selectedPrompt,
                 existingConversations,
                 project: {
-                    title: fullProject?.title,
-                    table_relationships: fullProject?.table_relationships,
-                    datasets: fullProject?.datasets,
+                    _id:projectState?._id,
+                    title: projectState?.title,
+                    relationships: projectState?.table_relationships,
+                    datasets: projectState?.datasets?.map(({file_name, first_five_rows, total_rows, file_size, columns}) => ({file_name, first_five_rows, total_rows, file_size, columns})),
                 },
-                datasets: fullProject?.datasets,
-                relationships: fullProject?.table_relationships,
-            },
-        }),
+            }
+        console.log({ body })
+        // return { data: { ai_response: null } }
+        return postProtectedData({
+            path: API_ENDPOINTS.SEND_DATAI_PROMPT,
+            body
+        })
+    }
+    const {mutate: sendPrompt, isPending} = useMutation({
+        mutationFn: ({selectedPrompt, existingConversations}) => askDataAI(selectedPrompt, existingConversations),  
         onError: (error) => NotifyError(error?.error?.message || error?.message || 'Could not send prompt'),
         onSuccess: ({data}) => {
-            const aiResponse = data?.data?.ai_response
-            if (!aiResponse) return
+            
+             console.log({ aiResponse:data })
+        
+            setNewChats((current) => [...current, data.conversation])
 
-            const messageId = aiResponse._id || aiResponse.id
-
-            setNewChats((current) => [...current, {
-                id: messageId,
-                role: 'assistant',
-                content: aiResponse.status === 'clarification_required' ? aiResponse.clarification : aiResponse.content,
-                status: aiResponse.status,
-                formula: aiResponse.formula,
-                response: aiResponse.response,
-                pending_questions: aiResponse.pending_questions,
-                clarification: aiResponse.clarification,
-            }])
-
-            if (aiResponse.status === 'error') {
-                NotifyError(aiResponse.content || 'DataAI could not process this request.')
-            }
+            // if (aiResponse.status === 'error') {
+            //     NotifyError(aiResponse.content || 'DataAI could not process this request.')
+            // }
         },
     })
 
     const submitPrompt = () => {
         if (!prompt.trim()) return
-        if (!project?._id ) {
-            NotifyError('Please select a project first.')
+        if (!projectState?._id ) {
+            NotifyError('Please select a Project first.')
             return
         }
 
         const selectedPrompt = prompt.trim()
-        const existingConversations = displayedChats.map(({role, content}) => ({role, content}))
+        const existingConversations = displayedChats.map(({role, content, response}) => ({role, content:content || response?.template || ''}))
+        // const existingConversations = []
 
         setNewChats((current) => [...current, {role: 'user', content: selectedPrompt}])
+        requestAnimationFrame(() => {
+            if (chatSectionRef.current) chatSectionRef.current.scrollTop = chatSectionRef.current.scrollHeight
+        })
         setPrompt('')
         sendPrompt({selectedPrompt, existingConversations})
     }
@@ -138,24 +359,38 @@ function DataAiChatTemplate() {
          'How many sales were accumulated across weekdays?', 
          'Which quarter recorded the highest sales volume?', 
     ];
+    // normal api call without async and await but try block
+    const updateMessageContent = async ({responseString, messageId}) => {
+        try {
+            await patchProtectedData({
+                path: API_ENDPOINTS.UPDATE_DATAI_MESSAGE,
+                body: {
+                    content: responseString,
+                    _id: messageId
+                },
+            });
+        } catch (error) {
+            console.log({error})
+        }
+    }
 
     return (
         <main className="flex-1 flex flex-col justify-between p-4">
             <div className="mb-3 max-w-sm">
                     <SelectOptionAsObjectValue
                         options={projectOptions}
-                        value={project}
+                        value={projectState}
                         changeAll={true}
                         labelProp="title"
                         valueProp="_id"
-                        onChange={(value) => setProject(value)}
-                        label="Select a project"
+                        onChange={(value) => setProjectState(value)}
+                        label="Select a Project"
                         containerClass="border border-slate-200 bg-white"
                     />
                 </div>
             <DataFetch
-                isLoading={Boolean(project?._id) && chatsLoading}
-                isError={Boolean(project?._id) && chatsError}
+                isLoading={Boolean(projectState?._id) && chatsLoading}
+                isError={Boolean(projectState?._id) && chatsError}
                 errorMsg={chatError?.message}
                 isEmpty={!displayedChats?.length}
                 emptyComponent={<section className="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center p-8 sm:p-12 md:py-16 min-h-[320px] lg:min-h-[380px] transition-all">
@@ -177,11 +412,11 @@ function DataAiChatTemplate() {
 
                 <div className="flex flex-col items-center gap-3 w-full max-w-3xl">
                     <div className="flex flex-wrap justify-center items-center gap-2.5">
-                        {(project.insight_questions_template || promptSuggestions).map((suggestion) => (
+                        {(projectState.insight_questions_template || promptSuggestions).map((suggestion) => (
                             <button
                                 key={suggestion}
                                 type="button"
-                                onClick={() => project.insight_questions_template ? setPrompt(suggestion) : null}
+                                onClick={() => projectState.insight_questions_template ? setPrompt(suggestion) : null}
                                 className="prompt-chip px-4 py-2 text-xs sm:text-[13px] font-medium text-slate-600 bg-white border border-slate-200/90 rounded-full hover:border-slate-400 hover:bg-slate-50/80 hover:text-slate-900 transition-all shadow-sm active:scale-95"
                             >
                                 {suggestion}
@@ -191,7 +426,7 @@ function DataAiChatTemplate() {
                 </div>
             </section>}
             >
-                <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 min-h-[320px] lg:min-h-[380px] overflow-y-auto">
+                <section id='main-chat' ref={chatSectionRef} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 h-[340px] overflow-y-auto">
                     <div className="flex flex-col gap-3">
                         {displayedChats?.map((chat, index) => (
                             <div key={chat.id || index} className={chat.role === 'assistant' ? 'flex justify-start' : 'flex justify-end'}>
@@ -199,12 +434,27 @@ function DataAiChatTemplate() {
                                     {chat.role === 'assistant'
                                         ? <DataAIResponse
                                             chat={chat}
-                                            datasets={datasetsByTable}
-                                            onResolved={(messageId, resolvedContent, result) => setNewChats((current) => current.map((current_chat) => current_chat.id === messageId
-                                                ? {...current_chat, content: resolvedContent, response: {...current_chat.response, result}}
-                                                : current_chat))}
+                                            // datasets={projectDetailData?.projectState.datasets}
+                                            onResolved={({responseString, messageId}) => {
+                                            
+                                                setNewChats((prevChats) =>
+                                                    prevChats.map((c) =>
+                                                        c.id === messageId ? { ...c, content:responseString } : c
+                                                    )
+                                                );
+                                                void updateMessageContent({responseString, messageId});
+                                                setTimeout(() => {
+                                                    requestAnimationFrame(() => {
+                                                        if (chatSectionRef.current) {
+                                                            chatSectionRef.current.scrollTop =
+                                                                chatSectionRef.current.scrollHeight;
+                                                        }
+                                                    });
+                                                }, 200);
+                                            }}
                                         />
-                                        : chat.content}
+                                        :<div dangerouslySetInnerHTML={{ __html: chat.content }} />
+                                    }
                                 </div>
                             </div>
                         ))}
@@ -213,12 +463,13 @@ function DataAiChatTemplate() {
                 </section>
             </DataFetch>
 
-            {project._id && <section className="mt-4 sm:mt-5">
+            {projectState._id && <section className="mt-4 sm:mt-5">
                 
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all overflow-hidden relative">
                     <div className="relative flex items-end">
                         <textarea
                             id="analytics-prompt-input"
+                            ref={promptTextareaRef}
                             rows="3"
                             placeholder="We still dey test am for pidgin, but you fit still ask."
                             value={prompt}
@@ -230,7 +481,7 @@ function DataAiChatTemplate() {
                             <LoadButton
                                 isLoading={isPending}
                                 
-                                disabled={!prompt.trim() || !project?._id}
+                                disabled={!prompt.trim() || !projectState?._id}
                                 id="send-query-btn"
                                 type="button"
                                 aria-label="Submit Query"

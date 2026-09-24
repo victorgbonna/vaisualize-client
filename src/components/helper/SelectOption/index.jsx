@@ -96,7 +96,7 @@ export default function SelectOption(
                     }:{ padding:"9px 10px"}} className="cursor-pointer" key={index} 
                     onClick={()=>onChange(option)}>{option}</li>           
                 )} */}
-                {(!isInput || !value?new_options: new_options.filter((option)=>option?.toLowerCase()?.startsWith(value?.toLowerCase()))).map((option,index)=>
+                {(!isInput || !value?new_options: new_options?.filter((option)=>option?.toLowerCase()?.startsWith(value?.toLowerCase())))?.map((option,index)=>
                     <button style={value===option?{
                         background:"#CABECF",
                     }:{ padding:"12px 10px"}} className={"block w-full text-sm border-b-2 cursor-pointer "+(extraOptionClass || ' py-2 px-2.5 ')} key={index} 

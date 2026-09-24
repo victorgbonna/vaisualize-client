@@ -692,6 +692,37 @@ background: linear-gradient(
   opacity: 1;
   bottom:0;
 }
+
+.data-ai-response {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.data-ai-response p {
+    margin: 0 0 8px;
+}
+
+.data-ai-response strong {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.data-ai-result {
+    margin: 8px 0;
+}
+
+.data-ai-result-row {
+    margin-bottom: 8px;
+}
+
+.data-ai-result-row:last-child {
+    margin-bottom: 0;
+}
+
+.data-ai-result-row p {
+    margin: 2px 0;
+}
 .numbers .number-btn{
   opacity: 0;
   transition: all 1.5s ease-in-out;

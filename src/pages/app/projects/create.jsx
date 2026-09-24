@@ -859,6 +859,7 @@ function DataRelationship({dataCollection}){
                 <h2 className="font-semibold text-[19px]">
                     DEFINE RELATIONSHIPS
                 </h2>
+                
             </div>
             {modelData_coll.length?
                 <div className="bg-gray-50 border rounded-md p-3 flex justify-between items-end py-4">
@@ -893,7 +894,7 @@ function DataRelationship({dataCollection}){
                     <div className="z-[1] flex flex-col items-center gap-x-2 relative h-fit">
                         <div className="flex flex-col items-center gap-x-2 w-fit z-[2]  px-2">
                             <img src="/svg/attachment.svg" alt="attachment" className="w-8 h-8"/>
-                            <p className="text-sm text-primary">INNER JOIN</p>
+                            <p className="text-sm text-primary">REFERENCES</p>
                         </div>
                         {/* <div className="absolute z-[1] flex items-center top-0 bottom-0 w-full">
                             <div className="w-full h-[2px] bg-gray-400">
@@ -953,8 +954,13 @@ function ActiveMapping(){
             <h2 className="my-3 font-semibold text-[19px]">
                 ACTIVE MAPPING
             </h2>
+            <p className="text-sm text-gray-500">This section shows all active relationships between your tables.</p>
+            <p className="text-sm text-gray-500">
+                {'Select the tables and columns you want to connect. "FROM" must be the table/column you are connecting from, and "TO" must be the table/column you are connecting to. Incorrect relationships may cause Datai to produce inaccurate results.'}
+            </p>
             <div>
                 {relationships.length === 0 ? (
+
                     <p className="text-sm text-gray-500">No active relationships. Once you create joins, they will appear here for quick access and management.</p>
                 ) : (
                     <div className="grid grid-cols-1 gap-3">

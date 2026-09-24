@@ -142,6 +142,7 @@ export default function UseDataRequestContextComponent(
         }
     }
     useEffect(() => {
+        console.log("[useEffect] project changed:", project)
         if (!project) return
 
         setVisuals(project.visualizations || [])

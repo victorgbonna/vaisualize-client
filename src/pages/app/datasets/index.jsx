@@ -1,3 +1,8 @@
+/**
+ * Datasets Page
+ * Allows users to connect a project, browse its tables,
+ * apply AI-powered filters, and inspect foreign key relationships.
+ */
 import { AppLayout, FilterBox, LoadButton, SelectOptionAsObjectValue } from "@/components";
 import { ModalLayout } from "@/components/modal";
 import { API_ENDPOINTS } from "@/configs";
@@ -215,6 +220,7 @@ function DatasetChildren(){
             prompt: query
         };
     };
+// combo-free
 
     const { mutate: generateFilterPlan, isPending: filterPlanLoading } = useMutation({
         mutationFn: async() => {
@@ -224,6 +230,7 @@ function DatasetChildren(){
             const message = Array.isArray(error?.error?.message) ? error.error.message[0] : (error?.error?.message || 'Could not generate filter');
             NotifyError(message);
         },
+        
        onSuccess: ({ data }) => {
             if (data?.status === "success") {
                 console.log({ data });

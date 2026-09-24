@@ -63,7 +63,7 @@ export default function SelectOptionAsObjectValue(
                 background: '#FFFFFF', zIndex:"4",
                 border: '1px solid #CABECF',borderRadius: '10px'
             }}>
-                {new_options.map((option,index)=>
+                {new_options?.map((option,index)=>
                     <li style={value[valueProp]===option[valueProp]?{
                         background:"#CABECF", padding:"9px 10px"
                     }:{ padding:"9px 10px"}} className="text-sm cursor-pointer" key={index} 

@@ -1,17 +1,53 @@
-  const shortMonths = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-  ];
+const shortMonths = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+const normalizeDateInput = (value) => {
+  if (
+    value &&
+    typeof value === "object" &&
+    "$date" in value
+  ) {
+    return value.$date;
+  }
+
+  return value;
+};
+
+const getWeekNumber = (date) => {
+  const d = new Date(date);
+  const firstDay = new Date(
+    d.getFullYear(),
+    0,
+    1
+  );
+
+  const pastDaysOfYear =
+    (d - firstDay) / 86400000;
+
+  return Math.ceil(
+    (pastDaysOfYear +
+      firstDay.getDay() +
+      1) / 7
+  );
+};
+
+// const shortMonths = [
+//     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+//     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+//   ];
 
   const shortWeekdays = [
     "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
   ];
-const getWeekNumber=(date) => {
-  const d = new Date(date);
-  const firstDay = new Date(d.getFullYear(), 0, 1);
-  const pastDaysOfYear = (d - firstDay) / 86400000;
-  return Math.ceil((pastDaysOfYear + firstDay.getDay() + 1) / 7);
-}
+//   old one
+// const getWeekNumber=(date) => {
+//   const d = new Date(date);
+//   const firstDay = new Date(d.getFullYear(), 0, 1);
+//   const pastDaysOfYear = (d - firstDay) / 86400000;
+//   return Math.ceil((pastDaysOfYear + firstDay.getDay() + 1) / 7);
+// }
 
 const getWeekGroup=(weekNumber) => {
   // groups: wk1-4 (group 1), wk5-8 (group 2), ... wk49-52 (group 13)
@@ -23,13 +59,14 @@ const weekGroups = [
   "wk25-28", "wk29-32", "wk33-36", "wk37-40", "wk41-44", "wk45-48", "wk49-52"
 ];
 
-const normalizeDateInput = (value) => {
-    if (value && typeof value === 'object' && '$date' in value) {
-        return value.$date;
-    }
+// old one
+// const normalizeDateInput = (value) => {
+//     if (value && typeof value === 'object' && '$date' in value) {
+//         return value.$date;
+//     }
 
-    return value;
-};
+//     return value;
+// };
 
 // {
 //     movie:{
@@ -44,6 +81,7 @@ const timeStampControl={
     shortMonths,
     shortWeekdays,
     weekGroups,
+    normalizeDateInput: (value) => normalizeDateInput(value),
     formatBytes:(bytes, decimals = 2)=> {
         if (bytes === 0) return "0 B";
 

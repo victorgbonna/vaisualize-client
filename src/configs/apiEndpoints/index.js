@@ -47,10 +47,10 @@ const API_ENDPOINTS = {
   EDIT_CHART:'visuals/edit', 
   DELETE_CHART:'visuals/delete',
   ADD_CHART:'visuals/add',
-  ASK_DATAI:'visuals/ask-datai',
+  // ASK_DATAI:'visuals/ask-datai',
   GET_DATAI_CHATS:(projectId)=>`conversations/project/${projectId}`,
-  SEND_DATAI_PROMPT:'conversations/project/ask',
-  UPDATE_DATAI_MESSAGE:(messageId)=>`conversations/${messageId}`,
+  SEND_DATAI_PROMPT:'conversations/project/ask-datai',
+  UPDATE_DATAI_MESSAGE:`conversations/update-content`,
   METRIC_ICONS:[
     {match:'Rating', value:'star.svg'},
     {match:'Maxdate', value:'calendar.svg'},
