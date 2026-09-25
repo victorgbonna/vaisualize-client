@@ -296,7 +296,7 @@ const executeGroupAggregate = ({
     datasets
   });
   console.log("[executeGroupAggregate] groups (first 3):", groups.slice(0, 3));
-
+  // console.log("[executeGroupAggregate] for 6805969270b4062fc1128700:", groups.find(group => group.group?.user === '6805969270b4062fc1128700'));
   let results = [];
 
   for (const group of groups) {
@@ -318,7 +318,7 @@ const executeGroupAggregate = ({
         result[outputName] = value;
       }
     }
-
+    
     results.push(result);
   }
 
@@ -873,14 +873,13 @@ const executeNormalGroupBy = ({
   datasets,
 }) => {
   console.log("[executeNormalGroupBy] group:", group);
+
   const groups = new Map();
 
   for (const row of rows) {
-    const groupValue =
-      row[group.field];
+    const groupValue = row[group.field];
 
-    const groupKey =
-      JSON.stringify(groupValue);
+    const groupKey = JSON.stringify(groupValue);
 
     if (!groups.has(groupKey)) {
       groups.set(groupKey, {
@@ -889,47 +888,47 @@ const executeNormalGroupBy = ({
       });
     }
 
-    const currentGroup =
-      groups.get(groupKey);
+    const currentGroup = groups.get(groupKey);
 
     currentGroup.rows.push(row);
-    // inspect all rows grouped under this user id before showcase_key resolution overwrites the group key
-    if (groupValue === '681533c270b4062fc112af73') {
-      console.log('[executeNormalGroupBy] rows for user 681533c270b4062fc112af73 (pre-showcase):', currentGroup.rows);
+
+    const hasShowcase = group.showcase_key?.length > 0;
+
+    const outputKey = hasShowcase
+      ? group.showcase_alias
+      : group.field;
+
+    if (!outputKey) {
+      throw new Error(
+        `Missing showcase_alias for group_by field "${group.field}".`
+      );
     }
-    if (
-      group.showcase_key?.length &&
-      currentGroup.group[
-        group.alias || group.field
-      ] === undefined
-      // 0
-    ) {
-      console.log('[executeNormalGroupBy] resolving showcase value for group:');
-      currentGroup.group[
-        group.alias || group.field
-      ] = resolveShowcaseValue({
-        row,
-        showcase_key:
-          group.showcase_key,
-        group,
-        groupValue,
-        datasets,
-        columns,
-        relationships,
-      });
-    } else if (
-      currentGroup.group[
-        group.alias || group.field
-      ] === undefined
-    ) {
-      currentGroup.group[
-        group.alias || group.field
-      ] = groupValue;
+
+    if (currentGroup.group[outputKey] === undefined) {
+      if (hasShowcase) {
+        currentGroup.group[outputKey] =
+          resolveShowcaseValue({
+            row,
+            showcase_key: group.showcase_key,
+            group,
+            groupValue,
+            datasets,
+            columns,
+            relationships,
+          });
+      } else {
+        currentGroup.group[outputKey] = groupValue;
+      }
     }
   }
 
   const normalGroups = Array.from(groups.values());
-  console.log("[executeNormalGroupBy] groups (first 3):", normalGroups.slice(0, 3));
+
+  console.log(
+    "[executeNormalGroupBy] groups (first 3):",
+    normalGroups.slice(0, 3)
+  );
+
   return normalGroups;
 };
 
@@ -1278,7 +1277,9 @@ const calculate = ({
     );
   console.log("[calculate] field, function:", field, fn);
   console.log("[calculate] values (first 3):", values.slice(0, 3));
-
+  // if(){
+  //   console.log('')
+  // }
   switch (fn) {
     case "sum":
       return values.reduce(
@@ -1686,31 +1687,28 @@ const applyLimit = ({
  * calculated result.
  */
 const resolveTemplate = ({
-  template,
-  result = [],
+    template = "",
+    row = {},
 }) => {
-  console.log("[resolveTemplate] template:", template);
-  console.log("[resolveTemplate] result (first 3):", result.slice(0, 3));
-
-  if (!template) {
-    return "";
-  }
-
-  if (!result?.length) {
-    return template;
-  }
-
-  const firstResult = result[0];
-
-  return template.replace(
-    /\{([^}]+)\}/g,
-    (_, key) => {
-      return (
-        firstResult?.[key] ??
-        `{${key}}`
-      );
+    if (!template) {
+        return "";
     }
-  );
+
+    return template.replace(
+        /\{\{([^}]+)\}\}/g,
+        (_, alias) => {
+            const value = row?.[alias.trim()];
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+                return `{{${alias}}}`;
+            }
+
+            return formatNumber(value);
+        }
+    );
 };
 
 
@@ -1789,24 +1787,78 @@ const buildResultString = ({
 const buildDataAIResponse = ({
     response = {},
     result = [],
+    limit = null,
 }) => {
     const template = response.template || "";
-
-    const resultString = buildResultString({
-        result,
-    });
-
+    const rowTemplate = response.row_template || "";
     const conclusion = response.conclusion || "";
+
+    let content = "";
+
+    /*
+     * Single result
+     *
+     * If limit is 1, or there is only one actual result,
+     * use the template with the first result row.
+     */
+    if (
+        limit === 1 ||
+        result.length === 1
+    ) {
+        content += resolveTemplate({
+            template,
+            row: result[0] || {},
+        });
+    }
+
+    /*
+     * Multiple results
+     *
+     * Use the template as the introduction,
+     * then repeat row_template for every result row.
+     */
+    else if (result.length > 1) {
+        content += template;
+
+        content += resolveRowTemplate({
+            rowTemplate,
+            rows: result,
+        });
+    }
+
+    /*
+     * No result
+     */
+    else {
+        content += template;
+    }
+
+    content += conclusion;
 
     return `
         <div class="data-ai-response">
-            ${template}
-            ${resultString}
-            ${conclusion}
+            ${content}
         </div>
     `;
 };
 
+const resolveRowTemplate = ({
+    rowTemplate = "",
+    rows = [],
+}) => {
+    if (!rowTemplate || !rows?.length) {
+        return "";
+    }
+
+    return rows
+        .map((row) =>
+            resolveTemplate({
+                template: rowTemplate,
+                row,
+            })
+        )
+        .join("");
+};
 
 /**
  * ============================================================

@@ -46,11 +46,11 @@ export default function DataAIResponse({ chat, onResolved }) {
         }
         //console log all the states/var/props
         // get the first 3 rows of each dataset
-        const firstThreeRows = {};
-        for (const [key, value] of Object.entries(datasets || {})) {
-            firstThreeRows[key] = value.slice(0, 3);
-        }
-        console.log({ datasets: firstThreeRows });
+        // const firstThreeRows = {};
+        // for (const [key, value] of Object.entries(datasets || {})) {
+        //     firstThreeRows[key] = value.slice(0, 3);
+        // }
+        // console.log({ datasets: firstThreeRows });
         hasResolved.current = true;
 
         try {
@@ -103,17 +103,26 @@ export default function DataAIResponse({ chat, onResolved }) {
             />
         );
     }
-    if (status === "clarification_required") {
+    if (status === "clarification_required" || status === "unsupported" || status === "informational") {
         return (
             <div
                 className="text-sm text-slate-700"
                 dangerouslySetInnerHTML={{
-                    __html: clarification || "",
+                    __html: content || "",
                 }}
             />
         );
     }
-
+// if (status === "unsupported") {
+//         return (
+//             <div
+//                 className="text-sm text-slate-700"
+//                 dangerouslySetInnerHTML={{
+//                     __html: content || "",
+//                 }}
+//             />
+//         );
+//     }
     return (
         <div className="space-y-3">
             {finalResponse? (
