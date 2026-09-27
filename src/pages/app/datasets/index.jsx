@@ -151,15 +151,18 @@ function DatasetChildren(){
             .filter((column) => column.table === activeTable)
             .map((column) => {
                 const relationship = (project?.table_relationships || []).find(
-                    (rel) => rel.from_table === activeTable && rel.from_column === column.col
+                    (rel) =>
+                        (rel.from_table === activeTable && rel.from_column === column.col) ||
+                        (rel.to_table === activeTable && rel.to_column === column.col)
                 );
+                const isFromDirection = relationship?.from_table === activeTable;
                 return {
                     key: column.col,
                     label: column.col,
                     type: column.cat,
                     badge: column.cat === 'identifier' && !relationship ? 'PK' : relationship ? 'FK' : null,
-                    fkTable: relationship?.to_table,
-                    fkColumn: relationship?.to_column
+                    fkTable: isFromDirection ? relationship?.to_table : relationship?.from_table,
+                    fkColumn: isFromDirection ? relationship?.to_column : relationship?.from_column
                 };
             });
     }, [columns, activeTable, project]);

@@ -65,7 +65,7 @@ const PAGE_ROUTES = {
 
   DASHBOARD:'/app/projects',
   CREATE_PROJECT:(id)=>'/app/projects/create?id='+id,
-  VIEW_PROJECT:(id)=>'/app/projects/v/'+id,
+  VIEW_PROJECT:(id)=>'/app/visuals/v/'+id,
   A_REQ:(id)=>{
     return '/analysis/'+id
   },
@@ -86,6 +86,7 @@ const PAGE_ROUTES = {
 
     // <a href="https://iconscout.com/icons/arrow-text-box" class="text-underline font-size-sm" target="_blank">Arrow Text Box</a> by <a href="https://iconscout.com/contributors/iconscout" class="text-underline font-size-sm" target="_blank">IconScout Store</a>
     {label:'Projects', link:'/app/projects', svg:'projects.svg'},
+    {label:'Visuals', link:'/app/visuals', svg:'plot.svg'},
     {label:'Datasets', link:'/app/datasets', svg:'table.svg'},
     {label:'Forms', disabled:true, link:'/app/forms', svg:'forms.svg'},
     {label:'Talk to Datai', link:'/app/datai', svg:'datai.svg'},
@@ -95,9 +96,9 @@ const PAGE_ROUTES = {
     {label:'Billing', disabled:true, svg:'billing.svg'},
   ],
   CREATE_CHARTS:(id)=>'/app/projects/add-chart/'+id,
-  GO_TO_A_PROJECT:(id)=>'/app/projects/v/'+id,
+  GO_TO_A_PROJECT:(id)=>'/app/visuals/v/'+id,
   
-  VIEW_A_PROJECT:(id)=>`/app/projects/v/${id}`,
+  VIEW_A_PROJECT:(id)=>`/app/visuals/v/${id}`,
   VIEW_A_DRAFT:(id)=>`/app/projects/create?id=${id}`,
   
 };

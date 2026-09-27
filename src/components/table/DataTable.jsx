@@ -13,7 +13,7 @@ function DataTable({
     return (
         <>
         <div className="overflow-x-auto ">
-            <section className="text-[13px] mt-2 bg-slate-200/20 rounded-md border shadow-lg datatable overflow-x-auto z-[2] rounded-t-md w-[110vw] ">            
+            <section className="text-[13px] mt-2 rounded-md border shadow-lg datatable z-[2] rounded-t-md w-fit ">            
                 <TableLayout
                     className="mb-6 rounded-t-md"
                     theadBg={'#'}
@@ -41,8 +41,8 @@ const TableHead= ({
     return (
         <>
             {tableCols?.map((col, index) => (
-                <th className={`py-4 text-left text-gray-600 border-b border-gray-200 tablet:px-6 ${col!=="GENDER"?" tablet:min-w-[170px]":""}`} key={index} >
-                    <div className="pl-3 uppercase">
+                <th className={`py-4 text-left text-gray-600 border-b border-gray-200 tablet:px-6 w-[200px] ${col!=="GENDER"?" tablet:min-w-[170px]":""}`} key={index} >
+                    <div className="pl-3 uppercase w-full">
                         <p>{col}</p>    
                         <DataTypeSelection
                             col={col} 
@@ -89,7 +89,7 @@ function DataTypeSelection({
     },[data_type])
     
     return(
-        <div className="mt-2 w-fit flex gap-x-1.5 items-center">
+        <div className="mt-2 min-w-fit flex gap-x-1.5 items-center">
             <SelectOption options={filtered_options} value={data_type}
                 sideImageValue={
                     <img src={`/svg/datatype/${data_type}.svg`} className={data_type==='number' || data_type==='identifier'?'w-4 h-4':"w-3 h-3"}/>

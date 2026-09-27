@@ -267,12 +267,15 @@ function DataAiChatTemplate() {
         retry: false,
     })
 
-    const chats = useMemo(() => normalizeChats(
-        chatData?.data?.chats || chatData?.data?.conversations || chatData?.chats || chatData?.conversations || []
-    ), [chatData])
-    const displayedChats = useMemo(() => [...chats, ...newChats], [chats, newChats])
-    // const hasMessages = displayedChats.length > 0
-
+    // const chats = useMemo(() => normalizeChats(
+    //     chatData?.data?.chats || chatData?.data?.conversations || chatData?.chats || chatData?.conversations || []
+    // ), [chatData])
+    // const displayedChats = useMemo(() => [...chats, ...newChats], [chats, newChats])
+    // // const hasMessages = displayedChats.length > 0
+    const displayedChats = useMemo(
+        () => [...(chatData?.chats || []), ...newChats],
+        [chatData?.chats, newChats]
+    );
     useEffect(() => {
         setNewChats([])
         if(projectState?._id) {
@@ -284,12 +287,12 @@ function DataAiChatTemplate() {
 
     // scroll chat panel to bottom and focus the prompt textarea once fetched chats are rendered
     useEffect(() => {
-        if (chatsLoading || !chats.length) return
+        if (chatsLoading || !displayedChats.length) return
         requestAnimationFrame(() => {
             if (chatSectionRef.current) chatSectionRef.current.scrollTop = chatSectionRef.current.scrollHeight
             promptTextareaRef.current?.focus()
         })
-    }, [chatsLoading, chats])
+    }, [chatsLoading, displayedChats])
 
     const askDataAI = (selectedPrompt, existingConversations) => {
         const body={
@@ -410,14 +413,14 @@ function DataAiChatTemplate() {
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-3 w-full max-w-3xl">
+                <div className="flex flex-col items-center gap-3 w-full">
                     <div className="flex flex-wrap justify-center items-center gap-2.5">
                         {(projectState.insight_questions_template || promptSuggestions).map((suggestion) => (
                             <button
                                 key={suggestion}
                                 type="button"
                                 onClick={() => projectState.insight_questions_template ? setPrompt(suggestion) : null}
-                                className="prompt-chip px-4 py-2 text-xs sm:text-[13px] font-medium text-slate-600 bg-white border border-slate-200/90 rounded-full hover:border-slate-400 hover:bg-slate-50/80 hover:text-slate-900 transition-all shadow-sm active:scale-95"
+                                className="prompt-chip px-4 py-2 text-xs sm:text-[13px] font-medium text-slate-600 bg-white border border-slate-200/90 rounded-full hover:border-slate-400 hover:bg-slate-50/80 hover:text-slate-900 transition-all shadow-sm active:scale-95 truncate max-w-[400px]"
                             >
                                 {suggestion}
                             </button>
@@ -434,6 +437,7 @@ function DataAiChatTemplate() {
                                     {chat.role === 'assistant'
                                         ? <DataAIResponse
                                             chat={chat}
+
                                             // datasets={projectDetailData?.projectState.datasets}
                                             onResolved={({responseString, messageId}) => {
                                             
@@ -513,14 +517,14 @@ function DataAiChatTemplate() {
     )
 }
 
-function normalizeChats(messages) {
-    return Array.isArray(messages) ? messages.map((message) => normalizeChat(message)) : []
-}
+// function normalizeChats(messages) {
+//     return Array.isArray(messages) ? messages.map((message) => normalizeChat(message)) : []
+// }
 
-function normalizeChat(message, fallbackRole = 'assistant') {
-    return {
-        id: message?._id || message?.id,
-        role: message?.role || (message?.isUser ? 'user' : fallbackRole),
-        content: message?.content || message?.short_note || message?.message || '',
-    }
-}
+// function normalizeChat(message, fallbackRole = 'assistant') {
+//     return {
+//         id: message?._id || message?.id,
+//         role: message?.role || (message?.isUser ? 'user' : fallbackRole),
+//         content: message?.content || message?.short_note || message?.message || '',
+//     }
+// }

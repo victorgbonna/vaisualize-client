@@ -28,6 +28,13 @@ const useMultiFileInputs = (len, presets = null) => {
 
   const imageDiv = useRef(null);
 
+  const clearFileDataSlot = (index) => {
+    // console.log({index, fileData})
+      const newItems = [...fileData];
+      newItems.splice(index, 1);
+      setFileData([...newItems]);
+  };
+
   const openPic = (picId) => {
     const div = imageDiv.current;
     if (!div) return;
@@ -43,8 +50,9 @@ const useMultiFileInputs = (len, presets = null) => {
   };
 
   const uploadImages = async () => {
+    console.log({fileData})
     const imagesURLs = [];
-
+  
     for (let i = 0; i < fileData.length; i++) {
       const currentFile = fileData[i];
 
@@ -116,6 +124,7 @@ const useMultiFileInputs = (len, presets = null) => {
     fileData,
 
     imageDiv,
+    clearFileDataSlot
   };
 };
 

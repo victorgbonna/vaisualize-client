@@ -4,7 +4,6 @@ import {
     dataiChatFunctionalities,
 } from "@/configs";
 import { useHttpServices, useToast } from "@/hooks";
-import { useMutation } from "@tanstack/react-query";
 import { DataRequestContext } from "@/context";
 
 /**
@@ -12,6 +11,7 @@ import { DataRequestContext } from "@/context";
  * and persists the resolved content back onto that same message once computed.
  */
 export default function DataAIResponse({ chat, onResolved }) {
+    // console.log({chat})
     const {
         _id: messageId,
         status,
@@ -42,6 +42,13 @@ export default function DataAIResponse({ chat, onResolved }) {
             !formula ||
             !datasets
         ) {
+            console.log("Skipping formula execution due to unmet conditions.", {
+                content,
+                status,
+                hasResolved: hasResolved.current,
+                formula,
+                datasets:!datasets,
+            });
             return;
         }
         //console log all the states/var/props

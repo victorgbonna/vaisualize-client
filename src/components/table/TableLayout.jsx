@@ -1,8 +1,8 @@
 export default function TableLayout({theadBg, tbodyBg, th, td,className="",tbodyClass="", onlyClass=false}){
     return (
-      <table className={'border-seperate w-full bg-whie'}>
+      <table className={'border-separate  w-full'}>
       
-          <thead>
+          <thead className=' bg-slate-200/20 w-[100vw]'>
               <tr>
                   {th}
               </tr>

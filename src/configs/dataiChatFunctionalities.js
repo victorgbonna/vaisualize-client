@@ -321,6 +321,7 @@ const executeGroupAggregate = ({
     
     results.push(result);
   }
+  console.log("2[executeGroupAggregate]:", results);
 
   if (post_aggregate) {
     results = executePostAggregate({
@@ -345,7 +346,7 @@ const executeGroupAggregate = ({
   }
 
 
-  console.log("[executeGroupAggregate] final results (first 3):", results.slice(0, 3));
+  console.log("1[executeGroupAggregate] final results2:", results);
   return results;
 };
 
@@ -832,25 +833,55 @@ const executeGroupBy = ({
     ];
   }
 
-  let groupedRows = rows;
+  // Start with a single "group" holding all raw rows, then subdivide it
+  // level by level so each group_by entry always sees real data rows,
+  // never the wrapper objects produced by a previous level.
+  let groupedRows = [
+    {
+      group: {},
+      rows,
+    },
+  ];
 
   for (const group of group_by) {
-    if (group.unit) {
-      groupedRows =
-        executeTimeGroupBy({
-          rows: groupedRows,
-          group
-        });
-    } else {
-      groupedRows =
-        executeNormalGroupBy({
-          rows: groupedRows,
-          group,
-          relationships,
-          columns,
-          datasets
-        });
+    const nextGroupedRows = [];
+
+    for (const existingGroup of groupedRows) {
+      const subGroups = group.unit
+        ? executeTimeGroupBy({
+            rows: existingGroup.rows,
+            group,
+          })
+        : executeNormalGroupBy({
+            rows: existingGroup.rows,
+            group,
+            relationships,
+            columns,
+            datasets,
+          });
+
+      for (const subGroup of subGroups) {
+
+    console.log("[executeGroupBy] BEFORE MERGE:", {
+        existingGroup: existingGroup.group,
+        subGroup: subGroup.group,
+    });
+
+    const mergedGroup = {
+        ...existingGroup.group,
+        ...subGroup.group,
+    };
+
+    console.log("[executeGroupBy] AFTER MERGE:", mergedGroup);
+
+    nextGroupedRows.push({
+        group: mergedGroup,
+        rows: subGroup.rows,
+    });
+      }
     }
+
+    groupedRows = nextGroupedRows;
   }
 
   console.log("[executeGroupBy] groupedRows (first 3):", groupedRows.slice(0, 3));
@@ -1287,6 +1318,12 @@ const calculate = ({
           total + Number(value || 0),
         0
       );
+    case "count_distinct":
+    return new Set(
+      values.filter(
+        (value) => value !== null && value !== undefined && value !== ""
+      )
+    ).size;
     case "count":
       return values.length;
     case "average":
@@ -1392,72 +1429,144 @@ const executePostAggregateFunction = ({
   const {
     function: fn,
     field,
+    group_by,
     alias,
   } = post_aggregate;
 
-  const values = results
-    .map((row) => row[field])
-    .filter(
-      (value) =>
-        value !== null &&
-        value !== undefined
-    );
-  console.log("[executePostAggregateFunction] fn, field:", fn, field);
-  console.log("[executePostAggregateFunction] values (first 3):", values.slice(0, 3));
-
-  let value;
-
-  switch (fn) {
-    case "sum":
-      value = values.reduce(
-        (total, current) =>
-          total + Number(current || 0),
-        0
+  // No group_by:
+  // Calculate one overall post-aggregate value
+  if (!group_by) {
+    const values = results
+      .map((row) => row[field])
+      .filter(
+        (value) =>
+          value !== null &&
+          value !== undefined
       );
-      break;
 
-    case "average":
-    case "avg":
-      value = values.length
-        ? values.reduce(
+    let value;
+
+    switch (fn) {
+      case "sum":
+        value = values.reduce(
+          (total, current) =>
+            total + Number(current || 0),
+          0
+        );
+        break;
+
+      case "average":
+      case "avg":
+        value = values.length
+          ? values.reduce(
+              (total, current) =>
+                total + Number(current || 0),
+              0
+            ) / values.length
+          : 0;
+        break;
+
+      case "min":
+        value = values.length
+          ? Math.min(...values.map(Number))
+          : null;
+        break;
+
+      case "max":
+        value = values.length
+          ? Math.max(...values.map(Number))
+          : null;
+        break;
+
+      default:
+        throw new Error(
+          `Unsupported post aggregate function: ${fn}`
+        );
+    }
+
+    return [
+      {
+        [alias || `${fn}_${field}`]: value,
+      },
+    ];
+  }
+
+  // With group_by:
+  // Calculate the post-aggregate separately
+  // for each group
+  const groupedValues = new Map();
+
+  for (const row of results) {
+    const groupValue = row[group_by];
+    const value = row[field];
+
+    if (
+      groupValue === null ||
+      groupValue === undefined ||
+      value === null ||
+      value === undefined
+    ) {
+      continue;
+    }
+
+    if (!groupedValues.has(groupValue)) {
+      groupedValues.set(groupValue, []);
+    }
+
+    groupedValues
+      .get(groupValue)
+      .push(value);
+  }
+
+  return Array.from(groupedValues.entries()).map(
+    ([groupValue, values]) => {
+      let value;
+
+      switch (fn) {
+        case "sum":
+          value = values.reduce(
             (total, current) =>
               total + Number(current || 0),
             0
-          ) / values.length
-        : 0;
-      break;
+          );
+          break;
 
-    case "min":
-      value = values.length
-        ? Math.min(
-            ...values.map(Number)
-          )
-        : null;
-      break;
+        case "average":
+        case "avg":
+          value = values.length
+            ? values.reduce(
+                (total, current) =>
+                  total + Number(current || 0),
+                0
+              ) / values.length
+            : 0;
+          break;
 
-    case "max":
-      value = values.length
-        ? Math.max(
-            ...values.map(Number)
-          )
-        : null;
-      break;
+        case "min":
+          value = values.length
+            ? Math.min(...values.map(Number))
+            : null;
+          break;
 
-    default:
-      throw new Error(
-        `Unsupported post aggregate function: ${fn}`
-      );
-  }
+        case "max":
+          value = values.length
+            ? Math.max(...values.map(Number))
+            : null;
+          break;
 
-  console.log("[executePostAggregateFunction] value:", value);
-  return [
-    {
-      [alias || `${fn}_${field}`]:
-        value,
-    },
-  ];
+        default:
+          throw new Error(
+            `Unsupported post aggregate function: ${fn}`
+          );
+      }
+
+      return {
+        [group_by]: groupValue,
+        [alias || `${fn}_${field}`]: value,
+      };
+    }
+  );
 };
-
 
 /**
  * ============================================================

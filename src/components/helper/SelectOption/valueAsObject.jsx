@@ -5,8 +5,9 @@ import iconSvgPath from "../iconSvgPath";
 
 export default function SelectOptionAsObjectValue(
   {options, onChange,label, value,
-    leftSibling=null,style={},
+    leftSibling=null,style={}, fromBottom=false,
     disabled=false,
+    
     showActiveOption=true,
     changeAll=false,sliceValue,
     dropdownSrc, errorProp= null, 
@@ -58,11 +59,21 @@ export default function SelectOptionAsObjectValue(
             </div>        
         </div>
         {show && (
-            <ul className={'z-[8] absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit '+optionClass} style={{
-                top:"100%", maxHeight:"200px", width:"100%",
-                background: '#FFFFFF', zIndex:"4",
-                border: '1px solid #CABECF',borderRadius: '10px'
-            }}>
+<ul
+  className={
+    'z-[8] absolute bg-white rounded overflow-auto py-2.5 space-y-2 min-w-fit ' +
+    optionClass
+  }
+  style={{
+    [fromBottom ? 'bottom' : 'top']: '100%',
+    width: '100%',
+    maxHeight: '200px',
+    background: '#FFFFFF',
+    zIndex: 4,
+    border: '1px solid #CABECF',
+    borderRadius: '10px',
+  }}
+>
                 {new_options?.map((option,index)=>
                     <li style={value[valueProp]===option[valueProp]?{
                         background:"#CABECF", padding:"9px 10px"

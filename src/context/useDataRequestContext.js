@@ -188,6 +188,13 @@ export default function UseDataRequestContextComponent(
 
         return () => { cancelled = true }
     }, [project])
+
+    // first 3 rows of each dataset for debugging but still returning as its structure the way it is 
+    // console.log({datasets:})
+    // for (const [key, value] of Object.entries(datasets)) {
+    //     console.log({[key]: value.slice(0, 3)})
+    // }
+    // console.log({datasets:Object.entries(datasets).map(([key, value]) => [key, value.slice(0, 3)])})
     return(
         <DataRequestContext.Provider value={{
             dataArray, setDataArray,

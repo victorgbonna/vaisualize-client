@@ -16,7 +16,7 @@ export default function ProjectsDashboard(){
         <div className="flex justify-between items-end px-8">
             <div>
                 <h2 className="font-semibold text-3xl mb-2">Recent Projects</h2>
-                <p className="text-gray-600">Manage your latest data visualizations and reports.</p>
+                <p className="text-gray-600">Manage your latest projects.</p>
             </div>
             <div className="flex gap-x-5">
                 {/* <button className="flex items-center gap-x-2 border rounded-xl text-base py-2 px-5 shadow-sm">

@@ -884,7 +884,7 @@ if (if_rel_exists) {
                 <div className="bg-gray-50 border rounded-md p-3 flex justify-between items-end py-4">
                     <div className="w-[40%] ">
                         <div>
-                            <p className="text-sm mb-[6px] font-semibold text-gray-500">REFERENCED TABLE/COLUMN</p>
+                            <p className="text-sm mb-[6px] font-semibold text-gray-500">FROM TABLE/COLUMN</p>
                         </div>
                         <div className="grid grid-cols-2 items-center gap-3 w-full">
                             <div className="z-[4] relative">
@@ -927,7 +927,7 @@ if (if_rel_exists) {
                     </div>
                     <div className="items-center w-[40%]">
                         <div>
-                            <p className="text-sm mb-[6px]  font-semibold text-gray-500">PARENT TABLE/COLUMN</p>
+                            <p className="text-sm mb-[6px]  font-semibold text-gray-500">TO TABLE/COLUMN</p>
                         </div>
                         <div className=" grid grid-cols-2 gap-3 w-full items-center">
                             <div className="z-[4] relative">
@@ -1006,11 +1006,11 @@ function ActiveMapping(){
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    • "REFERENCED" must be the table/column you are connecting from.
+                    • "FROM" must be the table/column you are connecting from.
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    • "PARENT" must be the table/column you are connecting to.
+                    • "TO" must be the table/column you are connecting to.
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
