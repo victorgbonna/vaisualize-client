@@ -685,7 +685,7 @@ function Steps(){
     },
     {
       step: 2,
-      title: "Data Modelling",
+      title: "Smart Data Linking",
       description:  
         "Our system intelligently detects your columns, suggests the best mappings and lets you seamlessly create relationships between tables.",
       image: "modelling-2.jpg",
@@ -982,12 +982,34 @@ function NextSection(){
       </div>
       <div className="w-full px-20 tablet:px-3">
         <div
-          className="flex justify-center w-full"
+          className="flex justify-center w-full shadow-lg"
           style={{
             transform: "none",
           }}
         >
-          <video
+          {/* <div className=''>
+              <div className="bg-white p-2 rounded-md absolute top-10 right-[-80px] transform -translate-x-1/2 shadow-md w-[200px]">
+                <p className="italic text-sm">{loadingState}</p>
+              </div>
+              <img className="mt-" src="/gif/brainstorm.gif" alt="brainstorm" />
+              <div>
+                <p className="text-sm text-gray-800 mt-4  text-center">{loadingState+'...'}</p>
+              </div>
+            </div> */}
+          <img src="/images/webbi-snap.png" alt="webbi-snapshot" 
+          style={{
+              cursor: "auto",
+              width: "100%",  
+              height: "100%",
+              borderRadius: "8px",
+              display: "block",
+              objectFit: "cover",
+              backgroundColor: "rgba(0, 0, 0, 0)",
+              objectPosition: "50% 50%",
+            }}
+          />
+          
+          {/* <video
             src="/gif/webbi-promo.mp4"
             loop
             preload="auto"
@@ -1005,7 +1027,7 @@ function NextSection(){
               backgroundColor: "rgba(0, 0, 0, 0)",
               objectPosition: "50% 50%",
             }}
-          />
+          /> */}
         </div>
       </div>
       <Partnership/>
