@@ -1006,11 +1006,11 @@ function ActiveMapping(){
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    {'• "REFERENCED" must be the table/column you are connecting from.'}
+                    {'"REFERENCED" must be the table/column you are connecting from.'}
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    {'• "PARENT" must be the table/column you are connecting to.'}
+                    {'"PARENT" must be the table/column you are connecting to.'}
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
