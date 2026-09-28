@@ -977,7 +977,7 @@ function ActiveMapping(){
     return(
         <div className="pb-4">
             <h2 className="my-3 font-semibold text-[19px]">
-                ACTIVE MAPPING
+                {'ACTIVE MAPPING'}
             </h2>
             <p className="text-sm text-gray-500">This section shows all active relationships between your tables.</p>
             
@@ -992,29 +992,29 @@ function ActiveMapping(){
                     </div>
 
                     <p className="text-sm font-semibold text-amber-800">
-                    Relationship Setup
+                    {'Relationship Setup'}
                     </p>
                 </div>
 
                 <p className="mb-3 text-sm leading-5 text-amber-900/80">
-                    Select the tables and columns you want to connect.
+                    {'Select the tables and columns you want to connect.'}
                 </p>
 
                 <div className="space-y-2 border-t border-amber-200 pt-3">
                     <p className="text-xs font-semibold text-amber-800">
-                    Note that:
+                    {'Note that:'}
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    • "REFERENCED" must be the table/column you are connecting from.
+                    {'• "REFERENCED" must be the table/column you are connecting from.'}
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    • "PARENT" must be the table/column you are connecting to.
+                    {'• "PARENT" must be the table/column you are connecting to.'}
                     </p>
 
                     <p className="text-xs leading-5 text-amber-900/75">
-                    • Incorrect relationships may cause Datai to produce inaccurate results.
+                    {'• Incorrect relationships may cause Datai to produce inaccurate results.'}
                     </p>
                 </div>
                 </div>
