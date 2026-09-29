@@ -974,13 +974,13 @@ function RecentWorks(){
 
 function NextSection(){
   return(
-    <div className=" bg-indigo-400/10 h-fit w-screen mt-[120px] tablet:mt-0 relative pb-20 pt-20 tablet:px-5 tablet:py-24 px-10">
+    <div className=" bg-indigo-400/10 h-fit w-screen mt-[120px] tablet:mt-0 relative pb-20 pt-20 tablet:px-5 tablet:py-10 px-10">
       <div className="flex justify-center absolute top-[-15%] left-0 right-0 tablet:hidden">
         <div className="rounded-full w-[200px] h-[200px] bg-white">
           
         </div>
       </div>
-      <div className="w-full px-20 tablet:px-3">
+      <div className="w-full px-20 tablet:px-0 ">
         <div
           className="flex justify-center w-full shadow-lg"
           style={{
@@ -996,7 +996,7 @@ function NextSection(){
                 <p className="text-sm text-gray-800 mt-4  text-center">{loadingState+'...'}</p>
               </div>
             </div> */}
-          <img src="/images/webbi-snap.png" alt="webbi-snapshot" 
+          {/* <img src="/images/webbi-snap.png" alt="webbi-snapshot" 
           style={{
               cursor: "auto",
               width: "100%",  
@@ -1007,27 +1007,28 @@ function NextSection(){
               backgroundColor: "rgba(0, 0, 0, 0)",
               objectPosition: "50% 50%",
             }}
-          />
-          
-          {/* <video
-            src="/gif/webbi-promo.mp4"
+          /> */}
+          <video
+            src="https://lottie.host/66e7ae61-3968-4e31-ae28-5ef87ce81f1a/rFGlTOSvA7.mp4"
             loop
-            preload="auto"
+            //  controls
+  preload="metadata"
             // poster="https://framerusercontent.com/images/Wi55f4nQkOCpflNW1C4KjyJZsco.png?width=1683&height=947"
             muted
             playsInline
             autoPlay
+            className="rounded-md p-[2px] bg-stone-500 shadow-lg h-full"
             style={{
               cursor: "auto",
               width: "100%",
-              height: "100%",
+              
               borderRadius: "8px",
               display: "block",
               objectFit: "cover",
               backgroundColor: "rgba(0, 0, 0, 0)",
               objectPosition: "50% 50%",
             }}
-          /> */}
+          />
         </div>
       </div>
       <Partnership/>
