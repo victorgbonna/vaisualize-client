@@ -152,8 +152,9 @@ function DatasetChildren(){
             .map((column) => {
                 const relationship = (project?.table_relationships || []).find(
                     (rel) =>
-                        (rel.from_table === activeTable && rel.from_column === column.col) ||
-                        (rel.to_table === activeTable && rel.to_column === column.col)
+                        (rel.from_table === activeTable && rel.from_column === column.col) 
+                        // ||
+                        // (rel.to_table === activeTable && rel.to_column === column.col)
                 );
                 const isFromDirection = relationship?.from_table === activeTable;
                 return {

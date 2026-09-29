@@ -1901,7 +1901,7 @@ const buildDataAIResponse = ({
     const template = response.template || "";
     const rowTemplate = response.row_template || "";
     const conclusion = response.conclusion || "";
-
+    console.log({response, result, limit})
     let content = "";
 
     /*
@@ -1911,13 +1911,15 @@ const buildDataAIResponse = ({
      * use the template with the first result row.
      */
     if (
-        limit === 1 ||
-        result.length === 1
+      rowTemplate && result.length
     ) {
-        content += resolveTemplate({
-            template,
-            row: result[0] || {},
-        });
+      content += template;
+
+        content += resolveRowTemplate({
+            rowTemplate,
+            rows: result,
+        });  
+      
     }
 
     /*
@@ -1926,12 +1928,10 @@ const buildDataAIResponse = ({
      * Use the template as the introduction,
      * then repeat row_template for every result row.
      */
-    else if (result.length > 1) {
-        content += template;
-
-        content += resolveRowTemplate({
-            rowTemplate,
-            rows: result,
+    else if (result) {
+        content += resolveTemplate({
+            template,
+            row: result[0] || {},
         });
     }
 

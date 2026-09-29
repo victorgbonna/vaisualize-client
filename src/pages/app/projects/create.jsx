@@ -129,6 +129,12 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength, clearFi
     const getFileName=(path) => {
         return path.replace(/^.*[\\\/]/, '');
     };
+    const getRandomRows = (data, count = 5) => {
+        if (data.length <= count) return data;
+
+        const shuffled = [...data].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, count);
+    };
     const {NotifyError, NotifySuccess}= useToast()
     const {isDate, formatBytes, normalizeMongoFields}= timeStampControl
     const previewPic = (e,ind) => {
@@ -170,7 +176,7 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength, clearFi
         for (let index = 0; index < headers.length; index++) {
           const element = headers[index];
           if (!element) continue;
-          if (index === 0 && element.toLowerCase().includes("id")) {
+          if (element.toLowerCase().includes("id")) {
             col_data_type.push({col:element, data_type:'identifier'});
             continue;
           }
@@ -223,8 +229,9 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength, clearFi
           skipEmptyLines: true,
           complete: (results) => {
             const row_length= results.data.length
-            const rows = results.data.slice(0, 5);
+            const rows = getRandomRows(results.data, 5);
             const headers = results.meta.fields || Object.keys(rows[0] || {});
+
             processParsed(headers, rows, fileName, row_length);
           },
         });
@@ -242,7 +249,7 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength, clearFi
             const jsonData = XLSX.utils.sheet_to_json(sheet, { defval: "" });
             const headers = Object.keys(jsonData[0] || {});
             const row_length= jsonData.length
-            const rows = jsonData.slice(0, 5);
+            const rows = getRandomRows(jsonData, 5);
             processParsed(headers, rows, fileName, row_length);
             } catch (err) {
             console.error("XLSX parse error", err);
@@ -267,7 +274,7 @@ function SecondStep({fileData, setFileData, uploadImages, fileMaxLength, clearFi
             }
             const headers = Object.keys(jsonData[0]);
             const row_length = jsonData.length;
-            const rows = jsonData.slice(0, 5).map(normalizeMongoFields);
+            const rows = getRandomRows(jsonData, 5).map(normalizeMongoFields);
             processParsed(headers, rows, file.name, row_length);
 
             } catch (err) {

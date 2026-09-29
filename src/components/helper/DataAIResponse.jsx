@@ -73,11 +73,31 @@ export default function DataAIResponse({ chat, onResolved }) {
                     response: response || {},
                     result,
                 });
+            console.log({responseString})
             setFinalResponse(responseString)
             // console.log({resolvedContent, responseString,result})
-            onResolved?.({
-                responseString, messageId,
-            });
+            if (
+                result &&
+                (
+                    (Array.isArray(result) && result.length > 0) ||
+                    (
+                        typeof result === "object" &&
+                        !Array.isArray(result) &&
+                        Object.values(result).every(
+                            value =>
+                                value !== null &&
+                                value !== undefined &&
+                                value !== ""
+                        )
+                    )
+                )
+            ) {
+                return
+                onResolved?.({
+                    responseString,
+                    messageId,
+                });
+            }
 
             // if (messageId && resolvedContent) {
             //     updateMessageContent(resolvedContent);
