@@ -208,7 +208,8 @@ function DatasetChildren(){
         const relatedTableNames = Array.from(new Set(
             relevantRelationships.map((rel) => (rel.from_table === activeTable ? rel.to_table : rel.from_table))
         ));
-
+        // const get the first 5 rows field from the project state not dataset
+        // const first_five_rows = (project?.tables?.[activeTable]?. || []).slice(0, 5);
         const buildColumns = (tableName) => (columns || [])
             .filter((column) => column.table === tableName)
             .map((column) => ({
@@ -221,9 +222,13 @@ function DatasetChildren(){
             activeTable: { name: activeTable, columns: buildColumns(activeTable) },
             relatedTables: relatedTableNames.map((name) => ({ name, columns: buildColumns(name) })),
             relationships: relevantRelationships,
+            first_five_rows:project?.datasets?.find((table) => table.file_name === activeTable)?.first_five_rows,
             prompt: query
         };
+        
     };
+
+    // console.log({ activeTable, project });
 // combo-free
 
     const { mutate: generateFilterPlan, isPending: filterPlanLoading } = useMutation({
