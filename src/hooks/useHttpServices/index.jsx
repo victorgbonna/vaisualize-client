@@ -4,7 +4,7 @@ import { useSession} from "next-auth/react";
 
 const useHttpServices = () => {
   const { data: session } = useSession();
-  // consolelog({session})
+  console.log({session:useSession(), s:session})
   const postData = async ({path, body}) => {
     //clear whitespace in body
     // body=trimObject(body)
